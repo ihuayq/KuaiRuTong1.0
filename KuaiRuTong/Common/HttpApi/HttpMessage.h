@@ -14,7 +14,7 @@
  */
 
 #import "MsgConstant.h"
-#import "ASIHTTPRequest.h"
+//#import "ASIHTTPRequest.h"
 #import <Foundation/Foundation.h>
 
 typedef enum {

@@ -26,6 +26,8 @@ do {SN_LOG_MACRO(level, @"%s #%d " fmt, __PRETTY_FUNCTION__, __LINE__, ##__VA_AR
 #define SNLogDebug(frmt, ...)   SN_LOG_PRETTY(SNLogLevelDEBUG, frmt, ##__VA_ARGS__)
 #define DLog(frmt, ...) SN_LOG_PRETTY(SNLogLevelDEBUG, frmt, ##__VA_ARGS__)
 
+#define DError(frmt, ...) SN_LOG_PRETTY(SNLogLevelERROR, frmt, ##__VA_ARGS__)
+
 @interface SNLogger : NSObject
 
 @property (nonatomic, assign) SNLogLevel logLevel;

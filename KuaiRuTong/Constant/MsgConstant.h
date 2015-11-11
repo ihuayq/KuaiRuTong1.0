@@ -143,37 +143,17 @@ static const int CC_NEED_LOGIN_QUEUE[] =
 //需要重写cookie的接口，例如彩票服务器，酒店服务器的域名不同，需要重写下cookie，否则cookie不能带过去
 static const int CC_NEED_COOKIE_QUEUE[] = 
 {
-    CC_LotteryHall              ,
-    CC_LotteryOrderList         ,
-    CC_LotteryOrderDetail       ,
-    CC_TicketPayment            ,
-    CC_DealsList                ,
-    CC_DealsSerialNumberList    ,
-    CC_FollowOrderProject       ,
-    CC_FollowOrderDetail        ,
-    CC_TicketPayment            ,
-    CC_GBReferOrder             ,
-    CC_GBCancelOrder            ,
-    CC_GBRefund                 ,
-    
-    CC_CouponQuery              ,
-    CC_CouponUserQuery          ,
-    CC_CheckCoupon              ,
-    CC_PayRemainMoney           ,
-    CC_CancelCoupon             ,
-    CC_lotteryPay               ,
-    CC_ChaseNumberPayment       ,
-    CC_AgentPurchasePayment     ,
-    
-    CC_EvaluateList             ,
-    CC_EvaluateValidate         ,
-    CC_EvaluatePublish          ,
-    
-    CC_RegistrationDetail       ,
-    CC_StoresRegistration       ,
-    CC_RegistrationPrepare      ,
-//    CC_EvaluateProduct          ,
-    CC_ScanerCodeActionLogin,
-    CC_ScanerCodeActionAuthorize
+//    CC_AgentPurchasePayment     ,
+//    
+//    CC_EvaluateList             ,
+//    CC_EvaluateValidate         ,
+//    CC_EvaluatePublish          ,
+//    
+//    CC_RegistrationDetail       ,
+//    CC_StoresRegistration       ,
+//    CC_RegistrationPrepare      ,
+////    CC_EvaluateProduct          ,
+//    CC_ScanerCodeActionLogin,
+//    CC_ScanerCodeActionAuthorize
 };
 

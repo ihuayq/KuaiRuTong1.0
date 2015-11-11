@@ -8,7 +8,7 @@
 
 #import <map>
 #import "HttpMsgCtrl.h"
-#import "AFNetworkTools.h"
+#import "AFNetworkTool.h"
 //#import "ASIHTTPRequest.h"
 //#import "ASINetworkQueue.h"
 //#import "UserCenter.h"
@@ -27,10 +27,11 @@ typedef map<int, HttpMessage *>::value_type value_send;
 
 static map_send g_mapSend;
 
+
 @implementation HttpMsgCtrl
 
 @synthesize lock = _lock;
-@synthesize networkQueue = _networkQueue;
+
 + (HttpMsgCtrl *)shareInstance
 {
     static dispatch_once_t once;
@@ -39,32 +40,11 @@ static map_send g_mapSend;
     return __singleton__; 
 }
 
-- (void)dealloc
-{
-    
-    TT_RELEASE_SAFELY(_lock);
-    TT_RELEASE_SAFELY(_networkQueue);
-    TT_RELEASE_SAFELY(_delegate);
-    [super dealloc];
-}
-
 - (id)init
 {
     
     if (self =[super init])
     {
-        _networkQueue = [[ASINetworkQueue alloc] init];
-        
-        [_networkQueue reset];
-        
-        _networkQueue.delegate = self;
-        _networkQueue.shouldCancelAllRequestsOnFailure = NO;
-        _networkQueue.requestDidStartSelector= @selector(requestDidStart:);
-        _networkQueue.requestDidReceiveResponseHeadersSelector = @selector(request:didReceiveResponseHeaders:);
-        _networkQueue.requestDidFinishSelector = @selector(requestDidFinished:);
-        _networkQueue.requestDidFailSelector = @selector(requestDidFailed:);
-        [_networkQueue setMaxConcurrentOperationCount:10];
-        
         _lock = [[NSLock alloc] init];
     }
     
@@ -107,157 +87,143 @@ static map_send g_mapSend;
 {
     int msgTag = [self getTagCode:sendMsg.cmdCode];
     
-    ASIHTTPRequest *request;
-    //post方法
+    
     if (sendMsg.requestMethod == RequestMethodPost) {
-        request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:sendMsg.requestUrl]];
-        NSDictionary *postDic = sendMsg.postDataDic;
-        if(postDic)
-        {
-            NSArray *allKeys = [postDic allKeys];
-            
-            for (NSString *key in allKeys)
-            {
-                [(ASIFormDataRequest *)request setPostValue:[postDic objectForKey:key] forKey:key];
-            }
-        }
-    }else if (sendMsg.requestMethod == RequestMethodPostStream) {
-        // Author: xzoscar add, 2014//09/25
-        // Desc:  为了支持普通json流和文件传输
-        request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:sendMsg.requestUrl]];
-        [request setRequestMethod:@"POST"];
-        
-        NSString *stream     = [sendMsg.postDataDic JSONRepresentation];
-        NSData   *postStream = [stream dataUsingEncoding:NSUTF8StringEncoding];
-        if (sendMsg.isUploadImage) {
-            // 图片上传
-            
-            NSString *boundary = @"--xzoscar\r\n";
-            NSString *resume   = @"Content-Disposition:form-data;name=\"unknown\";filename=\"unknown.jpg\"\r\n\r\n";
-            NSString *body = [boundary stringByAppendingString:resume];
-            
-            NSMutableData *d = [NSMutableData data];
-            [d appendData:[body dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            [d appendData:sendMsg.postData];
-            
-            [d appendData:[@"\r\n--xzoscar--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [request setPostBody:d];
-            
-            NSString *value1 = @"multipart/form-data;boundary=xzoscar";
-            [request addRequestHeader:@"Content-Type" value:value1];
-            [request addRequestHeader:@"Content-Length" value:[NSString stringWithFormat:@"%d",(int)d.length]];
-            
-        }else
-        {
-            // 普通json格式流
-            [request setPostBody:[NSMutableData dataWithData:postStream]];
-        }
-
-        
-    }else {  //get方法
-        NSMutableString *urlString = [[NSMutableString alloc] initWithString:sendMsg.requestUrl];
-        if(sendMsg.postDataDic != nil)
-        {
-            [urlString appendString:@"?"];
-            NSArray *allKeys = [sendMsg.postDataDic allKeys];
-            for(NSString *key in allKeys)
-            {
-                [urlString appendFormat:@"%@=%@&", key, [sendMsg.postDataDic objectForKey:key]];
-            }
-        }
-        // xzoscar modify ,2014/09/23 09:52
-        // 这里-1会出问题，postDataDic==nil 把基地址都改了，URL参数中多一个&可兼容
-        //NSString *absoluteString = [urlString substringWithRange:NSMakeRange(0, urlString.length-1)];
-        
-        NSString *absoluteStringUTF8 = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSURL *url = [[NSURL alloc] initWithString:absoluteStringUTF8];
-        
-        TT_RELEASE_SAFELY(urlString);
-        
-        request = [ASIHTTPRequest requestWithURL:url];
-        
-        TT_RELEASE_SAFELY(url);
+        [AFNetworkTool postJSONWithUrl:sendMsg.requestUrl  parameters:sendMsg.postDataDic success:^(id json) {
+            DLog(@"%@", json);
+            // 提示:NSURLConnection异步方法回调,是在子线程
+            // 得到回调之后,通常更新UI,是在主线程
+            //NSLog(@"%@", [NSThread currentThread]);
+        } fail:^(NSError *error){
+            DError(@"请求失败");
+        }];
     }
     
-    
-    request.tag = msgTag;
-    request.timeOutSeconds = sendMsg.timeout;
-    request.shouldAttemptPersistentConnection = NO;
-    request.responseEncoding = NSUTF8StringEncoding;
-    
-#if kAllowInvalidHttps
-    request.validatesSecureCertificate = NO;
-#else
-    request.validatesSecureCertificate = YES;
-#endif
-    
-    request.shouldCompressRequestBody = NO;
-//    if (CC_Can_Compress(sendMsg.cmdCode)) {
-//        request.shouldCompressRequestBody = YES;    //压缩发送
-//    }else{
-//        request.shouldCompressRequestBody = NO;     //不压缩发送
-//    }
-    
-//    //设置cache
-//    request.downloadCache = [ASIDownloadCache sharedCache];
-//    request.cachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
-    
-#if TARGET_OS_IPHONE && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_4_0
-	[request setShouldContinueWhenAppEntersBackground:YES];
-#endif
-    
-    //如果转到商旅或彩票服务器，需要重写cookie
-    if (CC_Need_Cookie_Contain(sendMsg.cmdCode))
-    {
-        NSArray *array =  [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
-        
-        if ([[request requestCookies] count] == 0)
-        {
-            [[request requestCookies] addObjectsFromArray:array];
-            
-        }
-    }
-    
-    //加cookie
-    if ([sendMsg.addedCookies count] > 0)
-    {
-        for (NSHTTPCookie *cookie in sendMsg.addedCookies)
-        {
-            [[request requestCookies] addObject:cookie];
-        }
-    }
     
     [self.lock lock];
     
     // 这里retain 一次 方便外部释放对应
-    [sendMsg retain];
+    //[sendMsg retain];
     
     g_mapSend.insert(value_send(msgTag, sendMsg));
     
     [self.lock unlock];
-    
-    if (sendMsg.canMultipleConcurrent)
+}
+
+
+- (void)requestDidFinished:(id) json message:(HttpMessage *)sendMsg
+{
+    [self.lock lock];
+
+    iter_send it = g_mapSend.find([self getTagCode:sendMsg.cmdCode]);
+
+    [self.lock unlock];
+
+    if (it != g_mapSend.end())
     {
-        NSArray *concurrentRequests = nil;
-        if ([self isRunningHttpMessage:sendMsg dependOperations:&concurrentRequests])
+        HttpMessage *sendMsg = it->second;
+
+//        sendMsg.responseString = request.responseString;
+//        sendMsg.errorCode = request.errorCode;
+//        sendMsg.jasonItems = request.jasonItems;
+        
+        if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFinished:)])
         {
-            if (concurrentRequests && [concurrentRequests count] > 0)
-            {
-                for (ASIHTTPRequest *depReq in concurrentRequests)
-                {
-                    [request addDependency:depReq];
-                }
-            }
+            [sendMsg.delegate receiveDidFinished:sendMsg];
         }
     }
     
-    [self.networkQueue addOperation:request];
     
-    [self.networkQueue go];
-    
+    [self.lock lock];
+
+    g_mapSend.erase(it);
+
+    [self.lock unlock];
 }
+//
+//        if (request.isShouXian)
+//            sendMsg.isShouXian = YES;
+//
+//        //判断登录是否失效
+//        if ([sendMsg.errorCode isKindOfClass:[NSString class]] &&
+//            [sendMsg.errorCode isEqualToString:@"5015"] &&
+//            [UserCenter defaultCenter].isLogined)
+//        {
+//            [self loginSessionFailedNeedAutoLogin:YES shouldPresentLoginVCAfterFail:YES];
+//        }
+//        NSString *jsonStat = sendMsg.jasonItems?@"Ok":@"fail";
+////            [self.delegate requestDidFinished:logStr];
+////
+////            NSString *logstr1 = @"cookies : \n";
+////
+////            for (NSHTTPCookie *cookie in cookies)
+////            {
+////                logstr1 = [logstr1 stringByAppendingString:[NSString stringWithFormat:@"name : %@; value : %@\n", cookie.name, cookie.value]];
+////            }
+////
+////            [self.delegate requestDidFinished:logstr1];
+////
+////            NSDate *date = [NSDate date];
+////            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+////            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+////            NSString *datestr = [formatter stringFromDate:date];
+////
+////            [self.delegate requestDidFinished:datestr];
+////
+////            NSString *sep = @"=============================================================================================end\n";
+////            [self.delegate requestDidFinished:sep];
+////        }
+//
+//        if ([jsonStat isEqualToString:@"fail"]&&(([request responseStatusCode] == 200)||([request responseStatusCode] >= 400)))
+//        {
+//            [self httpError:request isJson:YES];
+//        }
+//        sendMsg.responseStatusCode = [request responseStatusCode];
+//        sendMsg.error = [request error];
+//
+//        if (sendMsg.responseStatusCode == 200)
+//        {
+//            if (sendMsg.jasonItems) {
+//                if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFinished:)])
+//                {
+//                    [sendMsg.delegate receiveDidFinished:sendMsg];
+//                }
+//            } else {
+//                //登录是否需要验证码的请求返回的不是json格式，只是个字符串，因此特殊处理。2014-10-14 储鹏
+//                if (sendMsg.cmdCode == CC_CheckNeedVerifyCode)
+//                {
+//                    [sendMsg.delegate receiveDidFinished:sendMsg];
+//                    goto getout;
+//                }
+//
+//                sendMsg.error = [NSError errorWithDomain:@"HttpMsgCtrlErrorDomain"
+//                                                    code:10021
+//                                                userInfo:nil];
+//                if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFailed:)])
+//                {
+//                    [sendMsg.delegate receiveDidFailed:sendMsg];
+//                }
+//            }
+//        }
+//        else
+//        {
+//            if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFailed:)])
+//            {
+//                [sendMsg.delegate receiveDidFailed:sendMsg];
+//            }
+//        }
+//
+//getout:
+//        [self.lock lock];
+//
+//        [sendMsg release];
+//
+//        g_mapSend.erase(it);
+//
+//        [self.lock unlock];
+//    }
+//
+//}
 
 - (void)cancelHttpRequest:(HttpMessage *)msg
 {
@@ -266,54 +232,54 @@ static map_send g_mapSend;
     }
     
     
-    for (ASIHTTPRequest *request in [self.networkQueue operations])
-    {
-        [self.lock lock];
-        iter_send it = g_mapSend.find(request.tag);
-        [self.lock unlock];
-        
-        if (it != g_mapSend.end())
-        {
-            HttpMessage *sendMsg = it->second;
-            if (sendMsg == msg) {
-                
-                [request clearDelegatesAndCancel];
-                
-                DLog(@"cancel %#x success", msg.cmdCode);
-                break;
-            }
-        }
-	}
+//    for (ASIHTTPRequest *request in [self.networkQueue operations])
+//    {
+//        [self.lock lock];
+//        iter_send it = g_mapSend.find(request.tag);
+//        [self.lock unlock];
+//        
+//        if (it != g_mapSend.end())
+//        {
+//            HttpMessage *sendMsg = it->second;
+//            if (sendMsg == msg) {
+//                
+//                [request clearDelegatesAndCancel];
+//                
+//                DLog(@"cancel %#x success", msg.cmdCode);
+//                break;
+//            }
+//        }
+//	}
 }
 
-- (BOOL)isRunningHttpMessage:(HttpMessage *)msg dependOperations:(NSArray **)operations
-{
-    if (msg == nil) {
-        return NO;
-    }
-    
-    NSMutableArray *depOpers = [[[NSMutableArray alloc] init] autorelease];
-    for (ASIHTTPRequest *request in [self.networkQueue operations])
-    {
-        [self.lock lock];
-        iter_send it = g_mapSend.find(request.tag);
-        [self.lock unlock];
-        
-        if (it != g_mapSend.end())
-        {
-            HttpMessage *sendMsg = it->second;
-            if ([sendMsg.requestUrl isEqualToString:msg.requestUrl]) {
-                [depOpers addObject:request];
-            }
-        }
-	}
-    if ([depOpers count] > 0) {
-        *operations = depOpers;
-        return YES;
-    }
-    
-    return NO;
-}
+//- (BOOL)isRunningHttpMessage:(HttpMessage *)msg dependOperations:(NSArray **)operations
+//{
+//    if (msg == nil) {
+//        return NO;
+//    }
+//    
+//    NSMutableArray *depOpers = [[[NSMutableArray alloc] init] autorelease];
+//    for (ASIHTTPRequest *request in [self.networkQueue operations])
+//    {
+//        [self.lock lock];
+//        iter_send it = g_mapSend.find(request.tag);
+//        [self.lock unlock];
+//        
+//        if (it != g_mapSend.end())
+//        {
+//            HttpMessage *sendMsg = it->second;
+//            if ([sendMsg.requestUrl isEqualToString:msg.requestUrl]) {
+//                [depOpers addObject:request];
+//            }
+//        }
+//	}
+//    if ([depOpers count] > 0) {
+//        *operations = depOpers;
+//        return YES;
+//    }
+//    
+//    return NO;
+//}
 
 
 #pragma mark - AutoLogin Command Delegate Methods

@@ -17,30 +17,31 @@
  4、 12-9-6   添加了get方法请求， 添加了重写cookie的操作
  */
 
-#import "HttpMessage.h"
+
 #import <Foundation/Foundation.h>
 #import "Command.h"
 #import "CommandManage.h"
-@class ASINetworkQueue;
+#import "HttpMessage.h"
+//@class ASINetworkQueue;
 
-@protocol  HttpMsgCtrlDelegate <NSObject>
-
-- (void)requestDidFinished:(NSString *)logString;
-- (void)requestDidFailed:(NSString *)logString;
-
-@end
+//@protocol  HttpMsgCtrlDelegate <NSObject>
+//
+//- (void)requestDidFinished:(NSString *)logString;
+//- (void)requestDidFailed:(NSString *)logString;
+//
+//@end
 
 @interface HttpMsgCtrl : NSObject <CommandDelegate>
 {
-@private
-	NSLock              *_lock;
-	ASINetworkQueue     *_networkQueue;
+//@private
+//	NSLock              *_lock;
+//	//ASINetworkQueue     *_networkQueue;
     
 }
 
-@property (nonatomic, unsafe_unretained) id<HttpMsgCtrlDelegate> delegate;
+//@property (nonatomic, unsafe_unretained) id<HttpMsgCtrlDelegate> delegate;
 @property (nonatomic, retain) NSLock *lock;
-@property (nonatomic, retain) ASINetworkQueue *networkQueue;
+//@property (nonatomic, retain) ASINetworkQueue *networkQueue;
 
 // 获取实例方法
 + (HttpMsgCtrl*)shareInstance;
@@ -61,6 +62,6 @@
 - (void)cancelHttpRequest:(HttpMessage *)msg;
 
 
-- (BOOL)isRunningHttpMessage:(HttpMessage *)msg dependOperations:(NSArray **)operations;
+//- (BOOL)isRunningHttpMessage:(HttpMessage *)msg dependOperations:(NSArray **)operations;
 
 @end

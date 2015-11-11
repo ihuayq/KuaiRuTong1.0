@@ -82,8 +82,11 @@
 }
 
 - (void)dealloc
-{    
+{
+#if !OS_OBJECT_USE_OBJC   //这个宏是在sdk6.0之后才有的,如果是之前的,则OS_OBJECT_USE_OBJC为0
     dispatch_release(_ioQueue);
+#endif
+    
 }
 
 - (NSString *)cachePathForKey:(NSString *)key

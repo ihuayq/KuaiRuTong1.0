@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		888F27BE1BF339DE0023C817 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 888F27BD1BF339DE0023C817 /* libsqlite3.tbd */; };
+		888F27C01BF33A8F0023C817 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 888F27BF1BF33A8F0023C817 /* libz.1.1.3.tbd */; };
 		88F2048D1BF1822E00674567 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048C1BF1822E00674567 /* main.m */; };
 		88F204901BF1822E00674567 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048F1BF1822E00674567 /* AppDelegate.m */; };
 		88F204931BF1822E00674567 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204921BF1822E00674567 /* ViewController.m */; };
@@ -20,7 +22,7 @@
 		88F205351BF18F7200674567 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204C51BF18F7200674567 /* FMDatabasePool.m */; settings = {ASSET_TAGS = (); }; };
 		88F205361BF18F7200674567 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204C71BF18F7200674567 /* FMDatabaseQueue.m */; settings = {ASSET_TAGS = (); }; };
 		88F205371BF18F7200674567 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204CA1BF18F7200674567 /* FMResultSet.m */; settings = {ASSET_TAGS = (); }; };
-		88F205381BF18F7200674567 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204CD1BF18F7200674567 /* JSONKit.m */; settings = {ASSET_TAGS = (); }; };
+		88F205381BF18F7200674567 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204CD1BF18F7200674567 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88F205391BF18F7200674567 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F204D01BF18F7200674567 /* 37x-Checkmark.png */; settings = {ASSET_TAGS = (); }; };
 		88F2053A1BF18F7200674567 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F204D11BF18F7200674567 /* 37x-Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
 		88F2053B1BF18F7200674567 /* Icon-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F204D21BF18F7200674567 /* Icon-iOS7@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -72,9 +74,7 @@
 		88F205861BF1945500674567 /* HttpMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205791BF1945500674567 /* HttpMessage.m */; settings = {ASSET_TAGS = (); }; };
 		88F205871BF1945500674567 /* HttpMsgCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88F2057B1BF1945500674567 /* HttpMsgCtrl.mm */; settings = {ASSET_TAGS = (); }; };
 		88F205881BF1945500674567 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2057E1BF1945500674567 /* DataService.m */; settings = {ASSET_TAGS = (); }; };
-		88F205891BF1945500674567 /* DataTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205801BF1945500674567 /* DataTask.m */; settings = {ASSET_TAGS = (); }; };
 		88F2058A1BF1945500674567 /* SNLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205821BF1945500674567 /* SNLogger.m */; settings = {ASSET_TAGS = (); }; };
-		88F2058B1BF1945500674567 /* SNNetworkErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205841BF1945500674567 /* SNNetworkErrorView.m */; settings = {ASSET_TAGS = (); }; };
 		88F205A61BF1965B00674567 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 88F2058D1BF1965B00674567 /* LICENSE.txt */; settings = {ASSET_TAGS = (); }; };
 		88F205A71BF1965B00674567 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205901BF1965B00674567 /* DDAbstractDatabaseLogger.m */; settings = {ASSET_TAGS = (); }; };
 		88F205A81BF1965B00674567 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205921BF1965B00674567 /* DDASLLogCapture.m */; settings = {ASSET_TAGS = (); }; };
@@ -128,6 +128,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		888F27BA1BF334FC0023C817 /* SuningEBuyConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuningEBuyConfig.h; sourceTree = "<group>"; };
+		888F27BD1BF339DE0023C817 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		888F27BF1BF33A8F0023C817 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		88F204881BF1822E00674567 /* KuaiRuTong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuaiRuTong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F2048C1BF1822E00674567 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88F2048E1BF1822E00674567 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -254,12 +257,8 @@
 		88F2057B1BF1945500674567 /* HttpMsgCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpMsgCtrl.mm; sourceTree = "<group>"; };
 		88F2057D1BF1945500674567 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
 		88F2057E1BF1945500674567 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
-		88F2057F1BF1945500674567 /* DataTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTask.h; sourceTree = "<group>"; };
-		88F205801BF1945500674567 /* DataTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTask.m; sourceTree = "<group>"; };
 		88F205811BF1945500674567 /* SNLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLogger.h; sourceTree = "<group>"; };
 		88F205821BF1945500674567 /* SNLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLogger.m; sourceTree = "<group>"; };
-		88F205831BF1945500674567 /* SNNetworkErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNNetworkErrorView.h; sourceTree = "<group>"; };
-		88F205841BF1945500674567 /* SNNetworkErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNNetworkErrorView.m; sourceTree = "<group>"; };
 		88F2058D1BF1965B00674567 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		88F2058F1BF1965B00674567 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		88F205901BF1965B00674567 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
@@ -339,6 +338,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888F27C01BF33A8F0023C817 /* libz.1.1.3.tbd in Frameworks */,
+				888F27BE1BF339DE0023C817 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +363,8 @@
 		88F2047F1BF1822D00674567 = {
 			isa = PBXGroup;
 			children = (
+				888F27BF1BF33A8F0023C817 /* libz.1.1.3.tbd */,
+				888F27BD1BF339DE0023C817 /* libsqlite3.tbd */,
 				88F2048A1BF1822E00674567 /* KuaiRuTong */,
 				88F204A41BF1822E00674567 /* KuaiRuTongTests */,
 				88F204AF1BF1822E00674567 /* KuaiRuTongUITests */,
@@ -642,8 +645,6 @@
 				88F2057C1BF1945500674567 /* Service */,
 				88F205811BF1945500674567 /* SNLogger.h */,
 				88F205821BF1945500674567 /* SNLogger.m */,
-				88F205831BF1945500674567 /* SNNetworkErrorView.h */,
-				88F205841BF1945500674567 /* SNNetworkErrorView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -664,8 +665,6 @@
 			children = (
 				88F2057D1BF1945500674567 /* DataService.h */,
 				88F2057E1BF1945500674567 /* DataService.m */,
-				88F2057F1BF1945500674567 /* DataTask.h */,
-				88F205801BF1945500674567 /* DataTask.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -768,6 +767,7 @@
 				88F205EE1BF1C43300674567 /* Constant.h */,
 				88F205EF1BF1C43300674567 /* HttpConstant.h */,
 				88F205F81BF1D1E400674567 /* DefineConstant.h */,
+				888F27BA1BF334FC0023C817 /* SuningEBuyConfig.h */,
 				88F205F91BF1D1E400674567 /* DefineConstant.m */,
 				88F205F01BF1C43300674567 /* MsgConstant.h */,
 			);
@@ -950,7 +950,6 @@
 				88F205B11BF1965B00674567 /* README.md in Sources */,
 				88F2054D1BF18F7200674567 /* AFURLResponseSerialization.m in Sources */,
 				88F205E81BF19C4B00674567 /* UIImage+SNFoundation.m in Sources */,
-				88F205891BF1945500674567 /* DataTask.m in Sources */,
 				88F205DB1BF19C4B00674567 /* NSData+Base64.m in Sources */,
 				88F205541BF18F7200674567 /* UIImageView+AFNetworking.m in Sources */,
 				88F205AD1BF1965B00674567 /* DDContextFilterLogFormatter.m in Sources */,
@@ -969,7 +968,6 @@
 				88F205511BF18F7200674567 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				88F2048D1BF1822E00674567 /* main.m in Sources */,
 				88F205AA1BF1965B00674567 /* DDFileLogger.m in Sources */,
-				88F2058B1BF1945500674567 /* SNNetworkErrorView.m in Sources */,
 				88F205641BF18F7200674567 /* UIImage+GIF.m in Sources */,
 				88F2058A1BF1945500674567 /* SNLogger.m in Sources */,
 				88F205421BF18F7200674567 /* MJRefreshBaseView.m in Sources */,
@@ -1152,6 +1150,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuaiRuTong/PrefixHeader.pch";
 				INFOPLIST_FILE = KuaiRuTong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkrt.KuaiRuTong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1165,6 +1164,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuaiRuTong/PrefixHeader.pch";
 				INFOPLIST_FILE = KuaiRuTong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkrt.KuaiRuTong;
 				PRODUCT_NAME = "$(TARGET_NAME)";

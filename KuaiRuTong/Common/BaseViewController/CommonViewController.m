@@ -54,7 +54,7 @@
     _navigation.type = type;
     //_navigation.leftImage  = [UIImage imageNamed:@"nav_backbtn.png"];
     _navigation.delegate = self;
-    _navigation.backgroundColor = [UIColor darkRedColor];
+    _navigation.backgroundColor = UISTYLECOLOR;
     [self.view addSubview:_navigation];
     
      NSLog(@"the title navigation is:%@",self.navigation);

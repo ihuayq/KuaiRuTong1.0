@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ZZNavigationView.h"
 
+#define NAVIGATION_OUTLET_HEIGHT self.navigation.frame.origin.y+ self.navigation.frame.size.height
+
 @class NSTimerHelper;
 @interface CommonViewController : UIViewController<ZZNavigationViewDelegate>
 {

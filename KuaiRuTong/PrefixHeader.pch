@@ -28,6 +28,13 @@
 #pragma mark - Others
 #import "Additions.h"
 
+
+
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define MainHeight ScreenHeight
+#define MainWidth ScreenWidth
+
 #endif
 
 #endif /* PrefixHeader_pch */

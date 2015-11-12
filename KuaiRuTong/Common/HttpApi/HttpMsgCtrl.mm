@@ -51,6 +51,14 @@ static map_send g_mapSend;
     return self;
 }
 
+
+- (void)dealloc
+{
+    
+    TT_RELEASE_SAFELY(_lock);
+    [super dealloc];
+}
+
 //获得tagcode(short转int)
 - (int)getTagCode:(int)cmdCode
 {
@@ -90,10 +98,22 @@ static map_send g_mapSend;
     
     if (sendMsg.requestMethod == RequestMethodPost) {
         [AFNetworkTool postJSONWithUrl:sendMsg.requestUrl  parameters:sendMsg.postDataDic success:^(id json) {
-            DLog(@"%@", json);
+            //DLog(@"%@", json);
             // 提示:NSURLConnection异步方法回调,是在子线程
             // 得到回调之后,通常更新UI,是在主线程
             //NSLog(@"%@", [NSThread currentThread]);
+            
+           
+            if ([json isKindOfClass:[NSDictionary class]]) {
+                sendMsg.jasonItems = json;
+            }
+            
+            if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFinished:)])
+            {
+                [sendMsg.delegate receiveDidFinished:sendMsg];
+            }
+
+            
         } fail:^(NSError *error){
             DError(@"请求失败");
         }];
@@ -103,7 +123,9 @@ static map_send g_mapSend;
     [self.lock lock];
     
     // 这里retain 一次 方便外部释放对应
-    //[sendMsg retain];
+    [sendMsg retain];
+    
+    NSLog(@"%lu",sendMsg.retainCount);
     
     g_mapSend.insert(value_send(msgTag, sendMsg));
     
@@ -113,20 +135,25 @@ static map_send g_mapSend;
 
 - (void)requestDidFinished:(id) json message:(HttpMessage *)sendMsg
 {
+    
+    int msgTag = [self getTagCode:sendMsg.cmdCode];
+    
     [self.lock lock];
-
-    iter_send it = g_mapSend.find([self getTagCode:sendMsg.cmdCode]);
-
+    iter_send it = g_mapSend.find(msgTag);
     [self.lock unlock];
 
     if (it != g_mapSend.end())
     {
-        HttpMessage *sendMsg = it->second;
-
-//        sendMsg.responseString = request.responseString;
-//        sendMsg.errorCode = request.errorCode;
-//        sendMsg.jasonItems = request.jasonItems;
         
+        HttpMessage *sendMsg = it->second;
+        
+//      sendMsg.responseString = request.responseString;
+//      sendMsg.errorCode = request.errorCode;
+        
+        if ([json isKindOfClass:[NSDictionary class]]) {
+            sendMsg.jasonItems = json;
+        }
+
         if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFinished:)])
         {
             [sendMsg.delegate receiveDidFinished:sendMsg];

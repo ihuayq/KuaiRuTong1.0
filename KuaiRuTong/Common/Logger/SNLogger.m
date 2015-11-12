@@ -63,6 +63,7 @@ static int ddLogLevel;
 {
     [self sharedInstance];
     [[self sharedInstance] setLogLevel:logLevel];
+
 }
 
 - (instancetype)init

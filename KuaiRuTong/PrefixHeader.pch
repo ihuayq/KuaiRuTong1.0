@@ -25,6 +25,9 @@
 #pragma mark - Common
 #import "SNLogger.h"
 
+#pragma mark - Others
+#import "Additions.h"
+
 #endif
 
 #endif /* PrefixHeader_pch */

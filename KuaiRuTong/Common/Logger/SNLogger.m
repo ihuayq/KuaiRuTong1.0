@@ -33,8 +33,8 @@ static int ddLogLevel;
 #ifdef DEBUG
     fprintf( stderr, "****************************************************************************************\n" );
 	fprintf( stderr, "    											   \n" );
-	fprintf( stderr, "    	copyright (c) 2014, {suning}               \n" );
-    fprintf( stderr, "    	https://git.sn.com                         \n" );
+	fprintf( stderr, "    	copyright (c) 2015, {hkrt}               \n" );
+    fprintf( stderr, "    	https://git.lesool.com                         \n" );
 	fprintf( stderr, "    										       \n" );
 	
 #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)

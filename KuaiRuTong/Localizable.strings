@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  KuaiRuTong
+
+  Created by huayq on 15/11/12.
+  Copyright © 2015年 hkrt. All rights reserved.
+*/
+
+
+
+"Get More..."="加载更多...";
+"Loading..."="玩命加载中...";
+"Sorry loading failed"="抱歉网络调用失败，请稍后重试";
+"Release to refresh..."="释放开始刷新数据";
+"Pull down to refresh..."="下拉刷新数据";
+"loading..."="玩命加载中...";
+"Refresh now..."="正在刷新";
+"Last Updated"="松开刷新";
+"Updated Begin"="下拉刷新";

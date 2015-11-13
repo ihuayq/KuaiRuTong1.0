@@ -243,9 +243,10 @@
     [self removeOverFlowActivityView];
     if(YES == isSuccess_)
     {
-//        self.boardingInfoDto.travellerId = service.travellerId;
-//        isSuccess = service.isSuccess;
-//        [self backToBoardingListView];
+        
+        NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
+        NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
         
     }
 }
@@ -278,7 +279,7 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField==nameTextField)
+    if (textField == nameTextField)
     {
         if (string.length > 0)
         {

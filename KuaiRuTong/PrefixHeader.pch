@@ -28,6 +28,8 @@
 #pragma mark - Others
 #import "Additions.h"
 
+#import "CommonViewController.h"
+
 
 
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height

@@ -60,6 +60,8 @@
      NSLog(@"the title navigation is:%@",self.navigation);
 
 	// Do any additional setup after loading the view.
+    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 - (UIColor *)getRandomColor
 {

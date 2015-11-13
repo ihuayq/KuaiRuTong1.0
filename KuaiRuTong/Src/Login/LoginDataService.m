@@ -15,9 +15,7 @@
    
     NSString *url = [NSString stringWithFormat:@"%@", kShopSearchHost];
     
-    
     NSString *dealWithURLString =  [API_LoginVC_Login stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-    //key:@"data"  value:loginPostDic
     NSString *dateStr = [DeviceManager dealWithDate:[NSDate date]];
     NSString *versionString = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     NSMutableDictionary *loginPostDic = [[NSMutableDictionary alloc] init];
@@ -30,7 +28,6 @@
     loginHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:loginPostDic cmdCode:CC_Login];
     
     [self.httpMsgCtrl sendHttpMsg:loginHttpMsg];
-    
 }
 
 
@@ -46,10 +43,8 @@
     if (receiveMsg.cmdCode == CC_Login)
     {
         NSDictionary *item = receiveMsg.jasonItems;
-        DError(@"THE Login info:%@",item);
-        
-        
-       
+        DLog(@"THE Login info:%@",item);
+
         if (_delegate && [_delegate respondsToSelector:@selector(getLoginServiceResult:Result:errorMsg:)]) {
             [_delegate getLoginServiceResult:self Result:YES errorMsg:nil];
         }

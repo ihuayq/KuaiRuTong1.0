@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#
+#import "KTTabBarViewController.h"
 
 @interface AppDelegate (){
     UINavigationController * nc;
@@ -22,6 +22,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoginInitMainwidow:) name:@"LoginInitMainwidow" object:nil];
     
 #ifdef DEBUGLOG
     [SNLogger startWithLogLevel:SNLogLevelDEBUG];
@@ -37,6 +40,19 @@
     
     // Override point for customization after application launch.
     return YES;
+}
+
+
+- (void)LoginInitMainwidow:(NSNotification *)text{
+    NSLog(@"%@",text.userInfo[@"login"]);
+    NSLog(@"－－－－－接收到通知------");
+    
+    //0 主界面 logintype
+    if([text.userInfo[@"login"] isEqualToString:@"0"])
+    {
+        KTTabBarViewController* Vc=[[KTTabBarViewController alloc] init];
+        self.window.rootViewController = Vc;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

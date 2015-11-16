@@ -7,10 +7,7 @@
 //
 
 #import "UserCenterViewController.h"
-//#import "VersionDetailViewController.h"
-//#import "RWDBManager.h"
-//#import "FileManager.h"
-//#import "UIImageView+WebCache.h"
+#import "VersionDetailViewController.h"
 
 @interface UserCenterViewController (){
    
@@ -31,103 +28,82 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.navigation.title = @"用户中心";
-
-    
-//    [self loadBasicView];
-//    [self loadBasicData];
-}
-
-/**
- *  加载基础数据
- *  @return void
- */
-- (void)loadBasicData{
-
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *userInfoDic = [userDefaults objectForKey:@"UserInfoData"];
-//    customNavBar.titleLabel.text = userInfoDic[@"name"];
-    telephoneLabel.text = userInfoDic[@"phoneNo"];
-    
     
     detailArray =[[NSArray alloc] initWithObjects:@"客服电话",@"版本信息", nil];
-    [userTableView reloadData];
+//    [userTableView reloadData];
+    //头像
+    photoImageView = [[UIImageView alloc ]initWithFrame:CGRectMake(MainWidth/2 - 60 , NAVIGATION_OUTLET_HEIGHT + 10, 120, 120)];
+    photoImageView.image = [UIImage imageNamed:@"photo_icon_background"];
+    [self.view addSubview:photoImageView];
+
+    //手机号码
+    telephoneLabel = [[UILabel alloc ]initWithFrame:CGRectMake(0, photoImageView.origin.y + photoImageView.size.height, MainWidth, 21)];
+    telephoneLabel.font = [UIFont systemFontOfSize:12.0];
+    telephoneLabel.textAlignment = NSTextAlignmentCenter;
+    NSDictionary *userInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfoData"];
+    telephoneLabel.text = userInfoDic[@"phoneNo"];
+    [self.view addSubview:telephoneLabel];
+
+    //UITableView
+    userTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, telephoneLabel.origin.y + telephoneLabel.size.height +10, MainWidth, 80) style:nil];
+    userTableView.dataSource = self;
+    userTableView.delegate = self;
+    [self.view addSubview:userTableView];
+
+    
+    UIButton *logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/2 - MainWidth/4, MainHeight - 48 - 44 -20, MainWidth/2, 40)];
+    [logoutButton addTarget:self action:@selector(logoutButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [logoutButton setTitle:@"退出登录" forState:UIControlStateNormal];
+    logoutButton.backgroundColor = RED_COLOR2;
+    logoutButton.layer.masksToBounds = YES;
+    [logoutButton.layer setCornerRadius:logoutButton.frame.size.height/2.0f];
+    [self.view addSubview:logoutButton];
 }
-/**
- *  加载基础视图
- *  @return void
- */
-//- (void)loadBasicView{
-//    scrollView.frame = CGRectMake(0, 20 + 60 * HEIGHT_SCALE, 320 * WIDTH_SCALE, HEIGHT - 60 * HEIGHT_SCALE - 20 - 49);
-//    customNavBar.backView.hidden = YES;
-//    
-//    //头像
-//    photoImageView = [ViewModel createImageViewWithFrame:CGRectMake(100, 50, 120, 120) ImageName:nil];
-//    photoImageView.image = [UIImage imageNamed:@"photo_icon_background"];
-//   [scrollView addSubview:photoImageView];
-//    
-//    //手机号码
-//    telephoneLabel = [ViewModel createLabelWithFrame:CGRectMake(0, 180, 320, 21) Font:nil Text:nil];
-//    telephoneLabel.font = [UIFont systemFontOfSize:12.0];
-//    telephoneLabel.textAlignment = NSTextAlignmentCenter;
-//    [scrollView addSubview:telephoneLabel];
-//
-//    //UITableView
-//    userTableView = [ViewModel createTableViewWithFrame:CGRectMake(0, 210, 320, 80) CellHeight:40.0 ScrollEnabled:NO];
-//    userTableView.dataSource = self;
-//    userTableView.delegate = self;
-//    [scrollView addSubview:userTableView];
-//    
-//    //注销按钮
-//    UIButton *logoutButton = [ViewModel createButtonWithFrame:CGRectMake(0, 380, 320, 50) ImageNormalName:nil ImageSelectName:nil Title:@"退出登录" Target:self Action:@selector(logoutButtonClicked)];
-//    logoutButton.backgroundColor = RED_COLOR2;
-//    [scrollView addSubview:logoutButton];
-//    
-//    [scrollView setContentSize:CGSizeMake(0, 430)];
-//
-//}
 
 #pragma mark -- private Methods
 - (void)logoutButtonClicked{
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
-
-//- (void)btnClicked{
-//    VersionDetailViewController *versionDetailVC = [[VersionDetailViewController alloc] init];
-//    [self.navigationController pushViewController:versionDetailVC animated:NO];
-//}  
-
-
 #pragma mark -- UITableViewDataSource 代理方法 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return detailArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-     
-        cell.backgroundColor = [UIColor clearColor];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        //cell.backgroundColor = [UIColor clearColor];
     }
     cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
-    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-   
     cell.textLabel.text  = detailArray[indexPath.row];
+    
+    if (indexPath.row == 0) {
+        cell.detailTextLabel.text=@"010-3862927";
+    }
+    else if ( indexPath.row == 1 ){
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"V%@",version];
+    }
+   
+    
     return cell;
 }
+
 #pragma mark --UITableViewDelegate 代理方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.row == 0) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否直接拨打客服电话:010-3862927" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
-//        [alertView show];
-//    }else{
-//        UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
-//        VersionDetailViewController *childController = [board instantiateViewControllerWithIdentifier: @"VersionDetailVC"];
-//        [self.navigationController pushViewController:childController animated:YES];
-//    }
+    if (indexPath.row == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否直接拨打客服电话:010-3862927" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
+        [alertView show];
+    }else{
+        VersionDetailViewController *childController = [[VersionDetailViewController alloc]init];;
+        [self.navigationController pushViewController:childController animated:YES];
+    }
 }
+
 #pragma mark -- UIAlertViewDelegate 代理方法
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {

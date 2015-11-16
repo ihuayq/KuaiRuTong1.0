@@ -44,7 +44,12 @@
     {
         NSDictionary *item = receiveMsg.jasonItems;
         DLog(@"THE Login info:%@",item);
-
+        
+        //1.记录返回信息
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:item forKey:@"UserInfoData"];
+        [userDefaults synchronize];
+        
         if (_delegate && [_delegate respondsToSelector:@selector(getLoginServiceResult:Result:errorMsg:)]) {
             [_delegate getLoginServiceResult:self Result:YES errorMsg:nil];
         }

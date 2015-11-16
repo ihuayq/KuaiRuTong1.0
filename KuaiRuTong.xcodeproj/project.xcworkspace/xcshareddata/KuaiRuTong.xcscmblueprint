@@ -1,22 +1,17 @@
 {
   "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5DBD54D14DBE5A3901870A4032492F4277D88DBF",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7362" : {
-
-    },
     "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "5DBD54D14DBE5A3901870A4032492F4277D88DBF" : 0,
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7362" : 0,
     "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A8BDFDD0-F223-4F81-95CA-9222F54ADCF2",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "5DBD54D14DBE5A3901870A4032492F4277D88DBF" : "KuaiRuTong1.0\/",
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7362" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/MBProgressHUD\/Images\/",
     "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/MJRefresh\/MJRefresh.bundle\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KuaiRuTong",
@@ -26,7 +21,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/210.14.146.26\/bts",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7362"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/210.14.146.26\/bts",

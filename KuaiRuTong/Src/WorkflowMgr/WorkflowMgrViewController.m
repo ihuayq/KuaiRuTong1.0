@@ -199,8 +199,6 @@ NSArray *getManagerIconsArray() {
     return 0;
 }
 
-
-
 @end
 ///**
 // *  加载基础视图

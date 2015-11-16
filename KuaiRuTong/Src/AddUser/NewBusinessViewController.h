@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewBusinessViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
+
+
+@interface NewBusinessViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) NSString *pendingType;
+
 @end

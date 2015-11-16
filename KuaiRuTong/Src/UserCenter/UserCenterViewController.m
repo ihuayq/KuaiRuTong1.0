@@ -45,7 +45,8 @@
     [self.view addSubview:telephoneLabel];
 
     //UITableView
-    userTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, telephoneLabel.origin.y + telephoneLabel.size.height +10, MainWidth, 80) style:nil];
+    userTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, telephoneLabel.origin.y + telephoneLabel.size.height +10, MainWidth, 80) style:UITableViewStylePlain];
+    userTableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     userTableView.dataSource = self;
     userTableView.delegate = self;
     [self.view addSubview:userTableView];

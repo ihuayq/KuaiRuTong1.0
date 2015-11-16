@@ -11,7 +11,7 @@
 #import "CustomNavBar.h"
 #import "DeviceManager.h"
 #import "ViewModel.h"
-@interface SuperViewController : UIViewController<MBProgressHUDDelegate,CustomNavBarDelegate>{
+@interface SuperViewController : CommonViewController<MBProgressHUDDelegate,CustomNavBarDelegate>{
     MBProgressHUD *hud_SuperVC;
     CustomNavBar *customNavBar;
     UIScrollView *scrollView;

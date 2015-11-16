@@ -61,7 +61,7 @@ static NSArray *titlesArray = nil;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.navigation.title = @"添加商户";
 
-    newTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth,360 ) style:UITableViewStylePlain];
+    newTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth,44*8 +10 ) style:UITableViewStylePlain];
     newTableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     newTableView.dataSource = self;
     newTableView.delegate  = self;
@@ -168,9 +168,16 @@ static NSArray *titlesArray = nil;
     NSIndexPath *indexPath = [newTableView indexPathForRowAtPoint:currentTouchPosition];
     if (indexPath != nil)
     {
-        UIActionSheet *sheetImage = [[UIActionSheet alloc]initWithTitle:@"请选择方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机",@"相册", nil];
-        sheetImage.tag = indexPath.row;
-        [sheetImage showInView:[UIApplication sharedApplication].keyWindow];
+        
+        if (indexPath.row == 0 ) {
+            SHInfoViewController *vc = [[SHInfoViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
+            UIActionSheet *sheetImage = [[UIActionSheet alloc]initWithTitle:@"请选择方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机",@"相册", nil];
+            sheetImage.tag = indexPath.row;
+            [sheetImage showInView:[UIApplication sharedApplication].keyWindow];
+        }
     }
 }
 
@@ -209,6 +216,7 @@ static NSArray *titlesArray = nil;
     BOOL bo = [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     // 获取GroupPPTTemp文件夹 下的文件
     if (bo) {
+        //图片压缩
         FileManager *fileManager = [[FileManager alloc] init];
         NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.0001);
         NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
@@ -220,6 +228,8 @@ static NSArray *titlesArray = nil;
         [userDefaults synchronize];
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
+    [newTableView reloadData];
     
 }
 

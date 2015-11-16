@@ -27,22 +27,22 @@
  */
 - (void)loadSuperView{
    
-    //CustomNavBar
-    customNavBar = [[CustomNavBar alloc] initWithFrame:CGRectMake(0, 0, 320 * WIDTH_SCALE, 60 * HEIGHT_SCALE + 20)];
-    customNavBar.backView.hidden = NO;
-    customNavBar.titleLabel.text = @"快入通";
-    customNavBar.Delegate = self;
-    [self.view addSubview:customNavBar];
-    //scrollView
+//    //CustomNavBar
+//    customNavBar = [[CustomNavBar alloc] initWithFrame:CGRectMake(0, 0, 320 * WIDTH_SCALE, 60 * HEIGHT_SCALE + 20)];
+//    customNavBar.backView.hidden = NO;
+//    customNavBar.titleLabel.text = @"快入通";
+//    customNavBar.Delegate = self;
+//    [self.view addSubview:customNavBar];
+//    //scrollView
     scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20 + 60 * HEIGHT_SCALE, 320 * WIDTH_SCALE, HEIGHT - 60 * HEIGHT_SCALE - 20)];
     scrollView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:scrollView];
-    //添加HUD
-    hud_SuperVC = [[MBProgressHUD alloc] initWithView:self.view];
-    hud_SuperVC.mode = MBProgressHUDModeText;
-    hud_SuperVC.mode = MBProgressHUDModeIndeterminate;
-    hud_SuperVC.delegate = self;
-    [self.view addSubview:hud_SuperVC];
+//    //添加HUD
+//    hud_SuperVC = [[MBProgressHUD alloc] initWithView:self.view];
+//    hud_SuperVC.mode = MBProgressHUDModeText;
+//    hud_SuperVC.mode = MBProgressHUDModeIndeterminate;
+//    hud_SuperVC.delegate = self;
+//    [self.view addSubview:hud_SuperVC];
 }
 
 

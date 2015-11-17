@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SuperViewController.h"
-@interface SHInfoViewController : SuperViewController<MBProgressHUDDelegate,CustomNavBarDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface SHInfoViewController : SuperViewController<UIPickerViewDataSource,UIPickerViewDelegate,UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>{
+    
+}
+
+//已经添加的网点数据的数量
+@property(nonatomic,assign) int nNetAddressCount;
 
 @end

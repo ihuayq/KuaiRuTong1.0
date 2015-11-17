@@ -7,7 +7,7 @@
 //
 
 #import "NewBusinessViewController.h"
-#import "ShowImageViewController.h"
+//#import "ShowImageViewController.h"
 #import "SHInfoViewController.h"
 #import "NewSHCell.h"
 #import "FileManager.h"
@@ -143,19 +143,19 @@ static NSArray *titlesArray = nil;
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-////    if (indexPath.row == 0) {
-//////        UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
-//////        SHInfoViewController *childController = [board instantiateViewControllerWithIdentifier: @"SHInfoVC"];
-//////        [self.navigationController pushViewController:childController animated:YES];
-////    }else{
-////        ShowImageViewController *childController = [[ShowImageViewController alloc] init];
-////        childController.navTitle = titlesArray[indexPath.row];
-////        childController.currentPhotoTag = indexPath.row;
-////        childController.isTakePhoto = NO;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (indexPath.row == 0) {
+////        UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+////        SHInfoViewController *childController = [board instantiateViewControllerWithIdentifier: @"SHInfoVC"];
 ////        [self.navigationController pushViewController:childController animated:YES];
-////    }
-//}
+//    }else{
+//        ShowImageViewController *childController = [[ShowImageViewController alloc] init];
+//        childController.navTitle = titlesArray[indexPath.row];
+//        childController.currentPhotoTag = indexPath.row;
+//        childController.isTakePhoto = NO;
+//        [self.navigationController pushViewController:childController animated:YES];
+//    }
+}
 
 - (void)buttonPressedAction:(id)sender event:(id)event
 {

@@ -88,9 +88,7 @@
 		889141961BF9681F007E1BBB /* SHAndWork1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141151BF9681E007E1BBB /* SHAndWork1ViewController.m */; };
 		889141971BF9681F007E1BBB /* SHAndWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141181BF9681E007E1BBB /* SHAndWorkViewController.m */; };
 		889141981BF9681F007E1BBB /* SHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891411B1BF9681E007E1BBB /* SHDetailViewController.m */; };
-		889141991BF9681F007E1BBB /* SHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891411E1BF9681E007E1BBB /* SHInfoViewController.m */; };
 		8891419A1BF9681F007E1BBB /* SHManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141211BF9681E007E1BBB /* SHManagerViewController.m */; };
-		8891419B1BF9681F007E1BBB /* ShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141241BF9681E007E1BBB /* ShowImageViewController.m */; };
 		8891419C1BF9681F007E1BBB /* SHSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141271BF9681E007E1BBB /* SHSearchViewController.m */; };
 		8891419D1BF9681F007E1BBB /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891412A1BF9681F007E1BBB /* SuperViewController.m */; };
 		8891419E1BF9681F007E1BBB /* CustomTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891412D1BF9681F007E1BBB /* CustomTabBarViewController.m */; };
@@ -124,6 +122,16 @@
 		889141BE1BF9681F007E1BBB /* ZDBDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891418A1BF9681F007E1BBB /* ZDBDView.m */; };
 		889141C61BF9781D007E1BBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889141C51BF9781D007E1BBB /* Reveal.framework */; };
 		889141CC1BF98655007E1BBB /* NewSHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141CB1BF98655007E1BBB /* NewSHCell.m */; };
+		88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */; settings = {ASSET_TAGS = (); }; };
+		88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E501BFAD3A7005CC7E8 /* area.plist */; settings = {ASSET_TAGS = (); }; };
+		88A05E581BFAD3A7005CC7E8 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E511BFAD3A7005CC7E8 /* city.plist */; settings = {ASSET_TAGS = (); }; };
+		88A05E591BFAD3A7005CC7E8 /* HZAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E531BFAD3A7005CC7E8 /* HZAreaPickerView.m */; settings = {ASSET_TAGS = (); }; };
+		88A05E5A1BFAD3A7005CC7E8 /* HZAreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E541BFAD3A7005CC7E8 /* HZAreaPickerView.xib */; settings = {ASSET_TAGS = (); }; };
+		88A05E5B1BFAD3A7005CC7E8 /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E561BFAD3A7005CC7E8 /* HZLocation.m */; settings = {ASSET_TAGS = (); }; };
+		88A05E611BFAF676005CC7E8 /* down_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E5D1BFAF676005CC7E8 /* down_dark.png */; settings = {ASSET_TAGS = (); }; };
+		88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E601BFAF676005CC7E8 /* DropDownListView.m */; settings = {ASSET_TAGS = (); }; };
+		88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */; settings = {ASSET_TAGS = (); }; };
 		88F2048D1BF1822E00674567 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048C1BF1822E00674567 /* main.m */; };
 		88F204901BF1822E00674567 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048F1BF1822E00674567 /* AppDelegate.m */; };
 		88F204931BF1822E00674567 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204921BF1822E00674567 /* ViewController.m */; };
@@ -382,12 +390,8 @@
 		889141181BF9681E007E1BBB /* SHAndWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAndWorkViewController.m; sourceTree = "<group>"; };
 		8891411A1BF9681E007E1BBB /* SHDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDetailViewController.h; sourceTree = "<group>"; };
 		8891411B1BF9681E007E1BBB /* SHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDetailViewController.m; sourceTree = "<group>"; };
-		8891411D1BF9681E007E1BBB /* SHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInfoViewController.h; sourceTree = "<group>"; };
-		8891411E1BF9681E007E1BBB /* SHInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInfoViewController.m; sourceTree = "<group>"; };
 		889141201BF9681E007E1BBB /* SHManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHManagerViewController.h; sourceTree = "<group>"; };
 		889141211BF9681E007E1BBB /* SHManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHManagerViewController.m; sourceTree = "<group>"; };
-		889141231BF9681E007E1BBB /* ShowImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowImageViewController.h; sourceTree = "<group>"; };
-		889141241BF9681E007E1BBB /* ShowImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowImageViewController.m; sourceTree = "<group>"; };
 		889141261BF9681E007E1BBB /* SHSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSearchViewController.h; sourceTree = "<group>"; };
 		889141271BF9681E007E1BBB /* SHSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSearchViewController.m; sourceTree = "<group>"; };
 		889141291BF9681F007E1BBB /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
@@ -454,6 +458,22 @@
 		889141C51BF9781D007E1BBB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = KuaiRuTong/Reveal.framework; sourceTree = "<group>"; };
 		889141CA1BF98655007E1BBB /* NewSHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSHCell.h; sourceTree = "<group>"; };
 		889141CB1BF98655007E1BBB /* NewSHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSHCell.m; sourceTree = "<group>"; };
+		88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLoadMoreFooterView.h; sourceTree = "<group>"; };
+		88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLoadMoreFooterView.m; sourceTree = "<group>"; };
+		88A05E501BFAD3A7005CC7E8 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		88A05E511BFAD3A7005CC7E8 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		88A05E521BFAD3A7005CC7E8 /* HZAreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZAreaPickerView.h; sourceTree = "<group>"; };
+		88A05E531BFAD3A7005CC7E8 /* HZAreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZAreaPickerView.m; sourceTree = "<group>"; };
+		88A05E541BFAD3A7005CC7E8 /* HZAreaPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HZAreaPickerView.xib; sourceTree = "<group>"; };
+		88A05E551BFAD3A7005CC7E8 /* HZLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLocation.h; sourceTree = "<group>"; };
+		88A05E561BFAD3A7005CC7E8 /* HZLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLocation.m; sourceTree = "<group>"; };
+		88A05E5D1BFAF676005CC7E8 /* down_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_dark.png; sourceTree = "<group>"; };
+		88A05E5E1BFAF676005CC7E8 /* DropDownChooseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownChooseProtocol.h; sourceTree = "<group>"; };
+		88A05E5F1BFAF676005CC7E8 /* DropDownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListView.h; sourceTree = "<group>"; };
+		88A05E601BFAF676005CC7E8 /* DropDownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownListView.m; sourceTree = "<group>"; };
+		88A05E631BFAF8BD005CC7E8 /* StyledTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledTableViewCell.h; sourceTree = "<group>"; };
+		88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledTableViewCell.m; sourceTree = "<group>"; };
+		88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HZAreaPickerView1.xib; sourceTree = "<group>"; };
 		88F204881BF1822E00674567 /* KuaiRuTong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuaiRuTong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F2048C1BF1822E00674567 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88F2048E1BF1822E00674567 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -692,7 +712,8 @@
 				7A3820F81BFA21DD00B0AE73 /* LocationPickerVC.m */,
 				7A3820F91BFA21DD00B0AE73 /* LocationPickerVC.xib */,
 			);
-			path = AddressPicker;
+			name = AddressPicker;
+			path = ../Src/AddUser/AddressPicker;
 			sourceTree = "<group>";
 		};
 		7A3820F31BFA21DD00B0AE73 /* Category */ = {
@@ -720,9 +741,11 @@
 		887AD9491BF57A8000648D93 /* AddUser */ = {
 			isa = PBXGroup;
 			children = (
+				88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */,
+				88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */,
 				7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */,
 				7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */,
-				7A3820F11BFA21DD00B0AE73 /* AddressPicker */,
+				88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */,
 				889141C91BF985D4007E1BBB /* Model */,
 				889141C81BF985BE007E1BBB /* Controller */,
 				889141C71BF985B3007E1BBB /* View */,
@@ -962,9 +985,7 @@
 				889141131BF9681E007E1BBB /* SHAndWork1VC */,
 				889141161BF9681E007E1BBB /* SHAndWorkVC */,
 				889141191BF9681E007E1BBB /* SHDetialVC */,
-				8891411C1BF9681E007E1BBB /* SHInfoVC */,
 				8891411F1BF9681E007E1BBB /* SHManagerVC */,
-				889141221BF9681E007E1BBB /* ShowImageVC */,
 				889141251BF9681E007E1BBB /* SHSearchVC */,
 				889141281BF9681E007E1BBB /* SuperVC */,
 				8891412B1BF9681F007E1BBB /* TabBarVC */,
@@ -1086,15 +1107,6 @@
 			path = SHDetialVC;
 			sourceTree = "<group>";
 		};
-		8891411C1BF9681E007E1BBB /* SHInfoVC */ = {
-			isa = PBXGroup;
-			children = (
-				8891411D1BF9681E007E1BBB /* SHInfoViewController.h */,
-				8891411E1BF9681E007E1BBB /* SHInfoViewController.m */,
-			);
-			path = SHInfoVC;
-			sourceTree = "<group>";
-		};
 		8891411F1BF9681E007E1BBB /* SHManagerVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,15 +1114,6 @@
 				889141211BF9681E007E1BBB /* SHManagerViewController.m */,
 			);
 			path = SHManagerVC;
-			sourceTree = "<group>";
-		};
-		889141221BF9681E007E1BBB /* ShowImageVC */ = {
-			isa = PBXGroup;
-			children = (
-				889141231BF9681E007E1BBB /* ShowImageViewController.h */,
-				889141241BF9681E007E1BBB /* ShowImageViewController.m */,
-			);
-			path = ShowImageVC;
 			sourceTree = "<group>";
 		};
 		889141251BF9681E007E1BBB /* SHSearchVC */ = {
@@ -1397,6 +1400,34 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */ = {
+			isa = PBXGroup;
+			children = (
+				88A05E501BFAD3A7005CC7E8 /* area.plist */,
+				88A05E511BFAD3A7005CC7E8 /* city.plist */,
+				88A05E521BFAD3A7005CC7E8 /* HZAreaPickerView.h */,
+				88A05E531BFAD3A7005CC7E8 /* HZAreaPickerView.m */,
+				88A05E541BFAD3A7005CC7E8 /* HZAreaPickerView.xib */,
+				88A05E551BFAD3A7005CC7E8 /* HZLocation.h */,
+				88A05E561BFAD3A7005CC7E8 /* HZLocation.m */,
+				88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */,
+			);
+			path = LocationSelelctor;
+			sourceTree = "<group>";
+		};
+		88A05E5C1BFAF676005CC7E8 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				88A05E631BFAF8BD005CC7E8 /* StyledTableViewCell.h */,
+				88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */,
+				88A05E5D1BFAF676005CC7E8 /* down_dark.png */,
+				88A05E5E1BFAF676005CC7E8 /* DropDownChooseProtocol.h */,
+				88A05E5F1BFAF676005CC7E8 /* DropDownListView.h */,
+				88A05E601BFAF676005CC7E8 /* DropDownListView.m */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
 		88F2047F1BF1822D00674567 = {
 			isa = PBXGroup;
 			children = (
@@ -1471,6 +1502,8 @@
 		88F204BE1BF18F7200674567 /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				7A3820F11BFA21DD00B0AE73 /* AddressPicker */,
+				88A05E5C1BFAF676005CC7E8 /* DropDown */,
 				887AD93F1BF5793900648D93 /* NavTransiton */,
 				888E51E41BF4330B00A6D917 /* TPKeyboardAvoiding */,
 				888E51C11BF420BC00A6D917 /* Regex */,
@@ -1942,6 +1975,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F205391BF18F7200674567 /* 37x-Checkmark.png in Resources */,
+				88A05E5A1BFAD3A7005CC7E8 /* HZAreaPickerView.xib in Resources */,
 				887AD96B1BF5875300648D93 /* 密码@2x.png in Resources */,
 				887AD96A1BF5875300648D93 /* 姓名@2x.png in Resources */,
 				88F2053C1BF18F7200674567 /* Icon-Small.png in Resources */,
@@ -1949,6 +1983,7 @@
 				88F204981BF1822E00674567 /* Assets.xcassets in Resources */,
 				887AD96C1BF5875300648D93 /* 投资-normal@2x.png in Resources */,
 				887AD9671BF5875300648D93 /* redbn@2x.png in Resources */,
+				88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */,
 				88F2053B1BF18F7200674567 /* Icon-iOS7@2x.png in Resources */,
 				8859CA851BF9BB7D00827C40 /* 成功@2x.png in Resources */,
 				887AD9691BF5875300648D93 /* textlayer.png in Resources */,
@@ -1962,14 +1997,17 @@
 				887AD96D1BF5875300648D93 /* 投资@2x.png in Resources */,
 				887AD9731BF5875300648D93 /* 首页@2x.png in Resources */,
 				88F2053E1BF18F7200674567 /* Icon1.png in Resources */,
+				88A05E611BFAF676005CC7E8 /* down_dark.png in Resources */,
 				7A3820FD1BFA21DD00B0AE73 /* LocationPickerVC.xib in Resources */,
 				7A3820FA1BFA21DD00B0AE73 /* Address.plist in Resources */,
+				88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */,
 				8859CA8A1BF9C1D400827C40 /* addInfo.png in Resources */,
 				88F205411BF18F7200674567 /* MJRefresh.bundle in Resources */,
 				888E51FC1BF45C4700A6D917 /* Localizable.strings in Resources */,
 				887AD96E1BF5875300648D93 /* 账号-normal@2x.png in Resources */,
 				887AD9701BF5875300648D93 /* 资产-normal@2x.png in Resources */,
 				88F2053F1BF18F7200674567 /* Icon1@2x.png in Resources */,
+				88A05E581BFAD3A7005CC7E8 /* city.plist in Resources */,
 				8859CA881BF9BB7D00827C40 /* 相机@2x.png in Resources */,
 				887AD9661BF5875300648D93 /* back_icon_new@2x.png in Resources */,
 				88F2053A1BF18F7200674567 /* 37x-Checkmark@2x.png in Resources */,
@@ -2010,6 +2048,7 @@
 				887AD9481BF5793900648D93 /* PopAnimation.m in Sources */,
 				888E52051BF45DE400A6D917 /* NSTimerHelper.m in Sources */,
 				88F205661BF18F7200674567 /* UIImageView+HighlightedWebCache.m in Sources */,
+				88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */,
 				888E51B11BF41EF600A6D917 /* UIView+firstResponder.m in Sources */,
 				889141981BF9681F007E1BBB /* SHDetailViewController.m in Sources */,
 				88F204931BF1822E00674567 /* ViewController.m in Sources */,
@@ -2033,7 +2072,6 @@
 				88F205571BF18F7200674567 /* UIWebView+AFNetworking.m in Sources */,
 				8891419A1BF9681F007E1BBB /* SHManagerViewController.m in Sources */,
 				888E51ED1BF4330B00A6D917 /* TPKeyboardAvoidingCollectionView.m in Sources */,
-				8891419B1BF9681F007E1BBB /* ShowImageViewController.m in Sources */,
 				8891418C1BF9681F007E1BBB /* DZProtocolViewController.m in Sources */,
 				888E52061BF45DE400A6D917 /* ZZNavigationView.m in Sources */,
 				88F205551BF18F7200674567 /* UIProgressView+AFNetworking.m in Sources */,
@@ -2051,6 +2089,7 @@
 				888E52041BF45DE400A6D917 /* CommonViewController.m in Sources */,
 				88F205B11BF1965B00674567 /* README.md in Sources */,
 				888E51B21BF41EF600A6D917 /* UIView+Label.m in Sources */,
+				88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */,
 				88F2054D1BF18F7200674567 /* AFURLResponseSerialization.m in Sources */,
 				88F205E81BF19C4B00674567 /* UIImage+SNFoundation.m in Sources */,
 				88F205DB1BF19C4B00674567 /* NSData+Base64.m in Sources */,
@@ -2102,6 +2141,8 @@
 				889141A61BF9681F007E1BBB /* ZDManagerViewController.m in Sources */,
 				88F205E11BF19C4B00674567 /* NSString+SNFoundation.m in Sources */,
 				8891418D1BF9681F007E1BBB /* ImageInfoViewController.m in Sources */,
+				88A05E591BFAD3A7005CC7E8 /* HZAreaPickerView.m in Sources */,
+				88A05E5B1BFAD3A7005CC7E8 /* HZLocation.m in Sources */,
 				88F2054C1BF18F7200674567 /* AFURLRequestSerialization.m in Sources */,
 				88F205491BF18F7200674567 /* AFNetworkReachabilityManager.m in Sources */,
 				88F205331BF18F7200674567 /* FMDatabase.m in Sources */,
@@ -2132,6 +2173,7 @@
 				88F2055B1BF18F7200674567 /* NSData+ImageContentType.m in Sources */,
 				887AD9461BF5793900648D93 /* NavigationInteractiveTransition.m in Sources */,
 				88F205581BF18F7200674567 /* Reachability.m in Sources */,
+				88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */,
 				888E520C1BF4684A00A6D917 /* LoginViewController.m in Sources */,
 				888E51C41BF420BC00A6D917 /* RegexKitLite.m in Sources */,
 				888E51CD1BF421F400A6D917 /* UIColor-Expanded.m in Sources */,
@@ -2171,7 +2213,6 @@
 				889141AA1BF9681F007E1BBB /* LoginRequest.m in Sources */,
 				887AD94E1BF57AE000648D93 /* WorkflowMgrViewController.m in Sources */,
 				88F2054E1BF18F7200674567 /* AFURLSessionManager.m in Sources */,
-				889141991BF9681F007E1BBB /* SHInfoViewController.m in Sources */,
 				88F205871BF1945500674567 /* HttpMsgCtrl.mm in Sources */,
 				88F205501BF18F7200674567 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				888E51AC1BF41EF600A6D917 /* NSString+SEL.m in Sources */,

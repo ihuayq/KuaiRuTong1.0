@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQS-FH-1uZ">
+                    <rect key="frame" x="84" y="129" width="320" height="255"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W8d-yI-bGk">
+                            <rect key="frame" x="0.0" y="34" width="320" height="216"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="216" id="E5I-7o-nxV"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="K1F-FR-Fvp"/>
+                            </connections>
+                        </pickerView>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hro-r1-UG2">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="Gin-Qr-195"/>
+                                <constraint firstAttribute="width" constant="80" id="Jkc-Hn-JRv"/>
+                            </constraints>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.99607843139999996" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgZ-BL-dqj">
+                            <rect key="frame" x="240" y="0.0" width="80" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="Sj1-0r-shN"/>
+                                <constraint firstAttribute="width" constant="80" id="pog-Oi-ebN"/>
+                            </constraints>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" red="0.99607843139999996" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="W8d-yI-bGk" firstAttribute="top" secondItem="yQS-FH-1uZ" secondAttribute="top" constant="34" id="5pm-0D-NwR"/>
+                        <constraint firstItem="Hro-r1-UG2" firstAttribute="leading" secondItem="yQS-FH-1uZ" secondAttribute="leading" id="Ano-bR-eLT"/>
+                        <constraint firstAttribute="trailing" secondItem="W8d-yI-bGk" secondAttribute="trailing" id="KWj-oi-spf"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="W8d-yI-bGk" secondAttribute="bottom" constant="5" id="UVN-aN-sNE"/>
+                        <constraint firstAttribute="trailing" secondItem="WgZ-BL-dqj" secondAttribute="trailing" id="eC4-o0-osA"/>
+                        <constraint firstItem="W8d-yI-bGk" firstAttribute="leading" secondItem="yQS-FH-1uZ" secondAttribute="leading" id="fOV-pV-DqS"/>
+                        <constraint firstItem="W8d-yI-bGk" firstAttribute="leading" secondItem="yQS-FH-1uZ" secondAttribute="leading" id="fUm-MX-HNm"/>
+                        <constraint firstItem="Hro-r1-UG2" firstAttribute="top" secondItem="yQS-FH-1uZ" secondAttribute="top" id="iVA-Sg-q6R"/>
+                        <constraint firstItem="WgZ-BL-dqj" firstAttribute="top" secondItem="yQS-FH-1uZ" secondAttribute="top" id="n1A-96-5o1"/>
+                        <constraint firstAttribute="bottom" secondItem="W8d-yI-bGk" secondAttribute="bottom" constant="5" id="p5Q-ix-9pL"/>
+                        <constraint firstAttribute="trailing" secondItem="W8d-yI-bGk" secondAttribute="trailing" id="tOT-Wf-ouj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+        </view>
+    </objects>
+</document>

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "KTTabBarViewController.h"
+#import "SHInfoViewController.h"
 
 @interface AppDelegate (){
     UINavigationController * nc;
@@ -32,11 +33,21 @@
     [SNLogger startWithLogLevel:SNLogLevelOFF];
 #endif
     
+
     
+#define TEST
+#ifndef TEST
     login = [[LoginViewController alloc] init];
     nc =[[UINavigationController alloc]initWithRootViewController:login];
     [nc.navigationBar setHidden:YES];
     self.window.rootViewController = nc;
+    
+#else
+    SHInfoViewController* Vc=[[SHInfoViewController alloc]init];
+    self.window.rootViewController = Vc;
+#endif
+    
+
     
     // Override point for customization after application launch.
     return YES;

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationPickerVC : UIViewController
+
+typedef void (^ablock)(NSString *strProvice,NSString *strCity,NSString *strArea);
+
+
+
+@interface LocationPickerVC : CommonViewController
+
+@property (nonatomic, copy) ablock block;
 
 @end

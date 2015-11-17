@@ -16,6 +16,8 @@
 #import "HZAreaPickerView.h"
 #import "DropDownListView.h"
 #import "UIScrollView+TPKeyboardAvoidingAdditions.h"
+#import "LocationPickerVC.h"
+#import "LocationPickerViewController.h"
 
 
 typedef NS_ENUM(int, PickerViewTag){
@@ -48,7 +50,7 @@ typedef NS_ENUM(int, PickerViewTag){
     NSMutableArray *chooseArray;
     
     UIButton* uploadBtn;
-    
+    UIButton* bussinessKindBtn;
     
     NSMutableArray *arrayTitle;
 }
@@ -107,7 +109,7 @@ typedef NS_ENUM(int, PickerViewTag){
 #pragma mark -- UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return 8;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -172,17 +174,18 @@ typedef NS_ENUM(int, PickerViewTag){
         shopNameTextField.delegate = self;
         [cell.contentView addSubview:shopNameTextField];
     }else if(row == 1){
-        DropDownListView * dropDownView = [[DropDownListView alloc] initWithFrame:CGRectMake(0,0,MainWidth, 40) dataSource:self delegate:self];
-        //dropDownView.mSuperView = cell.contentView;
-        dropDownView.mSuperView = infoTableView;
-        [cell.contentView addSubview:dropDownView];
-        
-        //商户名称
-//        bussinessKindTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, 320, 40) Placeholder:@"行业大类/行业细类/mcc" Font:[UIFont systemFontOfSize:20.0]];
-//        bussinessKindTextField.borderStyle = UITextBorderStyleNone;
-//        bussinessKindTextField.textAlignment = NSTextAlignmentLeft;
-//        bussinessKindTextField.delegate = self;
-//        [cell.contentView addSubview:bussinessKindTextField];
+//        DropDownListView * dropDownView = [[DropDownListView alloc] initWithFrame:CGRectMake(0,0,MainWidth,40) dataSource:self delegate:self];
+//        //dropDownView.mSuperView = cell.contentView;
+//        dropDownView.mSuperView = infoTableView;
+//        [cell.contentView addSubview:dropDownView];
+        bussinessKindBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 320, 40)];
+        [bussinessKindBtn addTarget:self action:@selector(selectBusinessKindBtn) forControlEvents:UIControlEventTouchUpInside];
+        [bussinessKindBtn setTitle:@"行业大类 行业细分 mcc" forState:UIControlStateNormal];
+        bussinessKindBtn.backgroundColor = [UIColor clearColor];
+        [bussinessKindBtn setTitleColor:[UIColor light_Gray_Color]forState:UIControlStateNormal];
+        bussinessKindBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;//设置文字位置，现设为居左，默认的是居中
+        bussinessKindBtn.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
+        [cell.contentView addSubview:bussinessKindBtn];
 
     }else if (row == 2){
         //账户名称
@@ -220,18 +223,41 @@ typedef NS_ENUM(int, PickerViewTag){
         inviteCodeTextField.textAlignment = NSTextAlignmentLeft;
         [cell.contentView addSubview:inviteCodeTextField];
     }
+    else if (row == 7){
+        //商户邀请码
+        UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 320, 40)];
+        [moreBtn addTarget:self action:@selector(selectBtn) forControlEvents:UIControlEventTouchUpInside];
+        [moreBtn setTitle:@"添加网点" forState:UIControlStateNormal];
+//        uploadBtn.backgroundColor = [UIColor clearColor];
+//        [uploadBtn setTitleColor:[UIColor light_Gray_Color]forState:UIControlStateNormal];
+//        uploadBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;
+//        uploadBtn.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
+        [cell.contentView addSubview:moreBtn];
+    }
 }
 
 -(void)selectBtn{
     
-    [[infoTableView TPKeyboardAvoiding_findFirstResponderBeneathView:infoTableView] resignFirstResponder];
+//    [[infoTableView TPKeyboardAvoiding_findFirstResponderBeneathView:infoTableView] resignFirstResponder];
     
-    [self.locatePicker cancelPicker];
-    self.locatePicker.delegate = nil;
-    self.locatePicker = nil;
+//    [self.locatePicker cancelPicker];
+//    self.locatePicker.delegate = nil;
+//    self.locatePicker = nil;
+//    
+//    self.locatePicker = [[HZAreaPickerView alloc] initWithStyle:HZAreaPickerWithStateAndCityAndDistrict delegate:self];
+//    [self.locatePicker showInView:self.view];
+//    LocationPickerVC *locationPickerVC = [[LocationPickerVC alloc] initWithNibName:@"LocationPickerVC" bundle:nil];
     
-    self.locatePicker = [[HZAreaPickerView alloc] initWithStyle:HZAreaPickerWithStateAndCityAndDistrict delegate:self];
-    [self.locatePicker showInView:self.view];
+    LocationPickerViewController *locationPickerVC = [[LocationPickerViewController alloc] init];
+    locationPickerVC.block = ^(NSString *strProvice,NSString *strCity,NSString *strArea){
+        [uploadBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
+    };
+    
+    [self.navigationController pushViewController:locationPickerVC animated:NO];
+    
+}
+
+-(void)selectBusinessKindBtn{
     
 }
 
@@ -244,20 +270,20 @@ typedef NS_ENUM(int, PickerViewTag){
 }
 
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self.locatePicker cancelPicker];
-    self.locatePicker.delegate = nil;
-    self.locatePicker = nil;
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    [super touchesBegan:touches withEvent:event];
+//    [self.locatePicker cancelPicker];
+//    self.locatePicker.delegate = nil;
+//    self.locatePicker = nil;
+//}
 
 #pragma mark -- UITextFieldDelegate 代理方法
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    //[textField resignFirstResponder];
-    [self.locatePicker resignFirstResponder];
-    
-    return YES;
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    //[textField resignFirstResponder];
+//    [self.locatePicker resignFirstResponder];
+//    
+//    return YES;
+//}
 
 #pragma mark -- dropDownListDelegate
 -(void) chooseAtSection:(NSInteger)section index:(NSInteger)index

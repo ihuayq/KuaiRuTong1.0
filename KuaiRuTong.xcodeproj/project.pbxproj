@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A3820FA1BFA21DD00B0AE73 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3820F21BFA21DD00B0AE73 /* Address.plist */; };
-		7A3820FB1BFA21DD00B0AE73 /* UIView+RGSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3820F51BFA21DD00B0AE73 /* UIView+RGSize.m */; };
-		7A3820FC1BFA21DD00B0AE73 /* LocationPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3820F81BFA21DD00B0AE73 /* LocationPickerVC.m */; };
-		7A3820FD1BFA21DD00B0AE73 /* LocationPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3820F91BFA21DD00B0AE73 /* LocationPickerVC.xib */; };
 		7A3821001BFA222A00B0AE73 /* SHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */; };
+		7A978F091BFB5E5A007B3CE0 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A978F011BFB5E5A007B3CE0 /* Address.plist */; };
+		7A978F0A1BFB5E5A007B3CE0 /* UIView+RGSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F041BFB5E5A007B3CE0 /* UIView+RGSize.m */; };
+		7A978F0B1BFB5E5A007B3CE0 /* LocationPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F071BFB5E5A007B3CE0 /* LocationPickerVC.m */; };
+		7A978F0C1BFB5E5A007B3CE0 /* LocationPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A978F081BFB5E5A007B3CE0 /* LocationPickerVC.xib */; };
+		7A978F0F1BFB63AF007B3CE0 /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F0E1BFB63AF007B3CE0 /* LocationPickerViewController.m */; };
 		8859CA801BF9A7B600827C40 /* VersionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8859CA7F1BF9A7B600827C40 /* VersionDetailViewController.m */; };
 		8859CA851BF9BB7D00827C40 /* 成功@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA811BF9BB7D00827C40 /* 成功@2x.png */; };
 		8859CA861BF9BB7D00827C40 /* 失败@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA821BF9BB7D00827C40 /* 失败@2x.png */; };
@@ -122,16 +123,16 @@
 		889141BE1BF9681F007E1BBB /* ZDBDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891418A1BF9681F007E1BBB /* ZDBDView.m */; };
 		889141C61BF9781D007E1BBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889141C51BF9781D007E1BBB /* Reveal.framework */; };
 		889141CC1BF98655007E1BBB /* NewSHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141CB1BF98655007E1BBB /* NewSHCell.m */; };
-		88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */; settings = {ASSET_TAGS = (); }; };
-		88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E501BFAD3A7005CC7E8 /* area.plist */; settings = {ASSET_TAGS = (); }; };
-		88A05E581BFAD3A7005CC7E8 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E511BFAD3A7005CC7E8 /* city.plist */; settings = {ASSET_TAGS = (); }; };
-		88A05E591BFAD3A7005CC7E8 /* HZAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E531BFAD3A7005CC7E8 /* HZAreaPickerView.m */; settings = {ASSET_TAGS = (); }; };
-		88A05E5A1BFAD3A7005CC7E8 /* HZAreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E541BFAD3A7005CC7E8 /* HZAreaPickerView.xib */; settings = {ASSET_TAGS = (); }; };
-		88A05E5B1BFAD3A7005CC7E8 /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E561BFAD3A7005CC7E8 /* HZLocation.m */; settings = {ASSET_TAGS = (); }; };
-		88A05E611BFAF676005CC7E8 /* down_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E5D1BFAF676005CC7E8 /* down_dark.png */; settings = {ASSET_TAGS = (); }; };
-		88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E601BFAF676005CC7E8 /* DropDownListView.m */; settings = {ASSET_TAGS = (); }; };
-		88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */; settings = {ASSET_TAGS = (); }; };
+		88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */; };
+		88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E501BFAD3A7005CC7E8 /* area.plist */; };
+		88A05E581BFAD3A7005CC7E8 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E511BFAD3A7005CC7E8 /* city.plist */; };
+		88A05E591BFAD3A7005CC7E8 /* HZAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E531BFAD3A7005CC7E8 /* HZAreaPickerView.m */; };
+		88A05E5A1BFAD3A7005CC7E8 /* HZAreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E541BFAD3A7005CC7E8 /* HZAreaPickerView.xib */; };
+		88A05E5B1BFAD3A7005CC7E8 /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E561BFAD3A7005CC7E8 /* HZLocation.m */; };
+		88A05E611BFAF676005CC7E8 /* down_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E5D1BFAF676005CC7E8 /* down_dark.png */; };
+		88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E601BFAF676005CC7E8 /* DropDownListView.m */; };
+		88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */; };
+		88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */; };
 		88F2048D1BF1822E00674567 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048C1BF1822E00674567 /* main.m */; };
 		88F204901BF1822E00674567 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048F1BF1822E00674567 /* AppDelegate.m */; };
 		88F204931BF1822E00674567 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204921BF1822E00674567 /* ViewController.m */; };
@@ -250,15 +251,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A3820F21BFA21DD00B0AE73 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
-		7A3820F41BFA21DD00B0AE73 /* UIView+RGSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSize.h"; sourceTree = "<group>"; };
-		7A3820F51BFA21DD00B0AE73 /* UIView+RGSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RGSize.m"; sourceTree = "<group>"; };
-		7A3820F61BFA21DD00B0AE73 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		7A3820F71BFA21DD00B0AE73 /* LocationPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerVC.h; sourceTree = "<group>"; };
-		7A3820F81BFA21DD00B0AE73 /* LocationPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerVC.m; sourceTree = "<group>"; };
-		7A3820F91BFA21DD00B0AE73 /* LocationPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationPickerVC.xib; sourceTree = "<group>"; };
 		7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInfoViewController.h; sourceTree = "<group>"; };
 		7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInfoViewController.m; sourceTree = "<group>"; };
+		7A978F011BFB5E5A007B3CE0 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
+		7A978F031BFB5E5A007B3CE0 /* UIView+RGSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSize.h"; sourceTree = "<group>"; };
+		7A978F041BFB5E5A007B3CE0 /* UIView+RGSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RGSize.m"; sourceTree = "<group>"; };
+		7A978F051BFB5E5A007B3CE0 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		7A978F061BFB5E5A007B3CE0 /* LocationPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerVC.h; sourceTree = "<group>"; };
+		7A978F071BFB5E5A007B3CE0 /* LocationPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerVC.m; sourceTree = "<group>"; };
+		7A978F081BFB5E5A007B3CE0 /* LocationPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationPickerVC.xib; sourceTree = "<group>"; };
+		7A978F0D1BFB63AF007B3CE0 /* LocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerViewController.h; sourceTree = "<group>"; };
+		7A978F0E1BFB63AF007B3CE0 /* LocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerViewController.m; sourceTree = "<group>"; };
 		8859CA7E1BF9A7B600827C40 /* VersionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionDetailViewController.h; sourceTree = "<group>"; };
 		8859CA7F1BF9A7B600827C40 /* VersionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionDetailViewController.m; sourceTree = "<group>"; };
 		8859CA811BF9BB7D00827C40 /* 成功@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成功@2x.png"; sourceTree = "<group>"; };
@@ -702,25 +705,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A3820F11BFA21DD00B0AE73 /* AddressPicker */ = {
+		7A978F001BFB5E5A007B3CE0 /* AddressPicker */ = {
 			isa = PBXGroup;
 			children = (
-				7A3820F21BFA21DD00B0AE73 /* Address.plist */,
-				7A3820F31BFA21DD00B0AE73 /* Category */,
-				7A3820F61BFA21DD00B0AE73 /* Header.h */,
-				7A3820F71BFA21DD00B0AE73 /* LocationPickerVC.h */,
-				7A3820F81BFA21DD00B0AE73 /* LocationPickerVC.m */,
-				7A3820F91BFA21DD00B0AE73 /* LocationPickerVC.xib */,
+				7A978F011BFB5E5A007B3CE0 /* Address.plist */,
+				7A978F021BFB5E5A007B3CE0 /* Category */,
+				7A978F051BFB5E5A007B3CE0 /* Header.h */,
+				7A978F061BFB5E5A007B3CE0 /* LocationPickerVC.h */,
+				7A978F071BFB5E5A007B3CE0 /* LocationPickerVC.m */,
+				7A978F081BFB5E5A007B3CE0 /* LocationPickerVC.xib */,
+				7A978F0D1BFB63AF007B3CE0 /* LocationPickerViewController.h */,
+				7A978F0E1BFB63AF007B3CE0 /* LocationPickerViewController.m */,
 			);
-			name = AddressPicker;
-			path = ../Src/AddUser/AddressPicker;
+			path = AddressPicker;
 			sourceTree = "<group>";
 		};
-		7A3820F31BFA21DD00B0AE73 /* Category */ = {
+		7A978F021BFB5E5A007B3CE0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				7A3820F41BFA21DD00B0AE73 /* UIView+RGSize.h */,
-				7A3820F51BFA21DD00B0AE73 /* UIView+RGSize.m */,
+				7A978F031BFB5E5A007B3CE0 /* UIView+RGSize.h */,
+				7A978F041BFB5E5A007B3CE0 /* UIView+RGSize.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -741,11 +745,11 @@
 		887AD9491BF57A8000648D93 /* AddUser */ = {
 			isa = PBXGroup;
 			children = (
+				7A978F001BFB5E5A007B3CE0 /* AddressPicker */,
 				88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */,
 				88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */,
 				7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */,
 				7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */,
-				88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */,
 				889141C91BF985D4007E1BBB /* Model */,
 				889141C81BF985BE007E1BBB /* Controller */,
 				889141C71BF985B3007E1BBB /* View */,
@@ -1412,7 +1416,8 @@
 				88A05E561BFAD3A7005CC7E8 /* HZLocation.m */,
 				88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */,
 			);
-			path = LocationSelelctor;
+			name = LocationSelelctor;
+			path = ../Src/AddUser/LocationSelelctor;
 			sourceTree = "<group>";
 		};
 		88A05E5C1BFAF676005CC7E8 /* DropDown */ = {
@@ -1502,7 +1507,7 @@
 		88F204BE1BF18F7200674567 /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
-				7A3820F11BFA21DD00B0AE73 /* AddressPicker */,
+				88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */,
 				88A05E5C1BFAF676005CC7E8 /* DropDown */,
 				887AD93F1BF5793900648D93 /* NavTransiton */,
 				888E51E41BF4330B00A6D917 /* TPKeyboardAvoiding */,
@@ -1987,6 +1992,7 @@
 				88F2053B1BF18F7200674567 /* Icon-iOS7@2x.png in Resources */,
 				8859CA851BF9BB7D00827C40 /* 成功@2x.png in Resources */,
 				887AD9691BF5875300648D93 /* textlayer.png in Resources */,
+				7A978F0C1BFB5E5A007B3CE0 /* LocationPickerVC.xib in Resources */,
 				887AD9681BF5875300648D93 /* redbndj@2x.png in Resources */,
 				887AD96F1BF5875300648D93 /* 账号@2x.png in Resources */,
 				8859CA871BF9BB7D00827C40 /* 相册@2x.png in Resources */,
@@ -1998,8 +2004,6 @@
 				887AD9731BF5875300648D93 /* 首页@2x.png in Resources */,
 				88F2053E1BF18F7200674567 /* Icon1.png in Resources */,
 				88A05E611BFAF676005CC7E8 /* down_dark.png in Resources */,
-				7A3820FD1BFA21DD00B0AE73 /* LocationPickerVC.xib in Resources */,
-				7A3820FA1BFA21DD00B0AE73 /* Address.plist in Resources */,
 				88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */,
 				8859CA8A1BF9C1D400827C40 /* addInfo.png in Resources */,
 				88F205411BF18F7200674567 /* MJRefresh.bundle in Resources */,
@@ -2014,6 +2018,7 @@
 				887AD9711BF5875300648D93 /* 资产@2x.png in Resources */,
 				8859CA861BF9BB7D00827C40 /* 失败@2x.png in Resources */,
 				88F205B01BF1965B00674567 /* README.txt in Resources */,
+				7A978F091BFB5E5A007B3CE0 /* Address.plist in Resources */,
 				887AD9721BF5875300648D93 /* 首页-normal@2x.png in Resources */,
 				88F204961BF1822E00674567 /* Main.storyboard in Resources */,
 			);
@@ -2051,9 +2056,9 @@
 				88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */,
 				888E51B11BF41EF600A6D917 /* UIView+firstResponder.m in Sources */,
 				889141981BF9681F007E1BBB /* SHDetailViewController.m in Sources */,
+				7A978F0B1BFB5E5A007B3CE0 /* LocationPickerVC.m in Sources */,
 				88F204931BF1822E00674567 /* ViewController.m in Sources */,
 				888E51AD1BF41EF600A6D917 /* UIView+ActivityIndicator.m in Sources */,
-				7A3820FB1BFA21DD00B0AE73 /* UIView+RGSize.m in Sources */,
 				88F205351BF18F7200674567 /* FMDatabasePool.m in Sources */,
 				88F205531BF18F7200674567 /* UIButton+AFNetworking.m in Sources */,
 				88F205611BF18F7200674567 /* SDWebImageManager.m in Sources */,
@@ -2064,6 +2069,7 @@
 				889141A71BF9681F007E1BBB /* EnterIntoKCRequest.m in Sources */,
 				889141B61BF9681F007E1BBB /* InfoDataView.m in Sources */,
 				88F205671BF18F7200674567 /* UIImageView+WebCache.m in Sources */,
+				7A978F0F1BFB63AF007B3CE0 /* LocationPickerViewController.m in Sources */,
 				88F205EA1BF19C4B00674567 /* UIWebView+SNFoundation.m in Sources */,
 				888E51AE1BF41EF600A6D917 /* UIView+Additions.m in Sources */,
 				889141971BF9681F007E1BBB /* SHAndWorkViewController.m in Sources */,
@@ -2186,7 +2192,6 @@
 				8891419C1BF9681F007E1BBB /* SHSearchViewController.m in Sources */,
 				889141BB1BF9681F007E1BBB /* SHSearchCell.m in Sources */,
 				8891418E1BF9681F007E1BBB /* KuCunDescViewController.m in Sources */,
-				7A3820FC1BFA21DD00B0AE73 /* LocationPickerVC.m in Sources */,
 				88F205AF1BF1965B00674567 /* DDMultiFormatter.m in Sources */,
 				88F205A71BF1965B00674567 /* DDAbstractDatabaseLogger.m in Sources */,
 				88F205E41BF19C4B00674567 /* SNSandBox.m in Sources */,
@@ -2199,6 +2204,7 @@
 				88F2055A1BF18F7200674567 /* README.md in Sources */,
 				88F205371BF18F7200674567 /* FMResultSet.m in Sources */,
 				887AD93E1BF577ED00648D93 /* KTTabBarViewController.m in Sources */,
+				7A978F0A1BFB5E5A007B3CE0 /* UIView+RGSize.m in Sources */,
 				889141A81BF9681F007E1BBB /* GetCAndMRequest.m in Sources */,
 				88F205A91BF1965B00674567 /* DDASLLogger.m in Sources */,
 				888E51AB1BF41EF600A6D917 /* NSString+NULL.m in Sources */,

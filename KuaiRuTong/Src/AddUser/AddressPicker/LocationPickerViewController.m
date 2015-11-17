@@ -1,24 +1,27 @@
 //
-//  LocationPickerVC.m
-//  YouZhi
+//  LocationPickerViewController.m
+//  KuaiRuTong
 //
-//  Created by roroge on 15/4/9.
-//  Copyright (c) 2015年 com.roroge. All rights reserved.
+//  Created by 华永奇 on 15/11/17.
+//  Copyright © 2015年 hkrt. All rights reserved.
 //
 
-#import "LocationPickerVC.h"
+#import "LocationPickerViewController.h"
+
 #import "Header.h"
 
-@interface LocationPickerVC () <UIPickerViewDataSource, UIPickerViewDelegate>
-//view
-@property (strong, nonatomic) IBOutlet UIButton *locationBtn;
-@property (strong, nonatomic) IBOutlet UIPickerView *myPicker;
-@property (strong, nonatomic) IBOutlet UIView *pickerBgView;
+@interface LocationPickerViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>{
+    UILabel *label;
+}
+
+@property (strong, nonatomic)  UIPickerView *myPicker;
+@property (strong, nonatomic)  UIView *pickerBgView;
 @property (strong, nonatomic) UIView *maskView;
 
-@property (strong, nonatomic) IBOutlet UIButton *provinceBtn;
-@property (strong, nonatomic) IBOutlet UIButton *cityBtn;
-@property (strong, nonatomic) IBOutlet UIButton *townBtn;
+
+@property (strong, nonatomic)  UIButton *okBtn;
+@property (strong, nonatomic)  UIButton *cancelBtn;
+
 //data
 @property (strong, nonatomic) NSDictionary *pickerDic;
 @property (strong, nonatomic) NSArray *provinceArray;
@@ -26,9 +29,11 @@
 @property (strong, nonatomic) NSArray *townArray;
 @property (strong, nonatomic) NSArray *selectedArray;
 
+
+
 @end
 
-@implementation LocationPickerVC
+@implementation LocationPickerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,26 +43,50 @@
 
 #pragma mark - init view
 - (void)initView {
+    self.navigation.title = @"省市区选择";
+    self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     
-    self.provinceBtn.hidden = self.cityBtn.hidden = self.townBtn.hidden = YES;
     
-    self.maskView = [[UIView alloc] initWithFrame:kScreen_Frame];
-    self.maskView.backgroundColor = [UIColor blackColor];
-    self.maskView.alpha = 0;
-    [self.maskView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMyPicker)]];
     
-    self.pickerBgView.width = kScreen_Width;
+    label = [[UILabel alloc] initWithFrame:CGRectMake(10, NAVIGATION_OUTLET_HEIGHT + 20,MainWidth - 10*2,120)];
+    label.font = [UIFont fontWithName:@"Helvetica-Bold" size:24];
+    //label.text = [NSString stringWithFormat:@"快入通"];
+    label.textAlignment = NSTextAlignmentCenter;
+    //    label.layer.borderWidth = 1;
+    //    label.layer.borderColor = color;
+    [self.view addSubview:label];
     
-    [self.view addSubview:self.maskView];
+//    self.maskView = [[UIView alloc] initWithFrame:kScreen_Frame];
+//    self.maskView.backgroundColor = [UIColor blackColor];
+//    self.maskView.alpha = 0;
+//    [self.maskView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMyPicker)]];
+//    [self.view addSubview:self.maskView];
+    
+    self.pickerBgView = [[UIView alloc] initWithFrame:CGRectMake(0, MainHeight - 320 - 48, MainWidth, 320)];
+    //self.pickerBgView.backgroundColor = [UIColor light_Gray_Color];
     [self.view addSubview:self.pickerBgView];
-    self.maskView.alpha = 0;
-    self.pickerBgView.top = self.view.height;
     
-    [UIView animateWithDuration:0.3 animations:^{
-        self.maskView.alpha = 0.3;
-        self.pickerBgView.bottom = self.view.height;
-    }];
+    self.myPicker = [[UIPickerView alloc] initWithFrame:self.pickerBgView.bounds];
+    // 显示选中框
+    self.myPicker.showsSelectionIndicator=YES;
+    self.myPicker.dataSource = self;
+    self.myPicker.delegate = self;
+    [self.pickerBgView addSubview:self.myPicker];
+    
+    self.okBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 120, 40)];
+    [self.okBtn addTarget:self action:@selector(touchOkBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.okBtn setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
+    [self.okBtn setTitle:@"确 定" forState:UIControlStateNormal];
+    [self.pickerBgView addSubview:self.okBtn];
+    
+    self.cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth -120, 0, 120, 40)];
+    [self.cancelBtn addTarget:self action:@selector(touchCancelBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.cancelBtn setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
+    [self.cancelBtn setTitle:@"取 消" forState:UIControlStateNormal];
+    [self.pickerBgView addSubview:self.cancelBtn];
+    
 }
+
 #pragma mark - get data
 - (void)getPickerData {
     
@@ -73,7 +102,6 @@
     if (self.cityArray.count > 0) {
         self.townArray = [[self.selectedArray objectAtIndex:0] objectForKey:[self.cityArray objectAtIndex:0]];
     }
-    
 }
 
 #pragma mark - UIPicker Delegate
@@ -139,6 +167,30 @@
     }
     
     [pickerView reloadComponent:2];
+    
+    NSString *strProvince = [self.provinceArray objectAtIndex:[self.myPicker selectedRowInComponent:0]];
+    NSString *strCity = [self.cityArray objectAtIndex:[self.myPicker selectedRowInComponent:1]];
+    NSString *strTown = [self.townArray objectAtIndex:[self.myPicker selectedRowInComponent:2]];
+    label.text = [NSString stringWithFormat:@"%@ %@ %@",strProvince,strCity,strTown];
+}
+
+-(void)touchOkBtn{
+    
+    if (self.block) {
+        
+        NSString *strProvince = [self.provinceArray objectAtIndex:[self.myPicker selectedRowInComponent:0]];
+        NSString *strCity = [self.cityArray objectAtIndex:[self.myPicker selectedRowInComponent:1]];
+        NSString *strTown = [self.townArray objectAtIndex:[self.myPicker selectedRowInComponent:2]];
+        
+        self.block(strProvince,strCity,strTown);
+    }
+    
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+
+-(void)touchCancelBtn{
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 #pragma mark - private method
@@ -172,13 +224,10 @@
 }
 
 - (IBAction)ensure:(id)sender {
-//    self.locationBtn.hidden = YES;
-//    self.provinceBtn.hidden = self.cityBtn.hidden = self.townBtn.hidden = NO;
-//    [self.provinceBtn setTitle:[self.provinceArray objectAtIndex:[self.myPicker selectedRowInComponent:0]] forState:UIControlStateNormal];
-//    [self.cityBtn setTitle:[self.cityArray objectAtIndex:[self.myPicker selectedRowInComponent:1]] forState:UIControlStateNormal];
-//    [self.townBtn setTitle:[self.townArray objectAtIndex:[self.myPicker selectedRowInComponent:2]] forState:UIControlStateNormal];
     [self hideMyPicker];
     [self.navigationController popViewControllerAnimated:NO];
 }
+
+
 
 @end

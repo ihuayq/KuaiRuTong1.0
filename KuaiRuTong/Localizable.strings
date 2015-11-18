@@ -17,3 +17,19 @@
 "Refresh now..."="正在刷新";
 "Last Updated"="松开刷新";
 "Updated Begin"="下拉刷新";
+
+"open-mircophone"="暂时无法使用，请到设置中允许使用麦克风";
+"system-info"="系统信息";
+"system-error"="系统提示";
+"NotReachable"="网络不可用!";
+"Ok"="确定";
+"Cancel"="取消";
+"NowUpdate"="立即更新";
+"LaterUpdate"="以后再说";
+"versionUpdate"="苏宁易购已发布新的版本，建议升级后再使用。";
+"CheckUpdate"="检查更新";
+"CheckingUpdate..."="检查更新中...";
+"UpdateVersionTip"="更新提示";
+"MostUpdateVersion"="您当前使用的已经是最新版本，感谢您对苏宁易购的支持";
+"confirm"="确认";
+"Confirm"="确定";

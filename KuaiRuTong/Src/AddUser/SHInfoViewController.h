@@ -16,6 +16,7 @@
 }
 
 @property (strong, nonatomic) TPKeyboardAvoidingTableView *tableView;
+@property (nonatomic,strong) UIButton *addWDButton;
 //已经添加的网点数据的数量
 @property(nonatomic,assign) int nNetAddressCount;
 

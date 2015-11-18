@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZNavigationView.h"
+#import "BBAlertView.h"
 
 #define NAVIGATION_OUTLET_HEIGHT self.navigation.frame.origin.y+ self.navigation.frame.size.height
 
 #define SCREEN_BODY_HEIGHT self.navigation.frame.origin.y+ self.navigation.frame.size.height + 48
 
 @class NSTimerHelper;
-@interface CommonViewController : UIViewController<ZZNavigationViewDelegate>
+@interface CommonViewController : UIViewController<ZZNavigationViewDelegate,BBAlertViewDelegate>
 {
 }
 @property (nonatomic,strong) ZZNavigationView * navigation;

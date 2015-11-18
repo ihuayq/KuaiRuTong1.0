@@ -185,12 +185,14 @@
         self.block(strProvince,strCity,strTown);
     }
     
-    [self.navigationController popViewControllerAnimated:NO];
+    //[self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 
 -(void)touchCancelBtn{
-    [self.navigationController popViewControllerAnimated:NO];
+    //[self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 #pragma mark - private method
@@ -221,6 +223,8 @@
 - (IBAction)cancel:(id)sender {
     [self hideMyPicker];
     [self.navigationController popViewControllerAnimated:NO];
+    
+    
 }
 
 - (IBAction)ensure:(id)sender {

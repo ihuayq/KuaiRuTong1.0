@@ -231,6 +231,13 @@
 		88F205F61BF1D0E100674567 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205F31BF1D0E100674567 /* Command.m */; };
 		88F205F71BF1D0E100674567 /* CommandManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205F51BF1D0E100674567 /* CommandManage.m */; };
 		88F205FA1BF1D1E400674567 /* DefineConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205F91BF1D1E400674567 /* DefineConstant.m */; };
+		88FBA9D01BFC08DC00518C6E /* DAContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CB1BFC08DC00518C6E /* DAContextMenuCell.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9D11BFC08DC00518C6E /* DAContextMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CD1BFC08DC00518C6E /* DAContextMenuTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CF1BFC08DC00518C6E /* DAOverlayView.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9D81BFC0CC400518C6E /* DAContexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9D71BFC0CC400518C6E /* DAContexMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9DB1BFC1D9F00518C6E /* BusinessInfoCellPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9DE1BFC27CD00518C6E /* SHNewNetPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9E11BFC50C900518C6E /* CodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9E01BFC50C900518C6E /* CodeTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -675,6 +682,20 @@
 		88F205F51BF1D0E100674567 /* CommandManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandManage.m; sourceTree = "<group>"; };
 		88F205F81BF1D1E400674567 /* DefineConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineConstant.h; sourceTree = "<group>"; };
 		88F205F91BF1D1E400674567 /* DefineConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefineConstant.m; sourceTree = "<group>"; };
+		88FBA9CA1BFC08DC00518C6E /* DAContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAContextMenuCell.h; sourceTree = "<group>"; };
+		88FBA9CB1BFC08DC00518C6E /* DAContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAContextMenuCell.m; sourceTree = "<group>"; };
+		88FBA9CC1BFC08DC00518C6E /* DAContextMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAContextMenuTableViewController.h; sourceTree = "<group>"; };
+		88FBA9CD1BFC08DC00518C6E /* DAContextMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAContextMenuTableViewController.m; sourceTree = "<group>"; };
+		88FBA9CE1BFC08DC00518C6E /* DAOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOverlayView.h; sourceTree = "<group>"; };
+		88FBA9CF1BFC08DC00518C6E /* DAOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOverlayView.m; sourceTree = "<group>"; };
+		88FBA9D61BFC0CC400518C6E /* DAContexMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAContexMenuViewController.h; sourceTree = "<group>"; };
+		88FBA9D71BFC0CC400518C6E /* DAContexMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAContexMenuViewController.m; sourceTree = "<group>"; };
+		88FBA9D91BFC1D9F00518C6E /* BusinessInfoCellPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessInfoCellPart.h; sourceTree = "<group>"; };
+		88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessInfoCellPart.m; sourceTree = "<group>"; };
+		88FBA9DC1BFC27CD00518C6E /* SHNewNetPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNewNetPointViewController.h; sourceTree = "<group>"; };
+		88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHNewNetPointViewController.m; sourceTree = "<group>"; };
+		88FBA9DF1BFC50C900518C6E /* CodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeTableViewCell.h; sourceTree = "<group>"; };
+		88FBA9E01BFC50C900518C6E /* CodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -745,14 +766,10 @@
 		887AD9491BF57A8000648D93 /* AddUser */ = {
 			isa = PBXGroup;
 			children = (
-				7A978F001BFB5E5A007B3CE0 /* AddressPicker */,
-				88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */,
-				88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */,
-				7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */,
-				7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */,
-				889141C91BF985D4007E1BBB /* Model */,
-				889141C81BF985BE007E1BBB /* Controller */,
 				889141C71BF985B3007E1BBB /* View */,
+				889141C81BF985BE007E1BBB /* Controller */,
+				889141C91BF985D4007E1BBB /* Model */,
+				7A978F001BFB5E5A007B3CE0 /* AddressPicker */,
 			);
 			path = AddUser;
 			sourceTree = "<group>";
@@ -1384,6 +1401,8 @@
 			children = (
 				889141CA1BF98655007E1BBB /* NewSHCell.h */,
 				889141CB1BF98655007E1BBB /* NewSHCell.m */,
+				88FBA9DF1BFC50C900518C6E /* CodeTableViewCell.h */,
+				88FBA9E01BFC50C900518C6E /* CodeTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1391,6 +1410,12 @@
 		889141C81BF985BE007E1BBB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */,
+				88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */,
+				7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */,
+				7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */,
+				88FBA9DC1BFC27CD00518C6E /* SHNewNetPointViewController.h */,
+				88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */,
 				887AD9521BF57F9900648D93 /* NewBusinessViewController.h */,
 				887AD9531BF57F9900648D93 /* NewBusinessViewController.m */,
 			);
@@ -1400,6 +1425,8 @@
 		889141C91BF985D4007E1BBB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88FBA9D91BFC1D9F00518C6E /* BusinessInfoCellPart.h */,
+				88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1507,6 +1534,7 @@
 		88F204BE1BF18F7200674567 /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				88FBA9C91BFC08DC00518C6E /* DAContextMenuTableViewController */,
 				88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */,
 				88A05E5C1BFAF676005CC7E8 /* DropDown */,
 				887AD93F1BF5793900648D93 /* NavTransiton */,
@@ -1875,6 +1903,21 @@
 			path = Command;
 			sourceTree = "<group>";
 		};
+		88FBA9C91BFC08DC00518C6E /* DAContextMenuTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				88FBA9D61BFC0CC400518C6E /* DAContexMenuViewController.h */,
+				88FBA9D71BFC0CC400518C6E /* DAContexMenuViewController.m */,
+				88FBA9CA1BFC08DC00518C6E /* DAContextMenuCell.h */,
+				88FBA9CB1BFC08DC00518C6E /* DAContextMenuCell.m */,
+				88FBA9CC1BFC08DC00518C6E /* DAContextMenuTableViewController.h */,
+				88FBA9CD1BFC08DC00518C6E /* DAContextMenuTableViewController.m */,
+				88FBA9CE1BFC08DC00518C6E /* DAOverlayView.h */,
+				88FBA9CF1BFC08DC00518C6E /* DAOverlayView.m */,
+			);
+			path = DAContextMenuTableViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2056,9 +2099,11 @@
 				88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */,
 				888E51B11BF41EF600A6D917 /* UIView+firstResponder.m in Sources */,
 				889141981BF9681F007E1BBB /* SHDetailViewController.m in Sources */,
+				88FBA9DE1BFC27CD00518C6E /* SHNewNetPointViewController.m in Sources */,
 				7A978F0B1BFB5E5A007B3CE0 /* LocationPickerVC.m in Sources */,
 				88F204931BF1822E00674567 /* ViewController.m in Sources */,
 				888E51AD1BF41EF600A6D917 /* UIView+ActivityIndicator.m in Sources */,
+				88FBA9D81BFC0CC400518C6E /* DAContexMenuViewController.m in Sources */,
 				88F205351BF18F7200674567 /* FMDatabasePool.m in Sources */,
 				88F205531BF18F7200674567 /* UIButton+AFNetworking.m in Sources */,
 				88F205611BF18F7200674567 /* SDWebImageManager.m in Sources */,
@@ -2084,11 +2129,13 @@
 				88F205AC1BF1965B00674567 /* DDTTYLogger.m in Sources */,
 				88F205E01BF19C4B00674567 /* NSDictionary+SNFoundation.m in Sources */,
 				888E51AF1BF41EF600A6D917 /* UIView+Appear.m in Sources */,
+				88FBA9D01BFC08DC00518C6E /* DAContextMenuCell.m in Sources */,
 				88F205651BF18F7200674567 /* UIImage+MultiFormat.m in Sources */,
 				88F205381BF18F7200674567 /* JSONKit.m in Sources */,
 				88F2055F1BF18F7200674567 /* SDWebImageDownloader.m in Sources */,
 				88F205D91BF19C4B00674567 /* IPAddress.c in Sources */,
 				888E51AA1BF41EF600A6D917 /* NSString+MD5.m in Sources */,
+				88FBA9DB1BFC1D9F00518C6E /* BusinessInfoCellPart.m in Sources */,
 				889141931BF9681F007E1BBB /* PendSHViewController.m in Sources */,
 				88F205E61BF19C4B00674567 /* SystemInfo.m in Sources */,
 				887AD9511BF57F9000648D93 /* UserCenterViewController.m in Sources */,
@@ -2117,6 +2164,7 @@
 				889141951BF9681F007E1BBB /* QuestionSHViewController.m in Sources */,
 				88F205621BF18F7200674567 /* SDWebImagePrefetcher.m in Sources */,
 				88F205F71BF1D0E100674567 /* CommandManage.m in Sources */,
+				88FBA9E11BFC50C900518C6E /* CodeTableViewCell.m in Sources */,
 				88F205471BF18F7200674567 /* AFHTTPRequestOperationManager.m in Sources */,
 				888E51F01BF4330B00A6D917 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				88F2054F1BF18F7200674567 /* AFNetworkTool.m in Sources */,
@@ -2168,6 +2216,7 @@
 				88F205601BF18F7200674567 /* SDWebImageDownloaderOperation.m in Sources */,
 				88F205881BF1945500674567 /* DataService.m in Sources */,
 				889141AC1BF9681F007E1BBB /* SearchKCRequest.m in Sources */,
+				88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */,
 				888E51B01BF41EF600A6D917 /* UIView+Draw.m in Sources */,
 				8859CA801BF9A7B600827C40 /* VersionDetailViewController.m in Sources */,
 				88F205DF1BF19C4B00674567 /* NSDate+SNFoundation.m in Sources */,
@@ -2195,6 +2244,7 @@
 				88F205AF1BF1965B00674567 /* DDMultiFormatter.m in Sources */,
 				88F205A71BF1965B00674567 /* DDAbstractDatabaseLogger.m in Sources */,
 				88F205E41BF19C4B00674567 /* SNSandBox.m in Sources */,
+				88FBA9D11BFC08DC00518C6E /* DAContextMenuTableViewController.m in Sources */,
 				889141BE1BF9681F007E1BBB /* ZDBDView.m in Sources */,
 				88F205E51BF19C4B00674567 /* SNTimer.m in Sources */,
 				888E51C01BF4202D00A6D917 /* BBTipView.m in Sources */,

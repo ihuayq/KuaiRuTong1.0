@@ -37,3 +37,8 @@ typedef enum {
 - (void)cancelPicker;
 
 @end
+
+
+//    self.locatePicker = [[HZAreaPickerView alloc] initWithStyle:HZAreaPickerWithStateAndCityAndDistrict delegate:self];
+//    [self.locatePicker showInView:self.view];
+//    LocationPickerVC *locationPickerVC = [[LocationPickerVC alloc] initWithNibName:@"LocationPickerVC" bundle:nil];

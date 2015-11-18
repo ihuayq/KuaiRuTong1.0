@@ -18,20 +18,23 @@
 #import "UIScrollView+TPKeyboardAvoidingAdditions.h"
 #import "LocationPickerVC.h"
 #import "LocationPickerViewController.h"
+#import "DAContextMenuCell.h"
+#import "BusinessInfoCellPart.h"
+#import "SHNewNetPointViewController.h"
 
 
-typedef NS_ENUM(int, PickerViewTag){
-    SuoShuHangYe = 500,
-    HangYeXiLei,
-    MCC,
-    DepartmentPickerTag,
-    Sheng,
-    Shi,
-};
+//typedef NS_ENUM(int, PickerViewTag){
+//    SuoShuHangYe = 500,
+//    HangYeXiLei,
+//    MCC,
+//    DepartmentPickerTag,
+//    Sheng,
+//    Shi,
+//};
 
 @interface SHInfoViewController ()<HZAreaPickerDelegate,DropDownChooseDelegate,DropDownChooseDataSource>{
-    //TPKeyboardAvoidingTableView *infoTableView;
-    UITableView *infoTableView;
+    //TPKeyboardAvoidingTableView *tableView;
+    //UITableView *infoTableView;
     FMLoadMoreFooterView *footerView;
                    
     UITableView *webTableView;
@@ -48,11 +51,16 @@ typedef NS_ENUM(int, PickerViewTag){
     CGFloat current_Y;
     
     NSMutableArray *chooseArray;
-    
     UIButton* uploadBtn;
     UIButton* bussinessKindBtn;
     
     NSMutableArray *arrayTitle;
+    //分组信息
+    NSMutableArray *group;
+    NSMutableArray *addressList;
+    
+    
+    BOOL editState;
 }
     
 @property (strong, nonatomic) NSString *areaValue,*cityValue;
@@ -70,50 +78,49 @@ typedef NS_ENUM(int, PickerViewTag){
     self.navigation.rightTitle = @"保存";
     self.navigation.title = @"新增商户";
  
-    [self loadBasicView];
+    addressList = [NSMutableArray arrayWithArray:@[@""]];
     
-    arrayTitle = [NSMutableArray arrayWithArray:@[@"商户名称",@"种类",@"账户名称",@"结算卡号",@"城市",@"街道/门牌号",@"邀请码(选填)",@"添加网点"]];
+    [self initGroup];
+    [self loadBasicView];
 }
 
 -(void)loadBasicView{
-//    chooseArray = [NSMutableArray arrayWithArray:@[
-//                                                   @[@"原创",@"电视剧",@"动漫",@"电影",@"综艺",@"音乐",@"纪实",@"搞笑",@"游戏",@"娱乐",@"资讯",@"汽车",@"科技",@"体育",@"时尚",@"生活",@"健康",@"教育",@"曲艺",@"旅游",@"美容",@"母婴",@"财经",@"网络剧",@"微电影",@"女性",@"其他1",@"其他2",@"其他3",@"其他4",@"其他5",],
-//                                                   @[@"人气最旺",@"最新发布",@"收藏最多",@"打分最高",@"评论最狠",@"土豆推荐",@"清晰视频序",],
-//                                                   ]];
-    
-    
-//    DropDownListView * dropDownView = [[DropDownListView alloc] initWithFrame:CGRectMake(0,0,MainWidth, 40) dataSource:self delegate:self];
-//    dropDownView.mSuperView = cell.contentView;
-//    [cell.contentView addSubview:dropDownView];
-
-    infoTableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT)
-                                                                style:UITableViewStyleGrouped];
-    
-//    infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT)
-//                                                                 style:UITableViewStyleGrouped];
-    [infoTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    //[infoTableView setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
-    infoTableView.scrollEnabled = YES;
-//    infoTableView.userInteractionEnabled = YES;
-//    infoTableView.backgroundColor = [UIColor clearColor];
-//    infoTableView.backgroundView = nil;
-    infoTableView.delegate = self;
-    infoTableView.dataSource = self;
-    infoTableView.tableFooterView = [UIView new];
-    footerView = [[FMLoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, infoTableView.size.width, 70)];
-    infoTableView.tableFooterView = footerView;
-    [self.view addSubview:infoTableView];
+    self.tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT)
+                                                                  style:UITableViewStyleGrouped];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.tableView.scrollEnabled = YES;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+//        infoTableView.userInteractionEnabled = YES;
+//        infoTableView.backgroundColor = [UIColor clearColor];
+//        infoTableView.backgroundView = nil;
+//    self.tableView.tableFooterView = [UIView new];
+//    footerView = [[FMLoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.size.width, 70)];
+//    self.tableView.tableFooterView = footerView;
+//   [self.tableView setEditing:YES];
+    [self.view addSubview:self.tableView];
 }
 
+- (void) initGroup {
+    group=[[NSMutableArray alloc]init];
+    arrayTitle = [NSMutableArray arrayWithArray:@[@"商户名称",@"种类",@"账户名称",@"结算卡号",@"城市",@"街道/门牌号",@"邀请码(选填)",@"添加网点"]];
+
+    for (NSString *av in arrayTitle) {
+        BusinessInfoCellPart *contact0=[BusinessInfoCellPart initWithPlacehold:@""];
+        BusinessInfoCellGroup *group0=[BusinessInfoCellGroup initWithDetail:av andContacts:[NSMutableArray arrayWithObjects:contact0, nil]];
+        [group addObject:group0];
+    }
+}
 
 #pragma mark -- UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 8;
+    return group.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1 + self.nNetAddressCount;
+    BusinessInfoCellGroup *Cells= group[section];
+    return Cells.groups.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -121,14 +128,32 @@ typedef NS_ENUM(int, PickerViewTag){
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.showsReorderControl =YES;
     }
-    [self loadUIForCell:cell AtRow:indexPath.section];
+    
+    //添加信息
+    if (indexPath.section == group.count - 1) {
+        BusinessInfoCellGroup *cells= group[indexPath.section];
+        //cells.groups.count
+        
+    }
+    else{
+        [self loadUIForCell:cell AtSection:indexPath.section];
+    }
+
+    
     return cell;
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+//定制标题
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 20.0)];
+    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, MainWidth, 20.0)];
     
     UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     headerLabel.backgroundColor = [UIColor clearColor];
@@ -136,26 +161,68 @@ typedef NS_ENUM(int, PickerViewTag){
     headerLabel.textColor = [UIColor lightGrayColor];
     headerLabel.highlightedTextColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:18];
-    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 20.0);
+    headerLabel.frame = CGRectMake(10.0, 4.0, 300.0, 20.0);
     headerLabel.text = arrayTitle[section];
     
-    [customView addSubview:headerLabel];
+    if (section == group.count - 1) {
+        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth - 120, 0, 120, 20)];
+        [btn addTarget:self action:@selector(noteDelete) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"删除" forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor clearColor];
+        [btn setTitleColor:[UIColor light_Gray_Color] forState:UIControlStateNormal];
+        [customView addSubview:btn];
+    }
     
+    [customView addSubview:headerLabel];
     return customView;
 }
 
-//#pragma mark 返回每组头标题名称
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    NSLog(@"生成组（组%i）名称",section);
-//    return arrayTitle[section];
-//}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ( indexPath.section == group.count - 1 ){
+        return YES;
+    }
+    return NO;
+}
 
+//确认编辑类型
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+//    if ( editState == YES && (indexPath.section == group.count - 1) ) {
+//        return UITableViewCellEditingStyleDelete;
+//    }
+//    return UITableViewCellEditingStyleNone;
+    return UITableViewCellEditingStyleDelete;
+}
+
+
+//添加行的删除
+- (void)noteDelete
+{
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+}
+
+//插入删除掉cell方法
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        if (codeList.count == 1) {
+//            [self displayOverFlowActivityView:@"不能再删除了，亲" maxShowTime:(CGFloat)0.5];
+//            return;
+//        }
+        
+//        NSUInteger row = [indexPath row]; //获取当前行
+//        [codeList removeObjectAtIndex:row]; //在数据中删除当前对象
+        
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];//数组执行删除操作
+    }
+}
 
 #pragma mark - 代理方法
 #pragma mark 设置分组标题内容高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
-    return 20;
+    return 25;
 }
 
 #pragma mark 设置尾部说明内容高度
@@ -165,20 +232,15 @@ typedef NS_ENUM(int, PickerViewTag){
 
 
 #pragma PrivateMethods
-- (void)loadUIForCell:(UITableViewCell *)cell AtRow:(NSInteger)row{
-    if (row == 0) {
+- (void)loadUIForCell:(UITableViewCell *)cell AtSection:(NSInteger)section{
+    if (section == 0) {
         //商户名称
-        shopNameTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, 320, 40) Placeholder:@"请输入商户名称" Font:[UIFont systemFontOfSize:20.0]];
+        shopNameTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入商户名称" Font:[UIFont systemFontOfSize:20.0]];
         shopNameTextField.borderStyle = UITextBorderStyleNone;
         shopNameTextField.textAlignment = NSTextAlignmentLeft;
-        shopNameTextField.delegate = self;
         [cell.contentView addSubview:shopNameTextField];
-    }else if(row == 1){
-//        DropDownListView * dropDownView = [[DropDownListView alloc] initWithFrame:CGRectMake(0,0,MainWidth,40) dataSource:self delegate:self];
-//        //dropDownView.mSuperView = cell.contentView;
-//        dropDownView.mSuperView = infoTableView;
-//        [cell.contentView addSubview:dropDownView];
-        bussinessKindBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 320, 40)];
+    }else if(section == 1){
+        bussinessKindBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, MainWidth, 40)];
         [bussinessKindBtn addTarget:self action:@selector(selectBusinessKindBtn) forControlEvents:UIControlEventTouchUpInside];
         [bussinessKindBtn setTitle:@"行业大类 行业细分 mcc" forState:UIControlStateNormal];
         bussinessKindBtn.backgroundColor = [UIColor clearColor];
@@ -187,20 +249,20 @@ typedef NS_ENUM(int, PickerViewTag){
         bussinessKindBtn.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
         [cell.contentView addSubview:bussinessKindBtn];
 
-    }else if (row == 2){
+    }else if (section == 2){
         //账户名称
-        accountNameTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, 320, 40) Placeholder:@"请输入账户名称" Font:[UIFont systemFontOfSize:20.0]];
+        accountNameTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入账户名称" Font:[UIFont systemFontOfSize:20.0]];
         accountNameTextField.borderStyle = UITextBorderStyleNone;
         accountNameTextField.textAlignment = NSTextAlignmentLeft;
         [cell.contentView addSubview:accountNameTextField];
-    }else if (row == 3){
+    }else if (section == 3){
         //结算卡号
-        cardNumberTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, 320, 40) Placeholder:@"请输入结算卡号" Font:[UIFont systemFontOfSize:20.0]];
+        cardNumberTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入结算卡号" Font:[UIFont systemFontOfSize:20.0]];
         cardNumberTextField.borderStyle = UITextBorderStyleNone;
         cardNumberTextField.textAlignment = NSTextAlignmentLeft;
         [cell.contentView addSubview:cardNumberTextField];
-    }else if (row == 4){
-        uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 320, 40)];
+    }else if (section == 4){
+        uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, MainWidth, 40)];
         [uploadBtn addTarget:self action:@selector(selectBtn) forControlEvents:UIControlEventTouchUpInside];
         [uploadBtn setTitle:@"XX省 XX市 XX区" forState:UIControlStateNormal];
         uploadBtn.backgroundColor = [UIColor clearColor];
@@ -209,135 +271,62 @@ typedef NS_ENUM(int, PickerViewTag){
         uploadBtn.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
         [cell.contentView addSubview:uploadBtn];
         
-    }else if (row == 5){
+    }else if (section == 5){
         //详细地址
-        addressTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, 320, 40) Placeholder:@"请输入详细地址" Font:[UIFont systemFontOfSize:20.0]];
+        addressTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入详细地址" Font:[UIFont systemFontOfSize:20.0]];
         addressTextField.borderStyle = UITextBorderStyleNone;
         addressTextField.textAlignment = NSTextAlignmentLeft;
         
         [cell.contentView addSubview:addressTextField];
-    }else if (row == 6){
+    }else if (section == 6){
         //商户邀请码
-        inviteCodeTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, 320, 40) Placeholder:@"请输入商户邀请码(选填)" Font:[UIFont systemFontOfSize:20.0]];
+        inviteCodeTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入商户邀请码(选填)" Font:[UIFont systemFontOfSize:20.0]];
         inviteCodeTextField.borderStyle = UITextBorderStyleNone;
         inviteCodeTextField.textAlignment = NSTextAlignmentLeft;
         [cell.contentView addSubview:inviteCodeTextField];
     }
-    else if (row == 7){
+    else if (section == 7){
         //商户邀请码
-        UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 320, 40)];
-        [moreBtn addTarget:self action:@selector(selectBtn) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 4, MainWidth, 40)];
+        [moreBtn addTarget:self action:@selector(addNetPiontInfo) forControlEvents:UIControlEventTouchUpInside];
         [moreBtn setTitle:@"添加网点" forState:UIControlStateNormal];
-//        uploadBtn.backgroundColor = [UIColor clearColor];
-//        [uploadBtn setTitleColor:[UIColor light_Gray_Color]forState:UIControlStateNormal];
-//        uploadBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;
-//        uploadBtn.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);
+        moreBtn.backgroundColor = [UIColor clearColor];
+        [moreBtn setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
         [cell.contentView addSubview:moreBtn];
     }
 }
 
+//省市区选择器
 -(void)selectBtn{
-    
-//    [[infoTableView TPKeyboardAvoiding_findFirstResponderBeneathView:infoTableView] resignFirstResponder];
-    
-//    [self.locatePicker cancelPicker];
-//    self.locatePicker.delegate = nil;
-//    self.locatePicker = nil;
-//    
-//    self.locatePicker = [[HZAreaPickerView alloc] initWithStyle:HZAreaPickerWithStateAndCityAndDistrict delegate:self];
-//    [self.locatePicker showInView:self.view];
-//    LocationPickerVC *locationPickerVC = [[LocationPickerVC alloc] initWithNibName:@"LocationPickerVC" bundle:nil];
-    
     LocationPickerViewController *locationPickerVC = [[LocationPickerViewController alloc] init];
     locationPickerVC.block = ^(NSString *strProvice,NSString *strCity,NSString *strArea){
         [uploadBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
     };
-    
-    [self.navigationController pushViewController:locationPickerVC animated:NO];
-    
+    [self presentViewController:locationPickerVC animated:NO completion:nil];
 }
 
+//mcc种类选择器
 -(void)selectBusinessKindBtn{
     
 }
 
-#pragma mark - HZAreaPicker delegate
--(void)pickerDidChaneStatus:(HZAreaPickerView *)picker
-{
-    if (picker.pickerStyle == HZAreaPickerWithStateAndCityAndDistrict) {
-        [uploadBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", picker.locate.state, picker.locate.city, picker.locate.district] forState:UIControlStateNormal];
-    }
+//网点信息编辑器
+-(void)addNetPiontInfo{
+    SHNewNetPointViewController *vc = [[SHNewNetPointViewController alloc] init];
+    vc.block = ^(NSString *strAddress){
+        if (![strAddress isEmpty]) {
+            [addressList addObject:strAddress];
+           
+            //返回信息添加到地址列表中
+            BusinessInfoCellGroup *cells= group[group.count - 1];
+            [cells.groups addObject:strAddress];
+            
+             [self.tableView reloadData];
+            //[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        }
+    };
+    [self presentViewController:vc animated:NO completion:nil];
 }
 
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [super touchesBegan:touches withEvent:event];
-//    [self.locatePicker cancelPicker];
-//    self.locatePicker.delegate = nil;
-//    self.locatePicker = nil;
-//}
-
-#pragma mark -- UITextFieldDelegate 代理方法
-//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-//    //[textField resignFirstResponder];
-//    [self.locatePicker resignFirstResponder];
-//    
-//    return YES;
-//}
-
-#pragma mark -- dropDownListDelegate
--(void) chooseAtSection:(NSInteger)section index:(NSInteger)index
-{
-    if (section == 0) {
-        NSString *  sub = [[chooseArray objectAtIndex:section] objectAtIndex:index];
-    }else{
-        NSString * sub = [[chooseArray objectAtIndex:section] objectAtIndex:index];
-    }
-}
-
-#pragma mark -- dropdownList DataSource
--(NSInteger)numberOfSections
-{
-    return [chooseArray count];
-}
-
--(NSInteger)numberOfRowsInSection:(NSInteger)section
-{
-    NSArray *arry =chooseArray[section];
-    return [arry count];
-}
-
--(NSString *)titleInSection:(NSInteger)section index:(NSInteger)index
-{
-    return chooseArray[section][index];
-}
-
--(NSInteger)defaultShowSection:(NSInteger)section
-{
-    return 0;
-}
-
-
-#pragma mark -- UIAlertViewDelegate
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    if (buttonIndex == 1) {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

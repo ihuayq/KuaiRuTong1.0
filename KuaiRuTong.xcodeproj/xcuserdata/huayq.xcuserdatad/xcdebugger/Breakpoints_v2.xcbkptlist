@@ -95,39 +95,86 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "-cancelBtn:"
+            landmarkName = "-cancelPicker"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__32-[HZAreaPickerView cancelPicker]_block_invoke"
+                  moduleName = "KuaiRuTong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
+                  timestampString = "469534860.406227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "308">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_73"
+                  moduleName = "KuaiRuTong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
+                  timestampString = "469534860.406472"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_74"
+                  moduleName = "KuaiRuTong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
+                  timestampString = "469534860.406669"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Src/AddUser/SHNewNetPointViewController.m"
+            timestampString = "469533058.654011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-saveNetPointInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/AddUser/SHInfoViewController.m"
-            timestampString = "469451145.021649"
+            timestampString = "469534859.307355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "-textFieldShouldReturn:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KuaiRuTong/Src/AddUser/SHInfoViewController.m"
-            timestampString = "469451154.781834"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-touchesBegan:withEvent:"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "-addNetPiontInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

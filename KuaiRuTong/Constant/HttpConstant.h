@@ -48,6 +48,10 @@
 #define API_Verify_Stock           (TEST_COMMONT_URL"/self/jsp/mobileCheckTermNum.action")
 
 
+#define API_RequestAddressAndMccInfo      (TEST_COMMONT_URL"/self/jsp/mobileToMercAppFindAll.action")
+
+
+
 #pragma mark -
 #pragma mark HTTP服务器域名
 

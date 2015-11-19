@@ -10,7 +10,10 @@
 #import "SNGraphics.h"
 #import "AppConstant.h"
 #define leftBtnImage        [UIImage streImageNamed:@"button_white_normal.png"]
-#define rightBtnImage       [UIImage streImageNamed:@"button_orange_normal.png"]
+//#define rightBtnImage       [UIImage streImageNamed:@"button_orange_normal.png"]
+
+#define rightBtnImage       [UIImage streImageNamed:@"redbndj@2x.png"]
+
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
 
@@ -183,10 +186,10 @@ static UIWindow *gMaskWindow = nil;
         CGFloat boxWidth = 260;   //弹出框宽度
         CGFloat contentWidth = 220;
         CGRect titleBgFrame = CGRectMake(0, 0, boxWidth, 0);
-//        CGRect titleFrame = CGRectMake((boxWidth-contentWidth)/2, 0, contentWidth, 40);
+        CGRect titleFrame = CGRectMake((boxWidth-contentWidth)/2, 0, contentWidth, 40);
         
         //计算content
-//        UIFont *titleFont = [UIFont systemFontOfSize:20.0f];
+        UIFont *titleFont = [UIFont systemFontOfSize:20.0f];
         UIFont *contentFont = [UIFont systemFontOfSize:16.0f];
         CGSize messageSize = [message sizeWithFont:contentFont
                                  constrainedToSize:CGSizeMake(contentWidth, 1000)
@@ -267,24 +270,24 @@ static UIWindow *gMaskWindow = nil;
         self.contentView.backgroundColor = [UIColor whiteColor];
         
         //titleBg imageView
-//        UIImageView *titleBg = [[UIImageView alloc] init];
-//        titleBg.layer.shadowColor = [UIColor grayColor].CGColor;
-//        titleBg.layer.shadowOffset = CGSizeMake(0.7, 0.7);
-//        titleBg.layer.shadowOpacity = 0.8;
-//        titleBg.clipsToBounds = NO;
-//        titleBg.frame = titleBgFrame;
-//        titleBg.image = [UIImage imageNamed:@"system_nav_bg.png"];
-//        [self.contentView addSubview:titleBg];
-//        TT_RELEASE_SAFELY(titleBg);
+        UIImageView *titleBg = [[UIImageView alloc] init];
+        titleBg.layer.shadowColor = [UIColor grayColor].CGColor;
+        titleBg.layer.shadowOffset = CGSizeMake(0.7, 0.7);
+        titleBg.layer.shadowOpacity = 0.8;
+        titleBg.clipsToBounds = NO;
+        titleBg.frame = titleBgFrame;
+        titleBg.image = [UIImage imageNamed:@"system_nav_bg.png"];
+        [self.contentView addSubview:titleBg];
+        TT_RELEASE_SAFELY(titleBg);
         
         //titleLabel
-//        self.titleLabel.text = title;
-//        self.titleLabel.frame = titleFrame;
-//        self.titleLabel.textColor = [UIColor darkTextColor];
-//        self.titleLabel.shadowOffset = CGSizeMake(1, 1);
-//        self.titleLabel.shadowColor = [UIColor navTintColor];
-//        self.titleLabel.font = titleFont;
-//        [self.contentView addSubview:self.titleLabel];
+        self.titleLabel.text = title;
+        self.titleLabel.frame = titleFrame;
+        self.titleLabel.textColor = [UIColor darkTextColor];
+        self.titleLabel.shadowOffset = CGSizeMake(1, 1);
+        self.titleLabel.shadowColor = [UIColor navTintColor];
+        self.titleLabel.font = titleFont;
+        [self.contentView addSubview:self.titleLabel];
 
         //message
         if (isNeedUseTextView) {

@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^enter)(NSString * enteredString) ;
+
 @interface CodeTableViewCell : UITableViewCell{
-    UITextField *addressTextField;
+    UITextField *textField;
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @property(nonatomic,copy) NSString *code;
+@property(nonatomic,strong) enter onTextEntered;
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+
 
 @end

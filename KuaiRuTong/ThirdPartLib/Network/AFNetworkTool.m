@@ -79,9 +79,11 @@
     // 设置请求格式
     //manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    NSString *jsonStr=[parameters JSONString];
-    NSDictionary *jsonPostData = @{@"data":jsonStr};
-    
+    NSDictionary *jsonPostData = @{};
+    if ( parameters != nil) {
+        NSString *jsonStr=[parameters JSONString];
+        jsonPostData = @{@"data":jsonStr};
+    }
     // 设置返回格式
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     

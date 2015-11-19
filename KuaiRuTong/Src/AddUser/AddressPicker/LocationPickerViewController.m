@@ -87,6 +87,11 @@
     
 }
 
+-(void)previousToViewController
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 #pragma mark - get data
 - (void)getPickerData {
     

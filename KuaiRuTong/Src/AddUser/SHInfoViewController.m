@@ -32,19 +32,20 @@
 //    Shi,
 //};
 
-@interface SHInfoViewController ()<HZAreaPickerDelegate,DropDownChooseDelegate,DropDownChooseDataSource>{
-    //TPKeyboardAvoidingTableView *tableView;
-    //UITableView *infoTableView;
-    FMLoadMoreFooterView *footerView;
-                   
-    UITableView *webTableView;
-    
+@interface SHInfoViewController () <CityAndMccInfoDelegate>{
     UITextField *shopNameTextField;
+    
     UITextField *bussinessKindTextField;
+    NSString *bussinessKindText;
     UITextField *accountNameTextField;
     UITextField *cardNumberTextField;
     
     UITextField *cityLocationInfoTextField;
+    NSString *strSelectProvice;
+    NSString *strSelectCity;
+    NSString *strSelectArea;
+    NSString *cityLocationInfoText;
+    
     UITextField *addressTextField;
     UITextField *inviteCodeTextField;
     
@@ -58,6 +59,7 @@
     //分组信息
     NSMutableArray *group;
     NSMutableArray *addressList;
+    NSMutableArray *codeList;
     
     
     UIButton * deletebtn;
@@ -65,7 +67,11 @@
 }
     
 @property (strong, nonatomic) NSString *areaValue,*cityValue;
-@property (strong, nonatomic) HZAreaPickerView *locatePicker;
+
+@property (strong, nonatomic) TPKeyboardAvoidingTableView *tableView;
+@property (nonatomic,strong) UIButton *addWDButton;
+//已经添加的网点数据的数量
+@property(nonatomic,assign) int nNetAddressCount;
     
 
 @end
@@ -79,14 +85,12 @@
     self.navigation.rightTitle = @"保存";
     self.navigation.title = @"新增商户";
  
-    
-    
     [self initGroup];
     [self loadBasicView];
 }
 
 -(void)loadBasicView{
-    self.tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT -  240)
+    self.tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT - 180)
                                                                   style:UITableViewStyleGrouped];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     self.tableView.scrollEnabled = YES;
@@ -107,11 +111,33 @@
     _addWDButton.layer.cornerRadius = 5.0;
     self.tableView.tableFooterView = _addWDButton;
     
+    
+    bussinessKindText = @"";
+    
     //footerView = [[FMLoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.size.width, 70)];
     //self.tableView.tableFooterView = footerView;
 //   [self.tableView setEditing:YES];
+    [self displayOverFlowActivityView];
+    [self.service beginRequest];
 
 }
+
+- (CityAndMccInfoService *)service
+{
+    if (!_service) {
+        _service = [[CityAndMccInfoService alloc] init];
+        _service.delegate = self;
+    }
+    return _service;
+}
+
+-(void)getCityAndMccInfoServiceResult:(CityAndMccInfoService *)service
+                               Result:(BOOL)isSuccess_
+                             errorMsg:(NSString *)errorMsg
+{
+    
+}
+
 
 - (void) initGroup {
     addressList = [NSMutableArray arrayWithArray:@[]];
@@ -146,16 +172,13 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.showsReorderControl =YES;
+        [self loadUIForCell:cell AtSection:indexPath.section];
     }
     
     //添加信息
     if (indexPath.section == group.count - 1) {
         cell.textLabel.text = addressList[indexPath.row];
     }
-    else{
-        [self loadUIForCell:cell AtSection:indexPath.section];
-    }
-
     
     return cell;
 }
@@ -217,7 +240,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if (addressList.count == 1) {
-            [self displayOverFlowActivityView:@"无法删除" maxShowTime:(CGFloat)0.5];
+            [self presentCustomDlg:@"无法删除"];
             return;
         }
         
@@ -283,7 +306,7 @@
         
     }else if (section == 5){
         //详细地址
-        addressTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入详细地址" Font:[UIFont systemFontOfSize:20.0]];
+        addressTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth,40) Placeholder:@"请输入详细地址" Font:[UIFont systemFontOfSize:20.0]];
         addressTextField.borderStyle = UITextBorderStyleNone;
         addressTextField.textAlignment = NSTextAlignmentLeft;
         
@@ -310,6 +333,16 @@
 -(void)selectBtn{
     LocationPickerViewController *locationPickerVC = [[LocationPickerViewController alloc] init];
     locationPickerVC.block = ^(NSString *strProvice,NSString *strCity,NSString *strArea){
+        //城市信息选择器
+        strSelectProvice = strProvice;
+        strSelectCity = strCity;
+        strSelectArea = strArea;
+//        if (strProvice.isEmpty || strCity.isEmpty || strArea.isEmpty) {
+//            cityLocationInfoText = @"";
+//        }else{
+//            cityLocationInfoText = [NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea];
+//        }
+        
         [uploadBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
     };
     [self presentViewController:locationPickerVC animated:NO completion:nil];
@@ -323,18 +356,132 @@
 //网点信息编辑器
 -(void)addNetPiontInfo{
     if (addressList.count == 3) {
-        //[self presentCustomDlg:@"最多添加三个"];
+        [self presentCustomDlg:@"最多添加三个"];
         return;
     }
     
     SHNewNetPointViewController *vc = [[SHNewNetPointViewController alloc] init];
-    vc.block = ^(NSString *strAddress){
+    vc.block = ^(NSString *strAddress,NSString *strPosCodeInfo){
         if (![strAddress isEmpty]) {
             [addressList addObject:strAddress];
+            [codeList addObject:strPosCodeInfo];
             [self.tableView reloadData];
         }
     };
     [self presentViewController:vc animated:NO completion:nil];
+}
+
+
+-(void)previousToViewController
+{
+    //[self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)rightButtonClickEvent
+{
+    //商户名
+    if ([shopNameTextField.text isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"商户名称为空"];
+        return;
+    }
+    
+//    //行业种类
+//    if ([bussinessKindText isEmptyOrWhitespace]) {
+//        [self presentCustomDlg:@"请选择行业种类为空"];
+//        return;
+//    }
+    
+    //账号名称
+    if ([accountNameTextField.text isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"账号名称为空"];
+        return;
+    }
+    
+    //结算卡号
+    if ([cardNumberTextField.text isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"结算卡号为空"];
+        return;
+    }
+    
+    //城市位置
+    if ([cityLocationInfoText isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"未选择省市信息"];
+        return;
+    }
+    //详细地址
+    if ([addressTextField.text isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"地址为空"];
+        return;
+    }
+    
+    //邀请码
+    if ([inviteCodeTextField.text isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"邀请码为空"];
+        return;
+    }
+    
+    //网点数据
+    if ( addressList.count == 0) {
+        [self presentCustomDlg:@"请添加网点地址"];
+        return;
+    }
+//    {
+//        "shop_name": "",  新增商户名称
+//        "pos_code": "",   网点机具序列号
+//        "branch_add": "", 网点地址
+//        "industry": "",   行业
+//        "industry_subclass": "", 行业细类
+//        "mcc": "",        mcc
+//        "account_name": "", 账户名
+//        "bank_card_num": "", 结算卡号
+//        "pub_pri": "",       对公 1 对私 0
+//        "invitation_code": "", 商户邀请码
+//        "bank_province":"",  省
+//        "bank_city":"",      市
+//        "bank_add": "",	结算卡地址
+//        "phone_num": "",	手机号
+//        "phone_verify": "", 手机号验证
+//        "network_name_verify": "" 网点名称验证接口
+//        "zip":""               照片数据zip包
+//    }
+
+    NSMutableDictionary *infoDic = [[NSMutableDictionary alloc] init];
+    [infoDic setObject:shopNameTextField.text forKey:@"shop_name"];
+
+    //mcc
+    [infoDic setObject:@"批发类" forKey:@"industry"];
+    [infoDic setObject:@"批发类" forKey:@"industry_subclass"];
+    [infoDic setObject:@"mcc" forKey:@"mcc"];
+    
+    [infoDic setObject:accountNameTextField.text forKey:@"account_name"];
+
+    [infoDic setObject:@"1" forKey:@"pub_pri"];
+    [infoDic setObject:inviteCodeTextField.text forKey:@"invitation_code"];
+    //银行卡信息
+    [infoDic setObject:cardNumberTextField.text forKey:@"bank_card_num"];
+    [infoDic setObject:strSelectProvice forKey:@"bank_province"];
+    [infoDic setObject:strSelectCity forKey:@"bank_city"];
+    [infoDic setObject:addressTextField.text forKey:@"bank_add"];
+    
+    //手机号
+    [infoDic setObject:@"" forKey:@"phone_num"];
+    [infoDic setObject:@"" forKey:@"phone_verify"];
+    
+    //网点信息
+    NSString *allCodeString = [codeList componentsJoinedByString:@";"];//分隔符
+    NSString *allAddressString = [addressList componentsJoinedByString:@";"];
+    [infoDic setObject:allCodeString forKey:@"pos_code"];
+    [infoDic setObject:allAddressString  forKey:@"branch_add"];
+    
+    [infoDic setObject:@"" forKey:@"network_name_verify"];
+    
+    if (self.block) {
+        self.block(infoDic);
+    }
+    
+    //[self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

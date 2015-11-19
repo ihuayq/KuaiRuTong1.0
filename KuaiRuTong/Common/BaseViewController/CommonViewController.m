@@ -57,7 +57,7 @@
     _navigation.backgroundColor = UISTYLECOLOR;
     [self.view addSubview:_navigation];
     
-     NSLog(@"the title navigation is:%@",self.navigation);
+    // NSLog(@"the title navigation is:%@",self.navigation);
 
 	// Do any additional setup after loading the view.
     

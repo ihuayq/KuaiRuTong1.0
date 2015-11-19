@@ -34,7 +34,8 @@
 //    customNavBar.Delegate = self;
 //    [self.view addSubview:customNavBar];
 //    //scrollView
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20 + 60 * HEIGHT_SCALE, 320 * WIDTH_SCALE, HEIGHT - 60 * HEIGHT_SCALE - 20)];
+//    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20 + 60 * HEIGHT_SCALE, 320 * WIDTH_SCALE, HEIGHT - 60 * HEIGHT_SCALE - 20)];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight)];
     scrollView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:scrollView];
 //    //添加HUD

@@ -25,6 +25,7 @@ typedef NS_ENUM(int, EditState){
     
     
     UIButton *addressBtn;
+    NSString *strCityInfo;
     UITextField *addressTextField;
     
     
@@ -41,7 +42,7 @@ typedef NS_ENUM(int, EditState){
     [super viewDidLoad];
     
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
-    self.navigation.rightTitle = @"保存";
+    //self.navigation.rightTitle = @"保存";
     self.navigation.title = @"新增网点";
     
     self.tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT)
@@ -74,13 +75,43 @@ typedef NS_ENUM(int, EditState){
 }
 
 -(void)saveNetPointInfo{
-    [self dismissViewControllerAnimated:NO completion:nil];
+    //详细地址信息
+    if ([strCityInfo isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"请选择城市信息"];
+        return;
+    }
     
+    //主要城市区位置信息
+    if ([addressTextField.text isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"请输入详细地址信息"];
+        return;
+    }
+    
+    if ([codeList[codeList.count - 1] isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"请输入机器码"];
+        return;
+    }
+    
+    //机身序列号查找
+//    for (NSIndexPath* indexPath in [self.tableView indexPathsForVisibleRows])
+//    {
+//        if (indexPath.section != 0) {
+//            CodeTableViewCell * cell = (CodeTableViewCell *)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+//        }
+//    }
+    NSString *codeString = [codeList componentsJoinedByString:@","];//分隔符
+    DLog(@"THE POS INFO IS %@",codeString);
+    
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
     //保存机器信息
     if (self.block) {
-        self.block(@"huayq");
+        
+        DLog(@"THE NETWORK INFO IS %@",[NSString stringWithFormat:@"%@,%@;%@",strCityInfo,addressTextField.text,codeString]);
+        self.block([NSString stringWithFormat:@"%@,%@",strCityInfo,addressTextField.text],codeString);
     }
    
+    
 }
 
 
@@ -137,6 +168,13 @@ typedef NS_ENUM(int, EditState){
             cell = [[CodeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             cell.showsReorderControl =YES;
         }
+        //弱类型才可以再块中进行改变
+        __weak NSMutableArray *dataWeak = codeList;
+        //具体声明块方法，将text修改后的值，传递回Data中
+        cell.onTextEntered = ^(NSString * enteredString){
+            [dataWeak setObject:enteredString atIndexedSubscript:indexPath.row];
+        };
+        
         return cell;
         
 //        if (indexPath.row == 0){
@@ -157,6 +195,13 @@ typedef NS_ENUM(int, EditState){
 -(void)selectBtn{
     LocationPickerViewController *locationPickerVC = [[LocationPickerViewController alloc] init];
     locationPickerVC.block = ^(NSString *strProvice,NSString *strCity,NSString *strArea){
+        //城市信息选择器
+        if (strProvice.isEmpty || strCity.isEmpty || strArea.isEmpty) {
+            strCityInfo = @"";
+        }else{
+            strCityInfo = [NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea];
+        }
+        
         [addressBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
     };
     [self presentViewController:locationPickerVC animated:NO completion:nil];
@@ -233,13 +278,6 @@ typedef NS_ENUM(int, EditState){
     UIActionSheet *sheetImage = [[UIActionSheet alloc]initWithTitle:@"请选择编辑模式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"添加",@"减少", nil];
     [sheetImage showInView:[UIApplication sharedApplication].keyWindow];
 }
-
-////继续添加行
-//- (void)noteAdd
-//{
-//    editState = InsertState;
-//    [self.tableView setEditing:!self.tableView.editing animated:YES];
-//}
 
 //插入删除掉cell方法
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

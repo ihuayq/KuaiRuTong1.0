@@ -27,6 +27,7 @@ static NSArray *titlesArray = nil;
     
     UIImage *photoImages;
     
+    NSMutableDictionary *businessTextInfo;       //商户详细文字信息
 }
 
 @end
@@ -171,6 +172,10 @@ static NSArray *titlesArray = nil;
         
         if (indexPath.row == 0 ) {
             SHInfoViewController *vc = [[SHInfoViewController alloc] init];
+            
+            vc.block = ^(NSMutableDictionary *BussineDic){
+                businessTextInfo = BussineDic;
+            };
             [self.navigationController pushViewController:vc animated:YES];
         }
         else{
@@ -218,7 +223,7 @@ static NSArray *titlesArray = nil;
     if (bo) {
         //图片压缩
         FileManager *fileManager = [[FileManager alloc] init];
-        NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.0001);
+        NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.5);
         NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
         [fileManager writeDataForSHTemp:imageData andName:nameString];
         
@@ -230,9 +235,7 @@ static NSArray *titlesArray = nil;
     }
     
     [newTableView reloadData];
-    
 }
-
 
 //#pragma mark -- CustomNavBarDelegate
 - (void)dealWithBackButtonClickedMethod{

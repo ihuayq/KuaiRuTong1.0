@@ -19,6 +19,14 @@
 		8859CA871BF9BB7D00827C40 /* 相册@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA831BF9BB7D00827C40 /* 相册@2x.png */; };
 		8859CA881BF9BB7D00827C40 /* 相机@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA841BF9BB7D00827C40 /* 相机@2x.png */; };
 		8859CA8A1BF9C1D400827C40 /* addInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA891BF9C1D400827C40 /* addInfo.png */; };
+		88724A561BFDB7F70011DB53 /* BusinessInfoUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88724A551BFDB7F70011DB53 /* BusinessInfoUpdateService.m */; settings = {ASSET_TAGS = (); }; };
+		88724A651BFDC0AF0011DB53 /* ChangeLogUnzip in Resources */ = {isa = PBXBuildFile; fileRef = 88724A591BFDC0AF0011DB53 /* ChangeLogUnzip */; settings = {ASSET_TAGS = (); }; };
+		88724A661BFDC0AF0011DB53 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A5B1BFDC0AF0011DB53 /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		88724A671BFDC0AF0011DB53 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A5D1BFDC0AF0011DB53 /* mztools.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		88724A681BFDC0AF0011DB53 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A5F1BFDC0AF0011DB53 /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		88724A691BFDC0AF0011DB53 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A611BFDC0AF0011DB53 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		88724A6A1BFDC0AF0011DB53 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88724A641BFDC0AF0011DB53 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		88724A6D1BFDC96D0011DB53 /* CityAndMccInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88724A6C1BFDC96D0011DB53 /* CityAndMccInfoService.m */; settings = {ASSET_TAGS = (); }; };
 		887AD93E1BF577ED00648D93 /* KTTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AD93D1BF577ED00648D93 /* KTTabBarViewController.m */; };
 		887AD9461BF5793900648D93 /* NavigationInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AD9411BF5793900648D93 /* NavigationInteractiveTransition.m */; };
 		887AD9471BF5793900648D93 /* NavigationWithInteract.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AD9431BF5793900648D93 /* NavigationWithInteract.m */; };
@@ -276,6 +284,22 @@
 		8859CA831BF9BB7D00827C40 /* 相册@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册@2x.png"; sourceTree = "<group>"; };
 		8859CA841BF9BB7D00827C40 /* 相机@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相机@2x.png"; sourceTree = "<group>"; };
 		8859CA891BF9C1D400827C40 /* addInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addInfo.png; sourceTree = "<group>"; };
+		88724A541BFDB7F70011DB53 /* BusinessInfoUpdateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessInfoUpdateService.h; sourceTree = "<group>"; };
+		88724A551BFDB7F70011DB53 /* BusinessInfoUpdateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessInfoUpdateService.m; sourceTree = "<group>"; };
+		88724A591BFDC0AF0011DB53 /* ChangeLogUnzip */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLogUnzip; sourceTree = "<group>"; };
+		88724A5A1BFDC0AF0011DB53 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		88724A5B1BFDC0AF0011DB53 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		88724A5C1BFDC0AF0011DB53 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		88724A5D1BFDC0AF0011DB53 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		88724A5E1BFDC0AF0011DB53 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		88724A5F1BFDC0AF0011DB53 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		88724A601BFDC0AF0011DB53 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		88724A611BFDC0AF0011DB53 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		88724A621BFDC0AF0011DB53 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		88724A631BFDC0AF0011DB53 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		88724A641BFDC0AF0011DB53 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		88724A6B1BFDC96D0011DB53 /* CityAndMccInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityAndMccInfoService.h; sourceTree = "<group>"; };
+		88724A6C1BFDC96D0011DB53 /* CityAndMccInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityAndMccInfoService.m; sourceTree = "<group>"; };
 		887AD93C1BF577ED00648D93 /* KTTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTabBarViewController.h; sourceTree = "<group>"; };
 		887AD93D1BF577ED00648D93 /* KTTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTabBarViewController.m; sourceTree = "<group>"; };
 		887AD9401BF5793900648D93 /* NavigationInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationInteractiveTransition.h; sourceTree = "<group>"; };
@@ -748,6 +772,33 @@
 				7A978F041BFB5E5A007B3CE0 /* UIView+RGSize.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		88724A571BFDC0AF0011DB53 /* zip */ = {
+			isa = PBXGroup;
+			children = (
+				88724A581BFDC0AF0011DB53 /* minizip */,
+				88724A631BFDC0AF0011DB53 /* ZipArchive.h */,
+				88724A641BFDC0AF0011DB53 /* ZipArchive.mm */,
+			);
+			path = zip;
+			sourceTree = "<group>";
+		};
+		88724A581BFDC0AF0011DB53 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				88724A591BFDC0AF0011DB53 /* ChangeLogUnzip */,
+				88724A5A1BFDC0AF0011DB53 /* crypt.h */,
+				88724A5B1BFDC0AF0011DB53 /* ioapi.c */,
+				88724A5C1BFDC0AF0011DB53 /* ioapi.h */,
+				88724A5D1BFDC0AF0011DB53 /* mztools.c */,
+				88724A5E1BFDC0AF0011DB53 /* mztools.h */,
+				88724A5F1BFDC0AF0011DB53 /* unzip.c */,
+				88724A601BFDC0AF0011DB53 /* unzip.h */,
+				88724A611BFDC0AF0011DB53 /* zip.c */,
+				88724A621BFDC0AF0011DB53 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		887AD93F1BF5793900648D93 /* NavTransiton */ = {
@@ -1427,6 +1478,10 @@
 			children = (
 				88FBA9D91BFC1D9F00518C6E /* BusinessInfoCellPart.h */,
 				88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */,
+				88724A541BFDB7F70011DB53 /* BusinessInfoUpdateService.h */,
+				88724A551BFDB7F70011DB53 /* BusinessInfoUpdateService.m */,
+				88724A6B1BFDC96D0011DB53 /* CityAndMccInfoService.h */,
+				88724A6C1BFDC96D0011DB53 /* CityAndMccInfoService.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1534,6 +1589,7 @@
 		88F204BE1BF18F7200674567 /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				88724A571BFDC0AF0011DB53 /* zip */,
 				88FBA9C91BFC08DC00518C6E /* DAContextMenuTableViewController */,
 				88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */,
 				88A05E5C1BFAF676005CC7E8 /* DropDown */,
@@ -2030,6 +2086,7 @@
 				88F2049B1BF1822E00674567 /* LaunchScreen.storyboard in Resources */,
 				88F204981BF1822E00674567 /* Assets.xcassets in Resources */,
 				887AD96C1BF5875300648D93 /* 投资-normal@2x.png in Resources */,
+				88724A651BFDC0AF0011DB53 /* ChangeLogUnzip in Resources */,
 				887AD9671BF5875300648D93 /* redbn@2x.png in Resources */,
 				88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */,
 				88F2053B1BF18F7200674567 /* Icon-iOS7@2x.png in Resources */,
@@ -2127,6 +2184,7 @@
 				888E52061BF45DE400A6D917 /* ZZNavigationView.m in Sources */,
 				88F205551BF18F7200674567 /* UIProgressView+AFNetworking.m in Sources */,
 				88F205AC1BF1965B00674567 /* DDTTYLogger.m in Sources */,
+				88724A691BFDC0AF0011DB53 /* zip.c in Sources */,
 				88F205E01BF19C4B00674567 /* NSDictionary+SNFoundation.m in Sources */,
 				888E51AF1BF41EF600A6D917 /* UIView+Appear.m in Sources */,
 				88FBA9D01BFC08DC00518C6E /* DAContextMenuCell.m in Sources */,
@@ -2134,12 +2192,15 @@
 				88F205381BF18F7200674567 /* JSONKit.m in Sources */,
 				88F2055F1BF18F7200674567 /* SDWebImageDownloader.m in Sources */,
 				88F205D91BF19C4B00674567 /* IPAddress.c in Sources */,
+				88724A6D1BFDC96D0011DB53 /* CityAndMccInfoService.m in Sources */,
 				888E51AA1BF41EF600A6D917 /* NSString+MD5.m in Sources */,
 				88FBA9DB1BFC1D9F00518C6E /* BusinessInfoCellPart.m in Sources */,
+				88724A661BFDC0AF0011DB53 /* ioapi.c in Sources */,
 				889141931BF9681F007E1BBB /* PendSHViewController.m in Sources */,
 				88F205E61BF19C4B00674567 /* SystemInfo.m in Sources */,
 				887AD9511BF57F9000648D93 /* UserCenterViewController.m in Sources */,
 				888E52041BF45DE400A6D917 /* CommonViewController.m in Sources */,
+				88724A6A1BFDC0AF0011DB53 /* ZipArchive.mm in Sources */,
 				88F205B11BF1965B00674567 /* README.md in Sources */,
 				888E51B21BF41EF600A6D917 /* UIView+Label.m in Sources */,
 				88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */,
@@ -2213,6 +2274,7 @@
 				88F205DE1BF19C4B00674567 /* NSData+SNFoundation.m in Sources */,
 				88F205431BF18F7200674567 /* MJRefreshConst.m in Sources */,
 				8891418F1BF9681F007E1BBB /* KuCunDetailViewController.m in Sources */,
+				88724A671BFDC0AF0011DB53 /* mztools.c in Sources */,
 				88F205601BF18F7200674567 /* SDWebImageDownloaderOperation.m in Sources */,
 				88F205881BF1945500674567 /* DataService.m in Sources */,
 				889141AC1BF9681F007E1BBB /* SearchKCRequest.m in Sources */,
@@ -2225,8 +2287,10 @@
 				88F205461BF18F7200674567 /* AFHTTPRequestOperation.m in Sources */,
 				88F2055D1BF18F7200674567 /* SDWebImageCompat.m in Sources */,
 				88F205DD1BF19C4B00674567 /* NSData+GZIP.m in Sources */,
+				88724A561BFDB7F70011DB53 /* BusinessInfoUpdateService.m in Sources */,
 				88F2055B1BF18F7200674567 /* NSData+ImageContentType.m in Sources */,
 				887AD9461BF5793900648D93 /* NavigationInteractiveTransition.m in Sources */,
+				88724A681BFDC0AF0011DB53 /* unzip.c in Sources */,
 				88F205581BF18F7200674567 /* Reachability.m in Sources */,
 				88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */,
 				888E520C1BF4684A00A6D917 /* LoginViewController.m in Sources */,

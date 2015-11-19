@@ -8,17 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "SuperViewController.h"
+#import "CityAndMccInfoService.h"
 //#import "DAContexMenuViewController.h"
+
+
+typedef void (^AllBusinessInfo)(NSMutableDictionary *BussineDic);
+
 @class TPKeyboardAvoidingTableView;
 
 @interface SHInfoViewController :SuperViewController<UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     
 }
 
-@property (strong, nonatomic) TPKeyboardAvoidingTableView *tableView;
-@property (nonatomic,strong) UIButton *addWDButton;
-//已经添加的网点数据的数量
-@property(nonatomic,assign) int nNetAddressCount;
+@property(nonatomic,strong)  CityAndMccInfoService *service;
+@property(nonatomic,strong) NSMutableArray *BussineDic;
+
+@property (strong, nonatomic)  AllBusinessInfo block;
+
 
 @end
 

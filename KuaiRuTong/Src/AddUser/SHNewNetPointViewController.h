@@ -8,7 +8,7 @@
 //网点信息  填写
 #import <UIKit/UIKit.h>
 
-typedef void (^addressBlock)(NSString *strAddressInfo);
+typedef void (^addressBlock)(NSString *strAddressInfo,NSString *strPosCodeInfo);
 
 @class TPKeyboardAvoidingTableView;
 
@@ -18,5 +18,7 @@ typedef void (^addressBlock)(NSString *strAddressInfo);
 @property (strong, nonatomic) TPKeyboardAvoidingTableView *tableView;
 
 @property (strong, nonatomic)  addressBlock block;
+
+
 
 @end

@@ -11,12 +11,11 @@
 #import "SHInfoViewController.h"
 #import "NewSHCell.h"
 #import "FileManager.h"
-
-
+#import "BusinessInfoUpdateService.h"
 
 static NSArray *titlesArray = nil;
 
-@interface NewBusinessViewController ()<UIImagePickerControllerDelegate>{
+@interface NewBusinessViewController ()<UIImagePickerControllerDelegate,BusinessInfoUpdateServiceDelegate>{
     UITableView *newTableView;  //新建商户列表信息
     //NSArray *titlesArray;       //标题数组
     NSInteger currentPhotoTag;  //当前图片标识
@@ -88,6 +87,23 @@ static NSArray *titlesArray = nil;
     [saveBtn.layer setCornerRadius:uploadBtn.frame.size.height/2.0f];
     [self.view insertSubview:saveBtn aboveSubview:newTableView];
 
+}
+
+
+- (BusinessInfoUpdateService *)service
+{
+    if (!_service) {
+        _service = [[BusinessInfoUpdateService alloc] init];
+        _service.delegate = self;
+    }
+    return _service;
+}
+
+-(void)getCityAndMccInfoServiceResult:(BusinessInfoUpdateService *)service
+                               Result:(BOOL)isSuccess_
+                             errorMsg:(NSString *)errorMsg
+{
+    
 }
 
 

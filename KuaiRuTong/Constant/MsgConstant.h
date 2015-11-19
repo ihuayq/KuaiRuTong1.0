@@ -18,12 +18,16 @@ typedef enum CmdCode
 	CC_SpecialSubject           = 0x0004,//获取促销专栏列表
     
 	// 个人信息命令
-	CC_Login                    = 0x0101,//接口文档:3.2.1 用户登录 Action: SNiPhoneAppLogon
-	CC_Logout					= 0x0102,//接口文档:3.2.3 用户注销 Action: SNiPhoneAppLogoff
-    CC_Register                 = 0x0103,//接口文档:3.2.2 用户注册 Action: SNiPhoneAppUserRegister
-    CC_AccountValidate          = 0x0104,//接口文档:3.2.26 忘记B2C密码 Action:SNmobileForgetPassword
-    CC_ResetPassword            = 0x0105,//接口文档:3.2.27 重置B2C密码 Action:SNmobileResetPassword
-    CC_DisCountInfo             = 0x0106,//接口文档:3.11.1 优惠券体信息查询接口 Action:MySuningIndexAjaxView
+	CC_Login                    = 0x0101,
+	CC_Logout					= 0x0102,
+    CC_Register                 = 0x0103,
+    CC_AccountValidate          = 0x0104,
+    CC_ResetPassword            = 0x0105,
+    CC_DisCountInfo             = 0x0106,
+    
+    
+    CC_CITYANDMCC_QUERY         = 0x0107,
+    CC_BusinessUpload          = 0x0108,
     
 } E_CMDCODE;
 

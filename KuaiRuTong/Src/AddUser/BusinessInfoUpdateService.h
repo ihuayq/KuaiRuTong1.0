@@ -8,6 +8,23 @@
 
 #import "DataService.h"
 
-@interface BusinessInfoUpdateService : DataService
+
+@class BusinessInfoUpdateService;
+@protocol BusinessInfoUpdateServiceDelegate <NSObject>
+@optional
+
+-(void)getBusinessInfoUpdateServiceResult:(BusinessInfoUpdateService *)service
+                               Result:(BOOL)isSuccess_
+                             errorMsg:(NSString *)errorMsg;
+
+@end
+
+@interface BusinessInfoUpdateService : DataService{
+    HttpMessage *updateHttpMsg;
+}
+
+@property (nonatomic,weak) id<BusinessInfoUpdateServiceDelegate> delegate;
+
+-(void)beginUpload:(NSDictionary*)parameters;
 
 @end

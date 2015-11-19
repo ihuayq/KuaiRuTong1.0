@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
+@class BusinessInfoUpdateService;
 
 @interface NewBusinessViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
-@property (nonatomic, strong) NSString *pendingType;
+
+//@property (nonatomic, strong) NSString *pendingType;
+@property(nonatomic,strong)  BusinessInfoUpdateService *service;
 
 @end

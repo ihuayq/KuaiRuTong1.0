@@ -17,7 +17,7 @@
 
     NSString *dealWithURLString =  [API_RequestAddressAndMccInfo stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
 
-    infoHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:nil cmdCode:CC_Login];
+    infoHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:nil cmdCode:CC_CITYANDMCC_QUERY];
 
     [self.httpMsgCtrl sendHttpMsg:infoHttpMsg];
 }
@@ -32,7 +32,7 @@
 - (void)receiveDidFinished:(HttpMessage *)receiveMsg
 {
     //    [self removeOverFlowActivityView];
-    if (receiveMsg.cmdCode == CC_Login)
+    if (receiveMsg.cmdCode == CC_CITYANDMCC_QUERY)
     {
         NSDictionary *item = receiveMsg.jasonItems;
         //DLog(@"THE Login info:%@",item);

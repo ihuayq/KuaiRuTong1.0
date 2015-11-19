@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A3821001BFA222A00B0AE73 /* SHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */; };
+		7A504E8F1BFE0D3B0018AFAB /* MccPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A504E8E1BFE0D3B0018AFAB /* MccPickViewController.m */; };
 		7A978F091BFB5E5A007B3CE0 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A978F011BFB5E5A007B3CE0 /* Address.plist */; };
 		7A978F0A1BFB5E5A007B3CE0 /* UIView+RGSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F041BFB5E5A007B3CE0 /* UIView+RGSize.m */; };
 		7A978F0B1BFB5E5A007B3CE0 /* LocationPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F071BFB5E5A007B3CE0 /* LocationPickerVC.m */; };
@@ -19,14 +20,14 @@
 		8859CA871BF9BB7D00827C40 /* 相册@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA831BF9BB7D00827C40 /* 相册@2x.png */; };
 		8859CA881BF9BB7D00827C40 /* 相机@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA841BF9BB7D00827C40 /* 相机@2x.png */; };
 		8859CA8A1BF9C1D400827C40 /* addInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8859CA891BF9C1D400827C40 /* addInfo.png */; };
-		88724A561BFDB7F70011DB53 /* BusinessInfoUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88724A551BFDB7F70011DB53 /* BusinessInfoUpdateService.m */; settings = {ASSET_TAGS = (); }; };
-		88724A651BFDC0AF0011DB53 /* ChangeLogUnzip in Resources */ = {isa = PBXBuildFile; fileRef = 88724A591BFDC0AF0011DB53 /* ChangeLogUnzip */; settings = {ASSET_TAGS = (); }; };
+		88724A561BFDB7F70011DB53 /* BusinessInfoUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88724A551BFDB7F70011DB53 /* BusinessInfoUpdateService.m */; };
+		88724A651BFDC0AF0011DB53 /* ChangeLogUnzip in Resources */ = {isa = PBXBuildFile; fileRef = 88724A591BFDC0AF0011DB53 /* ChangeLogUnzip */; };
 		88724A661BFDC0AF0011DB53 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A5B1BFDC0AF0011DB53 /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88724A671BFDC0AF0011DB53 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A5D1BFDC0AF0011DB53 /* mztools.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88724A681BFDC0AF0011DB53 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A5F1BFDC0AF0011DB53 /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88724A691BFDC0AF0011DB53 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88724A611BFDC0AF0011DB53 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88724A6A1BFDC0AF0011DB53 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88724A641BFDC0AF0011DB53 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		88724A6D1BFDC96D0011DB53 /* CityAndMccInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88724A6C1BFDC96D0011DB53 /* CityAndMccInfoService.m */; settings = {ASSET_TAGS = (); }; };
+		88724A6D1BFDC96D0011DB53 /* CityAndMccInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88724A6C1BFDC96D0011DB53 /* CityAndMccInfoService.m */; };
 		887AD93E1BF577ED00648D93 /* KTTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AD93D1BF577ED00648D93 /* KTTabBarViewController.m */; };
 		887AD9461BF5793900648D93 /* NavigationInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AD9411BF5793900648D93 /* NavigationInteractiveTransition.m */; };
 		887AD9471BF5793900648D93 /* NavigationWithInteract.m in Sources */ = {isa = PBXBuildFile; fileRef = 887AD9431BF5793900648D93 /* NavigationWithInteract.m */; };
@@ -239,13 +240,13 @@
 		88F205F61BF1D0E100674567 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205F31BF1D0E100674567 /* Command.m */; };
 		88F205F71BF1D0E100674567 /* CommandManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205F51BF1D0E100674567 /* CommandManage.m */; };
 		88F205FA1BF1D1E400674567 /* DefineConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F205F91BF1D1E400674567 /* DefineConstant.m */; };
-		88FBA9D01BFC08DC00518C6E /* DAContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CB1BFC08DC00518C6E /* DAContextMenuCell.m */; settings = {ASSET_TAGS = (); }; };
-		88FBA9D11BFC08DC00518C6E /* DAContextMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CD1BFC08DC00518C6E /* DAContextMenuTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CF1BFC08DC00518C6E /* DAOverlayView.m */; settings = {ASSET_TAGS = (); }; };
-		88FBA9D81BFC0CC400518C6E /* DAContexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9D71BFC0CC400518C6E /* DAContexMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
-		88FBA9DB1BFC1D9F00518C6E /* BusinessInfoCellPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */; settings = {ASSET_TAGS = (); }; };
-		88FBA9DE1BFC27CD00518C6E /* SHNewNetPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */; settings = {ASSET_TAGS = (); }; };
-		88FBA9E11BFC50C900518C6E /* CodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9E01BFC50C900518C6E /* CodeTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		88FBA9D01BFC08DC00518C6E /* DAContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CB1BFC08DC00518C6E /* DAContextMenuCell.m */; };
+		88FBA9D11BFC08DC00518C6E /* DAContextMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CD1BFC08DC00518C6E /* DAContextMenuTableViewController.m */; };
+		88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9CF1BFC08DC00518C6E /* DAOverlayView.m */; };
+		88FBA9D81BFC0CC400518C6E /* DAContexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9D71BFC0CC400518C6E /* DAContexMenuViewController.m */; };
+		88FBA9DB1BFC1D9F00518C6E /* BusinessInfoCellPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */; };
+		88FBA9DE1BFC27CD00518C6E /* SHNewNetPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */; };
+		88FBA9E11BFC50C900518C6E /* CodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FBA9E01BFC50C900518C6E /* CodeTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +269,8 @@
 /* Begin PBXFileReference section */
 		7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInfoViewController.h; sourceTree = "<group>"; };
 		7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInfoViewController.m; sourceTree = "<group>"; };
+		7A504E8D1BFE0D3B0018AFAB /* MccPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MccPickViewController.h; sourceTree = "<group>"; };
+		7A504E8E1BFE0D3B0018AFAB /* MccPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MccPickViewController.m; sourceTree = "<group>"; };
 		7A978F011BFB5E5A007B3CE0 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		7A978F031BFB5E5A007B3CE0 /* UIView+RGSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RGSize.h"; sourceTree = "<group>"; };
 		7A978F041BFB5E5A007B3CE0 /* UIView+RGSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RGSize.m"; sourceTree = "<group>"; };
@@ -1469,6 +1472,8 @@
 				88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */,
 				887AD9521BF57F9900648D93 /* NewBusinessViewController.h */,
 				887AD9531BF57F9900648D93 /* NewBusinessViewController.m */,
+				7A504E8D1BFE0D3B0018AFAB /* MccPickViewController.h */,
+				7A504E8E1BFE0D3B0018AFAB /* MccPickViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -2284,6 +2289,7 @@
 				88F205DF1BF19C4B00674567 /* NSDate+SNFoundation.m in Sources */,
 				8891418B1BF9681F007E1BBB /* AddWebViewController.m in Sources */,
 				88F205401BF18F7200674567 /* MBProgressHUD.m in Sources */,
+				7A504E8F1BFE0D3B0018AFAB /* MccPickViewController.m in Sources */,
 				88F205461BF18F7200674567 /* AFHTTPRequestOperation.m in Sources */,
 				88F2055D1BF18F7200674567 /* SDWebImageCompat.m in Sources */,
 				88F205DD1BF19C4B00674567 /* NSData+GZIP.m in Sources */,

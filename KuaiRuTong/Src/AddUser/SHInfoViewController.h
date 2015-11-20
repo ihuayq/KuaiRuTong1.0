@@ -10,9 +10,10 @@
 #import "SuperViewController.h"
 #import "CityAndMccInfoService.h"
 //#import "DAContexMenuViewController.h"
-
+@class SHDataItem;
 
 typedef void (^AllBusinessInfo)(NSMutableDictionary *BussineDic);
+typedef void (^AllBusinessTextInfo)(SHDataItem *BussinessDataItem);
 
 @class TPKeyboardAvoidingTableView;
 
@@ -21,9 +22,11 @@ typedef void (^AllBusinessInfo)(NSMutableDictionary *BussineDic);
 }
 
 @property(nonatomic,strong)  CityAndMccInfoService *service;
-@property(nonatomic,strong) NSMutableArray *BussineDic;
+@property(nonatomic,strong) NSMutableArray *BussineDic; //商户种类数组
 
 @property (strong, nonatomic)  AllBusinessInfo block;
+
+@property (strong, nonatomic)  AllBusinessTextInfo Tblock;
 
 
 @end

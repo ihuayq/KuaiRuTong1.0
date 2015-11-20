@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MccPickViewController : UIViewController{
+
+typedef void (^MccBlock)(NSString *strCategory,NSString *strSubCategory,NSString *strMccCode);
+
+
+@interface MccPickViewController : CommonViewController{
     
 }
 
+@property (strong, nonatomic) NSDictionary *pickerDic;
 
+@property (nonatomic, copy) MccBlock block;
 
 
 @end

@@ -76,7 +76,7 @@
  */
 - (UIViewController *)newBusinessViewController{
     NewBusinessViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NewBusinessVC"];
-    viewController.pendingType = @"no";
+    //viewController.pendingType = @"no";
     viewController.tabBarItem.title =@"新建商户";
     viewController.tabBarItem.image = [UIImage imageNamed:@"workManager-icon-normal"];
     viewController.tabBarItem.selectedImage = [UIImage imageNamed:@"workManager-icon-select"];

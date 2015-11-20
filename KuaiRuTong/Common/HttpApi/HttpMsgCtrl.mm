@@ -112,7 +112,23 @@ static map_send g_mapSend;
             {
                 [sendMsg.delegate receiveDidFinished:sendMsg];
             }
-
+ 
+        } fail:^(NSError *error){
+            DError(@"请求失败");
+        }];
+    }
+    
+    else if (sendMsg.requestMethod == RequestMethodPostStream){
+        
+        [AFNetworkTool postUploadWithUrl:sendMsg.requestUrl  parameters:sendMsg.postDataDic data:sendMsg.postData success:^(id json){
+            if ([json isKindOfClass:[NSDictionary class]]) {
+                sendMsg.jasonItems = json;
+            }
+            
+            if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFinished:)])
+            {
+                [sendMsg.delegate receiveDidFinished:sendMsg];
+            }
             
         } fail:^(NSError *error){
             DError(@"请求失败");

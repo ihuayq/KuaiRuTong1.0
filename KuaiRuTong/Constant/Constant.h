@@ -10,6 +10,7 @@
 #import "HttpConstant.h"
 #import "MsgConstant.h"
 #import "DefineConstant.h"
+#import "PathConstant.h"
 
 
 //发布时需要修改的定义

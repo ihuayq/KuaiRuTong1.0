@@ -21,7 +21,8 @@
 #import "DAContextMenuCell.h"
 #import "BusinessInfoCellPart.h"
 #import "SHNewNetPointViewController.h"
-
+#import "MccPickViewController.h"
+#import "SHDataItem.h"
 
 //typedef NS_ENUM(int, PickerViewTag){
 //    SuoShuHangYe = 500,
@@ -36,7 +37,11 @@
     UITextField *shopNameTextField;
     
     UITextField *bussinessKindTextField;
+    NSString *strSelectCategory;
+    NSString *strSelectSubCategory;
+    NSString *strSelectMccCode;
     NSString *bussinessKindText;
+    
     UITextField *accountNameTextField;
     UITextField *cardNumberTextField;
     
@@ -135,12 +140,14 @@
                                Result:(BOOL)isSuccess_
                              errorMsg:(NSString *)errorMsg
 {
-    
+    [self removeOverFlowActivityView];
+
 }
 
 
 - (void) initGroup {
     addressList = [NSMutableArray arrayWithArray:@[]];
+    codeList = [NSMutableArray arrayWithArray:@[]];
     group=[[NSMutableArray alloc] init];
     arrayTitle = [NSMutableArray arrayWithArray:@[@"商户名称",@"种类",@"账户名称",@"结算卡号",@"城市",@"街道/门牌号",@"邀请码(选填)",@"添加网点"]];
 
@@ -350,7 +357,17 @@
 
 //mcc种类选择器
 -(void)selectBusinessKindBtn{
-    
+    MccPickViewController*locationPickerVC = [[MccPickViewController alloc] init];
+    locationPickerVC.pickerDic = self.service.pickerDic;
+    locationPickerVC.block = ^(NSString *strCategory,NSString *strSubCategory,NSString *strMccCode){
+        
+        strSelectCategory = strCategory;
+        strSelectSubCategory = strSubCategory;
+        strSelectMccCode = strMccCode;
+
+        [bussinessKindBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strCategory,strSubCategory,strMccCode] forState:UIControlStateNormal];
+    };
+    [self presentViewController:locationPickerVC animated:NO completion:nil];
 }
 
 //网点信息编辑器
@@ -446,13 +463,36 @@
 //        "zip":""               照片数据zip包
 //    }
 
+    
+    SHDataItem *item =  [[SHDataItem alloc] init];
+    item.shop_name = shopNameTextField.text;
+    item.industry = strSelectCategory;
+    item.industry_subclass = strSelectSubCategory;
+    item.mcc = strSelectMccCode;
+    item.account_name = accountNameTextField.text;
+    item.bank_card_num = cardNumberTextField.text;
+    item.pub_pri = @"1";
+    item.invitation_code = inviteCodeTextField.text;
+    item.bank_province = strSelectProvice;
+    item.bank_city = strSelectCity;
+    item.bank_add = addressTextField.text;
+    //网点信息
+    NSString *allCodeString = [codeList componentsJoinedByString:@";"];//分隔符
+    NSString *allAddressString = [addressList componentsJoinedByString:@";"];
+    item.pos_code = allCodeString;
+    item.branch_add = allAddressString;
+    item.network_name_verify = @"";
+    if (self.Tblock) {
+        self.Tblock(item);
+    }
+    
+    
     NSMutableDictionary *infoDic = [[NSMutableDictionary alloc] init];
     [infoDic setObject:shopNameTextField.text forKey:@"shop_name"];
-
     //mcc
-    [infoDic setObject:@"批发类" forKey:@"industry"];
-    [infoDic setObject:@"批发类" forKey:@"industry_subclass"];
-    [infoDic setObject:@"mcc" forKey:@"mcc"];
+    [infoDic setObject:strSelectCategory forKey:@"industry"];
+    [infoDic setObject:strSelectSubCategory forKey:@"industry_subclass"];
+    [infoDic setObject:strSelectMccCode forKey:@"mcc"];
     
     [infoDic setObject:accountNameTextField.text forKey:@"account_name"];
 
@@ -468,12 +508,8 @@
     [infoDic setObject:@"" forKey:@"phone_num"];
     [infoDic setObject:@"" forKey:@"phone_verify"];
     
-    //网点信息
-    NSString *allCodeString = [codeList componentsJoinedByString:@";"];//分隔符
-    NSString *allAddressString = [addressList componentsJoinedByString:@";"];
     [infoDic setObject:allCodeString forKey:@"pos_code"];
     [infoDic setObject:allAddressString  forKey:@"branch_add"];
-    
     [infoDic setObject:@"" forKey:@"network_name_verify"];
     
     if (self.block) {

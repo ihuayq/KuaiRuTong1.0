@@ -31,8 +31,7 @@
 
 - (void)receiveDidFinished:(HttpMessage *)receiveMsg
 {
-    //    [self removeOverFlowActivityView];
-    if (receiveMsg.cmdCode == CC_CITYANDMCC_QUERY)
+        if (receiveMsg.cmdCode == CC_CITYANDMCC_QUERY)
     {
         NSDictionary *item = receiveMsg.jasonItems;
         //DLog(@"THE Login info:%@",item);
@@ -41,12 +40,15 @@
         DLog(@"THE categoryItem info:%@",[categoryItem objectAtIndex:0]);
         
         NSDictionary *category= [categoryItem objectAtIndex:0];
+        self.pickerDic = category;
         
-        NSArray *categoryDetail= [category allKeys];
-        DLog(@"THE first key info:%@",[category allKeys]);
-//
-        NSArray *categoryCode = [category objectForKey:[[category allKeys] objectAtIndex:0]];
-        DLog(@"THE second key info:%@",categoryCode);
+//        NSArray *categoryDetail= [category allKeys];
+//        DLog(@"THE first key info:%@",[category allKeys]);
+////
+//        NSDictionary *categoryCode = [category objectForKey:[[category allKeys] objectAtIndex:0]];
+//        DLog(@"THE second key info:%@",categoryCode);
+//        
+//        NSArray *codeList= [categoryCode allKeys];
         
         
 //        -[CityAndMccInfoService receiveDidFinished:] #46 THE first key info:(
@@ -91,8 +93,8 @@
 //        [userDefaults setObject:item forKey:@"UserInfoData"];
 //        [userDefaults synchronize];
         
-        if (_delegate && [_delegate respondsToSelector:@selector(getLoginServiceResult:Result:errorMsg:)]) {
-            //[_delegate getLoginServiceResult:self Result:YES errorMsg:nil];
+        if (_delegate && [_delegate respondsToSelector:@selector(getCityAndMccInfoServiceResult:Result:errorMsg:)]) {
+            [_delegate getCityAndMccInfoServiceResult:self Result:YES errorMsg:nil];
         }
         
     }

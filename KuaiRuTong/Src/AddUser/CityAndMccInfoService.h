@@ -24,6 +24,8 @@
     HttpMessage *infoHttpMsg;
 }
 
+
+@property (nonatomic,strong) NSDictionary *pickerDic;
 @property (nonatomic,weak) id<CityAndMccInfoDelegate> delegate;
 
 -(void)beginRequest;

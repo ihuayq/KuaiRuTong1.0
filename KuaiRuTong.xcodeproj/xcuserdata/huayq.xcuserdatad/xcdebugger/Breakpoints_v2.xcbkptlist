@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Common/HttpApi/HttpMsgCtrl.mm"
-            timestampString = "469012345.736524"
+            timestampString = "469699676.869936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-requestDidFinished:message:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Common/HttpApi/HttpMsgCtrl.mm"
-            timestampString = "469012345.736524"
+            timestampString = "469699676.869936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-requestDidFinished:message:"
             landmarkType = "5">
          </BreakpointContent>
@@ -48,22 +48,6 @@
             startingLineNumber = "162"
             endingLineNumber = "162"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KuaiRuTong/Src/UserCenter/UserCenterViewController.m"
-            timestampString = "469347925.398881"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-logoutButtonClicked"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,12 +90,12 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "469623758.269027"
+                  timestampString = "469706219.580267"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "258"
                   endingLineNumber = "258"
-                  offsetFromSymbolStart = "625">
+                  offsetFromSymbolStart = "308">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +105,12 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "469623758.270432"
+                  timestampString = "469706219.580468"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -136,12 +120,12 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "469623758.270717"
+                  timestampString = "469706219.580664"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -169,11 +153,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/AddUser/SHInfoViewController.m"
-            timestampString = "469618003.164824"
+            timestampString = "469700613.546368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-loadUIForCell:AtSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -185,12 +169,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/AddUser/SHInfoViewController.m"
-            timestampString = "469618003.164824"
+            timestampString = "469700613.546368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "-previousToViewController"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Src/AddUser/MccPickViewController.m"
+            timestampString = "469687986.810886"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-getPickerData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Src/AddUser/NewBusinessViewController.m"
+            timestampString = "469702106.086416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Common/HttpApi/HttpMsgCtrl.mm"
+            timestampString = "469699657.213557"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-sendHttpMsg:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -200,12 +232,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KuaiRuTong/Src/AddUser/CityAndMccInfoService.m"
-            timestampString = "469623431.714743"
+            filePath = "KuaiRuTong/ThirdPartLib/Network/AFNetworkTool.m"
+            timestampString = "469700721.468032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "+postUploadWithUrl:parameters:data:success:fail:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Src/AddUser/BusinessInfoUpdateService.m"
+            timestampString = "469700760.962491"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-receiveDidFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -216,13 +264,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KuaiRuTong/Src/AddUser/AddressPicker/LocationPickerViewController.m"
-            timestampString = "469624033.224886"
+            filePath = "KuaiRuTong/ThirdPartLib/Network/AFNetworkTool.m"
+            timestampString = "469701437.803889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-getPickerData"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "+postUploadWithUrl:parameters:data:success:fail:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -89,4 +89,7 @@
  *
  */
 + (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL success:(void (^)(id responseObject))success fail:(void (^)(NSError *error))fail;
+
+
++ (void)postUploadWithUrl:(NSString *)urlStr parameters:(id)parameters data:(NSData *)data success:(void (^)(id responseObject))success fail:(void (^)(NSError *error))fail;
 @end

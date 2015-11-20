@@ -51,6 +51,9 @@
 #define API_RequestAddressAndMccInfo      (TEST_COMMONT_URL"/self/jsp/mobileToMercAppFindAll.action")
 
 
+#define API_Upload_MercData     (TEST_COMMONT_URL"/self/jsp/mobileAddMercApp.action")
+
+
 
 #pragma mark -
 #pragma mark HTTP服务器域名

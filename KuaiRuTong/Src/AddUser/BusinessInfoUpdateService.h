@@ -25,6 +25,6 @@
 
 @property (nonatomic,weak) id<BusinessInfoUpdateServiceDelegate> delegate;
 
--(void)beginUpload:(NSDictionary*)parameters;
+-(void)beginUpload:(NSDictionary*)parameters filePath:(NSString*)path ;
 
 @end

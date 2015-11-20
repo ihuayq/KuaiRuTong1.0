@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "KTTabBarViewController.h"
 #import "SHInfoViewController.h"
+#import "DAO.h"
 
 @interface AppDelegate (){
     UINavigationController * nc;
@@ -33,6 +34,9 @@
     [SNLogger startWithLogLevel:SNLogLevelOFF];
 #endif
     
+    //初始化数据库
+    /*建表*/
+    [DAO createTablesNeeded];
 
     
 //#define TEST

@@ -12,6 +12,8 @@
 #import "NewSHCell.h"
 #import "FileManager.h"
 #import "BusinessInfoUpdateService.h"
+#import "FCFileManager.h"
+#import "ZipArchive.h"
 
 static NSArray *titlesArray = nil;
 
@@ -26,7 +28,7 @@ static NSArray *titlesArray = nil;
     
     UIImage *photoImages;
     
-    NSMutableDictionary *businessTextInfo;       //商户详细文字信息
+    NSMutableDictionary *businessTextInfoDic;       //商户详细文字信息
 }
 
 @end
@@ -108,11 +110,126 @@ static NSArray *titlesArray = nil;
 
 
 #pragma --PrivateMethods
+
+//- (void) viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    dispatch_queue_t queue = dispatch_get_global_queue(
+//                                                       DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(queue, ^{
+//        NSURL *url = [NSURL URLWithString:@"http://www.icodeblog.com/wp-content/uploads/2012/08/zipfile.zip"];
+//        NSError *error = nil;
+//        NSData *data = [NSData dataWithContentsOfURL:url options:0 error:&error];
+//        
+//        if(!error)
+//        {
+//            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//            NSString *path = [paths objectAtIndex:0];
+//            NSString *zipPath = [path stringByAppendingPathComponent:@"zipfile.zip"];
+//            
+//            [data writeToFile:zipPath options:0 error:&error];
+//            
+//            if(!error)
+//            {
+//                ZipArchive *za = [[ZipArchive alloc] init];
+//                if ([za UnzipOpenFile: zipPath]) {
+//                    BOOL ret = [za UnzipFileTo: path overWrite: YES];
+//                    if (NO == ret){} [za UnzipCloseFile];
+//                    
+//                    NSString *imageFilePath = [path stringByAppendingPathComponent:@"photo.png"];
+//                    NSString *textFilePath = [path stringByAppendingPathComponent:@"text.txt"];
+//                    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+//                    UIImage *img = [UIImage imageWithData:imageData];
+//                    NSString *textString = [NSString stringWithContentsOfFile:textFilePath encoding:NSASCIIStringEncoding error:nil];
+//                    
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        self.imageView.image = img;
+//                        self.label.text = textString;
+//                    });
+//                }
+//            }
+//            else
+//            {
+//                NSLog(@"Error saving file %@",error);
+//            }
+//        }
+//        else
+//        {
+//            NSLog(@"Error downloading zip file: %@", error);
+//        }
+//        
+//    });
+//}
+//
+//- (IBAction)zipFilesButtonPressed:(id)sender
+//{
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *docspath = [paths objectAtIndex:0];
+//    paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//    NSString *cachePath = [paths objectAtIndex:0];
+//    
+//    NSString *zipFile = [docspath stringByAppendingPathComponent:@"newzipfile.zip"];
+//    
+//    ZipArchive *za = [[ZipArchive alloc] init];
+//    [za CreateZipFile2:zipFile];
+//    
+//    NSString *imagePath = [cachePath stringByAppendingPathComponent:@"photo.png"];
+//    NSString *textPath = [cachePath stringByAppendingPathComponent:@"text.txt"];
+//    
+//    [za addFileToZip:imagePath newname:@"NewPhotoName.png"];
+//    [za addFileToZip:textPath newname:@"NewTextName.txt"];
+//    
+//    BOOL success = [za CloseZipFile2];
+//    
+//    NSLog(@"Zipped file with result %d",success);
+//    
+//}
+
+
 /**
  *  上传方法
  */
 - (void)uploadBtnMethod{
     
+    //check if file exist and returns YES or NO
+    for (int i = 1 ;i < photosArray.count ; i++) {
+        BOOL testFileExists = [FCFileManager existsItemAtPath:[NSString stringWithFormat:@"%d.jpg",i]];
+        if (!testFileExists) {
+            
+            DLog(@"The pic %i is not exist!",i);
+            //检查图片的
+            [self presentCustomDlg:@"缺失图片"];
+        }
+    }
+    
+    //NSArray*ls = [FCFileManager listDirectoriesInDirectoryAtPath: [FCFileManager pathForDocumentsDirectory]];
+    //DLog(@"The path list is %@!", [FCFileManager pathForDocumentsDirectory]);
+    NSString* docPath = [FCFileManager pathForDocumentsDirectory];
+    
+    ZipArchive *za = [[ZipArchive alloc] init];
+    [za CreateZipFile2: [NSString stringWithFormat:@"%@/zipfile.zip",docPath]];
+    
+    for (int i = 1 ;i < photosArray.count ; i++) {
+        [za addFileToZip:[NSString stringWithFormat:@"%@/%d.jpg",docPath,i] newname:[NSString stringWithFormat:@"new_%d.jpg",i]];
+    }
+    
+    BOOL success = [za CloseZipFile2];
+    NSLog(@"Zipped file with result %d",success);
+    
+    
+    NSNumber *fileSize = [FCFileManager sizeOfFileAtPath:@"zipfile.zip"];
+    DLog(@"The size is %@!", fileSize);
+    
+    //上传数据
+    if (businessTextInfoDic.count == 0) {
+        [self presentCustomDlg:@"商户详细信息缺失"];
+    }
+    
+    [businessTextInfoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
+    
+    [self displayOverFlowActivityView];
+    [self.service beginUpload:businessTextInfoDic filePath:@"zipfile.zip"];
 }
 /**
  *  保存方法
@@ -188,10 +305,11 @@ static NSArray *titlesArray = nil;
         
         if (indexPath.row == 0 ) {
             SHInfoViewController *vc = [[SHInfoViewController alloc] init];
-            
+            vc.hidesBottomBarWhenPushed = YES;
             vc.block = ^(NSMutableDictionary *BussineDic){
-                businessTextInfo = BussineDic;
+                businessTextInfoDic = BussineDic;
             };
+            
             [self.navigationController pushViewController:vc animated:YES];
         }
         else{
@@ -232,25 +350,48 @@ static NSArray *titlesArray = nil;
     photoImages=[info objectForKey:UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.5);
+    NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
+    DLog(@"The pic name is%@",nameString);
     
-    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"SHPhotosTemp"];
-    BOOL bo = [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-    // 获取GroupPPTTemp文件夹 下的文件
-    if (bo) {
-        //图片压缩
-        FileManager *fileManager = [[FileManager alloc] init];
-        NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.5);
-        NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
-        [fileManager writeDataForSHTemp:imageData andName:nameString];
+    BOOL success = [FCFileManager createFileAtPath:nameString withContent:imageData];
+    if (success) {
+        DLog(@"The pic create success :%b",success);
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [photosArray replaceObjectAtIndex:(currentPhotoTag) withObject:@"yes"];
         [userDefaults setObject:photosArray forKey:@"photosTempArray"];
         [userDefaults synchronize];
-        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
+        
+        [newTableView reloadData];
     }
     
-    [newTableView reloadData];
+    
+
+//    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"SHPhotosTemp"];
+//    BOOL bo = [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    // 获取GroupPPTTemp文件夹 下的文件
+//    if (bo) {
+//        //图片压缩
+//        FileManager *fileManager = [[FileManager alloc] init];
+//        //压缩参数选择0.5
+//        NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.5);
+//        NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
+//        DLog(@"The pic name is%@",nameString);
+//        [fileManager writeDataForSHTemp:imageData andName:nameString];
+//        
+//        [FCFileManager createFileAtPath:@"test.txt" withContent:@"File management has never been so easy!!!"];
+//        //[data writeToFile:path atomically:YES];
+//        
+//        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//        [photosArray replaceObjectAtIndex:(currentPhotoTag) withObject:@"yes"];
+//        [userDefaults setObject:photosArray forKey:@"photosTempArray"];
+//        [userDefaults synchronize];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//    
+//    [newTableView reloadData];
 }
 
 //#pragma mark -- CustomNavBarDelegate

@@ -142,6 +142,11 @@
 		88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E601BFAF676005CC7E8 /* DropDownListView.m */; };
 		88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */; };
 		88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */; };
+		88E213B91BFEB03C002D32F6 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213B61BFEB03C002D32F6 /* DAO.m */; settings = {ASSET_TAGS = (); }; };
+		88E213BA1BFEB03C002D32F6 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213B81BFEB03C002D32F6 /* DatabaseManager.m */; settings = {ASSET_TAGS = (); }; };
+		88E213BE1BFEB4DB002D32F6 /* BusinessSavedDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213BD1BFEB4DB002D32F6 /* BusinessSavedDAO.m */; settings = {ASSET_TAGS = (); }; };
+		88E213C11BFEB6D1002D32F6 /* SHDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213C01BFEB6D1002D32F6 /* SHDataItem.m */; settings = {ASSET_TAGS = (); }; };
+		88E213CB1BFEF1AA002D32F6 /* FCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213C61BFEF1AA002D32F6 /* FCFileManager.m */; settings = {ASSET_TAGS = (); }; };
 		88F2048D1BF1822E00674567 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048C1BF1822E00674567 /* main.m */; };
 		88F204901BF1822E00674567 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048F1BF1822E00674567 /* AppDelegate.m */; };
 		88F204931BF1822E00674567 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204921BF1822E00674567 /* ViewController.m */; };
@@ -511,6 +516,17 @@
 		88A05E631BFAF8BD005CC7E8 /* StyledTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledTableViewCell.h; sourceTree = "<group>"; };
 		88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledTableViewCell.m; sourceTree = "<group>"; };
 		88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HZAreaPickerView1.xib; sourceTree = "<group>"; };
+		88E213B51BFEB03C002D32F6 /* DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAO.h; sourceTree = "<group>"; };
+		88E213B61BFEB03C002D32F6 /* DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAO.m; sourceTree = "<group>"; };
+		88E213B71BFEB03C002D32F6 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		88E213B81BFEB03C002D32F6 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		88E213BB1BFEB19C002D32F6 /* PathConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathConstant.h; sourceTree = "<group>"; };
+		88E213BC1BFEB4DB002D32F6 /* BusinessSavedDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessSavedDAO.h; sourceTree = "<group>"; };
+		88E213BD1BFEB4DB002D32F6 /* BusinessSavedDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessSavedDAO.m; sourceTree = "<group>"; };
+		88E213BF1BFEB6D1002D32F6 /* SHDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataItem.h; sourceTree = "<group>"; };
+		88E213C01BFEB6D1002D32F6 /* SHDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDataItem.m; sourceTree = "<group>"; };
+		88E213C51BFEF1AA002D32F6 /* FCFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCFileManager.h; sourceTree = "<group>"; };
+		88E213C61BFEF1AA002D32F6 /* FCFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCFileManager.m; sourceTree = "<group>"; };
 		88F204881BF1822E00674567 /* KuaiRuTong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuaiRuTong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F2048C1BF1822E00674567 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88F2048E1BF1822E00674567 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1464,16 +1480,16 @@
 		889141C81BF985BE007E1BBB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */,
-				88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */,
+				887AD9521BF57F9900648D93 /* NewBusinessViewController.h */,
+				887AD9531BF57F9900648D93 /* NewBusinessViewController.m */,
 				7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */,
 				7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */,
 				88FBA9DC1BFC27CD00518C6E /* SHNewNetPointViewController.h */,
 				88FBA9DD1BFC27CD00518C6E /* SHNewNetPointViewController.m */,
-				887AD9521BF57F9900648D93 /* NewBusinessViewController.h */,
-				887AD9531BF57F9900648D93 /* NewBusinessViewController.m */,
 				7A504E8D1BFE0D3B0018AFAB /* MccPickViewController.h */,
 				7A504E8E1BFE0D3B0018AFAB /* MccPickViewController.m */,
+				88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */,
+				88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1481,12 +1497,16 @@
 		889141C91BF985D4007E1BBB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88E213BC1BFEB4DB002D32F6 /* BusinessSavedDAO.h */,
+				88E213BD1BFEB4DB002D32F6 /* BusinessSavedDAO.m */,
 				88FBA9D91BFC1D9F00518C6E /* BusinessInfoCellPart.h */,
 				88FBA9DA1BFC1D9F00518C6E /* BusinessInfoCellPart.m */,
 				88724A541BFDB7F70011DB53 /* BusinessInfoUpdateService.h */,
 				88724A551BFDB7F70011DB53 /* BusinessInfoUpdateService.m */,
 				88724A6B1BFDC96D0011DB53 /* CityAndMccInfoService.h */,
 				88724A6C1BFDC96D0011DB53 /* CityAndMccInfoService.m */,
+				88E213BF1BFEB6D1002D32F6 /* SHDataItem.h */,
+				88E213C01BFEB6D1002D32F6 /* SHDataItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1518,6 +1538,34 @@
 				88A05E601BFAF676005CC7E8 /* DropDownListView.m */,
 			);
 			path = DropDown;
+			sourceTree = "<group>";
+		};
+		88E213B41BFEB03C002D32F6 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				88E213B51BFEB03C002D32F6 /* DAO.h */,
+				88E213B61BFEB03C002D32F6 /* DAO.m */,
+				88E213B71BFEB03C002D32F6 /* DatabaseManager.h */,
+				88E213B81BFEB03C002D32F6 /* DatabaseManager.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		88E213C21BFEF1AA002D32F6 /* FCFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				88E213C41BFEF1AA002D32F6 /* FCFileManager */,
+			);
+			path = FCFileManager;
+			sourceTree = "<group>";
+		};
+		88E213C41BFEF1AA002D32F6 /* FCFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				88E213C51BFEF1AA002D32F6 /* FCFileManager.h */,
+				88E213C61BFEF1AA002D32F6 /* FCFileManager.m */,
+			);
+			path = FCFileManager;
 			sourceTree = "<group>";
 		};
 		88F2047F1BF1822D00674567 = {
@@ -1594,6 +1642,7 @@
 		88F204BE1BF18F7200674567 /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				88E213C21BFEF1AA002D32F6 /* FCFileManager */,
 				88724A571BFDC0AF0011DB53 /* zip */,
 				88FBA9C91BFC08DC00518C6E /* DAContextMenuTableViewController */,
 				88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */,
@@ -1813,6 +1862,7 @@
 		88F205741BF1945500674567 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				88E213B41BFEB03C002D32F6 /* Database */,
 				888E52251BF47D7E00A6D917 /* Device */,
 				888E521E1BF477B500A6D917 /* Label */,
 				888E51FD1BF45DE400A6D917 /* BaseViewController */,
@@ -1944,6 +1994,7 @@
 			children = (
 				88F205ED1BF1C43300674567 /* AppConstant.h */,
 				88F205EE1BF1C43300674567 /* Constant.h */,
+				88E213BB1BFEB19C002D32F6 /* PathConstant.h */,
 				88F205EF1BF1C43300674567 /* HttpConstant.h */,
 				88F205F81BF1D1E400674567 /* DefineConstant.h */,
 				888F27BA1BF334FC0023C817 /* SuningEBuyConfig.h */,
@@ -2198,6 +2249,7 @@
 				88F2055F1BF18F7200674567 /* SDWebImageDownloader.m in Sources */,
 				88F205D91BF19C4B00674567 /* IPAddress.c in Sources */,
 				88724A6D1BFDC96D0011DB53 /* CityAndMccInfoService.m in Sources */,
+				88E213BE1BFEB4DB002D32F6 /* BusinessSavedDAO.m in Sources */,
 				888E51AA1BF41EF600A6D917 /* NSString+MD5.m in Sources */,
 				88FBA9DB1BFC1D9F00518C6E /* BusinessInfoCellPart.m in Sources */,
 				88724A661BFDC0AF0011DB53 /* ioapi.c in Sources */,
@@ -2216,6 +2268,7 @@
 				889141B11BF9681F007E1BBB /* DBModel.m in Sources */,
 				88F205541BF18F7200674567 /* UIImageView+AFNetworking.m in Sources */,
 				88F205AD1BF1965B00674567 /* DDContextFilterLogFormatter.m in Sources */,
+				88E213CB1BFEF1AA002D32F6 /* FCFileManager.m in Sources */,
 				888E52281BF47D7E00A6D917 /* DeviceManager.m in Sources */,
 				88F2054B1BF18F7200674567 /* AFURLConnectionOperation.m in Sources */,
 				889141A31BF9681F007E1BBB /* WorkSearchViewController.m in Sources */,
@@ -2244,6 +2297,7 @@
 				88F2048D1BF1822E00674567 /* main.m in Sources */,
 				889141B21BF9681F007E1BBB /* RWDBManager.m in Sources */,
 				88F205AA1BF1965B00674567 /* DDFileLogger.m in Sources */,
+				88E213C11BFEB6D1002D32F6 /* SHDataItem.m in Sources */,
 				88F205641BF18F7200674567 /* UIImage+GIF.m in Sources */,
 				888E52211BF477B500A6D917 /* BTLabel.m in Sources */,
 				7A3821001BFA222A00B0AE73 /* SHInfoViewController.m in Sources */,
@@ -2262,6 +2316,7 @@
 				88F205E11BF19C4B00674567 /* NSString+SNFoundation.m in Sources */,
 				8891418D1BF9681F007E1BBB /* ImageInfoViewController.m in Sources */,
 				88A05E591BFAD3A7005CC7E8 /* HZAreaPickerView.m in Sources */,
+				88E213BA1BFEB03C002D32F6 /* DatabaseManager.m in Sources */,
 				88A05E5B1BFAD3A7005CC7E8 /* HZLocation.m in Sources */,
 				88F2054C1BF18F7200674567 /* AFURLRequestSerialization.m in Sources */,
 				88F205491BF18F7200674567 /* AFNetworkReachabilityManager.m in Sources */,
@@ -2271,6 +2326,7 @@
 				88F205DA1BF19C4B00674567 /* NSArray+SNFoundation.m in Sources */,
 				888E51EE1BF4330B00A6D917 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				888E51CE1BF421F400A6D917 /* UIColor-HSVAdditions.m in Sources */,
+				88E213B91BFEB03C002D32F6 /* DAO.m in Sources */,
 				88F205E21BF19C4B00674567 /* SNCache.m in Sources */,
 				889141AE1BF9681F007E1BBB /* SearchWorkRequest.m in Sources */,
 				887AD9541BF57F9900648D93 /* NewBusinessViewController.m in Sources */,

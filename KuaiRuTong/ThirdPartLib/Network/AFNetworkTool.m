@@ -191,6 +191,8 @@
 //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"头像1.png" withExtension:nil];
         
         [formData appendPartWithFileURL:fileURL name:@"uploadFile" error:NULL];
+        
+        
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //        
@@ -206,6 +208,40 @@
     }];
 }
 
+#pragma mark - POST上传文件
++ (void)postUploadWithUrl:(NSString *)urlStr parameters:(id)parameters data:(NSData *)data success:(void (^)(id responseObject))success fail:(void (^)(NSError *error))fail
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *jsonPostData = @{};
+    if ( parameters != nil) {
+        NSString *jsonStr=[parameters JSONString];
+        jsonPostData = @{@"data":jsonStr};
+    }
+    // 设置返回格式
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    
+    // formData是遵守了AFMultipartFormData的对象
+    [manager POST:urlStr parameters:jsonPostData constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        // 将本地的文件上传至服务器
+        //   NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"头像1.png" withExtension:nil];
+        
+        //[formData appendPartWithFileURL:fileURL name:@"uploadFile.zip" error:NULL];
+        
+        [formData appendPartWithFileData:data name:@"file" fileName:@"zipfile.zip" mimeType:@"application/zip"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"错误 %@", error.localizedDescription);
+        if (fail) {
+            fail(error);
+        }
+    }];
+}
 
 
 @end

@@ -48,6 +48,15 @@
 @property (nonatomic, copy)     NSString    *phone_verify;
 @property (nonatomic, strong)   NSString    *network_name_verify;
 
+@property (nonatomic, strong)   NSData*     photo_business_permit;
+@property (nonatomic, strong)   NSData*     photo_identifier_front;
+@property (nonatomic, strong)   NSData*     photo_identifier_back;
+@property (nonatomic, strong)   NSData*     photo_business_place;
+@property (nonatomic, strong)   NSData*     photo_bankcard_front;
+@property (nonatomic, strong)   NSData*     photo_bankcard_back;
+@property (nonatomic, strong)   NSData*     photo_contracts;
+
+
 //@property (nonatomic, strong)   NSNumber    *zip;
 
 @end

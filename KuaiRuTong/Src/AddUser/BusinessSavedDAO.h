@@ -18,7 +18,7 @@
 - (void)deleteAllHistorysFromDB;
 
 
-- (NSArray *)getAllBrowsingHistorysFromDB;
+- (NSArray *)getAllSavedHistorysFromDB;
 
 - (BOOL)writeProductToDB:(SHDataItem *)data;
 

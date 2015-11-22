@@ -304,9 +304,6 @@ typedef NS_ENUM(int, EditState){
     }
 }
 
-
-
-
 #pragma mark -- UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     

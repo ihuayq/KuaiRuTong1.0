@@ -48,6 +48,7 @@
             
             //信息收集的表建立
             /*已经保存的商户信息*/
+            //NSString *sql = [NSString stringWithFormat:@"DROP TABLE info_saved_business"];
             
             //Photo blob
             NSString *sql1 = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS info_saved_business (\
@@ -67,15 +68,17 @@
                               bank_add TEXT,\
                               phone_num TEXT,\
                               phone_verify TEXT,\
-                              network_name_verify TEXT\
-                              photo_business_permit blob    \
-                              photo_identifier_front blob  \
-                              photo_identifier_back blob    \
-                              photo_business_place blob    \
-                              photo_bankcard_front blob    \
-                              photo_bankcard_back blob    \
+                              network_name_verify TEXT,\
+                              photo_business_permit blob ,   \
+                              photo_identifier_front blob,\
+                              photo_identifier_back blob,  \
+                              photo_business_place blob, \
+                              photo_bankcard_front blob,    \
+                              photo_bankcard_back blob ,   \
                               photo_contracts blob)"
                               ];
+            
+            //[database executeUpdate:sql];
             [database executeUpdate:sql1];
 
             /*info_system*/

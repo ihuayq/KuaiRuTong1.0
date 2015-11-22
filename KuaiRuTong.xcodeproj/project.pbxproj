@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2E0FE71C01FF8600CB215C /* SearchBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E0FE61C01FF8600CB215C /* SearchBaseViewController.m */; };
 		7A3821001BFA222A00B0AE73 /* SHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */; };
 		7A504E8F1BFE0D3B0018AFAB /* MccPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A504E8E1BFE0D3B0018AFAB /* MccPickViewController.m */; };
 		7A978F091BFB5E5A007B3CE0 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A978F011BFB5E5A007B3CE0 /* Address.plist */; };
@@ -142,11 +143,11 @@
 		88A05E621BFAF676005CC7E8 /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E601BFAF676005CC7E8 /* DropDownListView.m */; };
 		88A05E651BFAF8BD005CC7E8 /* StyledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E641BFAF8BD005CC7E8 /* StyledTableViewCell.m */; };
 		88A05E671BFB31D2005CC7E8 /* HZAreaPickerView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E661BFB31D2005CC7E8 /* HZAreaPickerView1.xib */; };
-		88E213B91BFEB03C002D32F6 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213B61BFEB03C002D32F6 /* DAO.m */; settings = {ASSET_TAGS = (); }; };
-		88E213BA1BFEB03C002D32F6 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213B81BFEB03C002D32F6 /* DatabaseManager.m */; settings = {ASSET_TAGS = (); }; };
-		88E213BE1BFEB4DB002D32F6 /* BusinessSavedDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213BD1BFEB4DB002D32F6 /* BusinessSavedDAO.m */; settings = {ASSET_TAGS = (); }; };
-		88E213C11BFEB6D1002D32F6 /* SHDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213C01BFEB6D1002D32F6 /* SHDataItem.m */; settings = {ASSET_TAGS = (); }; };
-		88E213CB1BFEF1AA002D32F6 /* FCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213C61BFEF1AA002D32F6 /* FCFileManager.m */; settings = {ASSET_TAGS = (); }; };
+		88E213B91BFEB03C002D32F6 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213B61BFEB03C002D32F6 /* DAO.m */; };
+		88E213BA1BFEB03C002D32F6 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213B81BFEB03C002D32F6 /* DatabaseManager.m */; };
+		88E213BE1BFEB4DB002D32F6 /* BusinessSavedDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213BD1BFEB4DB002D32F6 /* BusinessSavedDAO.m */; };
+		88E213C11BFEB6D1002D32F6 /* SHDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213C01BFEB6D1002D32F6 /* SHDataItem.m */; };
+		88E213CB1BFEF1AA002D32F6 /* FCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E213C61BFEF1AA002D32F6 /* FCFileManager.m */; };
 		88F2048D1BF1822E00674567 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048C1BF1822E00674567 /* main.m */; };
 		88F204901BF1822E00674567 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2048F1BF1822E00674567 /* AppDelegate.m */; };
 		88F204931BF1822E00674567 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F204921BF1822E00674567 /* ViewController.m */; };
@@ -272,6 +273,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A2E0FE51C01FF8600CB215C /* SearchBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBaseViewController.h; sourceTree = "<group>"; };
+		7A2E0FE61C01FF8600CB215C /* SearchBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBaseViewController.m; sourceTree = "<group>"; };
 		7A3820FE1BFA222A00B0AE73 /* SHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInfoViewController.h; sourceTree = "<group>"; };
 		7A3820FF1BFA222A00B0AE73 /* SHInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInfoViewController.m; sourceTree = "<group>"; };
 		7A504E8D1BFE0D3B0018AFAB /* MccPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MccPickViewController.h; sourceTree = "<group>"; };
@@ -860,6 +863,8 @@
 			children = (
 				887AD94C1BF57AE000648D93 /* WorkflowMgrViewController.h */,
 				887AD94D1BF57AE000648D93 /* WorkflowMgrViewController.m */,
+				7A2E0FE51C01FF8600CB215C /* SearchBaseViewController.h */,
+				7A2E0FE61C01FF8600CB215C /* SearchBaseViewController.m */,
 			);
 			path = WorkflowMgr;
 			sourceTree = "<group>";
@@ -2342,6 +2347,7 @@
 				88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */,
 				888E51B01BF41EF600A6D917 /* UIView+Draw.m in Sources */,
 				8859CA801BF9A7B600827C40 /* VersionDetailViewController.m in Sources */,
+				7A2E0FE71C01FF8600CB215C /* SearchBaseViewController.m in Sources */,
 				88F205DF1BF19C4B00674567 /* NSDate+SNFoundation.m in Sources */,
 				8891418B1BF9681F007E1BBB /* AddWebViewController.m in Sources */,
 				88F205401BF18F7200674567 /* MBProgressHUD.m in Sources */,

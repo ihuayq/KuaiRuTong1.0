@@ -157,6 +157,9 @@
     [loginButton.layer setCornerRadius:loginButton.frame.size.height/2.0f];
     [self.view addSubview:loginButton];
     
+    nameTextField.text = @"Test-办事处销售陈玉洁";
+    passwordTextField.text = @"1q2w3e4r";
+    
 }
 
 
@@ -226,13 +229,12 @@
 -(void)touchLoginButton
 {
 
-    nameTextField.text = @"Test-办事处销售陈玉洁";
-    passwordTextField.text = @"1q2w3e4r";
+
     
     
-//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
-//    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
-//    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
+    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     [self displayOverFlowActivityView];
     

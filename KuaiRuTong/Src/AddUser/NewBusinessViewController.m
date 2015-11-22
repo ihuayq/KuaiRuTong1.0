@@ -14,6 +14,7 @@
 #import "BusinessInfoUpdateService.h"
 #import "FCFileManager.h"
 #import "ZipArchive.h"
+#import "BusinessSavedDAO.h"
 
 static NSArray *titlesArray = nil;
 
@@ -29,6 +30,7 @@ static NSArray *titlesArray = nil;
     UIImage *photoImages;
     
     NSMutableDictionary *businessTextInfoDic;       //商户详细文字信息
+    SHDataItem *shData;
 }
 
 @end
@@ -185,13 +187,8 @@ static NSArray *titlesArray = nil;
 //    NSLog(@"Zipped file with result %d",success);
 //    
 //}
-
-
-/**
- *  上传方法
- */
-- (void)uploadBtnMethod{
-    
+#pragma private
+-(BOOL)checkDataValid{
     //check if file exist and returns YES or NO
     for (int i = 1 ;i < photosArray.count ; i++) {
         BOOL testFileExists = [FCFileManager existsItemAtPath:[NSString stringWithFormat:@"%d.jpg",i]];
@@ -200,7 +197,26 @@ static NSArray *titlesArray = nil;
             DLog(@"The pic %i is not exist!",i);
             //检查图片的
             [self presentCustomDlg:@"缺失图片"];
+            return NO;
         }
+    }
+    
+    //上传数据
+    if (businessTextInfoDic.count == 0) {
+        [self presentCustomDlg:@"商户详细信息缺失"];
+        return  NO;
+    }
+    
+    return YES;
+}
+
+/**
+ *  上传方法
+ */
+- (void)uploadBtnMethod{
+
+    if (![self checkDataValid]) {
+        return;
     }
     
     //NSArray*ls = [FCFileManager listDirectoriesInDirectoryAtPath: [FCFileManager pathForDocumentsDirectory]];
@@ -221,10 +237,7 @@ static NSArray *titlesArray = nil;
     NSNumber *fileSize = [FCFileManager sizeOfFileAtPath:@"zipfile.zip"];
     DLog(@"The size is %@!", fileSize);
     
-    //上传数据
-    if (businessTextInfoDic.count == 0) {
-        [self presentCustomDlg:@"商户详细信息缺失"];
-    }
+    
     
     [businessTextInfoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
     
@@ -235,13 +248,29 @@ static NSArray *titlesArray = nil;
  *  保存方法
  */
 - (void)saveBtnMethod{
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setObject:@"yes" forKey:@"isSaveNewBussinss"];
-//    [userDefaults synchronize];
-//    hud_SuperVC.labelText = @"保存成功";
-//    [hud_SuperVC show:YES];
-//    [hud_SuperVC hide:YES afterDelay:2];
+    if (![self checkDataValid]) {
+        return;
+    }
+    
+    shData.photo_business_permit = [FCFileManager readFileAtPathAsData:@"1.jpg"];
+    shData.photo_identifier_front =  [FCFileManager readFileAtPathAsData:@"2.jpg"];
+    shData.photo_identifier_back = [FCFileManager readFileAtPathAsData:@"3.jpg"];
+    shData.photo_business_place = [FCFileManager readFileAtPathAsData:@"4.jpg"];
+    shData.photo_bankcard_front = [FCFileManager readFileAtPathAsData:@"5.jpg"];
+    shData.photo_bankcard_back = [FCFileManager readFileAtPathAsData:@"6.jpg"];
+    shData.photo_contracts =[FCFileManager readFileAtPathAsData:@"7.jpg"];
+    
+    BusinessSavedDAO *saveDAO = [[BusinessSavedDAO alloc]init];
+    if ([saveDAO writeProductToDB:shData]) {
+        [self displayOverFlowActivityView:@"保存成功" maxShowTime:0.1];
+    }
+    else{
+        [self displayOverFlowActivityView:@"保存失败" maxShowTime:0.1];
+    }
+    
 }
+
+
 #pragma --UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return titlesArray.count;
@@ -309,6 +338,10 @@ static NSArray *titlesArray = nil;
             vc.block = ^(NSMutableDictionary *BussineDic){
                 businessTextInfoDic = BussineDic;
             };
+            vc.Tblock = ^(SHDataItem *BussinessDataItem){
+                shData = BussinessDataItem;
+            };
+            
             
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -330,7 +363,7 @@ static NSArray *titlesArray = nil;
         if (!picker) {
             picker = [[UIImagePickerController alloc]init];
             //设置代理
-            picker.delegate= self;
+            picker.delegate = self;
             [self presentViewController:picker animated:YES completion:nil];
         }
         

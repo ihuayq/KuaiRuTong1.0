@@ -13,7 +13,9 @@
 
 @interface NewBusinessViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
-//@property (nonatomic, strong) NSString *pendingType;
+
+//上传接口
 @property(nonatomic,strong)  BusinessInfoUpdateService *service;
+
 
 @end

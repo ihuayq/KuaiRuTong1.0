@@ -12,6 +12,7 @@
 //#import "KuCunViewController.h"
 //#import "QuestionSHViewController.h"
 //#import "ZBJRKViewController.h"
+#import "SearchBaseViewController.h"
 
 typedef NS_ENUM(NSUInteger,WorkMgr_ENUM) {
     USER_QUERY = 0,
@@ -164,7 +165,10 @@ NSArray *getManagerIconsArray() {
     
     switch (indexPath.row) {
         case USER_QUERY:
-            
+        {
+            SearchBaseViewController *base = [[SearchBaseViewController alloc] init];
+             [self.navigationController pushViewController:base animated:YES];
+        }
             break;
             
         default:
@@ -177,7 +181,6 @@ NSArray *getManagerIconsArray() {
 {
     return YES;
 }
-
 
 #pragma mark --UICollectionViewDelegateFlowLayout
 //定义每个UICollectionView 的大小

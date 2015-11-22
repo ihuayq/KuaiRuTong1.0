@@ -95,23 +95,6 @@
 
 #pragma mark - get data
 - (void)getPickerData {
-    
-//    NSArray *categoryItem = [item objectForKey:@"categoryList"];
-//    DLog(@"THE categoryItem info:%@",[categoryItem objectAtIndex:0]);
-//    
-//    NSDictionary *category= [categoryItem objectAtIndex:0];
-    
-      //行业大类
-//    NSArray *categoryDetail= [category allKeys];
-//    DLog(@"THE first key info:%@",[category allKeys]);
-//    //行业西风
-//    NSDictionary *categoryCode = [category objectForKey:[[category allKeys] objectAtIndex:0]];
-//    DLog(@"THE second key info:%@",categoryCode);
-    
-//    NSArray *codeList= [categoryCode allKeys];
-    
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"Address" ofType:@"plist"];
-//    self.pickerDic = [[NSDictionary alloc] initWithContentsOfFile:path];
     //行业大类
     self.categoryArray = [self.pickerDic allKeys];
 
@@ -133,13 +116,6 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-//    if (component == 0) {
-//        return self.provinceArray.count;
-//    } else if (component == 1) {
-//        return self.cityArray.count;
-//    } else {
-//        return self.townArray.count;
-//    }
     if (component == 0) {
         return self.categoryArray.count;
     } else if (component == 1) {
@@ -185,19 +161,8 @@
         if (self.subCategoryArray.count > 0) {
             self.mccCode = [self.categoryDic objectForKey:[self.subCategoryArray objectAtIndex:row]];
         }
-        
-//        self.selectedArray = [self.pickerDic objectForKey:[self.provinceArray objectAtIndex:row]];
-//        if (self.selectedArray.count > 0) {
-//            self.cityArray = [[self.selectedArray objectAtIndex:0] allKeys];
-//        } else {
-//            self.cityArray = nil;
-//        }
-//        if (self.cityArray.count > 0) {
-//            self.townArray = [[self.selectedArray objectAtIndex:0] objectForKey:[self.cityArray objectAtIndex:0]];
-//        } else {
-//            self.townArray = nil;
-//        }
     }
+    
     [pickerView selectedRowInComponent:1];
     [pickerView reloadComponent:1];
     [pickerView selectedRowInComponent:2];
@@ -207,11 +172,6 @@
             self.mccCode = [self.categoryDic objectForKey:[self.subCategoryArray objectAtIndex:row]];
         }
         
-//        if (self.selectedArray.count > 0 && self.cityArray.count > 0) {
-//            self.townArray = [[self.selectedArray objectAtIndex:0] objectForKey:[self.cityArray objectAtIndex:row]];
-//        } else {
-//            self.townArray = nil;
-//        }
         [pickerView selectRow:1 inComponent:2 animated:YES];
     }
     

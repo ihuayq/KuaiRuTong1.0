@@ -116,14 +116,10 @@
     _addWDButton.layer.cornerRadius = 5.0;
     self.tableView.tableFooterView = _addWDButton;
     
-    
     bussinessKindText = @"";
     
-    //footerView = [[FMLoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.size.width, 70)];
-    //self.tableView.tableFooterView = footerView;
-//   [self.tableView setEditing:YES];
-    [self displayOverFlowActivityView];
-    [self.service beginRequest];
+//    [self displayOverFlowActivityView];
+//    [self.service beginRequest];
 
 }
 
@@ -466,9 +462,13 @@
     
     SHDataItem *item =  [[SHDataItem alloc] init];
     item.shop_name = shopNameTextField.text;
-    item.industry = strSelectCategory;
-    item.industry_subclass = strSelectSubCategory;
-    item.mcc = strSelectMccCode;
+//    item.industry = strSelectCategory;
+//    item.industry_subclass = strSelectSubCategory;
+//    item.mcc = strSelectMccCode;
+    item.industry = @"民生";
+    item.industry_subclass = @"收费";
+    item.mcc = @"7880";
+    
     item.account_name = accountNameTextField.text;
     item.bank_card_num = cardNumberTextField.text;
     item.pub_pri = @"1";
@@ -490,9 +490,12 @@
     NSMutableDictionary *infoDic = [[NSMutableDictionary alloc] init];
     [infoDic setObject:shopNameTextField.text forKey:@"shop_name"];
     //mcc
-    [infoDic setObject:strSelectCategory forKey:@"industry"];
-    [infoDic setObject:strSelectSubCategory forKey:@"industry_subclass"];
-    [infoDic setObject:strSelectMccCode forKey:@"mcc"];
+//    [infoDic setObject:strSelectCategory forKey:@"industry"];
+//    [infoDic setObject:strSelectSubCategory forKey:@"industry_subclass"];
+//    [infoDic setObject:strSelectMccCode forKey:@"mcc"];
+    [infoDic setObject:@"民生" forKey:@"industry"];
+    [infoDic setObject:@"一般类" forKey:@"industry_subclass"];
+    [infoDic setObject:@"9888" forKey:@"mcc"];
     
     [infoDic setObject:accountNameTextField.text forKey:@"account_name"];
 

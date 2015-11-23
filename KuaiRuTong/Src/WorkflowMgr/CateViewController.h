@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSArray *cates;
 @property (strong, nonatomic) UIFolderTableView *tableView;
 
-@property (strong, nonatomic) NSString *shopName;
+@property (strong, nonatomic) NSString *shopName; //外部必传参数，商户名称
 
 @property (strong, nonatomic) SHDataItem *SHData;
 

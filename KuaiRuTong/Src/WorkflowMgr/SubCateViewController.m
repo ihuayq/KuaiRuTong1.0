@@ -22,8 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MainWidth, 180)];
-    self.image.backgroundColor = [UIColor blackColor];
+    self.image = [[UIImageView alloc] initWithFrame:CGRectMake(MainWidth/2 - 90 , 10, 180, 320)];
+    self.image.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.image];
     
     self.btnLeft = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/4 - MainWidth/6,self.image.origin.y + self.image.size.height + 10,MainWidth/3,40)];
@@ -44,11 +44,18 @@
     [self.view addSubview:self.btnRight];
     
     CGRect viewFrame = self.view.frame;
-    viewFrame.size.height = 220 + 20;
+    viewFrame.size.height = 360 + 30;
     self.view.frame = viewFrame;
     
     
     self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    self.image.image = [UIImage imageWithData:_imageData];
+    
+    [self.view bringSubviewToFront:self.image];
 }
 
+-(void)setImageData:(NSData *)imageData{
+    _imageData = imageData;
+}
 @end

@@ -9,6 +9,7 @@
 #import "SearchBaseViewController.h"
 #import "BusinessSavedDAO.h"
 #import "SearchMoreBaseViewController.h"
+#import "CateViewController.h"
 
 @interface SearchBaseViewController ()
 
@@ -110,12 +111,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    FMTDMovieModel* model = [array objectAtIndex:indexPath.row];
-//    FMTDMovieViewController * pushController = [[FMTDMovieViewController alloc] init];
-//    pushController.model = model;
     
-    SearchMoreBaseViewController* pushController = [[SearchMoreBaseViewController alloc] init];
-    [self.navigationController pushViewController:pushController animated:YES];
+//    SearchMoreBaseViewController* pushController = [[SearchMoreBaseViewController alloc] init];
+//    [self.navigationController pushViewController:pushController animated:YES];
+    
+    
+    CateViewController *vc = [[CateViewController alloc] init];
+    
+    SHDataItem * model = [array objectAtIndex:indexPath.row];
+    vc.shopName = model.shop_name;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 @end

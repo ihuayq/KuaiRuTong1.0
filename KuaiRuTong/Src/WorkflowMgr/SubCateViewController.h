@@ -13,12 +13,11 @@
 
 //@property (strong, nonatomic) NSArray *subCates;
 
-
+@property (strong, nonatomic) NSData *imageData;
 @property (strong, nonatomic) UIImageView *image;
 
 @property (strong, nonatomic) UIButton *btnLeft;
 @property (strong, nonatomic) UIButton *btnRight;
-
 
 @property (strong, nonatomic) CateViewController *cateVC;
 

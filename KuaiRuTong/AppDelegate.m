@@ -40,7 +40,7 @@
     [DAO createTablesNeeded];
 
     
-#define TEST
+//#define TEST
 #ifndef TEST
     login = [[LoginViewController alloc] init];
     nc =[[UINavigationController alloc]initWithRootViewController:login];

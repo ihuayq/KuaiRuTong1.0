@@ -74,7 +74,7 @@
     [self.view addSubview:saveBtn];
     
     BusinessSavedDAO *dao= [[BusinessSavedDAO alloc] init];
-    [dao searchSHItemDAOFromDB:self.shopName];
+    self.SHData = [dao searchSHItemDAOFromDB:self.shopName];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,12 +129,39 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ( indexPath.row == 0 ) {
+        
+        return;
+    }
+    
+    
     SHInfoTableViewCell *cell = (SHInfoTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     SubCateViewController *subVc = [[SubCateViewController alloc] init];
-    NSDictionary *cate = [self.cates objectAtIndex:indexPath.row];
-//    subVc.subCates = [cate objectForKey:@"subClass"];
-//    self.currentCate = cate;
     subVc.cateVC = self;
+    
+    if ( indexPath.row == 1 ) {
+        subVc.imageData= self.SHData.photo_business_permit;
+    }
+    else if ( indexPath.row == 2 ) {
+        subVc.imageData= self.SHData.photo_identifier_front;
+    }
+    else if ( indexPath.row == 3 ) {
+        subVc.imageData= self.SHData.photo_identifier_back;
+    }
+    else if ( indexPath.row == 4 ) {
+        subVc.imageData= self.SHData.photo_business_place;
+    }
+    else if ( indexPath.row == 5 ) {
+        subVc.imageData= self.SHData.photo_bankcard_front;
+    }
+    else if ( indexPath.row == 6 ) {
+        subVc.imageData= self.SHData.photo_bankcard_back;
+    }
+    else if ( indexPath.row == 7 ) {
+        subVc.imageData= self.SHData.photo_contracts;
+    }
+
+    subVc.imageData= self.SHData.photo_bankcard_back;
     [cell changeArrowWithUp:YES];
     
     self.tableView.scrollEnabled = NO;
@@ -172,10 +199,38 @@
 //                                               otherButtonTitles:nil];
 //    [Notpermitted show];
 //    [Notpermitted release];
+    
+    UIActionSheet *sheetImage = [[UIActionSheet alloc]initWithTitle:@"请选择方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机",@"相册", nil];
+    //sheetImage.tag = indexPath.row;
+    [sheetImage showInView:[UIApplication sharedApplication].keyWindow];
+    
 }
 
 -(void)selectCamera:(UIButton *)btn
 {
 }
 
+
+#pragma mark -- UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //currentPhotoTag = actionSheet.tag;
+    if (buttonIndex != 2) {
+        //实例化Controller
+        UIImagePickerController*picker;
+        if (!picker) {
+            picker = [[UIImagePickerController alloc]init];
+            //设置代理
+            picker.delegate = self;
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+        
+        //默认选择是相册
+        if (buttonIndex == 0) {
+            //开启相机模式之前需要判断相机是否可用
+            if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            }
+        }
+    }
+}
 @end

@@ -8,6 +8,7 @@
 
 #import "SearchBaseViewController.h"
 #import "BusinessSavedDAO.h"
+#import "SearchMoreBaseViewController.h"
 
 @interface SearchBaseViewController ()
 
@@ -42,7 +43,7 @@
     [self.view addSubview:_searchBar];
     
     BusinessSavedDAO *dao = [[BusinessSavedDAO alloc] init];
-    [dao getAllSavedHistorysFromDB];
+    array = [NSMutableArray arrayWithArray:[dao getAllSavedHistorysSimpleInfoFromDB]];
     
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -68,8 +69,53 @@
     if ([array count]!=0) {
         [array removeAllObjects];
     }
+}
 
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    //#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    //#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return [array count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString * dentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:dentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:dentifier];
+    }
     
+    SHDataItem * model = [array objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"商户:%@",model.shop_name];
+//    cell.model = model;
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    FMTDMovieModel* model = [array objectAtIndex:indexPath.row];
+//    FMTDMovieViewController * pushController = [[FMTDMovieViewController alloc] init];
+//    pushController.model = model;
+    
+    SearchMoreBaseViewController* pushController = [[SearchMoreBaseViewController alloc] init];
+    [self.navigationController pushViewController:pushController animated:YES];
 }
 
 @end

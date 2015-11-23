@@ -11,6 +11,7 @@
 #import "KTTabBarViewController.h"
 #import "SHInfoViewController.h"
 #import "DAO.h"
+#import "CateViewController.h"
 
 @interface AppDelegate (){
     UINavigationController * nc;
@@ -39,7 +40,7 @@
     [DAO createTablesNeeded];
 
     
-//#define TEST
+#define TEST
 #ifndef TEST
     login = [[LoginViewController alloc] init];
     nc =[[UINavigationController alloc]initWithRootViewController:login];
@@ -47,7 +48,11 @@
     self.window.rootViewController = nc;
     
 #else
-    SHInfoViewController* Vc=[[SHInfoViewController alloc]init];
+//    SHInfoViewController* Vc=[[SHInfoViewController alloc]init];
+//    self.window.rootViewController = Vc;
+    
+    
+    CateViewController* Vc=[[CateViewController alloc]init];
     self.window.rootViewController = Vc;
 #endif
     

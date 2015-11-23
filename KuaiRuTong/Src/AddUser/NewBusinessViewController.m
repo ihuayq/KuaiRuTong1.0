@@ -57,6 +57,8 @@ static NSArray *titlesArray = nil;
         [userDefaults setObject:photosArray forKey:@"photosTempArray"];
         [userDefaults synchronize];
     }
+    
+    photosArray[0] = @"no";
 }
 
 - (void)viewDidLoad {

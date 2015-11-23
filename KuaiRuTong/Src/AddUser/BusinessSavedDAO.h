@@ -20,6 +20,10 @@
 
 - (NSArray *)getAllSavedHistorysFromDB;
 
+- (NSArray *)getAllSavedHistorysSimpleInfoFromDB;
+
+- (SHDataItem *)searchSHItemDAOFromDB:(NSString*)shopName;
+
 - (BOOL)writeProductToDB:(SHDataItem *)data;
 
 - (BOOL)deleteProductByData:(SHDataItem *)data;

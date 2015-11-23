@@ -52,8 +52,74 @@
 	return array;
 }
 
+- (NSArray *)getAllSavedHistorysSimpleInfoFromDB
+{
+    __block NSMutableArray *array = nil;
+    [self.databaseQueue inDatabase:^(FMDatabase *db){
+        NSString *sql = [NSString stringWithFormat:@"select shop_name from info_saved_business "];
+        //order by julianday(add_dttm) desc limit 50
+        FMResultSet *rs = [db executeQuery:sql];
+        if(!rs){
+            [rs close];
+            return;
+        }
+        array = [[NSMutableArray alloc] init];
+        while ([rs next]) {
+            SHDataItem *dto = [[SHDataItem alloc] init];
+            dto.shop_name = [rs stringForColumn:@"shop_name"];
+            
+            [array addObject:dto];
+            TT_RELEASE_SAFELY(dto);
+        }
+        [rs close]; 
+    }];
+    return array;
+}
 
 
+- (SHDataItem *)searchSHItemDAOFromDB:(NSString*)shopName
+{
+    __block SHDataItem *dto = nil;
+    [self.databaseQueue inDatabase:^(FMDatabase *db){
+        NSString *sql = [NSString stringWithFormat:@"select * from info_saved_business where shop_name = ?"];
+        
+        FMResultSet *rs = [db executeQuery:sql,shopName];
+        if(!rs)
+        {
+            [rs close];
+            return;
+        }
+        while ([rs next])
+        {
+            dto = [[SHDataItem alloc] init];
+            dto.shop_name = [rs stringForColumn:@"shop_name"];
+            dto.pos_code = [rs stringForColumn:@"pos_code"];
+            dto.branch_add = [rs stringForColumn:@"branch_add"];
+            dto.industry = [rs stringForColumn:@"industry"];
+            dto.industry_subclass = [rs stringForColumn:@"industry_subclass"];
+            dto.mcc = [rs stringForColumn:@"mcc"];
+            dto.account_name = [rs stringForColumn:@"account_name"];
+            dto.bank_card_num = [rs stringForColumn:@"bank_card_num"];
+            
+            dto.pub_pri = [rs stringForColumn:@"pub_pri"];
+            dto.invitation_code = [rs stringForColumn:@"invitation_code"];
+            dto.bank_province = [rs stringForColumn:@"bank_province"];
+            dto.bank_city = [rs stringForColumn:@"bank_city"];
+            dto.bank_add = [rs stringForColumn:@"bank_add"];
+            
+            dto.photo_business_permit = [rs dataForColumn:@"photo_business_permit"];
+            dto.photo_identifier_front = [rs dataForColumn:@"photo_identifier_front"];
+            dto.photo_identifier_back = [rs dataForColumn:@"photo_identifier_back"];
+            dto.photo_business_place = [rs dataForColumn:@"photo_business_place"];
+            dto.photo_bankcard_front = [rs dataForColumn:@"photo_bankcard_front"];
+            dto.photo_bankcard_back = [rs dataForColumn:@"photo_bankcard_back"];
+            dto.photo_contracts = [rs dataForColumn:@"photo_contracts"];
+        }
+        
+        [rs close];
+    }];
+    return dto;
+}
 
 //info_saved_business (\
 //                     userinfo_id INTEGER PRIMARY KEY NOT NULL,\
@@ -126,56 +192,35 @@
 }
 
 
-- (BOOL)insertSuNingSellDAOFromDB:(NSString*)sourceChannel channelDetail:(NSString*)channelDetail produceCode:(NSString*)produceCode producePrice:(NSString*)producePrice
-{
-    __block BOOL isInsearch = NO;
-    
-    if (IsStrEmpty(sourceChannel)&&IsStrEmpty(channelDetail)&&IsStrEmpty(produceCode)&&IsStrEmpty(producePrice))
-    {
-        return isInsearch;
-    }
-    
-    NSString* resultStr = [self searchSuNingSellDAOToDB:produceCode];
-    NSUInteger length = [resultStr length];
-    if (length)
-    {//数据库中已经存在
-        return isInsearch;
-    }
-    
-    NSString* tempSourceChannel = sourceChannel;
-    NSString* tempChannelDetail = channelDetail;
-    [self.databaseQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        NSString *insertSql = @"insert into dic_sell(source_channel,channel_detail,produce_code,produce_price)values(?,?,?,?)";
-        if (![db executeUpdate:insertSql,tempSourceChannel,tempChannelDetail,produceCode,producePrice])
-        {
-            *rollback = YES;
-            return;
-        }
-        isInsearch = YES;
-    }];
-    return isInsearch;
-}
-- (NSString*)searchSuNingSellDAOToDB:(NSString*)produceCode
-{
-    __block NSString* resultStr = nil;
-    [self.databaseQueue inDatabase:^(FMDatabase *db){
-        NSString *sql = [NSString stringWithFormat:@"select * from dic_sell where produce_code = ?"];
-        
-        FMResultSet *rs = [db executeQuery:sql, produceCode];
-        if(!rs)
-        {
-            [rs close];
-            return;
-        }
-        while ([rs next])
-        {
-            resultStr = [NSString stringWithFormat:@"%@_%@_%@_%@",[rs stringForColumn:@"source_channel"],[rs stringForColumn:@"channel_detail"],[rs stringForColumn:@"produce_code"],[rs stringForColumn:@"produce_price"]];
-        }
-        
-        [rs close];
-    }];
-    return resultStr;
-}
+//- (BOOL)insertSuNingSellDAOFromDB:(NSString*)sourceChannel channelDetail:(NSString*)channelDetail produceCode:(NSString*)produceCode producePrice:(NSString*)producePrice
+//{
+//    __block BOOL isInsearch = NO;
+//    
+//    if (IsStrEmpty(sourceChannel)&&IsStrEmpty(channelDetail)&&IsStrEmpty(produceCode)&&IsStrEmpty(producePrice))
+//    {
+//        return isInsearch;
+//    }
+//    
+//    NSString* resultStr = [self searchSuNingSellDAOToDB:produceCode];
+//    NSUInteger length = [resultStr length];
+//    if (length)
+//    {//数据库中已经存在
+//        return isInsearch;
+//    }
+//    
+//    NSString* tempSourceChannel = sourceChannel;
+//    NSString* tempChannelDetail = channelDetail;
+//    [self.databaseQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+//        NSString *insertSql = @"insert into dic_sell(source_channel,channel_detail,produce_code,produce_price)values(?,?,?,?)";
+//        if (![db executeUpdate:insertSql,tempSourceChannel,tempChannelDetail,produceCode,producePrice])
+//        {
+//            *rollback = YES;
+//            return;
+//        }
+//        isInsearch = YES;
+//    }];
+//    return isInsearch;
+//}
 
 - (BOOL)deleteProductByData:(SHDataItem *)data
 {

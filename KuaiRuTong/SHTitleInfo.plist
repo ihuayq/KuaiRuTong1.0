@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>商户信息填写</string>
+	<string>营业执照</string>
+	<string>身份证正面</string>
+	<string>身份证反面</string>
+	<string>店面照</string>
+	<string>结算卡正面</string>
+	<string>结算卡反面</string>
+	<string>合同照片</string>
+</array>
+</plist>

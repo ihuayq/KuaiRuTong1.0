@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class SHDataItem;
 
 @class BusinessInfoUpdateService;
 
@@ -16,6 +16,7 @@
 
 //上传接口
 @property(nonatomic,strong)  BusinessInfoUpdateService *service;
+@property(nonatomic,strong)  SHDataItem *shData;
 
 
 @end

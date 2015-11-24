@@ -229,7 +229,9 @@
         
         //[formData appendPartWithFileURL:fileURL name:@"uploadFile.zip" error:NULL];
         
-        [formData appendPartWithFileData:data name:@"file" fileName:@"zipfile.zip" mimeType:@"application/zip"];
+        //[formData appendPartWithFileData:data name:@"file" fileName:@"zipfile.zip" mimeType:@"application/zip"];
+        [formData appendPartWithFileData:data name:@"file" fileName:@"zipfile.zip" mimeType:@"multipart/form-data"]; 
+        
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {

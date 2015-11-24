@@ -40,7 +40,6 @@
     NSString *strSelectCategory;
     NSString *strSelectSubCategory;
     NSString *strSelectMccCode;
-    NSString *bussinessKindText;
     
     UITextField *accountNameTextField;
     UITextField *cardNumberTextField;
@@ -92,6 +91,20 @@
  
     [self initGroup];
     [self loadBasicView];
+    [self initViewData];
+}
+
+- (void) initGroup {
+    addressList = [NSMutableArray arrayWithArray:@[]];
+    codeList = [NSMutableArray arrayWithArray:@[]];
+    group=[[NSMutableArray alloc] init];
+    arrayTitle = [NSMutableArray arrayWithArray:@[@"商户名称",@"种类",@"账户名称",@"结算卡号",@"城市",@"街道/门牌号",@"邀请码(选填)",@"添加网点"]];
+    
+    for (NSString *av in arrayTitle) {
+        BusinessInfoCellPart *contact0=[BusinessInfoCellPart initWithPlacehold:@""];
+        BusinessInfoCellGroup *group0=[BusinessInfoCellGroup initWithDetail:av andContacts:[NSMutableArray arrayWithObjects:contact0, nil]];
+        [group addObject:group0];
+    }
 }
 
 -(void)loadBasicView{
@@ -116,12 +129,28 @@
     _addWDButton.layer.cornerRadius = 5.0;
     self.tableView.tableFooterView = _addWDButton;
     
-    bussinessKindText = @"";
+    if (self.isLoadJson == YES) {
+        [self displayOverFlowActivityView];
+        [self.service beginRequest];
+    }
     
-    [self displayOverFlowActivityView];
-    [self.service beginRequest];
-
 }
+
+-(void)initViewData{
+    if(self.item){
+        strSelectCategory = self.item.industry;
+        strSelectSubCategory = self.item.industry_subclass;
+        strSelectMccCode = self.item.mcc;
+        
+        strSelectProvice = self.item.bank_province;
+        strSelectCity = self.item.bank_city;
+
+        codeList = [NSMutableArray arrayWithArray:[self.item.pos_code componentsSeparatedByString:@";"]];
+        addressList = [NSMutableArray arrayWithArray:[self.item.branch_add componentsSeparatedByString:@";"]];
+        
+    }
+}
+
 
 - (CityAndMccInfoService *)service
 {
@@ -141,18 +170,7 @@
 }
 
 
-- (void) initGroup {
-    addressList = [NSMutableArray arrayWithArray:@[]];
-    codeList = [NSMutableArray arrayWithArray:@[]];
-    group=[[NSMutableArray alloc] init];
-    arrayTitle = [NSMutableArray arrayWithArray:@[@"商户名称",@"种类",@"账户名称",@"结算卡号",@"城市",@"街道/门牌号",@"邀请码(选填)",@"添加网点"]];
 
-    for (NSString *av in arrayTitle) {
-        BusinessInfoCellPart *contact0=[BusinessInfoCellPart initWithPlacehold:@""];
-        BusinessInfoCellGroup *group0=[BusinessInfoCellGroup initWithDetail:av andContacts:[NSMutableArray arrayWithObjects:contact0, nil]];
-        [group addObject:group0];
-    }
-}
 
 #pragma mark -- UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -190,6 +208,27 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == group.count - 1) {
+        
+        //修改入口
+        SHNewNetPointViewController *vc = [[SHNewNetPointViewController alloc] init];
+        vc.strPosCodeInfo = codeList[indexPath.row];
+        
+        NSMutableArray  *array = [NSMutableArray arrayWithArray:[addressList[indexPath.row] componentsSeparatedByString:@","]];
+        vc.strAddressInfo = array[array.count - 1];
+        [array removeObjectAtIndex:array.count - 1];
+        vc.strCityInfo = [array componentsJoinedByString:@" "];;
+        
+        vc.block = ^(NSString *strAddress,NSString *strPosCodeInfo){
+            if (![strAddress isEmpty]) {
+                addressList[indexPath.row] = strAddress;
+                codeList[indexPath.row] = strPosCodeInfo;
+                [self.tableView reloadData];
+            }
+        };
+        [self presentViewController:vc animated:NO completion:nil];
+    }
+    
 }
 
 //定制标题
@@ -250,7 +289,7 @@
         NSUInteger row = [indexPath row]; //获取当前行
         [addressList removeObjectAtIndex:row]; //在数据中删除当前对象
         
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];//数组执行删除操作
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -269,16 +308,27 @@
 
 #pragma PrivateMethods
 - (void)loadUIForCell:(UITableViewCell *)cell AtSection:(NSInteger)section{
+    
     if (section == 0) {
         //商户名称
         shopNameTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入商户名称" Font:[UIFont systemFontOfSize:20.0]];
         shopNameTextField.borderStyle = UITextBorderStyleNone;
         shopNameTextField.textAlignment = NSTextAlignmentLeft;
+        if (self.item.shop_name) {
+            shopNameTextField.text = self.item.shop_name;
+        }
         [cell.contentView addSubview:shopNameTextField];
+        
     }else if(section == 1){
         bussinessKindBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, MainWidth, 40)];
         [bussinessKindBtn addTarget:self action:@selector(selectBusinessKindBtn) forControlEvents:UIControlEventTouchUpInside];
-        [bussinessKindBtn setTitle:@"行业大类 行业细分 mcc" forState:UIControlStateNormal];
+        if ( strSelectCategory && strSelectSubCategory && strSelectMccCode ) {
+            [bussinessKindBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strSelectCategory,strSelectSubCategory,strSelectMccCode] forState:UIControlStateNormal];
+        }
+        else{
+            [bussinessKindBtn setTitle:@"行业大类 行业细分 mcc" forState:UIControlStateNormal];
+        }
+        
         bussinessKindBtn.backgroundColor = [UIColor clearColor];
         [bussinessKindBtn setTitleColor:[UIColor light_Gray_Color]forState:UIControlStateNormal];
         bussinessKindBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;//设置文字位置，现设为居左，默认的是居中
@@ -290,17 +340,27 @@
         accountNameTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入账户名称" Font:[UIFont systemFontOfSize:20.0]];
         accountNameTextField.borderStyle = UITextBorderStyleNone;
         accountNameTextField.textAlignment = NSTextAlignmentLeft;
+        accountNameTextField.text = self.item.account_name;
         [cell.contentView addSubview:accountNameTextField];
+        
     }else if (section == 3){
         //结算卡号
         cardNumberTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入结算卡号" Font:[UIFont systemFontOfSize:20.0]];
         cardNumberTextField.borderStyle = UITextBorderStyleNone;
         cardNumberTextField.textAlignment = NSTextAlignmentLeft;
+        cardNumberTextField.text = self.item.bank_card_num;
         [cell.contentView addSubview:cardNumberTextField];
+        
     }else if (section == 4){
         uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, MainWidth, 40)];
         [uploadBtn addTarget:self action:@selector(selectBtn) forControlEvents:UIControlEventTouchUpInside];
-        [uploadBtn setTitle:@"XX省 XX市 XX区" forState:UIControlStateNormal];
+
+        if (self.item.bank_province && self.item.bank_city) {
+            [uploadBtn setTitle:[NSString stringWithFormat:@"%@ %@", self.item.bank_province,self.item.bank_city] forState:UIControlStateNormal];
+        }else{
+            [uploadBtn setTitle:@"XX省 XX市 " forState:UIControlStateNormal];
+        }
+        
         uploadBtn.backgroundColor = [UIColor clearColor];
         [uploadBtn setTitleColor:[UIColor light_Gray_Color]forState:UIControlStateNormal];
         uploadBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;//设置文字位置，现设为居左，默认的是居中
@@ -312,6 +372,7 @@
         addressTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth,40) Placeholder:@"请输入详细地址" Font:[UIFont systemFontOfSize:20.0]];
         addressTextField.borderStyle = UITextBorderStyleNone;
         addressTextField.textAlignment = NSTextAlignmentLeft;
+        addressTextField.text = self.item.bank_add;
         
         [cell.contentView addSubview:addressTextField];
     }else if (section == 6){
@@ -319,17 +380,9 @@
         inviteCodeTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入商户邀请码(选填)" Font:[UIFont systemFontOfSize:20.0]];
         inviteCodeTextField.borderStyle = UITextBorderStyleNone;
         inviteCodeTextField.textAlignment = NSTextAlignmentLeft;
+        inviteCodeTextField.text = self.item.invitation_code;
         [cell.contentView addSubview:inviteCodeTextField];
     }
-//    else if (section == 7){
-//        //商户邀请码
-//        UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 4, MainWidth, 40)];
-//        [moreBtn addTarget:self action:@selector(addNetPiontInfo) forControlEvents:UIControlEventTouchUpInside];
-//        [moreBtn setTitle:@"添加网点" forState:UIControlStateNormal];
-//        moreBtn.backgroundColor = [UIColor clearColor];
-//        [moreBtn setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
-//        [cell.contentView addSubview:moreBtn];
-//    }
 }
 
 //省市区选择器
@@ -340,12 +393,7 @@
         strSelectProvice = strProvice;
         strSelectCity = strCity;
         strSelectArea = strArea;
-//        if (strProvice.isEmpty || strCity.isEmpty || strArea.isEmpty) {
-//            cityLocationInfoText = @"";
-//        }else{
-//            cityLocationInfoText = [NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea];
-//        }
-        
+
         [uploadBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
     };
     [self presentViewController:locationPickerVC animated:NO completion:nil];
@@ -356,7 +404,6 @@
     MccPickViewController*locationPickerVC = [[MccPickViewController alloc] init];
     locationPickerVC.pickerDic = self.service.pickerDic;
     locationPickerVC.block = ^(NSString *strCategory,NSString *strSubCategory,NSString *strMccCode){
-        
         strSelectCategory = strCategory;
         strSelectSubCategory = strSubCategory;
         strSelectMccCode = strMccCode;
@@ -387,10 +434,10 @@
 
 -(void)previousToViewController
 {
-    //[self dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//保存
 -(void)rightButtonClickEvent
 {
     //商户名
@@ -399,11 +446,8 @@
         return;
     }
     
-//    //行业种类
-//    if ([bussinessKindText isEmptyOrWhitespace]) {
-//        [self presentCustomDlg:@"请选择行业种类为空"];
-//        return;
-//    }
+    //行业种类
+
     
     //账号名称
     if ([accountNameTextField.text isEmptyOrWhitespace]) {
@@ -439,87 +483,26 @@
         [self presentCustomDlg:@"请添加网点地址"];
         return;
     }
-//    {
-//        "shop_name": "",  新增商户名称
-//        "pos_code": "",   网点机具序列号
-//        "branch_add": "", 网点地址
-//        "industry": "",   行业
-//        "industry_subclass": "", 行业细类
-//        "mcc": "",        mcc
-//        "account_name": "", 账户名
-//        "bank_card_num": "", 结算卡号
-//        "pub_pri": "",       对公 1 对私 0
-//        "invitation_code": "", 商户邀请码
-//        "bank_province":"",  省
-//        "bank_city":"",      市
-//        "bank_add": "",	结算卡地址
-//        "phone_num": "",	手机号
-//        "phone_verify": "", 手机号验证
-//        "network_name_verify": "" 网点名称验证接口
-//        "zip":""               照片数据zip包
-//    }
 
+    //SHDataItem *item =  [[SHDataItem alloc] init];
+    self.item.shop_name = shopNameTextField.text;
+    self.item.industry = strSelectCategory;
+    self.item.industry_subclass = strSelectSubCategory;
+    self.item.mcc = strSelectMccCode;
     
-    SHDataItem *item =  [[SHDataItem alloc] init];
-    item.shop_name = shopNameTextField.text;
-    item.industry = strSelectCategory;
-    item.industry_subclass = strSelectSubCategory;
-    item.mcc = strSelectMccCode;
-//    item.industry = @"民生";
-//    item.industry_subclass = @"收费";
-//    item.mcc = @"7880";
-    
-    item.account_name = accountNameTextField.text;
-    item.bank_card_num = cardNumberTextField.text;
-    item.pub_pri = @"1";
-    item.invitation_code = inviteCodeTextField.text;
-    item.bank_province = strSelectProvice;
-    item.bank_city = strSelectCity;
-    item.bank_add = addressTextField.text;
+    self.item.account_name = accountNameTextField.text;
+    self.item.bank_card_num = cardNumberTextField.text;
+    self.item.pub_pri = @"1";
+    self.item.invitation_code = inviteCodeTextField.text;
+    self.item.bank_province = strSelectProvice;
+    self.item.bank_city = strSelectCity;
+    self.item.bank_add = addressTextField.text;
     //网点信息
-    NSString *allCodeString = [codeList componentsJoinedByString:@";"];//分隔符
+    NSString *allCodeString = [codeList componentsJoinedByString:@";"];
     NSString *allAddressString = [addressList componentsJoinedByString:@";"];
-    item.pos_code = allCodeString;
-    item.branch_add = allAddressString;
-    item.network_name_verify = @"";
-    if (self.Tblock) {
-        self.Tblock(item);
-    }
-    
-    
-    NSMutableDictionary *infoDic = [[NSMutableDictionary alloc] init];
-    [infoDic setObject:shopNameTextField.text forKey:@"shop_name"];
-    //mcc
-    [infoDic setObject:strSelectCategory forKey:@"industry"];
-    [infoDic setObject:strSelectSubCategory forKey:@"industry_subclass"];
-    [infoDic setObject:strSelectMccCode forKey:@"mcc"];
-//    [infoDic setObject:@"民生" forKey:@"industry"];
-//    [infoDic setObject:@"一般类" forKey:@"industry_subclass"];
-//    [infoDic setObject:@"9888" forKey:@"mcc"];
-    
-    [infoDic setObject:accountNameTextField.text forKey:@"account_name"];
+    self.item.pos_code = allCodeString;
+    self.item.branch_add = allAddressString;
 
-    [infoDic setObject:@"1" forKey:@"pub_pri"];
-    [infoDic setObject:inviteCodeTextField.text forKey:@"invitation_code"];
-    //银行卡信息
-    [infoDic setObject:cardNumberTextField.text forKey:@"bank_card_num"];
-    [infoDic setObject:strSelectProvice forKey:@"bank_province"];
-    [infoDic setObject:strSelectCity forKey:@"bank_city"];
-    [infoDic setObject:addressTextField.text forKey:@"bank_add"];
-    
-    //手机号
-    [infoDic setObject:@"" forKey:@"phone_num"];
-    [infoDic setObject:@"" forKey:@"phone_verify"];
-    
-    [infoDic setObject:allCodeString forKey:@"pos_code"];
-    [infoDic setObject:allAddressString  forKey:@"branch_add"];
-    [infoDic setObject:@"" forKey:@"network_name_verify"];
-    
-    if (self.block) {
-        self.block(infoDic);
-    }
-    
-    //[self dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

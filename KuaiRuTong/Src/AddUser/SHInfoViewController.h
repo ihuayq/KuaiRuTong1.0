@@ -12,8 +12,8 @@
 //#import "DAContexMenuViewController.h"
 @class SHDataItem;
 
-typedef void (^AllBusinessInfo)(NSMutableDictionary *BussineDic);
-typedef void (^AllBusinessTextInfo)(SHDataItem *BussinessDataItem);
+//typedef void (^AllBusinessInfo)(NSMutableDictionary *BussineDic);
+//typedef void (^AllBusinessTextInfo)(SHDataItem *BussinessDataItem);
 
 @class TPKeyboardAvoidingTableView;
 
@@ -24,9 +24,12 @@ typedef void (^AllBusinessTextInfo)(SHDataItem *BussinessDataItem);
 @property(nonatomic,strong)  CityAndMccInfoService *service;
 @property(nonatomic,strong) NSMutableArray *BussineDic; //商户种类数组
 
-@property (strong, nonatomic)  AllBusinessInfo block;
+//@property (strong, nonatomic)  AllBusinessInfo block;
+//
+//@property (strong, nonatomic)  AllBusinessTextInfo Tblock;
 
-@property (strong, nonatomic)  AllBusinessTextInfo Tblock;
+@property (nonatomic, assign) BOOL isLoadJson;
+@property (strong, nonatomic) SHDataItem *item;
 
 
 @end

@@ -20,7 +20,6 @@ static NSArray *titlesArray = nil;
 
 @interface NewBusinessViewController ()<UIImagePickerControllerDelegate,BusinessInfoUpdateServiceDelegate>{
     UITableView *newTableView;  //新建商户列表信息
-    //NSArray *titlesArray;       //标题数组
     NSInteger currentPhotoTag;  //当前图片标识
     UIButton *uploadBtn;        //上传按钮
     UIButton *saveBtn;          //保存按钮
@@ -30,7 +29,7 @@ static NSArray *titlesArray = nil;
     UIImage *photoImages;
     
     NSMutableDictionary *businessTextInfoDic;       //商户详细文字信息
-    SHDataItem *shData;
+    
 }
 
 @end
@@ -39,6 +38,7 @@ static NSArray *titlesArray = nil;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     
     
     if (titlesArray  == nil) {
@@ -103,6 +103,14 @@ static NSArray *titlesArray = nil;
         _service.delegate = self;
     }
     return _service;
+}
+
+- (SHDataItem *)shData
+{
+    if (!_shData) {
+        _shData = [[SHDataItem alloc] init];
+    }
+    return _shData;
 }
 
 -(void)getCityAndMccInfoServiceResult:(BusinessInfoUpdateService *)service
@@ -203,11 +211,11 @@ static NSArray *titlesArray = nil;
         }
     }
     
-    //上传数据
-    if (businessTextInfoDic.count == 0) {
-        [self presentCustomDlg:@"商户详细信息缺失"];
-        return  NO;
-    }
+//    //上传数据
+//    if (businessTextInfoDic.count == 0) {
+//        [self presentCustomDlg:@"商户详细信息缺失"];
+//        return  NO;
+//    }
     
     return YES;
 }
@@ -236,16 +244,39 @@ static NSArray *titlesArray = nil;
     NSLog(@"Zipped file with result %d",success);
     
     
-    NSNumber *fileSize = [FCFileManager sizeOfFileAtPath:@"zipfile.zip"];
-    DLog(@"The size is %@!", fileSize);
+//    NSNumber *fileSize = [FCFileManager sizeOfFileAtPath:@"zipfile.zip"];
+//    DLog(@"The size is %@!", fileSize);
     
-    
-    
-    [businessTextInfoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
+    NSMutableDictionary *infoDic = [[NSMutableDictionary alloc] init];
+    //商户名
+    [infoDic setObject:self.shData.shop_name forKey:@"shop_name"];
+    //mcc
+    [infoDic setObject:self.shData.industry forKey:@"industry"];
+    [infoDic setObject:self.shData.industry_subclass forKey:@"industry_subclass"];
+    [infoDic setObject:self.shData.mcc forKey:@"mcc"];
+    [infoDic setObject:self.shData.account_name forKey:@"account_name"];
+    //邀请码
+    [infoDic setObject:self.shData.pub_pri forKey:@"pub_pri"];
+    [infoDic setObject:self.shData.invitation_code forKey:@"invitation_code"];
+    //银行卡信息
+    [infoDic setObject:self.shData.bank_card_num forKey:@"bank_card_num"];
+    [infoDic setObject:self.shData.bank_province forKey:@"bank_province"];
+    [infoDic setObject:self.shData.bank_city forKey:@"bank_city"];
+    [infoDic setObject:self.shData.bank_add forKey:@"bank_add"];
+    //手机号
+    [infoDic setObject:@"" forKey:@"phone_num"];
+    [infoDic setObject:@"" forKey:@"phone_verify"];
+    //网点信息
+    [infoDic setObject:self.shData.pos_code forKey:@"pos_code"];
+    [infoDic setObject:self.shData.branch_add  forKey:@"branch_add"];
+
+    //推销员登陆名
+    [infoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
     
     [self displayOverFlowActivityView];
-    [self.service beginUpload:businessTextInfoDic filePath:@"zipfile.zip"];
+    [self.service beginUpload:infoDic filePath:@"zipfile.zip"];
 }
+
 /**
  *  保存方法
  */
@@ -254,22 +285,21 @@ static NSArray *titlesArray = nil;
         return;
     }
     
-    shData.photo_business_permit = [FCFileManager readFileAtPathAsData:@"1.jpg"];
-    shData.photo_identifier_front =  [FCFileManager readFileAtPathAsData:@"2.jpg"];
-    shData.photo_identifier_back = [FCFileManager readFileAtPathAsData:@"3.jpg"];
-    shData.photo_business_place = [FCFileManager readFileAtPathAsData:@"4.jpg"];
-    shData.photo_bankcard_front = [FCFileManager readFileAtPathAsData:@"5.jpg"];
-    shData.photo_bankcard_back = [FCFileManager readFileAtPathAsData:@"6.jpg"];
-    shData.photo_contracts =[FCFileManager readFileAtPathAsData:@"7.jpg"];
+    self.shData.photo_business_permit = [FCFileManager readFileAtPathAsData:@"1.jpg"];
+    self.shData.photo_identifier_front =  [FCFileManager readFileAtPathAsData:@"2.jpg"];
+    self.shData.photo_identifier_back = [FCFileManager readFileAtPathAsData:@"3.jpg"];
+    self.shData.photo_business_place = [FCFileManager readFileAtPathAsData:@"4.jpg"];
+    self.shData.photo_bankcard_front = [FCFileManager readFileAtPathAsData:@"5.jpg"];
+    self.shData.photo_bankcard_back = [FCFileManager readFileAtPathAsData:@"6.jpg"];
+    self.shData.photo_contracts =[FCFileManager readFileAtPathAsData:@"7.jpg"];
     
     BusinessSavedDAO *saveDAO = [[BusinessSavedDAO alloc]init];
-    if ([saveDAO writeProductToDB:shData]) {
+    if ([saveDAO writeProductToDB:self.shData]) {
         [self displayOverFlowActivityView:@"保存成功" maxShowTime:0.1];
     }
     else{
         [self displayOverFlowActivityView:@"保存失败" maxShowTime:0.1];
     }
-    
 }
 
 
@@ -310,15 +340,7 @@ static NSArray *titlesArray = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    if (indexPath.row == 0) {
-////        UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
-////        SHInfoViewController *childController = [board instantiateViewControllerWithIdentifier: @"SHInfoVC"];
-////        [self.navigationController pushViewController:childController animated:YES];
 //    }else{
-//        ShowImageViewController *childController = [[ShowImageViewController alloc] init];
-//        childController.navTitle = titlesArray[indexPath.row];
-//        childController.currentPhotoTag = indexPath.row;
-//        childController.isTakePhoto = NO;
-//        [self.navigationController pushViewController:childController animated:YES];
 //    }
 }
 
@@ -337,14 +359,7 @@ static NSArray *titlesArray = nil;
         if (indexPath.row == 0 ) {
             SHInfoViewController *vc = [[SHInfoViewController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
-            vc.block = ^(NSMutableDictionary *BussineDic){
-                businessTextInfoDic = BussineDic;
-            };
-            vc.Tblock = ^(SHDataItem *BussinessDataItem){
-                shData = BussinessDataItem;
-            };
-            
-            
+            vc.item = self.shData;
             [self.navigationController pushViewController:vc animated:YES];
         }
         else{

@@ -19,6 +19,9 @@ typedef void (^addressBlock)(NSString *strAddressInfo,NSString *strPosCodeInfo);
 
 @property (strong, nonatomic)  addressBlock block;
 
-
+//外传参数
+@property (copy, nonatomic) NSString *strCityInfo;
+@property (copy, nonatomic) NSString *strAddressInfo;
+@property (copy, nonatomic) NSString *strPosCodeInfo;
 
 @end

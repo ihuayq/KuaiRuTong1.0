@@ -22,6 +22,8 @@
 
 - (NSArray *)getAllSavedHistorysSimpleInfoFromDB;
 
+-(BOOL)isSHItemExistInDB:(NSString*)shopName;
+
 - (SHDataItem *)searchSHItemDAOFromDB:(NSString*)shopName;
 
 - (BOOL)writeProductToDB:(SHDataItem *)data;

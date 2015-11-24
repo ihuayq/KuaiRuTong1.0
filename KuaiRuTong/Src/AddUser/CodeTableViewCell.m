@@ -30,6 +30,10 @@
     return self;
 }
 
+-(void)setCode:(NSString *)code{
+    _code = code;
+    textField.text = _code;
+}
 
 //-(NSString *)code{
 //    NSString *codeTMP = @"";

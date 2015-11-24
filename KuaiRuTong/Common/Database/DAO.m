@@ -48,7 +48,7 @@
             
             //信息收集的表建立
             /*已经保存的商户信息*/
-            //NSString *sql = [NSString stringWithFormat:@"DROP TABLE info_saved_business"];
+            NSString *sql = [NSString stringWithFormat:@"create index name_index on info_saved_business(shop_name)"];
             
             //Photo blob
             NSString *sql1 = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS info_saved_business (\
@@ -78,8 +78,9 @@
                               photo_contracts blob)"
                               ];
             
-            //[database executeUpdate:sql];
+            
             [database executeUpdate:sql1];
+            [database executeUpdate:sql];
 
             /*info_system*/
 //            NSString *sql4 = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS info_system (system_id INTEGER PRIMARY KEY NOT NULL,app_version TEXT NOT NULL,sys_kind TEXT NOT NULL,os_version TEXT NOT NULL,platform TEXT NOT NULL,user_ip TEXT NOT NULL,unique_id TEXT NOT NULL,session_id TEXT NOT NULL,app_down_way TEXT NOT NULL,field1 TEXT,field2 TEXT)"];

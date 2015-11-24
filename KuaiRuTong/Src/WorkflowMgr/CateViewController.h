@@ -10,8 +10,11 @@
 #import "UIFolderTableView.h"
 
 @class SHDataItem;
+@class BusinessInfoUpdateService;
 
 @interface CateViewController : CommonViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic,strong)  BusinessInfoUpdateService *service;
 
 @property (strong, nonatomic) NSArray *cates;
 @property (strong, nonatomic) UIFolderTableView *tableView;

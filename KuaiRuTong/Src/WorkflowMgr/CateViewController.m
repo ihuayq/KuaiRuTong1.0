@@ -12,10 +12,14 @@
 #import "Globle.h"
 #import "SHDataItem.h"
 #import "BusinessSavedDAO.h"
+#import "SHInfoViewController.h"
+#import "BusinessInfoUpdateService.h"
 
-@interface CateViewController () <UIFolderTableViewDelegate>{
+@interface CateViewController () <UIFolderTableViewDelegate,BusinessInfoUpdateServiceDelegate>{
     UIButton *uploadBtn;        //上传按钮
     UIButton *saveBtn;          //保存按钮
+    
+    int  nSelectIndex;
 }
 
 @property (strong, nonatomic) SubCateViewController *subVc;
@@ -35,11 +39,7 @@
 -(NSArray *)cates
 {
     if (_cates == nil){
-        
-//        NSURL *url = [[NSBundle mainBundle] URLForResource:@"Category" withExtension:@"plist"];
-//        _cates = [NSArray arrayWithContentsOfURL:url];
         _cates = [Globle shareGloble].titleShDataArray;
-        
     }
     
     return _cates;
@@ -48,44 +48,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     
-    self.tableView =  [[UIFolderTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT - 240) style:UITableViewStyleGrouped];
+    self.tableView =  [[UIFolderTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT - 200 ) style:UITableViewStyleGrouped];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     
-    uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/4 - MainWidth/6,self.tableView.origin.y + self.tableView.size.height + 10,MainWidth/3,40)];
-    //[cancelButton setFrame:CGRectMake(40,MainHeight -200, MainWidth-2*40, 40)];
-    [uploadBtn addTarget:self action:@selector(uploadBtnMethod) forControlEvents:UIControlEventTouchUpInside];
-    [uploadBtn setTitle:@"上   传" forState:UIControlStateNormal];
-    [uploadBtn.layer setMasksToBounds:YES];
-    [uploadBtn.layer setCornerRadius:uploadBtn.frame.size.height/2.0f]; //设置矩形四个圆角半径
-    uploadBtn.backgroundColor = ORANGE_COLOR;
-    [self.view  addSubview:uploadBtn];
-    
-    // MainHeight - 48 - NAVIGATION_OUTLET_HEIGHT
-    saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/2 + MainWidth/4 - MainWidth/6 , self.tableView.origin.y + self.tableView.size.height + 10, MainWidth/3, 40)];
-    [saveBtn addTarget:self action:@selector(saveBtnMethod) forControlEvents:UIControlEventTouchUpInside];
-    [saveBtn setTitle:@"保   存" forState:UIControlStateNormal];
-    saveBtn.backgroundColor = ORANGE_COLOR;
-    saveBtn.layer.masksToBounds = YES;
-    [saveBtn.layer setCornerRadius:uploadBtn.frame.size.height/2.0f];
-    [self.view addSubview:saveBtn];
-    
     BusinessSavedDAO *dao= [[BusinessSavedDAO alloc] init];
     self.SHData = [dao searchSHItemDAOFromDB:self.shopName];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -96,49 +70,92 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.cates.count;
+    return self.cates.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cate_cell";
-
-    SHInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *cellNormal= @"normal_cell";
     
-    if (cell == nil) {
-        cell = [[SHInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ( indexPath.row == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                          reuseIdentifier:CellIdentifier];
+           
+            UIImageView* img = [[UIImageView alloc] initWithFrame:CGRectMake(MainWidth -40, 6,30,30)];
+            img.image = [UIImage imageNamed:@"addInfo"];
+            [cell.contentView addSubview:img];
+        
+        }
+        cell.textLabel.text = [self.cates objectAtIndex:indexPath.row];
+        
+        return cell;
     }
-    
-
-    //cell.logo.image = [UIImage imageNamed:[[cate objectForKey:@"imageName"] stringByAppendingString:@".png"]];
-    cell.title.text = [self.cates objectAtIndex:indexPath.row];
-
-//    NSMutableArray *subTitles = [[NSMutableArray alloc] init];
-//    NSArray *subClass = [cate objectForKey:@"subClass"];
-//    for (int i=0; i < MIN(4,  subClass.count); i++) {
-//        [subTitles addObject:[[subClass objectAtIndex:i] objectForKey:@"name"]];
-//    }
-//    cell.subTtile.text = [subTitles componentsJoinedByString:@"/"];
-    
-    return cell;
+    else if (indexPath.row == 8)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                              reuseIdentifier:CellIdentifier];
+            //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/4 - MainWidth/6,5,MainWidth/3,30)];
+        [uploadBtn addTarget:self action:@selector(uploadBtnMethod) forControlEvents:UIControlEventTouchUpInside];
+        [uploadBtn setTitle:@"上   传" forState:UIControlStateNormal];
+        [uploadBtn.layer setMasksToBounds:YES];
+        [uploadBtn.layer setCornerRadius:uploadBtn.frame.size.height/2.0f]; //设置矩形四个圆角半径
+        uploadBtn.backgroundColor = ORANGE_COLOR;
+        [cell.contentView  addSubview:uploadBtn];
+        
+        // MainHeight - 48 - NAVIGATION_OUTLET_HEIGHT
+        saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/2 + MainWidth/4 - MainWidth/6 , 5, MainWidth/3, 30)];
+        [saveBtn addTarget:self action:@selector(saveBtnMethod) forControlEvents:UIControlEventTouchUpInside];
+        [saveBtn setTitle:@"保 存 " forState:UIControlStateNormal];
+        saveBtn.backgroundColor = ORANGE_COLOR;
+        saveBtn.layer.masksToBounds = YES;
+        [saveBtn.layer setCornerRadius:saveBtn.frame.size.height/2.0f];
+        [cell.contentView addSubview:saveBtn];
+        return cell;
+    }
+    else
+    {
+        SHInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[SHInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                              reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        cell.title.text = [self.cates objectAtIndex:indexPath.row];
+        return cell;
+    }
 }
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if ( indexPath.row == 0 ) {
-        
+        SHInfoViewController *vc = [[SHInfoViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.item = self.SHData;
+        [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     
+    if ( indexPath.row == 8 ) {
+        
+        return;
+    }
     
     SHInfoTableViewCell *cell = (SHInfoTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     SubCateViewController *subVc = [[SubCateViewController alloc] init];
     subVc.cateVC = self;
     
+    
+    nSelectIndex = indexPath.row;
     if ( indexPath.row == 1 ) {
         subVc.imageData= self.SHData.photo_business_permit;
     }
@@ -184,53 +201,115 @@
 
 -(CGFloat)tableView:(UIFolderTableView *)tableView xForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 44;
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 0.1;
+    
+}
+
+
+
+
+- (BusinessInfoUpdateService *)service
+{
+    if (!_service) {
+        _service = [[BusinessInfoUpdateService alloc] init];
+        _service.delegate = self;
+    }
+    return _service;
+}
+
+-(void)uploadBtnMethod{
+    [self displayOverFlowActivityView];
+    [self.service beginUpload:self.SHData];
+}
+
+-(void)saveBtnMethod{
+    BusinessSavedDAO *saveDAO = [[BusinessSavedDAO alloc]init];
+    if ([saveDAO writeProductToDB:self.SHData]) {
+        [self displayOverFlowActivityView:@"保存成功" maxShowTime:0.1];
+    }
+    else{
+        [self displayOverFlowActivityView:@"保存失败" maxShowTime:0.1];
+    }
+}
+
 
 -(void)selectPhotoGroup:(UIButton *)btn
 {
-
-//    NSDictionary *subCate = [[self.currentCate objectForKey:@"subClass"] objectAtIndex:btn.tag];
-//    NSString *name = [subCate objectForKey:@"name"];
-//    UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"子类信息"
-//                                                         message:[NSString stringWithFormat:@"名称:%@, ID: %@", name, [subCate objectForKey:@"classID"]]
-//                                                        delegate:nil
-//                                               cancelButtonTitle:@"确认"
-//                                               otherButtonTitles:nil];
-//    [Notpermitted show];
-//    [Notpermitted release];
+    //实例化Controller
+    UIImagePickerController*picker;
+    if (!picker) {
+        picker = [[UIImagePickerController alloc]init];
+        //设置代理
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
     
-    UIActionSheet *sheetImage = [[UIActionSheet alloc]initWithTitle:@"请选择方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机",@"相册", nil];
-    //sheetImage.tag = indexPath.row;
-    [sheetImage showInView:[UIApplication sharedApplication].keyWindow];
     
 }
 
 -(void)selectCamera:(UIButton *)btn
 {
-}
-
-
-#pragma mark -- UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    //currentPhotoTag = actionSheet.tag;
-    if (buttonIndex != 2) {
-        //实例化Controller
-        UIImagePickerController*picker;
-        if (!picker) {
-            picker = [[UIImagePickerController alloc]init];
-            //设置代理
-            picker.delegate = self;
-            [self presentViewController:picker animated:YES completion:nil];
-        }
-        
-        //默认选择是相册
-        if (buttonIndex == 0) {
-            //开启相机模式之前需要判断相机是否可用
-            if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            }
-        }
+    //实例化Controller
+    UIImagePickerController*picker;
+    if (!picker) {
+        picker = [[UIImagePickerController alloc]init];
+        //设置代理
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+    
+    //开启相机模式之前需要判断相机是否可用
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
 }
+
+#pragma mark -- UIImagePickerControllerDelegate 代理方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *photoImages=[info objectForKey:UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.5);
+    
+    
+    UIViewController * Vc = [self appRootViewController];
+    DLog(@"CONTROLLER IS %@",Vc);
+//    self.imageData = imageData;
+//    self.image.image = [UIImage imageWithData:self.imageData];
+//    [self.view bringSubviewToFront:self.image];
+    //    NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
+    //    DLog(@"The pic name is%@",nameString);
+    //
+    //    BOOL success = [FCFileManager createFileAtPath:nameString withContent:imageData];
+    //    if (success) {
+    //        DLog(@"The pic create success :%b",success);
+    //
+    //        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //        [photosArray replaceObjectAtIndex:(currentPhotoTag) withObject:@"yes"];
+    //        [userDefaults setObject:photosArray forKey:@"photosTempArray"];
+    //        [userDefaults synchronize];
+    //        //[self.navigationController popViewControllerAnimated:YES];
+    //
+    //        [newTableView reloadData];
+    //    }
+}
+
+
+- (UIViewController *)appRootViewController
+{
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *topVC = appRootVC;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
+}
+
 @end

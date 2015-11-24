@@ -76,6 +76,24 @@
     return array;
 }
 
+-(BOOL)isSHItemExistInDB:(NSString*)shopName{
+    __block BOOL isExist = NO;
+    [self.databaseQueue inDatabase:^(FMDatabase *db){
+        NSString *sql = [NSString stringWithFormat:@"select * from info_saved_business where shop_name = ?"];
+        
+        FMResultSet *rs = [db executeQuery:sql,shopName];
+        if(!rs)
+        {
+            [rs close];
+            return;
+        }
+        while ([rs next])
+        {
+            isExist = YES;
+        }
+    }];
+    return  isExist;
+}
 
 - (SHDataItem *)searchSHItemDAOFromDB:(NSString*)shopName
 {
@@ -152,6 +170,11 @@
     if (data == nil || data.shop_name.trim.length == 0
         )
     {
+        return NO;
+    }
+    
+    BOOL isExist = [self isSHItemExistInDB:data.shop_name];
+    if (isExist == YES) {
         return NO;
     }
     

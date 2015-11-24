@@ -20,11 +20,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigation.leftImage  = [UIImage imageNamed:@"nav_backbtn.png"];
+    //[self.navigationController setNavigationBarHidden:YES animated:NO];
+    //self.view.backgroundColor = [UIColor whiteColor];
+    self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     self.navigation.rightImage = nil;
     self.navigation.title = @"搜索";
+    
+
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f,self.navigation.size.height+self.navigation.origin.y, self.view.size.width, 44.0f)];
     _searchBar.delegate =self;
@@ -120,6 +122,7 @@
     
     SHDataItem * model = [array objectAtIndex:indexPath.row];
     vc.shopName = model.shop_name;
+    vc.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:vc animated:YES];
     

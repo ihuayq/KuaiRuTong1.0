@@ -165,12 +165,19 @@ NSArray *getManagerIconsArray() {
     
     switch (indexPath.row) {
         case USER_QUERY:
+        case WOKR_STATAS:
+        case WAIT_FLOW:
+        case ERROR_FLOW:
+        case STOCK_QUERY:
+        case SELFMACHINE_REC:
+            break;
+        case FLOW_SAVED:
         {
             SearchBaseViewController *base = [[SearchBaseViewController alloc] init];
-             [self.navigationController pushViewController:base animated:YES];
-        }
+            [self.navigationController pushViewController:base animated:YES];
             break;
-            
+        }
+          
         default:
             break;
     }

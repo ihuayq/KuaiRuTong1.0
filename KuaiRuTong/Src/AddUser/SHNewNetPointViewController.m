@@ -20,18 +20,16 @@ typedef NS_ENUM(int, EditState){
 @interface SHNewNetPointViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>{
     EditState editState;
     
-    NSMutableArray *codeList;
     NSMutableArray *arrayTitle;
     
+    NSMutableArray *codeList;
     
     UIButton *addressBtn;
     NSString *strCityInfo;
     UITextField *addressTextField;
     
-    
     UIButton * deletebtn;
     UIButton * addbtn;
-    
 }
 
 @end
@@ -66,6 +64,18 @@ typedef NS_ENUM(int, EditState){
 
     arrayTitle = [NSMutableArray arrayWithArray:@[@"地址",@"机身序列号"]];
     codeList = [NSMutableArray arrayWithArray:@[@""]];
+    
+//    if(self.strAddressInfo){
+//        NSArray  *array = [self.strAddressInfo componentsSeparatedByString:@","];
+//    }
+    
+    if (self.strPosCodeInfo) {
+        codeList = nil;
+        codeList = [NSMutableArray arrayWithArray:[self.strPosCodeInfo componentsSeparatedByString:@","]];
+    }
+    
+    
+    
 }
 
 
@@ -107,11 +117,9 @@ typedef NS_ENUM(int, EditState){
     //保存机器信息
     if (self.block) {
         
-        DLog(@"THE NETWORK INFO IS %@",[NSString stringWithFormat:@"%@,%@;%@",strCityInfo,addressTextField.text,codeString]);
-        self.block([NSString stringWithFormat:@"%@,%@",strCityInfo,addressTextField.text],codeString);
+        DLog(@"THE NETWORK INFO IS %@",[NSString stringWithFormat:@"%@,%@;%@",self.strCityInfo,addressTextField.text,codeString]);
+        self.block([NSString stringWithFormat:@"%@,%@",self.strCityInfo,addressTextField.text],codeString);
     }
-   
-    
 }
 
 
@@ -142,11 +150,13 @@ typedef NS_ENUM(int, EditState){
         if (indexPath.row == 0){
             addressBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, MainWidth, 40)];
             [addressBtn addTarget:self action:@selector(selectBtn) forControlEvents:UIControlEventTouchUpInside];
-            [addressBtn setTitle:@"XX省 XX市 XX区" forState:UIControlStateNormal];
+            
             addressBtn.backgroundColor = [UIColor clearColor];
             [addressBtn setTitleColor:[UIColor light_Gray_Color]forState:UIControlStateNormal];
             addressBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;//设置文字位置，现设为居左，默认的是居中
             addressBtn.contentEdgeInsets = UIEdgeInsetsMake(0,6,0, 0);
+            [addressBtn setTitle:self.strCityInfo?self.strCityInfo:@"XX省 XX市 XX区" forState:UIControlStateNormal];
+
             [cell.contentView addSubview:addressBtn];
             
         }else if (indexPath.row == 1){
@@ -156,6 +166,10 @@ typedef NS_ENUM(int, EditState){
             addressTextField.textAlignment = NSTextAlignmentLeft;
             addressTextField.placeholder = @"请输入详细地址";
             addressTextField.font = [UIFont systemFontOfSize:20.0];
+            if(self.strAddressInfo){
+                addressTextField.text = self.strAddressInfo;
+            }
+            
             [cell.contentView addSubview:addressTextField];
         }
         
@@ -174,18 +188,8 @@ typedef NS_ENUM(int, EditState){
         cell.onTextEntered = ^(NSString * enteredString){
             [dataWeak setObject:enteredString atIndexedSubscript:indexPath.row];
         };
-        
+        cell.code = codeList[indexPath.row];
         return cell;
-        
-//        if (indexPath.row == 0){
-//            //商户邀请码
-//            UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 4, MainWidth, 40)];
-//            [moreBtn addTarget:self action:@selector(addNetPiontInfo) forControlEvents:UIControlEventTouchUpInside];
-//            [moreBtn setTitle:@"填写机身序列号" forState:UIControlStateNormal];
-//            moreBtn.backgroundColor = [UIColor clearColor];
-//            [moreBtn setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
-//            [cell.contentView addSubview:moreBtn];
-//        }
     }
     
     return  nil;
@@ -196,11 +200,11 @@ typedef NS_ENUM(int, EditState){
     LocationPickerViewController *locationPickerVC = [[LocationPickerViewController alloc] init];
     locationPickerVC.block = ^(NSString *strProvice,NSString *strCity,NSString *strArea){
         //城市信息选择器
-        if (strProvice.isEmpty || strCity.isEmpty || strArea.isEmpty) {
-            strCityInfo = @"";
-        }else{
-            strCityInfo = [NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea];
-        }
+//        if (strProvice.isEmpty || strCity.isEmpty || strArea.isEmpty) {
+//            strCityInfo = @"";
+//        }else{
+            self.strCityInfo = [NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea];
+//        }
         
         [addressBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
     };

@@ -8,7 +8,7 @@
 
 #import "DataService.h"
 
-
+@class SHDataItem;
 @class BusinessInfoUpdateService;
 @protocol BusinessInfoUpdateServiceDelegate <NSObject>
 @optional
@@ -25,6 +25,8 @@
 
 @property (nonatomic,weak) id<BusinessInfoUpdateServiceDelegate> delegate;
 
--(void)beginUpload:(NSDictionary*)parameters filePath:(NSString*)path ;
+-(void)beginUpload:(NSDictionary*)parameters filePath:(NSString*)path;
+
+-(void)beginUpload:(SHDataItem*)data;
 
 @end

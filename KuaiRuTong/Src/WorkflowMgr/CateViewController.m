@@ -20,6 +20,8 @@
     UIButton *saveBtn;          //保存按钮
     
     int  nSelectIndex;
+    
+    SubCateViewController *subVc;
 }
 
 @property (strong, nonatomic) SubCateViewController *subVc;
@@ -128,9 +130,12 @@
                                               reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+
         cell.title.text = [self.cates objectAtIndex:indexPath.row];
+        
         return cell;
     }
+    
 }
 
 #pragma mark - Table view delegate
@@ -151,7 +156,7 @@
     }
     
     SHInfoTableViewCell *cell = (SHInfoTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    SubCateViewController *subVc = [[SubCateViewController alloc] init];
+    subVc = [[SubCateViewController alloc] init];
     subVc.cateVC = self;
     
     
@@ -178,7 +183,6 @@
         subVc.imageData= self.SHData.photo_contracts;
     }
 
-    subVc.imageData= self.SHData.photo_bankcard_back;
     [cell changeArrowWithUp:YES];
     
     self.tableView.scrollEnabled = NO;
@@ -249,8 +253,6 @@
         picker.delegate = self;
         [self presentViewController:picker animated:YES completion:nil];
     }
-    
-    
 }
 
 -(void)selectCamera:(UIButton *)btn
@@ -274,13 +276,60 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *photoImages=[info objectForKey:UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
     
     NSData *imageData = UIImageJPEGRepresentation(photoImages, 0.5);
     
     
-    UIViewController * Vc = [self appRootViewController];
-    DLog(@"CONTROLLER IS %@",Vc);
+    if ( nSelectIndex == 1 ) {
+        self.SHData.photo_business_permit = imageData;
+    }
+    else if ( nSelectIndex == 2 ) {
+        self.SHData.photo_identifier_front= imageData;
+    }
+    else if ( nSelectIndex == 3 ) {
+        self.SHData.photo_identifier_back= imageData;
+    }
+    else if ( nSelectIndex == 4 ) {
+        self.SHData.photo_business_place= imageData;
+    }
+    else if ( nSelectIndex == 5 ) {
+        self.SHData.photo_bankcard_front= imageData;
+    }
+    else if ( nSelectIndex == 6 ) {
+        self.SHData.photo_bankcard_back= imageData;
+    }
+    else if ( nSelectIndex == 7 ) {
+        self.SHData.photo_contracts= imageData;
+    }
+
+    subVc.imageData = imageData;
+//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"212",@"image", nil];
+//    NSNotification *notification =[NSNotification notificationWithName:@"helloPic" object:nil userInfo:dict];
+//    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
+//    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
+//    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+//    for (int i=0;i<[self.navigationController.viewControllers count] ; i++)
+//    {
+//        UIViewController * Vc = [self.navigationController.viewControllers objectAtIndex:i];
+//        DLog(@"CONTROLLER IS %@",Vc);
+//        if([Vc isKindOfClass:[SubCateViewController class]])
+//        {
+////            settingNaturalManInfoViewController* info=[self.navigationController.viewControllers objectAtIndex:i];
+////            [self.navigationController popToViewController:info
+////                                                  animated:NO];
+//            DLog(@"CONTROLLER IS %@",Vc);
+//
+//        }
+//    }
+    
+//    UIViewController * Vc = [self appRootViewController];
+//    DLog(@"CONTROLLER IS %@",Vc);
 //    self.imageData = imageData;
 //    self.image.image = [UIImage imageWithData:self.imageData];
 //    [self.view bringSubviewToFront:self.image];

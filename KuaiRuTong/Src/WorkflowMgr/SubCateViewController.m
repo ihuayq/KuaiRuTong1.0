@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(helloPic:) name:@"helloPic" object:nil];
     
     self.image = [[UIImageView alloc] initWithFrame:CGRectMake(MainWidth/2 - 90 , 10, 180, 320)];
     self.image.backgroundColor = [UIColor clearColor];
@@ -50,11 +51,28 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.image.image = [UIImage imageWithData:_imageData];
     [self.view bringSubviewToFront:self.image];
+    
+    [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
 }
 
 
 
+-(void)helloPic:(NSNotification *)text{
+    NSLog(@"%@",text.userInfo[@"image"]);
+    NSLog(@"－－－－－接收到照片拍摄通知------");
+    
+    self.imageData = text.userInfo[@"image"];
+    self.image.image = [UIImage imageWithData:_imageData];
+    [self.view bringSubviewToFront:self.image];
+    
+}
+
 -(void)setImageData:(NSData *)imageData{
     _imageData = imageData;
+    
+    if (self.image) {
+        self.image.image = [UIImage imageWithData:_imageData];
+        [self.view bringSubviewToFront:self.image];
+    }
 }
 @end

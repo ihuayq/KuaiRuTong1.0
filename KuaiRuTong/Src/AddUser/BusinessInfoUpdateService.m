@@ -53,7 +53,9 @@
     [infoDic setObject:data.branch_add  forKey:@"branch_add"];
     
     //推销员登陆名
-    [infoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
+    
+    NSString *username = [[[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfoData"] objectForKey:@"username"];
+    [infoDic setObject: username forKey:@"name"];
     
     //压缩数据
     NSString* docPath = [FCFileManager pathForDocumentsDirectory];

@@ -11,5 +11,6 @@
 
 @interface SearchMoreBaseViewController:CommonViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,copy)  NSString *NavTitle;
+@property(nonatomic,assign)  WorkMgr_ENUM nSearchType;
+
 @end

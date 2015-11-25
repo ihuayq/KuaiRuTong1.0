@@ -339,6 +339,7 @@ static NSArray *titlesArray = nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 //    if (indexPath.row == 0) {
 //    }else{
 //    }
@@ -360,6 +361,7 @@ static NSArray *titlesArray = nil;
             SHInfoViewController *vc = [[SHInfoViewController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             vc.item = self.shData;
+            vc.isLoadJson = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
         else{

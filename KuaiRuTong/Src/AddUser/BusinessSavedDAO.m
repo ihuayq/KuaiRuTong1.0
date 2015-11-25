@@ -173,10 +173,10 @@
         return NO;
     }
     
-    BOOL isExist = [self isSHItemExistInDB:data.shop_name];
-    if (isExist == YES) {
-        return NO;
-    }
+//    BOOL isExist = [self isSHItemExistInDB:data.shop_name];
+//    if (isExist == YES) {
+//        return NO;
+//    }
     
     [self.databaseQueue inDatabase:^(FMDatabase *db){
         

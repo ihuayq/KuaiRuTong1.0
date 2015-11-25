@@ -163,6 +163,11 @@
 		888E52211BF477B500A6D917 /* BTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888E52201BF477B500A6D917 /* BTLabel.m */; };
 		888E52241BF479C800A6D917 /* LoginDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 888E52231BF479C800A6D917 /* LoginDataService.m */; };
 		888E52281BF47D7E00A6D917 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 888E52271BF47D7E00A6D917 /* DeviceManager.m */; };
+		888EE4C21C05531300811973 /* QuerySHInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C11C05531300811973 /* QuerySHInterfaceViewController.m */; settings = {ASSET_TAGS = (); }; };
+		888EE4C61C05600C00811973 /* SearchDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C51C05600C00811973 /* SearchDataService.m */; settings = {ASSET_TAGS = (); }; };
+		888EE4C91C05657C00811973 /* SHSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C81C05657C00811973 /* SHSearchResultCell.m */; settings = {ASSET_TAGS = (); }; };
+		888EE4CD1C05866900811973 /* SHResultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4CC1C05866900811973 /* SHResultData.m */; settings = {ASSET_TAGS = (); }; };
+		888EE4D01C05B14900811973 /* QueryWorkingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4CF1C05B14900811973 /* QueryWorkingStatusViewController.m */; settings = {ASSET_TAGS = (); }; };
 		888F27BE1BF339DE0023C817 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 888F27BD1BF339DE0023C817 /* libsqlite3.tbd */; };
 		888F27C01BF33A8F0023C817 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 888F27BF1BF33A8F0023C817 /* libz.1.1.3.tbd */; };
 		8891418B1BF9681F007E1BBB /* AddWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889140F41BF9681E007E1BBB /* AddWebViewController.m */; };
@@ -615,6 +620,16 @@
 		888E52231BF479C800A6D917 /* LoginDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataService.m; sourceTree = "<group>"; };
 		888E52261BF47D7E00A6D917 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		888E52271BF47D7E00A6D917 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
+		888EE4C01C05531300811973 /* QuerySHInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerySHInterfaceViewController.h; sourceTree = "<group>"; };
+		888EE4C11C05531300811973 /* QuerySHInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerySHInterfaceViewController.m; sourceTree = "<group>"; };
+		888EE4C41C05600C00811973 /* SearchDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDataService.h; sourceTree = "<group>"; };
+		888EE4C51C05600C00811973 /* SearchDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDataService.m; sourceTree = "<group>"; };
+		888EE4C71C05657C00811973 /* SHSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSearchResultCell.h; sourceTree = "<group>"; };
+		888EE4C81C05657C00811973 /* SHSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSearchResultCell.m; sourceTree = "<group>"; };
+		888EE4CB1C05866900811973 /* SHResultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResultData.h; sourceTree = "<group>"; };
+		888EE4CC1C05866900811973 /* SHResultData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHResultData.m; sourceTree = "<group>"; };
+		888EE4CE1C05B14900811973 /* QueryWorkingStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryWorkingStatusViewController.h; sourceTree = "<group>"; };
+		888EE4CF1C05B14900811973 /* QueryWorkingStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryWorkingStatusViewController.m; sourceTree = "<group>"; };
 		888F27BA1BF334FC0023C817 /* SuningEBuyConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuningEBuyConfig.h; sourceTree = "<group>"; };
 		888F27BD1BF339DE0023C817 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		888F27BF1BF33A8F0023C817 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
@@ -1070,6 +1085,7 @@
 		887AD94B1BF57A8000648D93 /* WorkflowMgr */ = {
 			isa = PBXGroup;
 			children = (
+				888EE4C31C05534000811973 /* Model */,
 				887B0AE71C02FAA3009483ED /* Controller */,
 				887B0AD91C02F917009483ED /* View */,
 			);
@@ -1295,6 +1311,10 @@
 		887B0ACE1C02B8BC009483ED /* SavedWorkFlow */ = {
 			isa = PBXGroup;
 			children = (
+				887B0ADD1C02FA94009483ED /* CateViewController.h */,
+				887B0ADE1C02FA94009483ED /* CateViewController.m */,
+				887B0AE01C02FA94009483ED /* SubCateViewController.h */,
+				887B0AE11C02FA94009483ED /* SubCateViewController.m */,
 				7A2E0FE51C01FF8600CB215C /* SearchBaseViewController.h */,
 				7A2E0FE61C01FF8600CB215C /* SearchBaseViewController.m */,
 			);
@@ -1318,7 +1338,8 @@
 		887B0AD91C02F917009483ED /* View */ = {
 			isa = PBXGroup;
 			children = (
-				887B0AE91C02FB30009483ED /* SHInfoView */,
+				888EE4CA1C05658A00811973 /* QuerySH */,
+				887B0AE91C02FB30009483ED /* SavedSHInfoView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1326,35 +1347,34 @@
 		887B0AE71C02FAA3009483ED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				887B0AE81C02FAF1009483ED /* SHInfoVc */,
-				887B0ACE1C02B8BC009483ED /* SavedWorkFlow */,
 				887AD94C1BF57AE000648D93 /* WorkflowMgrViewController.h */,
 				887AD94D1BF57AE000648D93 /* WorkflowMgrViewController.m */,
+				888EE4D11C05B15700811973 /* QueryWorkingStatus */,
+				887B0AE81C02FAF1009483ED /* QuerySHVc */,
+				887B0ACE1C02B8BC009483ED /* SavedWorkFlow */,
 				887B0ACB1C02A6B8009483ED /* SearchMoreBaseViewController.h */,
 				887B0ACC1C02A6B8009483ED /* SearchMoreBaseViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		887B0AE81C02FAF1009483ED /* SHInfoVc */ = {
+		887B0AE81C02FAF1009483ED /* QuerySHVc */ = {
 			isa = PBXGroup;
 			children = (
-				887B0ADD1C02FA94009483ED /* CateViewController.h */,
-				887B0ADE1C02FA94009483ED /* CateViewController.m */,
-				887B0AE01C02FA94009483ED /* SubCateViewController.h */,
-				887B0AE11C02FA94009483ED /* SubCateViewController.m */,
+				888EE4C01C05531300811973 /* QuerySHInterfaceViewController.h */,
+				888EE4C11C05531300811973 /* QuerySHInterfaceViewController.m */,
 			);
-			name = SHInfoVc;
+			name = QuerySHVc;
 			sourceTree = "<group>";
 		};
-		887B0AE91C02FB30009483ED /* SHInfoView */ = {
+		887B0AE91C02FB30009483ED /* SavedSHInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				887B0ACF1C02F907009483ED /* Folder */,
 				887B0ADA1C02F96E009483ED /* SHInfoTableViewCell.h */,
 				887B0ADB1C02F96E009483ED /* SHInfoTableViewCell.m */,
 			);
-			name = SHInfoView;
+			name = SavedSHInfoView;
 			sourceTree = "<group>";
 		};
 		887B0AEC1C030A96009483ED /* image */ = {
@@ -1521,6 +1541,35 @@
 				888E52271BF47D7E00A6D917 /* DeviceManager.m */,
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		888EE4C31C05534000811973 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				888EE4C41C05600C00811973 /* SearchDataService.h */,
+				888EE4C51C05600C00811973 /* SearchDataService.m */,
+				888EE4CB1C05866900811973 /* SHResultData.h */,
+				888EE4CC1C05866900811973 /* SHResultData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		888EE4CA1C05658A00811973 /* QuerySH */ = {
+			isa = PBXGroup;
+			children = (
+				888EE4C71C05657C00811973 /* SHSearchResultCell.h */,
+				888EE4C81C05657C00811973 /* SHSearchResultCell.m */,
+			);
+			name = QuerySH;
+			sourceTree = "<group>";
+		};
+		888EE4D11C05B15700811973 /* QueryWorkingStatus */ = {
+			isa = PBXGroup;
+			children = (
+				888EE4CE1C05B14900811973 /* QueryWorkingStatusViewController.h */,
+				888EE4CF1C05B14900811973 /* QueryWorkingStatusViewController.m */,
+			);
+			name = QueryWorkingStatus;
 			sourceTree = "<group>";
 		};
 		889140F01BF9681E007E1BBB /* old-src */ = {
@@ -2724,6 +2773,7 @@
 				88FBA9D81BFC0CC400518C6E /* DAContexMenuViewController.m in Sources */,
 				88F205351BF18F7200674567 /* FMDatabasePool.m in Sources */,
 				88F205531BF18F7200674567 /* UIButton+AFNetworking.m in Sources */,
+				888EE4CD1C05866900811973 /* SHResultData.m in Sources */,
 				887B0A8F1C02A469009483ED /* RETableViewDateTimeCell.m in Sources */,
 				88F205611BF18F7200674567 /* SDWebImageManager.m in Sources */,
 				888E51CC1BF421F400A6D917 /* UIColor+Helper.m in Sources */,
@@ -2831,6 +2881,7 @@
 				889141A41BF9681F007E1BBB /* ZBJRKViewController.m in Sources */,
 				887B0AC01C02A469009483ED /* RETableViewOptionsController.m in Sources */,
 				889141B01BF9681F007E1BBB /* ViewModel.m in Sources */,
+				888EE4C21C05531300811973 /* QuerySHInterfaceViewController.m in Sources */,
 				888E51A81BF41EF600A6D917 /* NSNumber+Additions.m in Sources */,
 				887B0ABC1C02A469009483ED /* RETableViewCell.m in Sources */,
 				88F205421BF18F7200674567 /* MJRefreshBaseView.m in Sources */,
@@ -2878,6 +2929,7 @@
 				887B0AFB1C031D56009483ED /* Globle.m in Sources */,
 				88F205881BF1945500674567 /* DataService.m in Sources */,
 				887B0AC91C02A469009483ED /* REPresenceValidator.m in Sources */,
+				888EE4C91C05657C00811973 /* SHSearchResultCell.m in Sources */,
 				887B0A981C02A469009483ED /* RETableViewTextCell.m in Sources */,
 				889141AC1BF9681F007E1BBB /* SearchKCRequest.m in Sources */,
 				887B0A941C02A469009483ED /* RETableViewNumberCell.m in Sources */,
@@ -2911,6 +2963,7 @@
 				887B0AA01C02A469009483ED /* REMultipleChoiceItem.m in Sources */,
 				889141CC1BF98655007E1BBB /* NewSHCell.m in Sources */,
 				887B0A8B1C02A469009483ED /* NSString+RENumberFormat.m in Sources */,
+				888EE4D01C05B14900811973 /* QueryWorkingStatusViewController.m in Sources */,
 				88F205561BF18F7200674567 /* UIRefreshControl+AFNetworking.m in Sources */,
 				88F205521BF18F7200674567 /* UIAlertView+AFNetworking.m in Sources */,
 				887B0AA61C02A469009483ED /* NSString+RETableViewManagerAdditions.m in Sources */,
@@ -2938,6 +2991,7 @@
 				88F205A91BF1965B00674567 /* DDASLLogger.m in Sources */,
 				888E51AB1BF41EF600A6D917 /* NSString+NULL.m in Sources */,
 				88F205481BF18F7200674567 /* AFHTTPSessionManager.m in Sources */,
+				888EE4C61C05600C00811973 /* SearchDataService.m in Sources */,
 				889141BC1BF9681F007E1BBB /* WDSearchCell.m in Sources */,
 				887B0ADC1C02F96E009483ED /* SHInfoTableViewCell.m in Sources */,
 				88F205E91BF19C4B00674567 /* UIView+SNFoundation.m in Sources */,

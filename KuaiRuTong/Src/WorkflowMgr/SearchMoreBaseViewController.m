@@ -9,6 +9,8 @@
 #import "SearchMoreBaseViewController.h"
 #import "RETableViewManager.h"
 #import "RETableViewOptionsController.h"
+#import "QuerySHInterfaceViewController.h"
+#import "QueryWorkingStatusViewController.h"
 
 @interface SearchMoreBaseViewController ()<RETableViewManagerDelegate>{
     UITableView *tableView;
@@ -18,6 +20,8 @@
 @property (strong, nonatomic) RETableViewManager *manager;
 @property (strong, nonatomic) RETableViewSection *basicControlsSection;
 @property (strong, nonatomic) RETableViewSection *buttonSection;
+@property (strong, nonatomic) RETableViewSection *baseSHQueqySection;
+@property (strong, nonatomic) RETableViewSection *baseWokingStatusQueqySection;
 
 
 //@property (strong, readwrite, nonatomic) RETextItem *fullLengthFieldItem;
@@ -28,16 +32,25 @@
 //@property (strong, readwrite, nonatomic) REFloatItem *floatItem;
 @property (strong, readwrite, nonatomic) REDateTimeItem *dateTimeItem;
 
+
+//商户查询
+@property (strong, readwrite, nonatomic) RETextItem *textSHQueqyIDItem;
+@property (strong, readwrite, nonatomic) RETextItem *textSHQueqyNameItem;
+@property (strong, readwrite, nonatomic) RETextItem *textSHQueqyMachineCodeItem;
+
+//工作状态查询
+@property (strong, readwrite, nonatomic) RETextItem *textWorkingStatusQueryIDItem;
+@property (strong, readwrite, nonatomic) RETextItem *textWorkingStatusQueryNameItem;
+
 @end
 
 @implementation SearchMoreBaseViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initTitle];
     
-    self.navigation.title = self.NavTitle;
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT) style:UITableViewStyleGrouped];
@@ -47,10 +60,94 @@
     [self.view addSubview:tableView];
     
     self.manager = [[RETableViewManager alloc] initWithTableView:tableView delegate:self];
-    
-    self.basicControlsSection = [self addBasicControls];
+    if ( self.nSearchType == USER_QUERY) {
+        self.baseSHQueqySection = [self addBaseSHQueqySection];
+    }
+    else if (self.nSearchType == WOKR_STATAS) {
+        self.baseWokingStatusQueqySection = [self addBaseWorkingStatusQueqySection];
+    }
+    else
+    {
+        self.basicControlsSection = [self addBasicControls];
+    }
+
     self.buttonSection = [self addButton];
 }
+
+-(void)initTitle{
+    NSString *str = @"";
+    switch (self.nSearchType) {
+        case USER_QUERY:
+        {
+            str = @"商户查询";
+            break;
+        }
+            
+        case WOKR_STATAS:
+        {
+            str = @"工作状态查询";
+            break;
+        }
+        case WAIT_FLOW:
+        {
+            str = @"待处理流程查询";
+            break;
+        }
+        case ERROR_FLOW:
+        {
+            str = @"问题流程查询";
+            break;
+        }
+        case STOCK_QUERY:
+        {
+            str = @"库存查询";
+            break;
+        }
+        case SELFMACHINE_REC:
+        {
+            str = @"自备机入库查询";
+            break;
+        }
+        default:break;
+    }
+    
+    self.navigation.title = str;
+}
+
+
+- (RETableViewSection *)addBaseSHQueqySection{
+    __typeof (&*self) __weak weakSelf = self;
+    
+    RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"搜索条件"];
+    [self.manager addSection:section];
+
+    self.textSHQueqyIDItem = [RETextItem itemWithTitle:@"商户编号" value:nil placeholder:@"请输入商户编号"];
+    self.textSHQueqyNameItem = [RETextItem itemWithTitle:@"商户名称" value:nil placeholder:@"请输入商户名"];
+    self.textSHQueqyMachineCodeItem = [RETextItem itemWithTitle:@"机身序列号" value:nil placeholder:@"请输入机身序列号"];
+    
+    [section addItem:self.textSHQueqyIDItem];
+    [section addItem:self.textSHQueqyNameItem];
+    [section addItem:self.textSHQueqyMachineCodeItem];
+    
+    return section;
+}
+
+
+- (RETableViewSection *)addBaseWorkingStatusQueqySection{
+    __typeof (&*self) __weak weakSelf = self;
+    
+    RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"搜索条件"];
+    [self.manager addSection:section];
+
+    self.textWorkingStatusQueryIDItem = [RETextItem itemWithTitle:@"商户编号" value:nil placeholder:@"请输入商户编号"];
+    self.textWorkingStatusQueryNameItem = [RETextItem itemWithTitle:@"商户名称" value:nil placeholder:@"请输入商户名"];
+    
+    [section addItem:self.textWorkingStatusQueryIDItem];
+    [section addItem:self.textWorkingStatusQueryNameItem];
+    
+    return section;
+}
+
 
 - (RETableViewSection *)addBasicControls
 {
@@ -85,6 +182,8 @@
     RETableViewItem *buttonItem = [RETableViewItem itemWithTitle:@"搜索" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
         //item.title = @"Pressed!";
         [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self touchSearchBtn];
     }];
     buttonItem.textAlignment = NSTextAlignmentCenter;
     [section addItem:buttonItem];
@@ -92,6 +191,60 @@
     return section;
 }
 
+
+-(void)touchSearchBtn{
+    if ( self.nSearchType == USER_QUERY) {
+        
+        if ((self.textSHQueqyIDItem.value == nil) &&
+            (self.textSHQueqyNameItem.value == nil)&&
+            (self.textSHQueqyMachineCodeItem.value == nil)
+            ) {
+            
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+        
+        if ([self.textSHQueqyIDItem.value isEmptyOrWhitespace] &&
+            [self.textSHQueqyNameItem.value isEmptyOrWhitespace] &&
+            [self.textSHQueqyMachineCodeItem.value isEmptyOrWhitespace]
+        ) {
+           
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+        
+        QuerySHInterfaceViewController *vc = [[QuerySHInterfaceViewController alloc] init];
+        vc.shop_code = (self.textSHQueqyIDItem.value== nil ? @"":self.textSHQueqyIDItem.value);
+        vc.shop_name= (self.textSHQueqyNameItem.value == nil ? @"":self.textSHQueqyNameItem.value);
+        vc.pos_code = (self.textSHQueqyMachineCodeItem.value== nil ? @"":self.textSHQueqyMachineCodeItem.value);
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else if (self.nSearchType == USER_QUERY){
+        if ((self.textWorkingStatusQueryIDItem.value == nil) &&
+            (self.textWorkingStatusQueryNameItem.value == nil)
+            ) {
+            
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+        
+        if ([self.textWorkingStatusQueryIDItem.value isEmptyOrWhitespace] &&
+            [self.textWorkingStatusQueryNameItem.value isEmptyOrWhitespace]
+            ) {
+            
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+        
+
+        QueryWorkingStatusViewController *vc = [[QueryWorkingStatusViewController alloc] init];
+//        vc.shop_code = (self.textSHQueqyIDItem.value== nil ? @"":self.textSHQueqyIDItem.value);
+//        vc.shop_name= (self.textSHQueqyNameItem.value == nil ? @"":self.textSHQueqyNameItem.value);
+//        vc.pos_code = (self.textSHQueqyMachineCodeItem.value== nil ? @"":self.textSHQueqyMachineCodeItem.value);
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

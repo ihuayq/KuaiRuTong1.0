@@ -13,16 +13,17 @@
 //#import "QuestionSHViewController.h"
 //#import "ZBJRKViewController.h"
 #import "SearchBaseViewController.h"
+#import "SearchMoreBaseViewController.h"
 
-typedef NS_ENUM(NSUInteger,WorkMgr_ENUM) {
-    USER_QUERY = 0,
-    WOKR_STATAS  = 1,
-    FLOW_SAVED  = 2,
-    WAIT_FLOW = 3,
-    ERROR_FLOW = 4,
-    STOCK_QUERY = 5,
-    SELFMACHINE_REC = 6
-};
+//typedef NS_ENUM(NSUInteger,WorkMgr_ENUM) {
+//    USER_QUERY = 0,
+//    WOKR_STATAS  = 1,
+//    FLOW_SAVED  = 2,
+//    WAIT_FLOW = 3,
+//    ERROR_FLOW = 4,
+//    STOCK_QUERY = 5,
+//    SELFMACHINE_REC = 6
+//};
 
 static NSArray *managerTitleArray = nil;
 NSArray *getManagerTitleArray() {
@@ -170,10 +171,17 @@ NSArray *getManagerIconsArray() {
         case ERROR_FLOW:
         case STOCK_QUERY:
         case SELFMACHINE_REC:
+        {
+            SearchMoreBaseViewController*base = [[SearchMoreBaseViewController alloc] init];
+            base.hidesBottomBarWhenPushed = YES;
+            base.nSearchType = indexPath.row;
+            [self.navigationController pushViewController:base animated:YES];
             break;
+        }
         case FLOW_SAVED:
         {
             SearchBaseViewController *base = [[SearchBaseViewController alloc] init];
+            base.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:base animated:YES];
             break;
         }

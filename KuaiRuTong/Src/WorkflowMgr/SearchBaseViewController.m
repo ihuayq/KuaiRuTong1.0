@@ -17,6 +17,7 @@
 
 @implementation SearchBaseViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -25,7 +26,6 @@
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     self.navigation.rightImage = nil;
     self.navigation.title = @"搜索";
-    
 
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f,self.navigation.size.height+self.navigation.origin.y, self.view.size.width, 44.0f)];

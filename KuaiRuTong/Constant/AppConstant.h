@@ -8,6 +8,18 @@
 #pragma mark -
 #pragma mark 首页
 
+
+
+typedef NS_ENUM(NSUInteger,WorkMgr_ENUM) {
+    USER_QUERY = 0,
+    WOKR_STATAS  = 1,
+    FLOW_SAVED  = 2,
+    WAIT_FLOW = 3,
+    ERROR_FLOW = 4,
+    STOCK_QUERY = 5,
+    SELFMACHINE_REC = 6
+};
+
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
 
@@ -155,7 +167,7 @@
 #define YDaoLeavel     500
 
 #pragma mark -
-#pragma mark 我的易购
+#pragma mark 我的
 
 typedef enum {
 	MemberInfoViewControllerPath=0,

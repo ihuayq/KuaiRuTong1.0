@@ -37,6 +37,8 @@
 #define MainHeight ScreenHeight
 #define MainWidth ScreenWidth
 
+#define Test
+
 #endif
 
 #endif /* PrefixHeader_pch */

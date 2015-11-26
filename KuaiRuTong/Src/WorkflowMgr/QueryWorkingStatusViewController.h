@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WorkingStatusDataService.h"
 
-@interface QueryWorkingStatusViewController : CommonViewController
+@interface QueryWorkingStatusViewController : CommonViewController<UITableViewDelegate,UITableViewDataSource>
+
+//搜索条件
+@property(nonatomic,copy) NSString* shop_name;
+@property(nonatomic,copy) NSString* shop_code;
+
+@property(nonatomic,strong)  WorkingStatusDataService *service;
 
 @end

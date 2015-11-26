@@ -108,7 +108,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
-    NewBusinessViewController *childController = [board instantiateViewControllerWithIdentifier: @"NewBusinessVC"];
+    NewBusinessViewController *childController = [board instantiateViewControllerWithIdentifier:@"NewBusinessVC"];
     //childController.pendingType = @"yes";
     [self.navigationController pushViewController:childController animated:YES];
 }

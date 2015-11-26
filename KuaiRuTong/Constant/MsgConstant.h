@@ -28,7 +28,8 @@ typedef enum CmdCode
     
     CC_CITYANDMCC_QUERY         = 0x0107,
     CC_BusinessUpload          = 0x0108,
-    CC_Search         = 0x0109, //查询
+    CC_Search         = 0x0109, //查询商户
+    CC_QueryWorkingStatus = 0x0110
     
 } E_CMDCODE;
 

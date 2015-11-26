@@ -11,6 +11,7 @@
 #import "RETableViewOptionsController.h"
 #import "QuerySHInterfaceViewController.h"
 #import "QueryWorkingStatusViewController.h"
+#import "QueryKuCunViewController.h"
 
 @interface SearchMoreBaseViewController ()<RETableViewManagerDelegate>{
     UITableView *tableView;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) RETableViewSection *buttonSection;
 @property (strong, nonatomic) RETableViewSection *baseSHQueqySection;
 @property (strong, nonatomic) RETableViewSection *baseWokingStatusQueqySection;
+@property (strong, nonatomic) RETableViewSection *baseKuCunQuerySection;
 
 
 //@property (strong, readwrite, nonatomic) RETextItem *fullLengthFieldItem;
@@ -41,6 +43,14 @@
 //工作状态查询
 @property (strong, readwrite, nonatomic) RETextItem *textWorkingStatusQueryIDItem;
 @property (strong, readwrite, nonatomic) RETextItem *textWorkingStatusQueryNameItem;
+
+
+//库存查询
+@property (strong, readwrite, nonatomic) RETextItem *textKuCunQueryIDItem;
+@property (strong, readwrite, nonatomic) RETextItem *textKuCunQueryNameItem;
+@property (strong, readwrite, nonatomic) RETextItem *textKuCunQueryPosCodeItem;
+@property (strong, readwrite, nonatomic) RETextItem *textKuCunQueryPosStatusItem;
+
 
 @end
 
@@ -65,6 +75,9 @@
     }
     else if (self.nSearchType == WOKR_STATAS) {
         self.baseWokingStatusQueqySection = [self addBaseWorkingStatusQueqySection];
+    }
+    else if( self.nSearchType == STOCK_QUERY ){
+        self.baseKuCunQuerySection = [self addBaseKuCunQueqySection];
     }
     else
     {
@@ -149,6 +162,26 @@
 }
 
 
+- (RETableViewSection *)addBaseKuCunQueqySection{
+    __typeof (&*self) __weak weakSelf = self;
+    
+    RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"搜索条件"];
+    [self.manager addSection:section];
+    
+    self.textKuCunQueryIDItem = [RETextItem itemWithTitle:@"商户编号" value:nil placeholder:@"请输入商户编号"];
+    self.textKuCunQueryNameItem = [RETextItem itemWithTitle:@"商户名称" value:nil placeholder:@"请输入商户名"];
+    self.textKuCunQueryPosCodeItem = [RETextItem itemWithTitle:@"机身序列号" value:nil placeholder:@"请输入机具序列号"];
+    self.textKuCunQueryPosStatusItem = [RETextItem itemWithTitle:@"机具状态" value:nil placeholder:@"请输入机具状态"];
+    
+    [section addItem:self.textKuCunQueryIDItem];
+    [section addItem:self.textKuCunQueryNameItem];
+    [section addItem:self.textKuCunQueryPosCodeItem];
+    [section addItem:self.textKuCunQueryPosStatusItem];
+    
+    return section;
+}
+
+
 - (RETableViewSection *)addBasicControls
 {
     __typeof (&*self) __weak weakSelf = self;
@@ -193,6 +226,7 @@
 
 
 -(void)touchSearchBtn{
+    //商户查询
     if ( self.nSearchType == USER_QUERY) {
         
         if ((self.textSHQueqyIDItem.value == nil) &&
@@ -220,7 +254,8 @@
         [self.navigationController pushViewController:vc animated:YES];
         
     }
-    else if (self.nSearchType == USER_QUERY){
+    //工作状态
+    else if (self.nSearchType == WOKR_STATAS){
         if ((self.textWorkingStatusQueryIDItem.value == nil) &&
             (self.textWorkingStatusQueryNameItem.value == nil)
             ) {
@@ -244,6 +279,35 @@
 //        vc.pos_code = (self.textSHQueqyMachineCodeItem.value== nil ? @"":self.textSHQueqyMachineCodeItem.value);
         [self.navigationController pushViewController:vc animated:YES];
     }
+    //库存查询
+    else if (self.nSearchType == STOCK_QUERY){
+        
+        if ((self.textKuCunQueryIDItem.value == nil) &&
+            (self.textKuCunQueryNameItem.value == nil) &&
+            (self.textKuCunQueryPosCodeItem.value == nil) &&
+            (self.textKuCunQueryPosStatusItem.value == nil)
+            ) {
+            
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+        
+        if ([self.textKuCunQueryIDItem.value isEmptyOrWhitespace] &&
+            [self.textKuCunQueryNameItem.value isEmptyOrWhitespace] &&
+            [self.textKuCunQueryPosCodeItem.value isEmptyOrWhitespace] &&
+            [self.textKuCunQueryPosStatusItem.value isEmptyOrWhitespace]
+            ) {
+            
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+        QueryKuCunViewController *vc = [[QueryKuCunViewController alloc] init];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

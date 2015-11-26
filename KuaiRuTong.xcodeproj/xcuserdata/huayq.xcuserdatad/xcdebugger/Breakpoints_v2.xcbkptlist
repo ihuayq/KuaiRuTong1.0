@@ -90,7 +90,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470134715.011423"
+                  timestampString = "470228513.489294"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "258"
@@ -105,7 +105,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470134715.011626"
+                  timestampString = "470228513.489504"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -120,7 +120,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470134715.011818"
+                  timestampString = "470228513.489708"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -416,6 +416,16 @@
             endingLineNumber = "57"
             landmarkName = "-receiveDidFinished:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

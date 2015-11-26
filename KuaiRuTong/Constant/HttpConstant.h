@@ -35,7 +35,7 @@
 //终端绑定
 #define API_Binding_Terminal       (TEST_COMMONT_URL"/self/jsp/mobiletermShopBound.action")
 //库存查询
-#define API_Search_Stock           (TEST_COMMONT_URL"/self/jsp/mobileTermQuery.action")
+#define API_Search_Stock           (TEST_COMMONT_URL"/self/jsp/mobileTermInvenMsgQuery.action")
 //机具解绑
 #define API_RemoveBinding_Terminal (TEST_COMMONT_URL"/self/jsp/mobileRelieveTerm.action")
 //获取(厂商名称 + 机具类型)

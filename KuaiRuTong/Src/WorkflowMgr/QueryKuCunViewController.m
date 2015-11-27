@@ -101,6 +101,7 @@
 {
     KuCunInfoViewController *vc = [[KuCunInfoViewController alloc] init];
     vc.index = indexPath.row;
+    vc.model = [dataArray objectAtIndex:indexPath.row];
     
     vc.block = ^(int index){
         [dataArray removeObjectAtIndex:index];

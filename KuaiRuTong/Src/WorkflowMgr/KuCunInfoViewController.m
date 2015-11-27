@@ -46,24 +46,24 @@
     
     self.manager = [[RETableViewManager alloc] initWithTableView:tableView delegate:self];
     
-    self.basicControlsSection = [self addBaseSection];
-    self.buttonSection = [self addButton];
+    [self displayOverFlowActivityView:@"加载数据"];
+    [self.service beginSeachDetailByPosCode:self.model.machine_code];
+
 }
 
 - (RETableViewSection *)addBaseSection{
     __typeof (&*self) __weak weakSelf = self;
     
-    RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"搜索条件"];
+    RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@""];
     [self.manager addSection:section];
-    
-    [section addItem:[NSString stringWithFormat:@"商户编号:%@",self.model.shop_id]];
-    [section addItem:[NSString stringWithFormat:@"商户名称:%@",self.model.shop_name]];
-    [section addItem:[NSString stringWithFormat:@"网点编号:%@",self.model.netpoint_id]];
-    [section addItem:[NSString stringWithFormat:@"网点名称:%@",self.model.netpoint_name]];
-    [section addItem:[NSString stringWithFormat:@"机身序列号:%@",self.model.machine_code]];
-    [section addItem:[NSString stringWithFormat:@"机身状态:%@",self.model.machine_status]];
-    [section addItem:[NSString stringWithFormat:@"库存状态:%@",self.model.kucun_status]];
-    [section addItem:[NSString stringWithFormat:@"绑定状态:%@",self.model.bind_status]];
+    [section addItem:[NSString stringWithFormat:@"商户编号:%@",self.service.model.shop_id]];
+    [section addItem:[NSString stringWithFormat:@"商户名称:%@",self.service.model.shop_name]];
+    [section addItem:[NSString stringWithFormat:@"网点编号:%@",self.service.model.netpoint_id]];
+    [section addItem:[NSString stringWithFormat:@"网点名称:%@",self.service.model.netpoint_name]];
+    [section addItem:[NSString stringWithFormat:@"机身序列号:%@",self.service.model.machine_code]];
+    [section addItem:[NSString stringWithFormat:@"机身状态:%@",self.service.model.machine_status]];
+    [section addItem:[NSString stringWithFormat:@"库存状态:%@",self.service.model.kucun_status]];
+    [section addItem:[NSString stringWithFormat:@"绑定状态:%@",self.service.model.bind_status]];
     
     return section;
 }
@@ -78,7 +78,9 @@
         //item.title = @"Pressed!";
         [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
         
-        //[self touchSearchBtn];
+        [self displayOverFlowActivityView:@"正在解除绑定"];
+        [self.service deleteBindRelationshipByCode:self.model.machine_code];
+        
     }];
     buttonItem.textAlignment = NSTextAlignmentCenter;
     [section addItem:buttonItem];
@@ -96,6 +98,18 @@
     return _service;
 }
 
+-(void)getSearchDetailServiceResult:(KuCuDataService *)service
+                             Result:(BOOL)isSuccess_
+                           errorMsg:(NSString *)errorMsg{
+    
+    [self removeOverFlowActivityView];
+    
+    self.basicControlsSection = [self addBaseSection];
+    self.buttonSection = [self addButton];
+    
+    [tableView reloadData];
+    
+}
 
 -(void)deleteBindServiceResult:(KuCuDataService *)service
                        Result:(BOOL)isSuccess_

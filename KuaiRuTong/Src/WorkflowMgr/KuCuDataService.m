@@ -22,8 +22,8 @@
     
 #ifdef Test
     //NSString *username = @"agesales";
-    [searchKCPostDic setObject:@"TTest-子商户-陈玉洁"    forKey:@"name"];
-    [searchKCPostDic setObject:@"M0058557"      forKey:@"shop_num"];
+    [searchKCPostDic setObject:@"agesales"    forKey:@"name"];
+    [searchKCPostDic setObject:@"M8000076"    forKey:@"shop_num"];
     
 #else
     [searchKCPostDic setObject:username    forKey:@"name"];
@@ -32,9 +32,35 @@
 
 #endif
     
-    updateHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:searchKCPostDic cmdCode:CC_QueryKuCun];
-    [self.httpMsgCtrl sendHttpMsg:updateHttpMsg];
+    searchKuCunDataMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:searchKCPostDic cmdCode:CC_QueryKuCun];
+    [self.httpMsgCtrl sendHttpMsg:searchKuCunDataMsg];
 }
+
+
+-(void)beginSeachDetailByPosCode:(NSString*)posCode  {
+    
+    //库存接口地址
+    NSString *dealWithURLString =  [API_Search_StockDetail stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    NSLog(@"url == %@",API_Search_StockDetail);
+    NSMutableDictionary *searchKCPostDic = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [[userDefaults objectForKey:@"UserInfoData"] objectForKey:@"username"];
+    
+#ifdef Test
+
+    [searchKCPostDic setObject:@"130014122902291"      forKey:@"pos_num"];
+    
+#else
+    [searchKCPostDic setObject:username    forKey:@"name"];
+//    [searchKCPostDic setObject:shCode      forKey:@"shop_num"];
+    [searchKCPostDic setObject:posCode forKey:@"pos_num"];
+    
+#endif
+    
+    searchKuCunDetailHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:searchKCPostDic cmdCode:CC_QueryKuCunDetail];
+    [self.httpMsgCtrl sendHttpMsg:searchKuCunDetailHttpMsg];
+}
+
 
 
 -(void)deleteBindRelationshipByCode:(NSString*)code{
@@ -87,17 +113,17 @@
     if (receiveMsg.cmdCode == CC_QueryKuCun)
     {
         NSDictionary *dict = receiveMsg.jasonItems;
-        NSArray *dataArray = [[NSArray alloc] initWithArray:dict[@"merc"]];
+        NSArray *dataArray = [[NSArray alloc] initWithArray:dict[@"termMsg"]];
         for (NSDictionary *mod in dataArray) {
             KuCunData *data = [[KuCunData alloc]init];
             data.shop_name = mod[@"mercName"];
-            data.shop_id= mod[@"mercNum"];
-            data.netpoint_id= mod[@"shopNum"];
+            //data.shop_id= mod[@"mercNum"];
+            //data.netpoint_id= mod[@"shopNum"];
             data.netpoint_name= mod[@"shopName"];
             data.machine_code= mod[@"termNum"];
-            data.machine_status= mod[@"termStatus"];
-            data.kucun_status= mod[@"boundStatus"];
-            data.bind_status = mod[@"boundStatus"];
+            //data.machine_status= mod[@"termStatus"];
+            //data.kucun_status= mod[@"boundStatus"];
+            //data.bind_status = mod[@"boundStatus"];
             
             [self.responseArray addObject:data];
         }
@@ -106,7 +132,22 @@
             [_delegate getSearchServiceResult:self Result:YES errorMsg:nil];
         }
     }
-    
+    else if( receiveMsg.cmdCode == CC_QueryKuCunDetail){
+        NSDictionary *mod = receiveMsg.jasonItems;
+
+        self.model.shop_name = mod[@"mercName"];
+        self.model.shop_id= mod[@"mercNum"];
+        self.model.netpoint_id= mod[@"shopNum"];
+        self.model.netpoint_name= mod[@"shopName"];
+        self.model.machine_code= mod[@"termNum"];
+        self.model.machine_status= mod[@"termStatus"];
+        self.model.kucun_status= mod[@"boundStatus"];
+        self.model.bind_status = mod[@"boundStatus"];
+        if (_delegate && [_delegate respondsToSelector:@selector(getSearchDetailServiceResult:Result:errorMsg:)]) {
+            [_delegate getSearchDetailServiceResult:self Result:YES errorMsg:nil];
+        }
+        
+    }
     else if (receiveMsg.cmdCode == CC_DeleteBind){
         
         
@@ -116,5 +157,15 @@
         
     }
 }
+
+
+-(KuCunData*)model{
+    if (!_model) {
+        _model = [[KuCunData alloc] init];
+    }
+    return _model;
+}
+
+
 
 @end

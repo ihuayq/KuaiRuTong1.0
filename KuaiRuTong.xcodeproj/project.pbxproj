@@ -233,6 +233,7 @@
 		889141BE1BF9681F007E1BBB /* ZDBDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891418A1BF9681F007E1BBB /* ZDBDView.m */; };
 		889141C61BF9781D007E1BBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889141C51BF9781D007E1BBB /* Reveal.framework */; };
 		889141CC1BF98655007E1BBB /* NewSHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141CB1BF98655007E1BBB /* NewSHCell.m */; };
+		889FA7C41C08046900F9219A /* NewMachineToStorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FA7C31C08046900F9219A /* NewMachineToStorageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */; };
 		88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E501BFAD3A7005CC7E8 /* area.plist */; };
 		88A05E581BFAD3A7005CC7E8 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E511BFAD3A7005CC7E8 /* city.plist */; };
@@ -781,6 +782,8 @@
 		889141C51BF9781D007E1BBB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = KuaiRuTong/Reveal.framework; sourceTree = "<group>"; };
 		889141CA1BF98655007E1BBB /* NewSHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSHCell.h; sourceTree = "<group>"; };
 		889141CB1BF98655007E1BBB /* NewSHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSHCell.m; sourceTree = "<group>"; };
+		889FA7C21C08046900F9219A /* NewMachineToStorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMachineToStorageViewController.h; sourceTree = "<group>"; };
+		889FA7C31C08046900F9219A /* NewMachineToStorageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMachineToStorageViewController.m; sourceTree = "<group>"; };
 		88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLoadMoreFooterView.h; sourceTree = "<group>"; };
 		88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLoadMoreFooterView.m; sourceTree = "<group>"; };
 		88A05E501BFAD3A7005CC7E8 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
@@ -1475,6 +1478,7 @@
 			children = (
 				887AD94C1BF57AE000648D93 /* WorkflowMgrViewController.h */,
 				887AD94D1BF57AE000648D93 /* WorkflowMgrViewController.m */,
+				889FA7BE1C0803F500F9219A /* NewMachineToStorage */,
 				884C60891C06FDFB000436F1 /* QueryKuCunVc */,
 				884C60821C06F2B4000436F1 /* QueryWaitingFlow */,
 				888EE4D11C05B15700811973 /* QueryWorkingStatus */,
@@ -2164,6 +2168,15 @@
 				88E213C01BFEB6D1002D32F6 /* SHDataItem.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		889FA7BE1C0803F500F9219A /* NewMachineToStorage */ = {
+			isa = PBXGroup;
+			children = (
+				889FA7C21C08046900F9219A /* NewMachineToStorageViewController.h */,
+				889FA7C31C08046900F9219A /* NewMachineToStorageViewController.m */,
+			);
+			name = NewMachineToStorage;
 			sourceTree = "<group>";
 		};
 		88A05E4F1BFAD3A7005CC7E8 /* LocationSelelctor */ = {
@@ -3043,6 +3056,7 @@
 				88F205681BF18F7200674567 /* UIView+WebCacheOperation.m in Sources */,
 				887B0AA11C02A469009483ED /* RENumberItem.m in Sources */,
 				889141A61BF9681F007E1BBB /* ZDManagerViewController.m in Sources */,
+				889FA7C41C08046900F9219A /* NewMachineToStorageViewController.m in Sources */,
 				88F205E11BF19C4B00674567 /* NSString+SNFoundation.m in Sources */,
 				8891418D1BF9681F007E1BBB /* ImageInfoViewController.m in Sources */,
 				88A05E591BFAD3A7005CC7E8 /* HZAreaPickerView.m in Sources */,

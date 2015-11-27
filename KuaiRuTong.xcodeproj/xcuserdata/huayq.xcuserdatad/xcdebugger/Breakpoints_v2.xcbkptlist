@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/WorkflowMgr/WorkflowMgrViewController.m"
-            timestampString = "470111448.085862"
+            timestampString = "470289427.919105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,7 +90,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470228513.489294"
+                  timestampString = "470289445.463182"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "258"
@@ -105,7 +105,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470228513.489504"
+                  timestampString = "470289445.463381"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -120,7 +120,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470228513.489708"
+                  timestampString = "470289445.463571"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -426,6 +426,22 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Src/WorkflowMgr/KuCuDataService.m"
+            timestampString = "470285450.82789"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-receiveDidFinished:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -31,7 +31,8 @@ typedef enum CmdCode
     CC_Search         = 0x0109, //查询商户
     CC_QueryWorkingStatus = 0x0110,
     CC_QueryKuCun = 0x0111,
-    CC_DeleteBind = 0x0112
+    CC_QueryKuCunDetail = 0x0112,
+    CC_DeleteBind = 0x0113
     
 } E_CMDCODE;
 

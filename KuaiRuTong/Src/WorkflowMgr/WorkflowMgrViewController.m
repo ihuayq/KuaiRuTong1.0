@@ -14,6 +14,8 @@
 //#import "ZBJRKViewController.h"
 #import "SearchBaseViewController.h"
 #import "SearchMoreBaseViewController.h"
+#import "QueryKuCunViewController.h"
+#import "NewMachineToStorageViewController.h"
 
 //typedef NS_ENUM(NSUInteger,WorkMgr_ENUM) {
 //    USER_QUERY = 0,
@@ -165,12 +167,12 @@ NSArray *getManagerIconsArray() {
 //    NSLog(@"section===%ld",indexPath.section);
     
     switch (indexPath.row) {
-        case USER_QUERY:
-        case WOKR_STATAS:
+        
         case WAIT_FLOW:
         case ERROR_FLOW:
-        case STOCK_QUERY:
-        case SELFMACHINE_REC:
+            break;
+        case USER_QUERY:
+        case WOKR_STATAS:
         {
             SearchMoreBaseViewController*base = [[SearchMoreBaseViewController alloc] init];
             base.hidesBottomBarWhenPushed = YES;
@@ -185,7 +187,21 @@ NSArray *getManagerIconsArray() {
             [self.navigationController pushViewController:base animated:YES];
             break;
         }
+            
+        case STOCK_QUERY:
+        {
+            QueryKuCunViewController *vc = [[QueryKuCunViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }
           
+        case SELFMACHINE_REC:
+        {
+            NewMachineToStorageViewController*vc = [[NewMachineToStorageViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
         default:
             break;
     }

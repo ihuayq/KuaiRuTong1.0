@@ -93,7 +93,7 @@
     self.readerView.frame = self.view.bounds;
     [self.view addSubview:self.readerView];
     
-    self.toolBar.bottom = [UIScreen mainScreen].bounds.size.height;
+    //self.toolBar.bottom = [UIScreen mainScreen].bounds.size.height;
     /*
      date:2012-4-20
      auther:zhaofk
@@ -121,11 +121,11 @@
     [self.view.layer addSublayer:self.rightLabel];
     [self.view.layer addSublayer:self.leftLabel];
     
-    self.toolBar.bottom = self.view.bounds.size.height;
-    self.toolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self.view addSubview:self.toolBar];
+//    self.toolBar.bottom = self.view.bounds.size.height;
+//    self.toolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    [self.view addSubview:self.toolBar];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, vLblHeight-70, 260, 70)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, vLblHeight-70, MainWidth - 30*2, 70)];
     label.font = [UIFont systemFontOfSize:16.0];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
@@ -194,6 +194,14 @@
     }
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.navigation.backgroundColor =  [UIColor clearColor];
+    self.navigation.title = @"扫描条形码/二维码";
+    self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     
@@ -329,35 +337,35 @@
         
         [_toolBar sizeToFit];
         
-        if ( IOS7_OR_LATER )
-        {
-            _toolBar.barStyle = UIBarStyleBlack;
-            _toolBar.barTintColor = [UIColor whiteColor];
-            _toolBar.translucent = YES;
-        }
-        else
-        {
-            _toolBar.barStyle = UIBarStyleBlackTranslucent;
-            _toolBar.tintColor = [UIColor whiteColor];
-        }
-        
-        UIButton *btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [btnCancel setImage:[UIImage imageNamed:@"nav_back_normal"] forState:UIControlStateNormal];
-        [btnCancel setImage:[UIImage imageNamed:@"nav_back_select"] forState:UIControlStateHighlighted];
-        [btnCancel addTarget:self action:@selector(CancelClicked:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-        UIButton *btnHistory = [[UIButton alloc] initWithFrame:CGRectMake(248, 5, 114 / 2, 34)];
-        btnHistory.titleLabel.font = [UIFont systemFontOfSize:12.0];
-        [btnHistory setTitle:L(@"Search_ScanRecord") forState:UIControlStateNormal];
-        [btnHistory setTitleColor:[UIColor colorWithRed:224 / 255.0 green:127 / 255.0 blue:56 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-        [btnHistory setTitleColor:[UIColor colorWithRed:224 / 255.0 green:127 / 255.0 blue:56 / 255.0 alpha:1.0] forState:UIControlStateHighlighted];
-        [btnHistory addTarget:self action:@selector(DoneClicked:) forControlEvents:UIControlEventTouchUpInside];
-        btnHistory.layer.borderWidth = 0.5;
-        btnHistory.layer.borderColor = [UIColor colorWithRed:224 / 255.0 green:127 / 255.0 blue:56 / 255.0 alpha:1.0].CGColor;
-        
-        [_toolBar addSubview:btnCancel];
-        [_toolBar addSubview:btnHistory];
+//        if ( IOS7_OR_LATER )
+//        {
+//            _toolBar.barStyle = UIBarStyleBlack;
+//            _toolBar.barTintColor = [UIColor whiteColor];
+//            _toolBar.translucent = YES;
+//        }
+//        else
+//        {
+//            _toolBar.barStyle = UIBarStyleBlackTranslucent;
+//            _toolBar.tintColor = [UIColor whiteColor];
+//        }
+//        
+//        UIButton *btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//        [btnCancel setImage:[UIImage imageNamed:@"nav_back_normal"] forState:UIControlStateNormal];
+//        [btnCancel setImage:[UIImage imageNamed:@"nav_back_select"] forState:UIControlStateHighlighted];
+//        [btnCancel addTarget:self action:@selector(CancelClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        
+//        UIButton *btnHistory = [[UIButton alloc] initWithFrame:CGRectMake(248, 5, 114 / 2, 34)];
+//        btnHistory.titleLabel.font = [UIFont systemFontOfSize:12.0];
+//        [btnHistory setTitle:L(@"Search_ScanRecord") forState:UIControlStateNormal];
+//        [btnHistory setTitleColor:[UIColor colorWithRed:224 / 255.0 green:127 / 255.0 blue:56 / 255.0 alpha:1.0] forState:UIControlStateNormal];
+//        [btnHistory setTitleColor:[UIColor colorWithRed:224 / 255.0 green:127 / 255.0 blue:56 / 255.0 alpha:1.0] forState:UIControlStateHighlighted];
+//        [btnHistory addTarget:self action:@selector(DoneClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        btnHistory.layer.borderWidth = 0.5;
+//        btnHistory.layer.borderColor = [UIColor colorWithRed:224 / 255.0 green:127 / 255.0 blue:56 / 255.0 alpha:1.0].CGColor;
+//        
+//        [_toolBar addSubview:btnCancel];
+//        [_toolBar addSubview:btnHistory];
     }
     
     return _toolBar;
@@ -383,6 +391,21 @@
 
 - (void)CancelClicked:(id)sender
 {
+    if (IOS5_OR_LATER)
+    {
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+            [self afterDismiss];
+        }];
+    }
+    else
+    {
+        [self dismissModalViewControllerAnimated:NO];
+        [self afterDismiss];
+    }
+}
+
+-(void)previousToViewController{
     if (IOS5_OR_LATER)
     {
         [self dismissViewControllerAnimated:YES completion:^{
@@ -433,7 +456,7 @@
 
 - (void)showMessage
 {
-    [self displayOverFlowActivityView];
+    //[self displayOverFlowActivityView];
 }
 
 -(void)showMessage:(NSString *)string

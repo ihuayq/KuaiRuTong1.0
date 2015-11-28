@@ -33,3 +33,27 @@
 "MostUpdateVersion"="您当前使用的已经是最新版本，感谢您对苏宁易购的支持";
 "confirm"="确认";
 "Confirm"="确定";
+
+"Custom_Define_Price_Range"="自定义价格区间";
+"Manual_Input_Search_Placeholder"="请输入条形码串号";
+"Manual_Input"="手动输入";
+"ZBar_Reader_Mention"="请将条形码或二维码放置在屏幕中央";
+"Can not match the Dimensional code!" = "抱歉，没有查询到相关信息";
+"Go on reading" = "继续扫描";
+
+//---AlertView---
+"AlertVisitedPageInexistence" = "您访问的页面不存在或已过期，请稍后重试";
+"AlertIKnow" = "我知道了";
+"AlertKnow" = "知道了";
+"AlertBack" = "返回";
+"AlertTransactionSuccess" = "交易成功";
+"AlertNoOrderNumberOrLoginStateFailure" = "抱歉，未找到相关销售单号或您的登录状态失效!";
+"AlertTips" = "提示";
+"AlertSaveSuccess" = "保存成功";
+"AlertContinueToBuy" = "继续购买";
+"AlertFriendTips" = "友情提示";
+"AlertCheckOrders" = "查看订单";
+"AlertGoShopping" = "去逛逛";
+"AlertoperationFailed" = "啊哦，操作失败了";
+"AlertSystemPrompts" = "系统提示";
+"AlertSubmitSuccess" = "提交成功";

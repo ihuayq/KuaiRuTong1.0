@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 #import "CommonViewController.h"
-#import "InterestProductService.h"
-#import "DataProductBasic.h"
-#import "InnerProductDTO.h"
-#import "ProductDetailService.h"
+#import "NSTimerHelper.h"
+//#import "InterestProductService.h"
+//#import "DataProductBasic.h"
+//#import "InnerProductDTO.h"
+//#import "ProductDetailService.h"
 
 @protocol SNReaderDelegate;
 
-@interface SNReaderViewController : CommonViewController <ZBarReaderViewDelegate,ProductDetailServiceDelegate>
+@interface SNReaderViewController : CommonViewController <ZBarReaderViewDelegate>//ProductDetailServiceDelegate
 {
     ZBarReaderView      *_readerView;
     

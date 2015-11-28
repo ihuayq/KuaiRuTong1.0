@@ -32,7 +32,10 @@ typedef enum CmdCode
     CC_QueryWorkingStatus = 0x0110,
     CC_QueryKuCun = 0x0111,
     CC_QueryKuCunDetail = 0x0112,
-    CC_DeleteBind = 0x0113
+    CC_DeleteBind = 0x0113,
+    CC_QueryNewMachineRelData = 0x0114,
+    CC_CheckKuCunCode = 0x0115,
+    CC_UploadNewMachine = 0x0116
     
 } E_CMDCODE;
 

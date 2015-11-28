@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewMachineDataService.h"
 
 @interface NewMachineToStorageViewController : CommonViewController
+
+@property(nonatomic,strong)  NewMachineDataService *service;
+
 
 @end

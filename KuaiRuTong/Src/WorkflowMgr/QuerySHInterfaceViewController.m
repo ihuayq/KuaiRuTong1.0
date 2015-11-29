@@ -7,10 +7,11 @@
 //
 
 #import "QuerySHInterfaceViewController.h"
+#import "SHSearchDataService.h"
 #import "SHSearchResultCell.h"
 #import "SHResultData.h"
 
-@interface QuerySHInterfaceViewController ()<UITableViewDataSource,UITableViewDelegate,SearchDataServiceDelegate>{
+@interface QuerySHInterfaceViewController ()<UITableViewDataSource,UITableViewDelegate,SHSearchDataServiceDelegate>{
     
     NSMutableArray *dataArray;
     
@@ -35,22 +36,22 @@
     self.tableView.rowHeight = 44.0;
     [self.view addSubview:self.tableView];
     
-    [self displayOverFlowActivityView:@"加载数据"];
+    [self displayOverFlowActivityView:@"加载商户数据"];
     [self.service beginUploadByShopName:self.shop_name withShopCode:self.shop_code andPosCode:self.pos_code];
 }
 
 
-- (SearchDataService *)service
+- (SHSearchDataService *)service
 {
     if (!_service) {
-        _service = [[SearchDataService alloc] init];
+        _service = [[SHSearchDataService alloc] init];
         _service.delegate = self;
     }
     return _service;
 }
 
 
--(void)getSearchServiceResult:(SearchDataService *)service
+-(void)getSearchServiceResult:(SHSearchDataService *)service
                        Result:(BOOL)isSuccess_
                      errorMsg:(NSString *)errorMsg{
     

@@ -17,10 +17,16 @@
                                Result:(BOOL)isSuccess_
                              errorMsg:(NSString *)errorMsg;
 
+-(void)getIssuedBusinessInfoServiceResult:(BusinessInfoUpdateService *)service
+                                   Result:(BOOL)isSuccess_
+                                 errorMsg:(NSString *)errorMsg;
+
 @end
 
 @interface BusinessInfoUpdateService : DataService{
     HttpMessage *updateHttpMsg;
+    
+    HttpMessage *downLoadIssueHttpMsg;
 }
 
 @property (nonatomic,weak) id<BusinessInfoUpdateServiceDelegate> delegate;
@@ -28,5 +34,7 @@
 -(void)beginUpload:(NSDictionary*)parameters filePath:(NSString*)path;
 
 -(void)beginUpload:(SHDataItem*)data;
+
+-(void)downLoadWithMerName:(NSString*)MerName;
 
 @end

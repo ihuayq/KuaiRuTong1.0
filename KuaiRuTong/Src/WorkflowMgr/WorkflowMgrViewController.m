@@ -169,8 +169,9 @@ NSArray *getManagerIconsArray() {
     switch (indexPath.row) {
         
         case WAIT_FLOW:
-        case ERROR_FLOW:
             break;
+        case ERROR_FLOW:
+            
         case USER_QUERY:
         case WOKR_STATAS:
         {
@@ -193,7 +194,7 @@ NSArray *getManagerIconsArray() {
             QueryKuCunViewController *vc = [[QueryKuCunViewController alloc]init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
-            
+            break;
         }
           
         case SELFMACHINE_REC:
@@ -201,6 +202,7 @@ NSArray *getManagerIconsArray() {
             NewMachineToStorageViewController*vc = [[NewMachineToStorageViewController alloc]init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+            break;
         }
         default:
             break;

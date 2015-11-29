@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchDataService.h"
+#import "SHSearchDataService.h"
 
 @interface QuerySHInterfaceViewController : CommonViewController
 
@@ -16,6 +16,6 @@
 @property(nonatomic,copy) NSString* shop_code;
 @property(nonatomic,copy) NSString* pos_code;
 
-@property(nonatomic,strong)  SearchDataService *service;
+@property(nonatomic,strong)  SHSearchDataService *service;
 
 @end

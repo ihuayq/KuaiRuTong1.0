@@ -29,13 +29,16 @@ typedef enum CmdCode
     CC_CITYANDMCC_QUERY         = 0x0107,
     CC_BusinessUpload          = 0x0108,
     CC_Search         = 0x0109, //查询商户
-    CC_QueryWorkingStatus = 0x0110,
-    CC_QueryKuCun = 0x0111,
-    CC_QueryKuCunDetail = 0x0112,
-    CC_DeleteBind = 0x0113,
-    CC_QueryNewMachineRelData = 0x0114,
-    CC_CheckKuCunCode = 0x0115,
-    CC_UploadNewMachine = 0x0116
+    CC_SearchSHDetail         = 0x0110,
+    CC_QueryWorkingStatus = 0x0111,
+    CC_QueryKuCun = 0x0112,
+    CC_QueryKuCunDetail = 0x0113,
+    CC_DeleteBind = 0x0114,
+    CC_QueryNewMachineRelData = 0x0115,
+    CC_CheckKuCunCode = 0x0116,
+    CC_UploadNewMachine = 0x0117,   //自备机入库
+    CC_TermBind         = 0x0118, //终端绑定
+    CC_IssueBusinessDownload          = 0x0119,
     
 } E_CMDCODE;
 

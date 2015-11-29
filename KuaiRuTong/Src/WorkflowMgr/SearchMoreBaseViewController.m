@@ -81,6 +81,7 @@
     }
     else
     {
+        //问题查询
         self.basicControlsSection = [self addBasicControls];
     }
 
@@ -305,7 +306,10 @@
         
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
+    else if (self.nSearchType == ERROR_FLOW)
+    {
+        
+    }
     
     
 }

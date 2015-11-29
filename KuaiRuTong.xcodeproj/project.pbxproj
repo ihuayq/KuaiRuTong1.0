@@ -21,6 +21,8 @@
 		7A978F0B1BFB5E5A007B3CE0 /* LocationPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F071BFB5E5A007B3CE0 /* LocationPickerVC.m */; };
 		7A978F0C1BFB5E5A007B3CE0 /* LocationPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A978F081BFB5E5A007B3CE0 /* LocationPickerVC.xib */; };
 		7A978F0F1BFB63AF007B3CE0 /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F0E1BFB63AF007B3CE0 /* LocationPickerViewController.m */; };
+		7AA89AF51C0A88350049C9E1 /* SHDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA89AF41C0A88350049C9E1 /* SHDetailInfoViewController.m */; };
+		7AA89AF81C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA89AF71C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m */; };
 		884C605C1C0690B6000436F1 /* WorkingStatusDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C605B1C0690B6000436F1 /* WorkingStatusDataService.m */; };
 		884C60781C0697D9000436F1 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C60601C0697D9000436F1 /* MASCompositeConstraint.m */; };
 		884C60791C0697D9000436F1 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C60631C0697D9000436F1 /* MASConstraint.m */; };
@@ -185,7 +187,7 @@
 		888E52241BF479C800A6D917 /* LoginDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 888E52231BF479C800A6D917 /* LoginDataService.m */; };
 		888E52281BF47D7E00A6D917 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 888E52271BF47D7E00A6D917 /* DeviceManager.m */; };
 		888EE4C21C05531300811973 /* QuerySHInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C11C05531300811973 /* QuerySHInterfaceViewController.m */; };
-		888EE4C61C05600C00811973 /* SearchDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C51C05600C00811973 /* SearchDataService.m */; };
+		888EE4C61C05600C00811973 /* SHSearchDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C51C05600C00811973 /* SHSearchDataService.m */; };
 		888EE4C91C05657C00811973 /* SHSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4C81C05657C00811973 /* SHSearchResultCell.m */; };
 		888EE4CD1C05866900811973 /* SHResultData.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4CC1C05866900811973 /* SHResultData.m */; };
 		888EE4D01C05B14900811973 /* QueryWorkingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EE4CF1C05B14900811973 /* QueryWorkingStatusViewController.m */; };
@@ -426,6 +428,10 @@
 		7A978F081BFB5E5A007B3CE0 /* LocationPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationPickerVC.xib; sourceTree = "<group>"; };
 		7A978F0D1BFB63AF007B3CE0 /* LocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerViewController.h; sourceTree = "<group>"; };
 		7A978F0E1BFB63AF007B3CE0 /* LocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerViewController.m; sourceTree = "<group>"; };
+		7AA89AF31C0A88350049C9E1 /* SHDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDetailInfoViewController.h; sourceTree = "<group>"; };
+		7AA89AF41C0A88350049C9E1 /* SHDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDetailInfoViewController.m; sourceTree = "<group>"; };
+		7AA89AF61C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePosTermianlToNetPointViewController.h; sourceTree = "<group>"; };
+		7AA89AF71C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePosTermianlToNetPointViewController.m; sourceTree = "<group>"; };
 		884C605A1C0690B6000436F1 /* WorkingStatusDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingStatusDataService.h; sourceTree = "<group>"; };
 		884C605B1C0690B6000436F1 /* WorkingStatusDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingStatusDataService.m; sourceTree = "<group>"; };
 		884C605F1C0697D8000436F1 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -712,8 +718,8 @@
 		888E52271BF47D7E00A6D917 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
 		888EE4C01C05531300811973 /* QuerySHInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerySHInterfaceViewController.h; sourceTree = "<group>"; };
 		888EE4C11C05531300811973 /* QuerySHInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerySHInterfaceViewController.m; sourceTree = "<group>"; };
-		888EE4C41C05600C00811973 /* SearchDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDataService.h; sourceTree = "<group>"; };
-		888EE4C51C05600C00811973 /* SearchDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDataService.m; sourceTree = "<group>"; };
+		888EE4C41C05600C00811973 /* SHSearchDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSearchDataService.h; sourceTree = "<group>"; };
+		888EE4C51C05600C00811973 /* SHSearchDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSearchDataService.m; sourceTree = "<group>"; };
 		888EE4C71C05657C00811973 /* SHSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSearchResultCell.h; sourceTree = "<group>"; };
 		888EE4C81C05657C00811973 /* SHSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSearchResultCell.m; sourceTree = "<group>"; };
 		888EE4CB1C05866900811973 /* SHResultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResultData.h; sourceTree = "<group>"; };
@@ -1587,6 +1593,10 @@
 			children = (
 				888EE4C01C05531300811973 /* QuerySHInterfaceViewController.h */,
 				888EE4C11C05531300811973 /* QuerySHInterfaceViewController.m */,
+				7AA89AF31C0A88350049C9E1 /* SHDetailInfoViewController.h */,
+				7AA89AF41C0A88350049C9E1 /* SHDetailInfoViewController.m */,
+				7AA89AF61C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.h */,
+				7AA89AF71C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m */,
 			);
 			name = QuerySHVc;
 			sourceTree = "<group>";
@@ -1770,8 +1780,8 @@
 		888EE4C31C05534000811973 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				888EE4C41C05600C00811973 /* SearchDataService.h */,
-				888EE4C51C05600C00811973 /* SearchDataService.m */,
+				888EE4C41C05600C00811973 /* SHSearchDataService.h */,
+				888EE4C51C05600C00811973 /* SHSearchDataService.m */,
 				888EE4CB1C05866900811973 /* SHResultData.h */,
 				888EE4CC1C05866900811973 /* SHResultData.m */,
 				884C605A1C0690B6000436F1 /* WorkingStatusDataService.h */,
@@ -3124,6 +3134,7 @@
 				88F2048D1BF1822E00674567 /* main.m in Sources */,
 				887B0AC51C02A469009483ED /* REValidation.m in Sources */,
 				889141B21BF9681F007E1BBB /* RWDBManager.m in Sources */,
+				7AA89AF81C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m in Sources */,
 				88F205AA1BF1965B00674567 /* DDFileLogger.m in Sources */,
 				887B0AA71C02A469009483ED /* REActionBar.m in Sources */,
 				88E213C11BFEB6D1002D32F6 /* SHDataItem.m in Sources */,
@@ -3194,6 +3205,7 @@
 				887B0AA31C02A469009483ED /* RERadioItem.m in Sources */,
 				884C60781C0697D9000436F1 /* MASCompositeConstraint.m in Sources */,
 				88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */,
+				7AA89AF51C0A88350049C9E1 /* SHDetailInfoViewController.m in Sources */,
 				888E51B01BF41EF600A6D917 /* UIView+Draw.m in Sources */,
 				887B0A931C02A469009483ED /* RETableViewLongTextCell.m in Sources */,
 				8859CA801BF9A7B600827C40 /* VersionDetailViewController.m in Sources */,
@@ -3253,7 +3265,7 @@
 				88F205A91BF1965B00674567 /* DDASLLogger.m in Sources */,
 				888E51AB1BF41EF600A6D917 /* NSString+NULL.m in Sources */,
 				88F205481BF18F7200674567 /* AFHTTPSessionManager.m in Sources */,
-				888EE4C61C05600C00811973 /* SearchDataService.m in Sources */,
+				888EE4C61C05600C00811973 /* SHSearchDataService.m in Sources */,
 				889141BC1BF9681F007E1BBB /* WDSearchCell.m in Sources */,
 				887B0ADC1C02F96E009483ED /* SHInfoTableViewCell.m in Sources */,
 				88F205E91BF19C4B00674567 /* UIView+SNFoundation.m in Sources */,

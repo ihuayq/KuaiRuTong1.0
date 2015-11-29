@@ -8,6 +8,10 @@
 
 #import "SHResultData.h"
 
+@implementation SHShopData
+
+@end
+
 @implementation SHResultData
 
 

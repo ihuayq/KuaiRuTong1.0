@@ -86,10 +86,10 @@
 -(void)setModel:(SHResultData *)model{
     _model = model;
     
-    FirstLabel.text = [NSString stringWithFormat:@"商户名称:%@",model.shop_name];
-    SecondLabel.text = model.shop_code;
+    FirstLabel.text = [NSString stringWithFormat:@"商户名称:%@",model.mercName];
+    SecondLabel.text = model.mercNum;
     ThirdLabel.text = model.machine_code;
-    FourthLabel.text = model.status;
+    FourthLabel.text = model.mercSta;
 }
 
 - (void)awakeFromNib {

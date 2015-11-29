@@ -26,6 +26,9 @@
 #define API_Add_SH                 (TEST_COMMONT_URL"/self/jsp/mobileAddMercApp.action")
 //商户查询
 #define API_Search_SH              (TEST_COMMONT_URL"/self/jsp/mobileQueryMerc.action")
+//商户细节查询
+#define API_Search_SHDetail             (TEST_COMMONT_URL"/self/jsp/mobileQueryMercMsg.action")
+
 //工作状态查询
 #define API_Search_WorkState       (TEST_COMMONT_URL"/self/jsp/mobileProceStatusQuery.action")
 //问题工作流查询
@@ -50,14 +53,11 @@
 //库存验证
 #define API_Verify_Stock           (TEST_COMMONT_URL"/self/jsp/mobileCheckTermNum.action")
 
-
-
-
 #define API_RequestAddressAndMccInfo      (TEST_COMMONT_URL"/self/jsp/mobileToMercAppFindAll.action")
-
 
 #define API_Upload_MercData     (TEST_COMMONT_URL"/self/jsp/mobileAddMercApp.action")
 
+#define API_Download_MercData     (TEST_COMMONT_URL"/self/jsp/mobileErrorWorkFlowMercQuery.action")
 
 
 #pragma mark -

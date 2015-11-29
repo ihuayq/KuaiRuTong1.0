@@ -94,11 +94,37 @@
 }
 
 
+-(void)downLoadWithMerName:(NSString*)MerName{
+    NSString *dealWithURLString =  [API_Download_MercData stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    
+    NSMutableDictionary *postDic = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [[userDefaults objectForKey:@"UserInfoData"] objectForKey:@"username"];
+#ifdef Test
+    [postDic setObject:@"agesales" forKey:@"name"];
+    [postDic setObject:@"Pi"  forKey:@"shop_name"];
+#else
+    [postDic setObject:username forKey:@"name"];
+    [postDic setObject:shopName  forKey:@"shop_name"];
+#endif
+
+    
+    downLoadIssueHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:postDic cmdCode:CC_BusinessUpload];
+//    downLoadIssueHttpMsg.requestMethod = RequestMethodPostStream;
+//    downLoadIssueHttpMsg.postData = data;
+    
+    [self.httpMsgCtrl sendHttpMsg:downLoadIssueHttpMsg];
+}
+
 
 - (void)receiveDidFinished:(HttpMessage *)receiveMsg
 {
     //    [self removeOverFlowActivityView];
     if (receiveMsg.cmdCode == CC_BusinessUpload)
+    {
+        NSDictionary *item = receiveMsg.jasonItems;
+    }
+    if (receiveMsg.cmdCode == CC_IssueBusinessDownload)
     {
         NSDictionary *item = receiveMsg.jasonItems;
     }

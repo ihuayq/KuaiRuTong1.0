@@ -14,6 +14,9 @@
 #import "BusinessSavedDAO.h"
 #import "SHInfoViewController.h"
 #import "BusinessInfoUpdateService.h"
+#import "IssueLabelTableViewCell.h"
+#import "ZipArchive.h"
+#import "FCFileManager.h"
 
 @interface CateViewController () <UIFolderTableViewDelegate,BusinessInfoUpdateServiceDelegate>{
     UIButton *uploadBtn;        //上传按钮
@@ -58,8 +61,14 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     
-    BusinessSavedDAO *dao= [[BusinessSavedDAO alloc] init];
-    self.SHData = [dao searchSHItemDAOFromDB:self.shopName];
+    if (self.nType == 0) {
+        BusinessSavedDAO *dao= [[BusinessSavedDAO alloc] init];
+        self.SHData = [dao searchSHItemDAOFromDB:self.shopName];
+    }
+    else{
+        [self displayOverFlowActivityView:@"加载问题数据"];
+        [self.service downLoadWithMerName:self.shopName];
+    }
 }
 
 
@@ -79,20 +88,30 @@
 {
     static NSString *CellIdentifier = @"cate_cell";
     static NSString *cellNormal= @"normal_cell";
-    
+    static NSString *cellInfo= @"info_cell";
+//    if ( indexPath.row == 0) {
+//        IssueLabelTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
+//        if (cell == nil) {
+//            cell = [[IssueLabelTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+//                                          reuseIdentifier:CellIdentifier];
+//        }
+//        cell.model = self.SHData;
+//        return cell;
+//    }
     if ( indexPath.row == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellInfo];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                          reuseIdentifier:CellIdentifier];
+                                          reuseIdentifier:cellInfo];
            
             UIImageView* img = [[UIImageView alloc] initWithFrame:CGRectMake(MainWidth -40, 6,30,30)];
             img.image = [UIImage imageNamed:@"addInfo"];
             [cell.contentView addSubview:img];
+            
+            cell.textLabel.text = [self.cates objectAtIndex:indexPath.row];
         
         }
-        cell.textLabel.text = [self.cates objectAtIndex:indexPath.row];
-        
+
         return cell;
     }
     else if (indexPath.row == 8)
@@ -100,9 +119,9 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                              reuseIdentifier:CellIdentifier];
+                                              reuseIdentifier:cellNormal];
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
+        
         
         uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/4 - MainWidth/6,5,MainWidth/3,30)];
         [uploadBtn addTarget:self action:@selector(uploadBtnMethod) forControlEvents:UIControlEventTouchUpInside];
@@ -120,6 +139,7 @@
         saveBtn.layer.masksToBounds = YES;
         [saveBtn.layer setCornerRadius:saveBtn.frame.size.height/2.0f];
         [cell.contentView addSubview:saveBtn];
+            }
         return cell;
     }
     else
@@ -129,9 +149,11 @@
             cell = [[SHInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                               reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
+        
 
+        DLog(@"模块单元格(组：%i,行%i)",indexPath.section,indexPath.row);
         cell.title.text = [self.cates objectAtIndex:indexPath.row];
+        }
         
         return cell;
     }
@@ -205,6 +227,9 @@
 
 -(CGFloat)tableView:(UIFolderTableView *)tableView xForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    if (indexPath.row == 0) {
+//        return 0.1;
+//    }
     return 44;
 }
 
@@ -215,9 +240,6 @@
     
 }
 
-
-
-
 - (BusinessInfoUpdateService *)service
 {
     if (!_service) {
@@ -227,11 +249,13 @@
     return _service;
 }
 
+//上传接口
 -(void)uploadBtnMethod{
     [self displayOverFlowActivityView];
     [self.service beginUpload:self.SHData];
 }
 
+//保存
 -(void)saveBtnMethod{
     BusinessSavedDAO *saveDAO = [[BusinessSavedDAO alloc]init];
     if ([saveDAO writeProductToDB:self.SHData]) {
@@ -242,6 +266,81 @@
     }
 }
 
+//获取问题信息接口
+-(void)getIssuedBusinessInfoServiceResult:(BusinessInfoUpdateService *)service
+                                   Result:(BOOL)isSuccess_
+                                 errorMsg:(NSString *)errorMsg
+{
+    [self removeOverFlowActivityView];
+    self.SHData = self.service.issueData;
+//    [self.tableView reloadData];
+    
+    [self displayOverFlowActivityView:@"获取问题图片"];
+    [self.service downLoadFileWithFlowID:self.service.issueData.flowId];
+    
+    
+}
+
+-(void)getBusinessInfoUpdateServiceResult:(BusinessInfoUpdateService *)service
+                                   Result:(BOOL)isSuccess_
+                                 errorMsg:(NSString *)errorMsg
+{
+    [self removeOverFlowActivityView];
+    [self presentCustomDlg:errorMsg];
+}
+
+-(void)getIssuedBusinessPictureServiceResult:(BusinessInfoUpdateService *)service
+                                      Result:(BOOL)isSuccess_
+                                    errorMsg:(NSString *)errorMsg{
+    [self removeOverFlowActivityView];
+    [self presentCustomDlg:@"下载成功"];
+    
+    NSString *zipPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+//    NSString *zipPath = [path stringByAppendingPathComponent:@"zipfile.zip"];
+    //check if file exist and returns YES or NO
+//    BOOL testFileExists = [FCFileManager existsItemAtPath:@"allfile.zip"];
+//    NSLog(@"File Exist %d",testFileExists);
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        ZipArchive *za = [[ZipArchive alloc] init];
+        if ([za UnzipOpenFile: zipPath])
+        {
+            BOOL ret = [za UnzipFileTo:path overWrite: YES];
+            if (NO == ret){} [za UnzipCloseFile];
+
+        
+            NSString *image1FilePath = [path stringByAppendingPathComponent:@"1.png"];
+            self.SHData.photo_business_permit = [NSData dataWithContentsOfFile:image1FilePath options:0 error:nil];
+        
+            NSString *image2FilePath = [path stringByAppendingPathComponent:@"2.png"];
+            self.SHData.photo_identifier_front = [NSData dataWithContentsOfFile:image2FilePath options:0 error:nil];
+            
+            NSString *image3FilePath = [path stringByAppendingPathComponent:@"3.png"];
+            self.SHData.photo_identifier_back = [NSData dataWithContentsOfFile:image3FilePath options:0 error:nil];
+            
+            NSString *image4FilePath = [path stringByAppendingPathComponent:@"4.png"];
+            self.SHData.photo_business_place = [NSData dataWithContentsOfFile:image4FilePath options:0 error:nil];
+            
+            NSString *image5FilePath = [path stringByAppendingPathComponent:@"5.png"];
+            self.SHData.photo_bankcard_front = [NSData dataWithContentsOfFile:image5FilePath options:0 error:nil];
+            
+            NSString *image6FilePath = [path stringByAppendingPathComponent:@"6.png"];
+            self.SHData.photo_bankcard_back = [NSData dataWithContentsOfFile:image6FilePath options:0 error:nil];
+            
+            NSString *image7FilePath = [path stringByAppendingPathComponent:@"7.png"];
+            self.SHData.photo_contracts = [NSData dataWithContentsOfFile:image7FilePath options:0 error:nil];
+            
+            
+        }
+        else
+        {
+                NSLog(@"Error saving file ");
+        }
+    });
+}
 
 -(void)selectPhotoGroup:(UIButton *)btn
 {
@@ -309,45 +408,6 @@
 //    [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
-//    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
-//    [[NSNotificationCenter defaultCenter] postNotification:notification];
-    
-//    for (int i=0;i<[self.navigationController.viewControllers count] ; i++)
-//    {
-//        UIViewController * Vc = [self.navigationController.viewControllers objectAtIndex:i];
-//        DLog(@"CONTROLLER IS %@",Vc);
-//        if([Vc isKindOfClass:[SubCateViewController class]])
-//        {
-////            settingNaturalManInfoViewController* info=[self.navigationController.viewControllers objectAtIndex:i];
-////            [self.navigationController popToViewController:info
-////                                                  animated:NO];
-//            DLog(@"CONTROLLER IS %@",Vc);
-//
-//        }
-//    }
-    
-//    UIViewController * Vc = [self appRootViewController];
-//    DLog(@"CONTROLLER IS %@",Vc);
-//    self.imageData = imageData;
-//    self.image.image = [UIImage imageWithData:self.imageData];
-//    [self.view bringSubviewToFront:self.image];
-    //    NSString *nameString =  [NSString stringWithFormat:@"%ld.jpg",(long)currentPhotoTag];
-    //    DLog(@"The pic name is%@",nameString);
-    //
-    //    BOOL success = [FCFileManager createFileAtPath:nameString withContent:imageData];
-    //    if (success) {
-    //        DLog(@"The pic create success :%b",success);
-    //
-    //        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //        [photosArray replaceObjectAtIndex:(currentPhotoTag) withObject:@"yes"];
-    //        [userDefaults setObject:photosArray forKey:@"photosTempArray"];
-    //        [userDefaults synchronize];
-    //        //[self.navigationController popViewControllerAnimated:YES];
-    //
-    //        [newTableView reloadData];
-    //    }
 }
 
 

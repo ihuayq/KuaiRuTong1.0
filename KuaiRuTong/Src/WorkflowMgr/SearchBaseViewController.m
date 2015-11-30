@@ -113,11 +113,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//    SearchMoreBaseViewController* pushController = [[SearchMoreBaseViewController alloc] init];
-//    [self.navigationController pushViewController:pushController animated:YES];
-    
-    
     CateViewController *vc = [[CateViewController alloc] init];
     
     SHDataItem * model = [array objectAtIndex:indexPath.row];

@@ -50,11 +50,10 @@
     
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableView delegate:self];
     
-    self.basicControlsSection = [self addBaseSection];
-    self.buttonSection = [self addButton];
+
     
-//    [self displayOverFlowActivityView:@"加载数据"];
-//    [self.service beginSeachDetailByPosCode:self.model.machine_code];
+    [self displayOverFlowActivityView:@"查询厂商数据"];
+    [self.service getManufacturerStorageData];
     
 }
 
@@ -76,21 +75,26 @@
     [button.layer setCornerRadius:button.frame.size.height/2.0f];
     self.itemPosCode.accessoryView = button;
     
-    self.itemManufacturer = [REPickerItem itemWithTitle:@"厂商机型" value:@[@"魔方"] placeholder:nil options:@[@[@"魔方", @"深圳华智融科技有限公司", @"福建新大陆支付技术有限公司"]]];
+    
+//    self.service.machineTypesArray
+//    self.itemManufacturer = [REPickerItem itemWithTitle:@"厂商机型" value:@[@"魔方"] placeholder:nil options:@[@[@"魔方", @"深圳华智融科技有限公司", @"福建新大陆支付技术有限公司"]]];
+    self.itemManufacturer = [REPickerItem itemWithTitle:@"厂商机型" value:@[[self.service.companyNamesArray objectAtIndex:0]] placeholder:nil options:@[self.service.companyNamesArray]];
     self.itemManufacturer.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
-        weakSelf.itemVersion.value = @[@"点击1"];
-        weakSelf.itemVersion.options = @[@[@"点击1",@"点击2"]];
+        weakSelf.itemVersion.value = @[[self.service.versionArray objectAtIndex:0]];
+        weakSelf.itemVersion.options = @[self.service.versionArray];
         
         [weakSelf.tableView  reloadData];
     };
     
-    self.itemTerminalType = [REPickerItem itemWithTitle:@"机具类型" value:@[@"拨号POS(非键盘)"] placeholder:nil options:@[@[@"拨号POS(非键盘)", @"拨号POS(键盘)", @"移动POS"]]];
+//    self.itemTerminalType = [REPickerItem itemWithTitle:@"机具类型" value:@[@"拨号POS(非键盘)"] placeholder:nil options:@[@[@"拨号POS(非键盘)", @"拨号POS(键盘)", @"移动POS"]]];
+    self.itemTerminalType = [REPickerItem itemWithTitle:@"机具类型" value:@[[self.service.machineTypesArray objectAtIndex:0]] placeholder:nil options:@[self.service.machineTypesArray]];
+
     self.itemTerminalType.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
     };
 
-    self.itemVersion= [REPickerItem itemWithTitle:@"型号类型" value:@[@"测试"] placeholder:nil options:@[@[@"测试"]]];
+    self.itemVersion= [REPickerItem itemWithTitle:@"型号类型" value:@[@"WP-70"] placeholder:nil options:@[@[@"WP-70"]]];
     self.itemVersion.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
     };//机具型号
@@ -107,7 +111,8 @@
 }
 
 -(void)touchCheckButton{
-    
+    [self displayOverFlowActivityView:@"验证中"];
+    [self.service checkPosCode:self.itemPosCode.value];
 }
 
 //扫描条形码
@@ -161,11 +166,21 @@
     
     //{"name":"agesales","pos_serial_number":"lo666","factory":"杭州百富电子技术有限公司","pos_type":"移动POS","pos_model":"WP-70","pos_number":"1"
     NSMutableDictionary *enterPosPostDic = [[NSMutableDictionary alloc] init];
+    
+#ifdef Test
+    [enterPosPostDic setObject:@"lo666"      forKey:@"pos_serial_number"];
+    [enterPosPostDic setObject:@"杭州百富电子技术有限公司"      forKey:@"factory"];
+    [enterPosPostDic setObject:@"移动POS"      forKey:@"pos_type"];
+    [enterPosPostDic setObject:@"WP-70"      forKey:@"pos_model"];
+    [enterPosPostDic setObject:@"1"     forKey:@"pos_number"];
+#else
     [enterPosPostDic setObject:self.itemPosCode      forKey:@"pos_serial_number"];
     [enterPosPostDic setObject:self.itemManufacturer      forKey:@"factory"];
     [enterPosPostDic setObject:self.itemTerminalType      forKey:@"pos_type"];
     [enterPosPostDic setObject:self.itemVersion      forKey:@"pos_model"];
     [enterPosPostDic setObject:self.itemNum      forKey:@"pos_number"];
+#endif
+
     
     [self displayOverFlowActivityView:@"正在绑定"];
     [self.service beginUploadByShopName:enterPosPostDic];
@@ -183,6 +198,11 @@
 -(void)getManufacturerStorageServiceResult:(NewMachineDataService *)service
                                     Result:(BOOL)isSuccess_
                                   errorMsg:(NSString *)errorMsg{
+    [self removeOverFlowActivityView];
+    
+    self.basicControlsSection = [self addBaseSection];
+    self.buttonSection = [self addButton];
+    [self.tableView reloadData];
     
 }
 
@@ -191,9 +211,7 @@
                            errorMsg:(NSString *)errorMsg{
     [self removeOverFlowActivityView];
     
-    if (isSuccess_ == YES) {
-        [self.tableView reloadData];
-    }
+    [self presentCustomDlg:errorMsg];
     
 }
 
@@ -203,8 +221,7 @@
     [self removeOverFlowActivityView];
     
     if (isSuccess_ == YES) {
-        
-        [self.tableView reloadData];
+        [self presentCustomDlg:@"入库成功"];
     }
     
 }

@@ -18,6 +18,7 @@
         textField = [[UITextField  alloc ]initWithFrame:CGRectMake(10, 4, MainWidth, 40)];
         textField.borderStyle = UITextBorderStyleNone;
         textField.textAlignment = NSTextAlignmentLeft;
+        //textField.keyboardType = UIKeyboardTypeNumberPad;
         textField.placeholder = @"请输入机身序列号";
         textField.font = [UIFont systemFontOfSize:20.0];
         textField.delegate = self;

@@ -61,9 +61,8 @@
     section.headerHeight = 0.1;
     [self.manager addSection:section];
     
-    
-    self.itemMerCode = [RETextItem itemWithTitle:@"商户编号" value:nil placeholder:@"请输入商户编号"]; //商户编号
-    self.itemShopName = [RETextItem itemWithTitle:@"网点名称" value:nil placeholder:@"请输入网点名称"];//网点名称
+    self.itemMerCode = [RETextItem itemWithTitle:@"商户编号" value:self.merCode placeholder:@"请输入商户编号"]; //商户编号
+    self.itemShopName = [RETextItem itemWithTitle:@"网点名称" value:self.shopName placeholder:@"请输入网点名称"];//网点名称
     self.itemTerminalNo = [RETextItem itemWithTitle:@"机身序列号" value:nil placeholder:@"请输入机身序列号"]; //机身序列号
     self.itemBindPhone = [RETextItem itemWithTitle:@"绑定电话" value:nil placeholder:@"请输入绑定电话"];//绑定电话
     
@@ -132,16 +131,22 @@
 
 -(void)setRequestEnterMachineInfo{
     
+    NSMutableDictionary *PostDic = [[NSMutableDictionary alloc] init];
+#ifdef Test
+    [PostDic setObject:@"adsadsadsadadgag"       forKey:@"network_name"];
+    [PostDic setObject:@"M8000057"    forKey:@"shop_num"];
+    [PostDic setObject:@"123456789"      forKey:@"binding_phone"];
+    [PostDic setObject:@"tyu36643212"      forKey:@"pos_num"];
+#else
     
-    NSMutableDictionary *enterPosPostDic = [[NSMutableDictionary alloc] init];
-    [enterPosPostDic setObject:self.itemShopName.value      forKey:@"network_name"];
-    [enterPosPostDic setObject:self.itemMerCode.value      forKey:@"shop_num"];
-    [enterPosPostDic setObject:self.itemBindPhone.value      forKey:@"binding_phone"];
-    [enterPosPostDic setObject:self.itemTerminalNo.value      forKey:@"pos_num"];
-
+    [PostDic setObject:self.itemShopName.value      forKey:@"network_name"];
+    [PostDic setObject:self.itemMerCode.value      forKey:@"shop_num"];
+    [PostDic setObject:self.itemBindPhone.value      forKey:@"binding_phone"];
+    [PostDic setObject:self.itemTerminalNo.value      forKey:@"pos_num"];
+#endif
 
     [self displayOverFlowActivityView:@"正在绑定"];
-    [self.service beginBindWithPara:enterPosPostDic];
+    [self.service beginBindWithPara:PostDic];
 }
 
 - (SHSearchDataService *)service

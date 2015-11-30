@@ -10,6 +10,7 @@
 #import "SHSearchDataService.h"
 #import "SHSearchResultCell.h"
 #import "SHResultData.h"
+#import "SHDetailInfoViewController.h"
 
 @interface QuerySHInterfaceViewController ()<UITableViewDataSource,UITableViewDelegate,SHSearchDataServiceDelegate>{
     
@@ -93,11 +94,15 @@
     return 120;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SHDetailInfoViewController *vc = [[SHDetailInfoViewController alloc] init];
+    SHResultData *data = [dataArray objectAtIndex:indexPath.row];
+    vc.strMerNo = data.mercNum;
 
+    [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 
 - (void)didReceiveMemoryWarning {

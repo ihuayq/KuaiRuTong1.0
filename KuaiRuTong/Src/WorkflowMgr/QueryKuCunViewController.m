@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigation.title = @"商户查询结果";
+    self.navigation.title = @"库存查询结果";
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth,44*8 +10 ) style:UITableViewStylePlain];

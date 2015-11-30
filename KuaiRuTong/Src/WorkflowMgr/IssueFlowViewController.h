@@ -1,18 +1,19 @@
 //
-//  CateViewController.h
-//  top100
+//  IssueFlowViewController.h
+//  KuaiRuTong
 //
-//  Created by Dai Cloud on 12-7-11.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by huayq on 15/11/30.
+//  Copyright © 2015年 hkrt. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 #import "UIFolderTableView.h"
 
 @class SHDataItem;
 @class BusinessInfoUpdateService;
 
-@interface CateViewController : CommonViewController <UITableViewDataSource, UITableViewDelegate>
+@interface IssueFlowViewController : CommonViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic,strong)  BusinessInfoUpdateService *service;
 

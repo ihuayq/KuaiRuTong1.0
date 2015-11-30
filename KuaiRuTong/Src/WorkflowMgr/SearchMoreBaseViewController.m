@@ -12,6 +12,7 @@
 #import "QuerySHInterfaceViewController.h"
 #import "QueryWorkingStatusViewController.h"
 #import "QueryKuCunViewController.h"
+#import "CateViewController.h"
 
 @interface SearchMoreBaseViewController ()<RETableViewManagerDelegate>{
     UITableView *tableView;
@@ -303,15 +304,19 @@
             return;
         }
         QueryKuCunViewController *vc = [[QueryKuCunViewController alloc] init];
-        
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (self.nSearchType == ERROR_FLOW)
     {
+        CateViewController *vc = [[CateViewController alloc] init];
         
+//        SHDataItem * model = [array objectAtIndex:indexPath.row];
+//        vc.shopName = model.shop_name;
+        vc.nType = 1;
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

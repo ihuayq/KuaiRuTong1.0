@@ -347,6 +347,7 @@
         //结算卡号
         cardNumberTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入结算卡号" Font:[UIFont systemFontOfSize:20.0]];
         cardNumberTextField.borderStyle = UITextBorderStyleNone;
+        cardNumberTextField.keyboardType = UIKeyboardTypeNumberPad;
         cardNumberTextField.textAlignment = NSTextAlignmentLeft;
         cardNumberTextField.text = self.item.bank_card_num;
         [cell.contentView addSubview:cardNumberTextField];
@@ -380,6 +381,7 @@
         inviteCodeTextField = [ViewModel createTextFieldWithFrame:CGRectMake(10, 0, MainWidth, 40) Placeholder:@"请输入商户邀请码(选填)" Font:[UIFont systemFontOfSize:20.0]];
         inviteCodeTextField.borderStyle = UITextBorderStyleNone;
         inviteCodeTextField.textAlignment = NSTextAlignmentLeft;
+        inviteCodeTextField.keyboardType = UIKeyboardTypeNumberPad;
         inviteCodeTextField.text = self.item.invitation_code;
         [cell.contentView addSubview:inviteCodeTextField];
     }
@@ -472,11 +474,11 @@
         return;
     }
     
-    //邀请码
-    if ([inviteCodeTextField.text isEmptyOrWhitespace]) {
-        [self presentCustomDlg:@"邀请码为空"];
-        return;
-    }
+//    //邀请码
+//    if ([inviteCodeTextField.text isEmptyOrWhitespace]) {
+//        [self presentCustomDlg:@"邀请码为空"];
+//        return;
+//    }
     
     //网点数据
     if ( addressList.count == 0) {

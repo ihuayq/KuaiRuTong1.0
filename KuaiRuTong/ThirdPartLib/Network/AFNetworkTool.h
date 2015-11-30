@@ -92,4 +92,11 @@
 
 
 + (void)postUploadWithUrl:(NSString *)urlStr parameters:(id)parameters data:(NSData *)data success:(void (^)(id responseObject))success fail:(void (^)(NSError *error))fail;
+
++ (void)downloadFileWithOption:(NSDictionary *)paramDic
+                 withInferface:(NSString*)requestURL
+                     savedPath:(NSString*)savedPath
+               downloadSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+               downloadFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                      progress:(void (^)(float progress))progress;
 @end

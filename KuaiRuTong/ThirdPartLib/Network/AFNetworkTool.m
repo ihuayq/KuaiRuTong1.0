@@ -151,7 +151,7 @@
  *  @param failure    下载失败回调
  *  @param progress   实时下载进度回调
  */
-- (void)downloadFileWithOption:(NSDictionary *)paramDic
++ (void)downloadFileWithOption:(NSDictionary *)paramDic
                  withInferface:(NSString*)requestURL
                      savedPath:(NSString*)savedPath
                downloadSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
@@ -160,7 +160,8 @@
 
 {
     
-    //沙盒路径    //NSString *savedPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/xxx.zip"];
+    //沙盒路径
+    NSString *Path = [NSTemporaryDirectory() stringByAppendingString:@"allfile.zip"];
     AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request =[serializer requestWithMethod:@"POST" URLString:requestURL parameters:paramDic error:nil];
     
@@ -176,10 +177,10 @@
     //    [request setHTTPBody:[AFQueryStringFromParametersWithEncoding(paramaterDic, NSASCIIStringEncoding) dataUsingEncoding:NSUTF8StringEncoding]];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:savedPath append:NO]];
+    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:Path append:NO]];
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         float p = (float)totalBytesRead / totalBytesExpectedToRead;
-        progress(p);
+        //progress(p);
         NSLog(@"download：%f", (float)totalBytesRead / totalBytesExpectedToRead);
         
     }];
@@ -279,7 +280,7 @@
     }
     // 设置返回格式
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
+    manager.requestSerializer.timeoutInterval = 180;
     
     // formData是遵守了AFMultipartFormData的对象
     [manager POST:urlStr parameters:jsonPostData constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -290,7 +291,7 @@
         //[formData appendPartWithFileURL:fileURL name:@"uploadFile.zip" error:NULL];
         
         //[formData appendPartWithFileData:data name:@"file" fileName:@"zipfile.zip" mimeType:@"application/zip"];
-        [formData appendPartWithFileData:data name:@"file" fileName:@"zipfile.zip" mimeType:@"multipart/form-data"]; 
+        [formData appendPartWithFileData:data name:@"zip" fileName:@"zipfile.zip" mimeType:@"multipart/form-data"]; 
         
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {

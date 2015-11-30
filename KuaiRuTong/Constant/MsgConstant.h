@@ -39,6 +39,7 @@ typedef enum CmdCode
     CC_UploadNewMachine = 0x0117,   //自备机入库
     CC_TermBind         = 0x0118, //终端绑定
     CC_IssueBusinessDownload          = 0x0119,
+    CC_IssueBusinessDownloadFile          = 0x0120
     
 } E_CMDCODE;
 

@@ -33,7 +33,7 @@
 @property (nonatomic,copy) NSString *mercName;
 @property (nonatomic,copy) NSString *processId;
 
-
+@property (nonatomic,assign) int pos;
 @property (nonatomic,copy) NSString *operation;
 @property (nonatomic,copy) NSString *sales;
 @property (nonatomic,copy) NSString *inrecodr;

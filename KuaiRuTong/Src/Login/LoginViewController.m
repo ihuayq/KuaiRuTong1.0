@@ -228,13 +228,13 @@
 
 -(void)touchLoginButton
 {
-    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
-    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"login", nil];
+//    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
+//    [[NSNotificationCenter defaultCenter] postNotification:notification];
     
-//    [self displayOverFlowActivityView];
-//    
-//    [self.loginService beginLogin:nameTextField.text Passport:passwordTextField.text];
+    [self displayOverFlowActivityView];
+    
+    [self.loginService beginLogin:nameTextField.text Passport:passwordTextField.text];
     
 }
 

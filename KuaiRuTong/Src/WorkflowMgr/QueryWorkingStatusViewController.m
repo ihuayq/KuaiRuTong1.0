@@ -78,7 +78,7 @@
         NSArray *descriptions = @[dataOpera,dataSales,dataInrecodr,dataSuccess];
         TimeLineViewControl *timeline = [[TimeLineViewControl alloc] initWithTimeArray:times
                                                                andTimeDescriptionArray:descriptions
-                                                                      andCurrentStatus:4
+                                                                      andCurrentStatus:self.service.pos
                                                                               andFrame:CGRectMake(10, NAVIGATION_OUTLET_HEIGHT + 180 + 10, MainWidth - 30, 200)];
         //timeline.center = self.view.center;
         [self.view addSubview:timeline];

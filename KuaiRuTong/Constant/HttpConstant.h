@@ -46,6 +46,8 @@
 #define API_RemoveBinding_Terminal (TEST_COMMONT_URL"/self/jsp/mobileRelieveTerm.action")
 //获取(厂商名称 + 机具类型)
 #define API_Get_CompanyAndMachineType (TEST_COMMONT_URL"/self/jsp/mobileOwnTermStorageSkip.action")
+#define API_Get_AllCompanyAndMachineType (TEST_COMMONT_URL"/self/jsp/mobileownTermStorageSkipAll.action")
+
 //获取机具型号
 #define API_Get_MachineModel       (TEST_COMMONT_URL"/self/jsp/mobileOwnTermStorageSkip.action")
 //自备机入库
@@ -58,6 +60,8 @@
 #define API_Upload_MercData     (TEST_COMMONT_URL"/self/jsp/mobileAddMercApp.action")
 
 #define API_Download_MercData     (TEST_COMMONT_URL"/self/jsp/mobileErrorWorkFlowMercQuery.action")
+
+#define API_Download_IssueFile     (TEST_COMMONT_URL"/self/jsp/mobileErrorWorkFlowMercZip.action")
 
 
 #pragma mark -

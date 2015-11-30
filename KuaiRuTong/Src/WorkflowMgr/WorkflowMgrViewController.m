@@ -169,9 +169,11 @@ NSArray *getManagerIconsArray() {
     switch (indexPath.row) {
         
         case WAIT_FLOW:
+        {
+            [self presentCustomDlg:@"暂时无此功能!"];
             break;
+        }
         case ERROR_FLOW:
-            
         case USER_QUERY:
         case WOKR_STATAS:
         {

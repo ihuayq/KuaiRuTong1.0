@@ -11,7 +11,7 @@
 
 @interface SHDetailInfoViewController : CommonViewController
 
-
+@property(nonatomic,copy) NSString *strMerNo;
 @property(nonatomic,strong)  SHSearchDataService *service;
 
 @end

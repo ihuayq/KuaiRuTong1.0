@@ -10,6 +10,7 @@
 #import "RETableViewManager.h"
 #import "RETableViewOptionsController.h"
 #import "SHResultData.h"
+#import "UpdatePosTermianlToNetPointViewController.h"
 
 
 @interface SHDetailInfoViewController ()<RETableViewManagerDelegate,SHSearchDataServiceDelegate>{
@@ -19,6 +20,7 @@
 //@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) RETableViewManager *manager;
 @property (strong, nonatomic) RETableViewSection *basicControlsSection;
+@property (strong, nonatomic) RETableViewSection *shopInfoSection;
 @property (strong, nonatomic) RETableViewSection *buttonSection;
 
 ////库存查询
@@ -39,7 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
-    self.navigation.title =@"库存详情";
+    self.navigation.title =@"商户详情";
     
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT) style:UITableViewStyleGrouped];
     tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
@@ -48,8 +50,8 @@
     
     self.manager = [[RETableViewManager alloc] initWithTableView:tableView delegate:self];
     
-    [self displayOverFlowActivityView:@"加载数据"];
-    //[self.service beginSeachDetailByPosCode:self.model.machine_code];
+    [self displayOverFlowActivityView:@"查询商户详细数据"];
+    [self.service beginSearchSHDetail:self.strMerNo];
     
 }
 
@@ -63,40 +65,38 @@
     [section addItem:[NSString stringWithFormat:@"网点状态:%@",self.service.detailData.mercSta]];
 
 
-    
-//    NSMutableArray *shopArray = [[NSMutableArray alloc]init];
+    section.headerHeight = 0.1;
+    return section;
+}
+
+
+
+- (void)addShopSection{
     NSArray *dataArray = [[NSArray alloc] initWithArray:self.service.detailData.shopArray];
-    for (NSDictionary *mod in dataArray) {
+    for (SHShopData *mod in dataArray) {
         RETableViewSection *sectionOne = [RETableViewSection sectionWithHeaderTitle:@"网点信息"];
         [self.manager addSection:sectionOne];
         
         //网点名称，可以增机器
-        RETableViewItem *item = [RETableViewItem itemWithTitle:[NSString stringWithFormat:@"网点名称:%@",self.service.detailData.mercNum]];
+        RETableViewItem *item = [RETableViewItem itemWithTitle:[NSString stringWithFormat:@"网点名称:%@",mod.shopName]];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setBackgroundImage:[UIImage imageNamed:@"redbn"] forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageNamed:@"redbndj"] forState:UIControlStateHighlighted];
         [button setFrame:CGRectMake(0, 0, 60, 30)];
-        [button addTarget:self action:@selector(touchAddButton) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(touchAddButton:event:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"增机" forState:UIControlStateNormal];
         [button.layer setMasksToBounds:YES];
         [button.layer setCornerRadius:button.frame.size.height/2.0f];
         item.accessoryView = button;
+        [sectionOne addItem:item];
         
-        [section addItem:[NSString stringWithFormat:@"网点地址:%@",self.service.detailData.mercName]];
+        [sectionOne addItem:[NSString stringWithFormat:@"网点地址:%@",mod.shopAddress]];
+        sectionOne.headerHeight = 12.0;
+        sectionOne.footerHeight = 12.0;
     }
     
-//        SHShopData *shopData = [[SHShopData alloc]init];
-//        shopData.shopAddress = mod[@"shopAddress"];
-//        shopData.shopName = mod[@"shopName"];
-//        shopData.coun = mod[@"coun"];
-//        shopData.city = mod[@"city"];
-//        shopData.provn = mod[@"provn"];
-//        shopData.serialNos = mod[@"serialNos"];
-//        [shopArray addObject:shopData];
-    
-    return section;
+    return ;
 }
-
 
 - (SHSearchDataService *)service
 {
@@ -115,12 +115,44 @@
     [self removeOverFlowActivityView];
     
     self.basicControlsSection = [self addBaseSection];
+    [self addShopSection];
 
     [tableView reloadData];
     
 }
 
 
+- (void)touchAddButton:(id)sender event:(id)event
+{
+    UIButton *button = (UIButton *)sender;
+    
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:tableView];
+    
+    NSIndexPath *indexPath = [tableView indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil)
+    {
+        DLog(@"增机模块单元格(组：%i,行%i)",indexPath.section,indexPath.row);
+        
+        SHShopData *data = self.service.detailData.shopArray[indexPath.section - 1];
+        DLog(@"增机模块数据 地址%@ 网点名称%@",data.shopAddress,data.shopName);
+        
+        
+        UpdatePosTermianlToNetPointViewController *vc = [[UpdatePosTermianlToNetPointViewController alloc] init];
+        vc.shopName = data.shopName;
+        vc.merCode = self.service.detailData.mercNum;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+
+-(void)touchAddButton{
+    UpdatePosTermianlToNetPointViewController *vc = [[UpdatePosTermianlToNetPointViewController alloc] init];
+//    vc.index = indexPath.row;
+//    vc.model = [dataArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

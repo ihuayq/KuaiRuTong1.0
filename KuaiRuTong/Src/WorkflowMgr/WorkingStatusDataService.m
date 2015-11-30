@@ -39,9 +39,9 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [[userDefaults objectForKey:@"UserInfoData"] objectForKey:@"username"];
 #ifdef Test
-    [searchWorkPostDic setObject:username forKey:@"name"];
+    [searchWorkPostDic setObject:@"agesales" forKey:@"name"];
     [searchWorkPostDic setObject:@"M8000057"  forKey:@"shop_num"];
-    [searchWorkPostDic setObject:@"agesales"  forKey:@"shop_name"];
+//    [searchWorkPostDic setObject:@"agesales"  forKey:@"shop_name"];
 #else
     [searchWorkPostDic setObject:username forKey:@"name"];
     [searchWorkPostDic setObject:shCode  forKey:@"shop_num"];
@@ -82,13 +82,37 @@
         self.mercName = dict[@"mercName"];
         self.processId = dict[@"processId"];
         
-        NSArray *dataArray = [[NSArray alloc] initWithArray:dict[@"date"]];
-        for (NSDictionary *mod in dataArray) {
-            self.operation = dict[@"operation"];
-            self.sales = dict[@"sales"];
-            self.inrecodr = dict[@"inrecodr"];
-            self.success = dict[@"success"];
+//        NSArray *dataArray = [[NSArray alloc] initWithArray:dict[@"date"]];
+//        for (NSDictionary *mod in dataArray) {
+//            self.operation = dict[@"operation"];
+//            self.sales = dict[@"sales"];
+//            self.inrecodr = dict[@"inrecodr"];
+//            self.success = dict[@"success"];
+//        }
+        
+        
+        
+        NSDictionary *mod = dict[@"date"];
+        self.operation = mod[@"operation"];
+        self.sales = mod[@"sales"];
+        self.inrecodr = mod[@"inrecodr"];
+        self.success = mod[@"success"];
+        
+        if (![self.operation isEmptyOrWhitespace]) {
+            self.pos = 1;
         }
+        
+        if (![self.sales isEmptyOrWhitespace]) {
+            self.pos = 2;
+        }
+        
+        if (![self.inrecodr isEmptyOrWhitespace]) {
+            self.pos = 3;
+        }
+        if (![self.success isEmptyOrWhitespace]) {
+            self.pos = 4;
+        }
+        
         
         if (_delegate && [_delegate respondsToSelector:@selector(getSearchServiceResult:Result:errorMsg:)]) {
             [_delegate getSearchServiceResult:self Result:YES errorMsg:nil];

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SHSearchDataService.h"
+#import "SHResultData.h"
 
 @interface UpdatePosTermianlToNetPointViewController : CommonViewController
+
+@property(nonatomic,copy)  NSString *merCode;
+@property(nonatomic,copy)  NSString *shopName;
 
 @property(nonatomic,strong)  SHSearchDataService *service;
 

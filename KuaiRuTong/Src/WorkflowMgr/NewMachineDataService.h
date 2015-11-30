@@ -39,9 +39,9 @@
     HttpMessage *upLoadHttpMsg;
 }
 
-
-@property (nonatomic,weak)  NSArray *companyNamesArray;
-@property (nonatomic,weak) NSArray *machineTypesArray;
+@property (nonatomic,strong)  NSArray *versionArray;
+@property (nonatomic,strong)  NSArray *companyNamesArray;
+@property (nonatomic,strong) NSArray *machineTypesArray;
 
 @property (nonatomic,weak) id<NewMachineDataServiceDelegate> delegate;
 

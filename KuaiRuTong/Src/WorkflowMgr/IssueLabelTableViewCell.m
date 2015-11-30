@@ -1,14 +1,14 @@
 //
-//  QueryKuCunTableViewCell.m
+//  IssueLabelTableViewCell.m
 //  KuaiRuTong
 //
-//  Created by 华永奇 on 15/11/26.
+//  Created by huayq on 15/11/30.
 //  Copyright © 2015年 hkrt. All rights reserved.
 //
 
-#import "QueryKuCunTableViewCell.h"
+#import "IssueLabelTableViewCell.h"
 
-@interface QueryKuCunTableViewCell ()
+@interface IssueLabelTableViewCell ()
 {
     UILabel * FirstLabel;
     UILabel * SecondLabel;
@@ -16,16 +16,13 @@
 }
 @end
 
-@implementation QueryKuCunTableViewCell
+@implementation IssueLabelTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         float width = MainWidth/3;
-        
-        
-        // CGSize fittingSize = [label systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
         
         FirstLabel =  [[UILabel alloc] initWithFrame:CGRectMake(20,0,MainWidth,40)];;
         FirstLabel.textAlignment = NSTextAlignmentCenter;
@@ -54,22 +51,31 @@
     return self;
 }
 
--(void)setModel:(KuCunData *)model{
+-(void)setModel:(SHDataItem *)model{
     _model = model;
     
     FirstLabel.text = [NSString stringWithFormat:@"商户名称:%@",model.shop_name];
     CGSize fittingSize = [FirstLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
     [FirstLabel setFrame:CGRectMake(10,10,fittingSize.width,fittingSize.height )];
     
-    SecondLabel.text = [NSString stringWithFormat:@"网点名称:%@",model.netpoint_name];
+    SecondLabel.text = [NSString stringWithFormat:@"申请时间:%@",model.applyDate];
     CGSize SecondLabelSize = [SecondLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
     [SecondLabel setFrame:CGRectMake(10,FirstLabel.origin.y + FirstLabel.size.height+10,SecondLabelSize.width,SecondLabelSize.height )];
     
-    ThirdLabel.text = [NSString stringWithFormat:@"机身序列号:%@",model.machine_code];
+    ThirdLabel.text = [NSString stringWithFormat:@"审批备注:%@",model.examineComment];
     CGSize ThirdLabelSize = [ThirdLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
     [ThirdLabel setFrame:CGRectMake(10,SecondLabel.origin.y + SecondLabel.size.height+10,ThirdLabelSize.width,ThirdLabelSize.height )];
     
 }
 
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
 
 @end

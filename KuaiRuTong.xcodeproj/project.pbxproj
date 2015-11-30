@@ -240,6 +240,7 @@
 		889141C61BF9781D007E1BBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889141C51BF9781D007E1BBB /* Reveal.framework */; };
 		889141CC1BF98655007E1BBB /* NewSHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 889141CB1BF98655007E1BBB /* NewSHCell.m */; };
 		889FA7C41C08046900F9219A /* NewMachineToStorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FA7C31C08046900F9219A /* NewMachineToStorageViewController.m */; };
+		889FD50F1C0C290F00138DA7 /* IssueLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD50E1C0C290F00138DA7 /* IssueLabelTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		88A05E4E1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */; };
 		88A05E571BFAD3A7005CC7E8 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E501BFAD3A7005CC7E8 /* area.plist */; };
 		88A05E581BFAD3A7005CC7E8 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A05E511BFAD3A7005CC7E8 /* city.plist */; };
@@ -823,6 +824,8 @@
 		889141CB1BF98655007E1BBB /* NewSHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSHCell.m; sourceTree = "<group>"; };
 		889FA7C21C08046900F9219A /* NewMachineToStorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMachineToStorageViewController.h; sourceTree = "<group>"; };
 		889FA7C31C08046900F9219A /* NewMachineToStorageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMachineToStorageViewController.m; sourceTree = "<group>"; };
+		889FD50D1C0C290F00138DA7 /* IssueLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueLabelTableViewCell.h; sourceTree = "<group>"; };
+		889FD50E1C0C290F00138DA7 /* IssueLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueLabelTableViewCell.m; sourceTree = "<group>"; };
 		88A05E4C1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLoadMoreFooterView.h; sourceTree = "<group>"; };
 		88A05E4D1BFAC8EF005CC7E8 /* FMLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLoadMoreFooterView.m; sourceTree = "<group>"; };
 		88A05E501BFAD3A7005CC7E8 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
@@ -1534,7 +1537,7 @@
 			path = Validators;
 			sourceTree = "<group>";
 		};
-		887B0ACE1C02B8BC009483ED /* SavedWorkFlow */ = {
+		887B0ACE1C02B8BC009483ED /* SavedOrIssueWorkFlow */ = {
 			isa = PBXGroup;
 			children = (
 				887B0ADD1C02FA94009483ED /* CateViewController.h */,
@@ -1544,7 +1547,7 @@
 				7A2E0FE51C01FF8600CB215C /* SearchBaseViewController.h */,
 				7A2E0FE61C01FF8600CB215C /* SearchBaseViewController.m */,
 			);
-			name = SavedWorkFlow;
+			name = SavedOrIssueWorkFlow;
 			sourceTree = "<group>";
 		};
 		887B0ACF1C02F907009483ED /* Folder */ = {
@@ -1566,7 +1569,7 @@
 			children = (
 				7A87D3741C07317D0073F02A /* QueryKuCun */,
 				888EE4CA1C05658A00811973 /* QuerySH */,
-				887B0AE91C02FB30009483ED /* SavedSHInfoView */,
+				887B0AE91C02FB30009483ED /* SavedOrIssueSHInfoView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1581,7 +1584,7 @@
 				884C60821C06F2B4000436F1 /* QueryWaitingFlow */,
 				888EE4D11C05B15700811973 /* QueryWorkingStatus */,
 				887B0AE81C02FAF1009483ED /* QuerySHVc */,
-				887B0ACE1C02B8BC009483ED /* SavedWorkFlow */,
+				887B0ACE1C02B8BC009483ED /* SavedOrIssueWorkFlow */,
 				887B0ACB1C02A6B8009483ED /* SearchMoreBaseViewController.h */,
 				887B0ACC1C02A6B8009483ED /* SearchMoreBaseViewController.m */,
 			);
@@ -1601,14 +1604,16 @@
 			name = QuerySHVc;
 			sourceTree = "<group>";
 		};
-		887B0AE91C02FB30009483ED /* SavedSHInfoView */ = {
+		887B0AE91C02FB30009483ED /* SavedOrIssueSHInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				887B0ACF1C02F907009483ED /* Folder */,
 				887B0ADA1C02F96E009483ED /* SHInfoTableViewCell.h */,
 				887B0ADB1C02F96E009483ED /* SHInfoTableViewCell.m */,
+				889FD50D1C0C290F00138DA7 /* IssueLabelTableViewCell.h */,
+				889FD50E1C0C290F00138DA7 /* IssueLabelTableViewCell.m */,
 			);
-			name = SavedSHInfoView;
+			name = SavedOrIssueSHInfoView;
 			sourceTree = "<group>";
 		};
 		887B0AEC1C030A96009483ED /* image */ = {
@@ -1728,10 +1733,10 @@
 		888E52071BF467E800A6D917 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				887AD94A1BF57A8000648D93 /* UserCenter */,
 				889140F01BF9681E007E1BBB /* old-src */,
 				887AD9551BF5875300648D93 /* Resource */,
 				887AD9491BF57A8000648D93 /* AddUser */,
-				887AD94A1BF57A8000648D93 /* UserCenter */,
 				887AD94B1BF57A8000648D93 /* WorkflowMgr */,
 				888E52081BF467E800A6D917 /* Home */,
 				888E52091BF467E800A6D917 /* Login */,
@@ -3206,6 +3211,7 @@
 				884C60781C0697D9000436F1 /* MASCompositeConstraint.m in Sources */,
 				88FBA9D21BFC08DC00518C6E /* DAOverlayView.m in Sources */,
 				7AA89AF51C0A88350049C9E1 /* SHDetailInfoViewController.m in Sources */,
+				889FD50F1C0C290F00138DA7 /* IssueLabelTableViewCell.m in Sources */,
 				888E51B01BF41EF600A6D917 /* UIView+Draw.m in Sources */,
 				887B0A931C02A469009483ED /* RETableViewLongTextCell.m in Sources */,
 				8859CA801BF9A7B600827C40 /* VersionDetailViewController.m in Sources */,

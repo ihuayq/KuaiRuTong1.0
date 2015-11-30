@@ -24,6 +24,7 @@ typedef enum {
     // post流数据 非表单 xzoscar 2014/09/22 add
     // 且支持单个文件流上传
     RequestMethodPostStream  = 2,
+    RequestMethodDownLoad  = 3,
 
 }RequestMethod;
 

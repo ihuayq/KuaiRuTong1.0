@@ -270,10 +270,16 @@ static NSArray *titlesArray = nil;
     [infoDic setObject:self.shData.pos_code forKey:@"pos_code"];
     [infoDic setObject:self.shData.branch_add  forKey:@"branch_add"];
 
-    //推销员登陆名
-    [infoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
+//    //推销员登陆名
+//    [infoDic setObject: @"Test-办事处销售陈玉洁" forKey:@"name"];
+#ifdef Test
+    [infoDic setObject:@"agesales" forKey:@"name"];
+#else
+    NSString *username = [[[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfoData"] objectForKey:@"username"];
+    [infoDic setObject: username forKey:@"name"];
+#endif
     
-    [self displayOverFlowActivityView];
+    [self displayOverFlowActivityView:@"提交中" maxShowTime:120];
     [self.service beginUpload:infoDic filePath:@"zipfile.zip"];
 }
 

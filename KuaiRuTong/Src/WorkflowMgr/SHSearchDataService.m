@@ -44,7 +44,7 @@
     NSMutableDictionary *searchSHPostDic = [[NSMutableDictionary alloc] init];
     
 #ifdef Test
-    [searchSHPostDic setObject:@"M0058523"  forKey:@"shop_num"];
+    [searchSHPostDic setObject:@"M0058557"  forKey:@"shop_num"];
 
 #else
     [searchSHPostDic setObject:merCode  forKey:@"shop_num"];
@@ -74,6 +74,8 @@
     
     bindHttpMsg = [[HttpMessage alloc] initWithDelegate:self requestUrl:dealWithURLString postDataDic:dic cmdCode:CC_UploadNewMachine];
     [self.httpMsgCtrl sendHttpMsg:bindHttpMsg];
+    
+    
 }
 
 -(NSMutableArray*)responseArray{
@@ -83,12 +85,12 @@
     return _responseArray;
 }
 
-//-(SHResultData *)detailData{
-//    if (!_detailData) {
-//        _detailData = [[SHResultData alloc]init];
-//    }
-//    return _detailData;
-//}
+-(SHResultData *)detailData{
+    if (!_detailData) {
+        _detailData = [[SHResultData alloc]init];
+    }
+    return _detailData;
+}
 
 - (void)receiveDidFinished:(HttpMessage *)receiveMsg
 {
@@ -104,8 +106,7 @@
             data.mercName =  mod[@"mercName"] ;
             data.mercSta =  mod[@"mercSta"];
             
-            [self.responseArray addObject:data];
-            
+            [self.responseArray addObject:data]; 
         }
         
         if (_delegate && [_delegate respondsToSelector:@selector(getSearchServiceResult:Result:errorMsg:)]) {
@@ -133,7 +134,7 @@
             shopData.serialNos = mod[@"serialNos"];
             [shopArray addObject:shopData];
         }
-        self.detailData.shopArray = shopArray;
+        self.detailData.shopArray = [[NSArray alloc] initWithArray:shopArray];
         
         if (_delegate && [_delegate respondsToSelector:@selector(getSHDetailDataServiceResult:Result:errorMsg:)]) {
             [_delegate getSHDetailDataServiceResult:self Result:YES errorMsg:nil];

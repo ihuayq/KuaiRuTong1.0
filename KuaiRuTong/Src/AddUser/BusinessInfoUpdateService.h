@@ -21,20 +21,30 @@
                                    Result:(BOOL)isSuccess_
                                  errorMsg:(NSString *)errorMsg;
 
+-(void)getIssuedBusinessPictureServiceResult:(BusinessInfoUpdateService *)service
+                                   Result:(BOOL)isSuccess_
+                                 errorMsg:(NSString *)errorMsg;
+
 @end
 
 @interface BusinessInfoUpdateService : DataService{
     HttpMessage *updateHttpMsg;
     
     HttpMessage *downLoadIssueHttpMsg;
+    
+    HttpMessage *downLoadFileHttpMsg;
 }
 
 @property (nonatomic,weak) id<BusinessInfoUpdateServiceDelegate> delegate;
+
+@property (nonatomic,strong) SHDataItem *issueData;
 
 -(void)beginUpload:(NSDictionary*)parameters filePath:(NSString*)path;
 
 -(void)beginUpload:(SHDataItem*)data;
 
 -(void)downLoadWithMerName:(NSString*)MerName;
+
+-(void)downLoadFileWithFlowID:(NSString*)flowID;
 
 @end

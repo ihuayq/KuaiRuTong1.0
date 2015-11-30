@@ -48,6 +48,13 @@
 @property (nonatomic, copy)     NSString    *phone_verify;
 @property (nonatomic, strong)   NSString    *network_name_verify;
 
+
+@property (nonatomic, copy)     NSString    *examineComment; //审批备注
+@property (nonatomic, copy)     NSString    *applyDate;//申请时间
+@property (nonatomic, strong)   NSString    *flowId;//流水号
+
+
+
 @property (nonatomic, strong)   NSData*     photo_business_permit;
 @property (nonatomic, strong)   NSData*     photo_identifier_front;
 @property (nonatomic, strong)   NSData*     photo_identifier_back;

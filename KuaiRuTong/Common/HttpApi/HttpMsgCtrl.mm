@@ -134,6 +134,25 @@ static map_send g_mapSend;
             DError(@"请求失败");
         }];
     }
+    else if (sendMsg.requestMethod == RequestMethodDownLoad){
+            [AFNetworkTool downloadFileWithOption:sendMsg.postDataDic
+            withInferface:sendMsg.requestUrl
+            savedPath:nil
+            downloadSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+//                  if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                      sendMsg.jasonItems = responseObject;
+//                  }
+                
+                  if ([sendMsg.delegate respondsToSelector:@selector(receiveDidFinished:)])
+                  {
+                      [sendMsg.delegate receiveDidFinished:sendMsg];
+                  }
+            }
+            downloadFailure:^(AFHTTPRequestOperation *operation, NSError *error){
+                   DError(@"请求失败");                   
+            }
+            progress:nil];
+    }
     
     
     [self.lock lock];

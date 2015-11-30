@@ -206,7 +206,7 @@ typedef NS_ENUM(int, EditState){
             self.strCityInfo = [NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea];
 //        }
         
-        [addressBtn setTitle:[NSString stringWithFormat:@"%@ %@ %@", strProvice,strCity,strArea] forState:UIControlStateNormal];
+        [addressBtn setTitle:[NSString stringWithFormat:@"%@,%@,%@", strProvice,strCity,strArea] forState:UIControlStateNormal];
     };
     [self presentViewController:locationPickerVC animated:NO completion:nil];
 }

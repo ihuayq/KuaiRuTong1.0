@@ -295,13 +295,17 @@
     [self removeOverFlowActivityView];
     [self presentCustomDlg:@"下载成功"];
     
-    NSString *zipPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
+    
+    NSString* docPath = [FCFileManager pathForDocumentsDirectory];
+    //NSString *zipPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/zipfile.zip",docPath];
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
 //    NSString *zipPath = [path stringByAppendingPathComponent:@"zipfile.zip"];
     //check if file exist and returns YES or NO
-//    BOOL testFileExists = [FCFileManager existsItemAtPath:@"allfile.zip"];
-//    NSLog(@"File Exist %d",testFileExists);
+    BOOL testFileExists = [FCFileManager existsItemAtPath:@"zipfile.zip"];
+    NSLog(@"File Exist %d",testFileExists);
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{

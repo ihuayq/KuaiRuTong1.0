@@ -8,6 +8,7 @@
 
 #import "AFNetworkTool.h"
 #import "JSONKit.h"
+#import "FCFileManager.h"
 
 @implementation AFNetworkTool
 
@@ -161,7 +162,14 @@
 {
     
     //沙盒路径
-    NSString *Path = [NSTemporaryDirectory() stringByAppendingString:@"allfile.zip"];
+    //NSString *Path = [NSTemporaryDirectory() stringByAppendingString:@"allfile.zip"];
+    //NSString *Path = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
+    
+    NSString* docPath = [FCFileManager pathForDocumentsDirectory];
+    //NSString *zipPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
+    NSString *Path = [NSString stringWithFormat:@"%@/zipfile.zip",docPath];
+    
+    
     AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request =[serializer requestWithMethod:@"POST" URLString:requestURL parameters:paramDic error:nil];
     

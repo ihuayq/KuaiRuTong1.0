@@ -90,7 +90,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470580028.588502"
+                  timestampString = "470581118.12954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "258"
@@ -105,7 +105,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470580028.588704"
+                  timestampString = "470581118.129745"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -120,7 +120,7 @@
                   moduleName = "KuaiRuTong"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470580028.588898"
+                  timestampString = "470581118.129937"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -185,11 +185,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/ThirdPartLib/Network/AFNetworkTool.m"
-            timestampString = "470571540.510908"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "+postUploadWithUrl:fileUrl:success:fail:"
             landmarkType = "5">
          </BreakpointContent>
@@ -217,11 +217,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/ThirdPartLib/Network/AFNetworkTool.m"
-            timestampString = "470571540.510908"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "+postUploadWithUrl:fileUrl:success:fail:"
             landmarkType = "5">
          </BreakpointContent>
@@ -329,11 +329,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/WorkflowMgr/CateViewController.m"
-            timestampString = "470576003.805225"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -467,11 +467,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/ThirdPartLib/Network/AFNetworkTool.m"
-            timestampString = "470549886.768031"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "+postJSONWithUrl:parameters:success:fail:"
             landmarkType = "5">
          </BreakpointContent>
@@ -579,11 +579,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/ThirdPartLib/Network/AFNetworkTool.m"
-            timestampString = "470571858.653349"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "+downloadFileWithOption:withInferface:savedPath:downloadSuccess:downloadFailure:progress:"
             landmarkType = "5">
          </BreakpointContent>
@@ -595,11 +595,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/WorkflowMgr/CateViewController.m"
-            timestampString = "470576003.805225"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-getIssuedBusinessPictureServiceResult:Result:errorMsg:"
             landmarkType = "5">
          </BreakpointContent>
@@ -611,11 +611,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KuaiRuTong/Src/WorkflowMgr/CateViewController.m"
-            timestampString = "470576003.805225"
+            timestampString = "470581116.898646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "-getIssuedBusinessPictureServiceResult:Result:errorMsg:"
             landmarkType = "5">
          </BreakpointContent>
@@ -633,6 +633,22 @@
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-receiveDidFinished:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KuaiRuTong/Src/WorkflowMgr/CateViewController.m"
+            timestampString = "470581116.898646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
+            landmarkName = "-getIssuedBusinessPictureServiceResult:Result:errorMsg:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

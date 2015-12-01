@@ -73,6 +73,12 @@
         KTTabBarViewController* Vc=[[KTTabBarViewController alloc] init];
         self.window.rootViewController = Vc;
     }
+    else if ([text.userInfo[@"login"] isEqualToString:@"1"]){
+        login = [[LoginViewController alloc] init];
+        nc =[[UINavigationController alloc]initWithRootViewController:login];
+        [nc.navigationBar setHidden:YES];
+        self.window.rootViewController = nc;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

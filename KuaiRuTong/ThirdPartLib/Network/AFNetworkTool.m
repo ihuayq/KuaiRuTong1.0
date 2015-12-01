@@ -167,11 +167,17 @@
     
     NSString* docPath = [FCFileManager pathForDocumentsDirectory];
     //NSString *zipPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
-    NSString *Path = [NSString stringWithFormat:@"%@/zipfile.zip",docPath];
+    NSString *Path = [NSString stringWithFormat:@"%@/file.zip",docPath];
     
+    
+    NSDictionary *jsonPostData = @{};
+    if ( paramDic != nil) {
+        NSString *jsonStr=[paramDic JSONString];
+        jsonPostData = @{@"data":jsonStr};
+    }
     
     AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
-    NSMutableURLRequest *request =[serializer requestWithMethod:@"POST" URLString:requestURL parameters:paramDic error:nil];
+    NSMutableURLRequest *request =[serializer requestWithMethod:@"POST" URLString:requestURL parameters:jsonPostData error:nil];
     
     //以下是手动创建request方法 AFQueryStringFromParametersWithEncoding有时候会保存
     //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
@@ -187,20 +193,21 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:Path append:NO]];
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-        float p = (float)totalBytesRead / totalBytesExpectedToRead;
+        //float p = (float)totalBytesRead / totalBytesExpectedToRead;
         //progress(p);
-        NSLog(@"download：%f", (float)totalBytesRead / totalBytesExpectedToRead);
+        DLog(@"download：%f", (float)totalBytesRead / totalBytesExpectedToRead);
+        DLog(@"total byte is：%lld",totalBytesExpectedToRead);
         
     }];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(operation,responseObject);
-        NSLog(@"下载成功");
+        DLog(@"下载成功");
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         success(operation,error);
         
-        NSLog(@"下载失败");
+        DLog(@"下载失败");
         
     }];
     

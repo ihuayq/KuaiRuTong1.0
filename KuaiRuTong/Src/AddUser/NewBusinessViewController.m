@@ -308,6 +308,13 @@ static NSArray *titlesArray = nil;
     }
 }
 
+-(void)getBusinessInfoUpdateServiceResult:(BusinessInfoUpdateService *)service
+                                   Result:(BOOL)isSuccess_
+                                 errorMsg:(NSString *)errorMsg
+{
+    [self removeOverFlowActivityView];
+    [self presentCustomDlg:errorMsg];
+}
 
 #pragma --UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

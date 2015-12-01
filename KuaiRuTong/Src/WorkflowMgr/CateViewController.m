@@ -54,6 +54,7 @@
 {
     [super viewDidLoad];
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
+    self.navigation.title = @"商户详情";
     
     self.tableView =  [[UIFolderTableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth, MainHeight - SCREEN_BODY_HEIGHT - 200 ) style:UITableViewStyleGrouped];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
@@ -66,7 +67,7 @@
         self.SHData = [dao searchSHItemDAOFromDB:self.shopName];
     }
     else{
-        [self displayOverFlowActivityView:@"加载问题数据"];
+        [self displayOverFlowActivityView:@"刷新问题数据"];
         [self.service downLoadWithMerName:self.shopName];
     }
 }
@@ -86,19 +87,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *CellLabel = @"label_cell";
     static NSString *CellIdentifier = @"cate_cell";
     static NSString *cellNormal= @"normal_cell";
     static NSString *cellInfo= @"info_cell";
-//    if ( indexPath.row == 0) {
-//        IssueLabelTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
-//        if (cell == nil) {
-//            cell = [[IssueLabelTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-//                                          reuseIdentifier:CellIdentifier];
-//        }
-//        cell.model = self.SHData;
-//        return cell;
-//    }
     if ( indexPath.row == 0) {
+        if ( self.nType == ERROR_FLOW) {
+            IssueLabelTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:CellLabel];
+            if (cell == nil) {
+                cell = [[IssueLabelTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                              reuseIdentifier:CellLabel];
+            }
+            cell.model = self.SHData;
+            return cell;
+        }
+        else
+        {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellInfo];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                              reuseIdentifier:cellInfo];
+                
+            }
+            return cell;
+        }
+  
+    }
+    else if ( indexPath.row == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellInfo];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
@@ -107,40 +122,35 @@
             UIImageView* img = [[UIImageView alloc] initWithFrame:CGRectMake(MainWidth -40, 6,30,30)];
             img.image = [UIImage imageNamed:@"addInfo"];
             [cell.contentView addSubview:img];
-            
             cell.textLabel.text = [self.cates objectAtIndex:indexPath.row];
-        
         }
-
         return cell;
     }
-    else if (indexPath.row == 8)
+    else if (indexPath.row == 9)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellNormal];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                               reuseIdentifier:cellNormal];
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
-        uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/4 - MainWidth/6,5,MainWidth/3,30)];
-        [uploadBtn addTarget:self action:@selector(uploadBtnMethod) forControlEvents:UIControlEventTouchUpInside];
-        [uploadBtn setTitle:@"上   传" forState:UIControlStateNormal];
-        [uploadBtn.layer setMasksToBounds:YES];
-        [uploadBtn.layer setCornerRadius:uploadBtn.frame.size.height/2.0f]; //设置矩形四个圆角半径
-        uploadBtn.backgroundColor = ORANGE_COLOR;
-        [cell.contentView  addSubview:uploadBtn];
-        
-        // MainHeight - 48 - NAVIGATION_OUTLET_HEIGHT
-        saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/2 + MainWidth/4 - MainWidth/6 , 5, MainWidth/3, 30)];
-        [saveBtn addTarget:self action:@selector(saveBtnMethod) forControlEvents:UIControlEventTouchUpInside];
-        [saveBtn setTitle:@"保 存 " forState:UIControlStateNormal];
-        saveBtn.backgroundColor = ORANGE_COLOR;
-        saveBtn.layer.masksToBounds = YES;
-        [saveBtn.layer setCornerRadius:saveBtn.frame.size.height/2.0f];
-        [cell.contentView addSubview:saveBtn];
-            }
-        return cell;
+            uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/4 - MainWidth/6,5,MainWidth/3,30)];
+            [uploadBtn addTarget:self action:@selector(uploadBtnMethod) forControlEvents:UIControlEventTouchUpInside];
+            [uploadBtn setTitle:@"上   传" forState:UIControlStateNormal];
+            [uploadBtn.layer setMasksToBounds:YES];
+            [uploadBtn.layer setCornerRadius:uploadBtn.frame.size.height/2.0f]; //设置矩形四个圆角半径
+            uploadBtn.backgroundColor = ORANGE_COLOR;
+            [cell.contentView  addSubview:uploadBtn];
+            
+            // MainHeight - 48 - NAVIGATION_OUTLET_HEIGHT
+            saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/2 + MainWidth/4 - MainWidth/6 , 5, MainWidth/3, 30)];
+            [saveBtn addTarget:self action:@selector(saveBtnMethod) forControlEvents:UIControlEventTouchUpInside];
+            [saveBtn setTitle:@"保 存 " forState:UIControlStateNormal];
+            saveBtn.backgroundColor = ORANGE_COLOR;
+            saveBtn.layer.masksToBounds = YES;
+            [saveBtn.layer setCornerRadius:saveBtn.frame.size.height/2.0f];
+            [cell.contentView addSubview:saveBtn];
+                }
+            return cell;
     }
     else
     {
@@ -151,7 +161,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
 
-        DLog(@"模块单元格(组：%i,行%i)",indexPath.section,indexPath.row);
+        //DLog(@"模块单元格(组：%i,行%i)",indexPath.section,indexPath.row);
         cell.title.text = [self.cates objectAtIndex:indexPath.row];
         }
         
@@ -164,7 +174,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    if ( indexPath.row == 0 ) {
+    if ( indexPath.row == 1 ) {
         SHInfoViewController *vc = [[SHInfoViewController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.item = self.SHData;
@@ -172,7 +182,7 @@
         return;
     }
     
-    if ( indexPath.row == 8 ) {
+    if ( indexPath.row == 9 || indexPath.row == 0) {
         
         return;
     }
@@ -181,27 +191,26 @@
     subVc = [[SubCateViewController alloc] init];
     subVc.cateVC = self;
     
-    
-    nSelectIndex = indexPath.row;
-    if ( indexPath.row == 1 ) {
+    nSelectIndex = indexPath.row - 1;
+    if ( nSelectIndex == 1 ) {
         subVc.imageData= self.SHData.photo_business_permit;
     }
-    else if ( indexPath.row == 2 ) {
+    else if ( nSelectIndex == 2 ) {
         subVc.imageData= self.SHData.photo_identifier_front;
     }
-    else if ( indexPath.row == 3 ) {
+    else if ( nSelectIndex == 3 ) {
         subVc.imageData= self.SHData.photo_identifier_back;
     }
-    else if ( indexPath.row == 4 ) {
+    else if ( nSelectIndex == 4 ) {
         subVc.imageData= self.SHData.photo_business_place;
     }
-    else if ( indexPath.row == 5 ) {
+    else if ( nSelectIndex == 5 ) {
         subVc.imageData= self.SHData.photo_bankcard_front;
     }
-    else if ( indexPath.row == 6 ) {
+    else if ( nSelectIndex == 6 ) {
         subVc.imageData= self.SHData.photo_bankcard_back;
     }
-    else if ( indexPath.row == 7 ) {
+    else if ( nSelectIndex == 7 ) {
         subVc.imageData= self.SHData.photo_contracts;
     }
 
@@ -225,14 +234,22 @@
     
 }
 
--(CGFloat)tableView:(UIFolderTableView *)tableView xForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//-(CGFloat)tableView:(UIFolderTableView *)tableView xForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
 //    if (indexPath.row == 0) {
-//        return 0.1;
+//        return 0.0f;
 //    }
+//    return 44;
+//}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return self.nType == ERROR_FLOW? 100:0;
+    }
     return 44;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
@@ -251,7 +268,7 @@
 
 //上传接口
 -(void)uploadBtnMethod{
-    [self displayOverFlowActivityView];
+    [self displayOverFlowActivityView:@"提交中" maxShowTime:120];
     [self.service beginUpload:self.SHData];
 }
 
@@ -271,11 +288,12 @@
                                    Result:(BOOL)isSuccess_
                                  errorMsg:(NSString *)errorMsg
 {
-    [self removeOverFlowActivityView];
+    //[self removeOverFlowActivityView];
     self.SHData = self.service.issueData;
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
     
-    [self displayOverFlowActivityView:@"获取问题图片"];
+
+    [self displayOverFlowActivityView:@"获取图片数据" maxShowTime:120];
     [self.service downLoadFileWithFlowID:self.service.issueData.flowId];
     
     
@@ -298,14 +316,24 @@
     
     NSString* docPath = [FCFileManager pathForDocumentsDirectory];
     //NSString *zipPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/zipfile.zip"];
-    NSString *zipPath = [NSString stringWithFormat:@"%@/zipfile.zip",docPath];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/file.zip",docPath];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
-//    NSString *zipPath = [path stringByAppendingPathComponent:@"zipfile.zip"];
-    //check if file exist and returns YES or NO
-    BOOL testFileExists = [FCFileManager existsItemAtPath:@"zipfile.zip"];
-    NSLog(@"File Exist %d",testFileExists);
+    
+//测试查看文件是否存在
+//    BOOL testFileExists = [FCFileManager existsItemAtPath:@"file.zip"];
+//    NSLog(@"File Exist %d",testFileExists);
+//    
+//    NSData * zipData = [FCFileManager readFileAtPathAsData:@"file.zip"];
+//    DLog(@"The zipfile length is %d",zipData.length);
+//    DLog(@"The zipfile is really zip:%d",[zipData isGzippedData]);
+//    
+//    //decode
+//    NSData *outputData = [zipData gunzippedData];
+//    NSString *outputString = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+//    DLog(@"The outputString length is %d",outputString.length);
+    
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
@@ -313,36 +341,40 @@
         if ([za UnzipOpenFile: zipPath])
         {
             BOOL ret = [za UnzipFileTo:path overWrite: YES];
-            if (NO == ret){} [za UnzipCloseFile];
+            if (NO == ret)
+            {}
+            [za UnzipCloseFile];
 
-        
-            NSString *image1FilePath = [path stringByAppendingPathComponent:@"1.png"];
+//            查看路径下文件
+//            NSArray * array =[FCFileManager listFilesInDirectoryAtPath:path];
+//            DLog(@"The out path has %@",array);
+
+            NSString *image1FilePath = [path stringByAppendingPathComponent:@"1.jpg"];
             self.SHData.photo_business_permit = [NSData dataWithContentsOfFile:image1FilePath options:0 error:nil];
         
-            NSString *image2FilePath = [path stringByAppendingPathComponent:@"2.png"];
+            NSString *image2FilePath = [path stringByAppendingPathComponent:@"2.jpg"];
             self.SHData.photo_identifier_front = [NSData dataWithContentsOfFile:image2FilePath options:0 error:nil];
             
-            NSString *image3FilePath = [path stringByAppendingPathComponent:@"3.png"];
+            NSString *image3FilePath = [path stringByAppendingPathComponent:@"3.jpg"];
             self.SHData.photo_identifier_back = [NSData dataWithContentsOfFile:image3FilePath options:0 error:nil];
             
-            NSString *image4FilePath = [path stringByAppendingPathComponent:@"4.png"];
+            NSString *image4FilePath = [path stringByAppendingPathComponent:@"4.jpg"];
             self.SHData.photo_business_place = [NSData dataWithContentsOfFile:image4FilePath options:0 error:nil];
             
-            NSString *image5FilePath = [path stringByAppendingPathComponent:@"5.png"];
+            NSString *image5FilePath = [path stringByAppendingPathComponent:@"5.jpg"];
             self.SHData.photo_bankcard_front = [NSData dataWithContentsOfFile:image5FilePath options:0 error:nil];
             
-            NSString *image6FilePath = [path stringByAppendingPathComponent:@"6.png"];
+            NSString *image6FilePath = [path stringByAppendingPathComponent:@"6.jpg"];
             self.SHData.photo_bankcard_back = [NSData dataWithContentsOfFile:image6FilePath options:0 error:nil];
             
-            NSString *image7FilePath = [path stringByAppendingPathComponent:@"7.png"];
+            NSString *image7FilePath = [path stringByAppendingPathComponent:@"7.jpg"];
             self.SHData.photo_contracts = [NSData dataWithContentsOfFile:image7FilePath options:0 error:nil];
-            
-            
         }
         else
         {
-                NSLog(@"Error saving file ");
+           [self presentCustomDlg:@"文件解压失败!"];
         }
+        
     });
 }
 

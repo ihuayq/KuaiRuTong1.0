@@ -258,6 +258,7 @@
     }
     //工作状态
     else if (self.nSearchType == WOKR_STATAS){
+        
         if ((self.textWorkingStatusQueryIDItem.value == nil) &&
             (self.textWorkingStatusQueryNameItem.value == nil)
             ) {
@@ -278,7 +279,6 @@
         QueryWorkingStatusViewController *vc = [[QueryWorkingStatusViewController alloc] init];
 //        vc.shop_code = (self.textSHQueqyIDItem.value== nil ? @"":self.textSHQueqyIDItem.value);
 //        vc.shop_name= (self.textSHQueqyNameItem.value == nil ? @"":self.textSHQueqyNameItem.value);
-//        vc.pos_code = (self.textSHQueqyMachineCodeItem.value== nil ? @"":self.textSHQueqyMachineCodeItem.value);
         [self.navigationController pushViewController:vc animated:YES];
     }
     //库存查询
@@ -308,13 +308,17 @@
     }
     else if (self.nSearchType == ERROR_FLOW)
     {
+        if ( self.textItem.value == nil ||
+            [self.textItem.value isEmptyOrWhitespace])
+        {
+            
+            [self presentCustomDlg:@"请输入搜索条件"];
+            return;
+        }
+
         CateViewController *vc = [[CateViewController alloc] init];
-        
-//        SHDataItem * model = [array objectAtIndex:indexPath.row];
-//        vc.shopName = model.shop_name;
-        vc.nType = 1;
+        vc.nType = ERROR_FLOW;
         vc.hidesBottomBarWhenPushed = YES;
-        
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

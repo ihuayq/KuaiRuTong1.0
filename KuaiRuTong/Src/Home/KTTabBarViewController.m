@@ -46,13 +46,13 @@
     nc2.tabBarItem.title = @"添加商户";
     nc3.tabBarItem.title = @"用户中心";
 
-    nc1.tabBarItem.selectedImage = [[UIImage imageNamed:@"首页"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    nc2.tabBarItem.selectedImage = [[UIImage imageNamed:@"投资"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    nc3.tabBarItem.selectedImage = [[UIImage imageNamed:@"账号"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nc1.tabBarItem.selectedImage = [[UIImage imageNamed:@"work_management_press"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nc2.tabBarItem.selectedImage = [[UIImage imageNamed:@"add_shop_press"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nc3.tabBarItem.selectedImage = [[UIImage imageNamed:@"user_info_press"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    nc1.tabBarItem.image = [UIImage imageNamed:@"首页-normal"];
-    nc2.tabBarItem.image = [UIImage imageNamed:@"投资-normal"];
-    nc3.tabBarItem.image = [UIImage imageNamed:@"账号-normal"];
+    nc1.tabBarItem.image = [UIImage imageNamed:@"work_management"];
+    nc2.tabBarItem.image = [UIImage imageNamed:@"add_shop"];
+    nc3.tabBarItem.image = [UIImage imageNamed:@"user_info"];
     
     //self.selectedViewController = nc4;
 }

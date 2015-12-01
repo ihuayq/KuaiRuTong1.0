@@ -37,7 +37,7 @@
         //DLog(@"THE Login info:%@",item);
         
         NSArray *categoryItem = [item objectForKey:@"categoryList"];
-        DLog(@"THE categoryItem info:%@",[categoryItem objectAtIndex:0]);
+        //DLog(@"THE categoryItem info:%@",[categoryItem objectAtIndex:0]);
         
         NSDictionary *category= [categoryItem objectAtIndex:0];
         self.pickerDic = category;

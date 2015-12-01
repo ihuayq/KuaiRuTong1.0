@@ -57,6 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigation.backgroundColor = [UIColor clearColor];
     [self initUI];
 }
 
@@ -112,7 +113,7 @@
     [self.view addSubview:bgImageView11 ];
     [bgImageView11 addSubview:bgImageView10];
 
-    nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(60, NAVIGATION_OUTLET_HEIGHT + 120, 240, 40)];
+    nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(60, NAVIGATION_OUTLET_HEIGHT + 120, 290, 40)];
     nameTextField.backgroundColor = [UIColor clearColor];
     nameTextField.clearButtonMode = UITextFieldViewModeAlways;
     nameTextField.placeholder = @"请输入用户账号";
@@ -134,7 +135,7 @@
     [bgImageView21 addSubview:bgImageView20];
 
 
-    passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(60,nameTextField.frame.size.height + nameTextField.frame.origin.y + 20, 240, 40)];
+    passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(60,nameTextField.frame.size.height + nameTextField.frame.origin.y + 20, 290, 40)];
     passwordTextField.backgroundColor = [UIColor clearColor];
     passwordTextField.clearButtonMode = UITextFieldViewModeAlways;
     passwordTextField.placeholder = @"请输入登录密码";

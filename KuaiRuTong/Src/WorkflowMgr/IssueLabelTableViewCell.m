@@ -1,6 +1,6 @@
 //
 //  IssueLabelTableViewCell.m
-//  KuaiRuTong
+//
 //
 //  Created by huayq on 15/11/30.
 //  Copyright © 2015年 hkrt. All rights reserved.
@@ -28,7 +28,7 @@
         FirstLabel.textAlignment = NSTextAlignmentCenter;
         FirstLabel.backgroundColor = [UIColor clearColor];
         FirstLabel.font = [UIFont systemFontOfSize:18.0f];
-        FirstLabel.text = @"商户名称";
+        FirstLabel.text = @"商户名称:无";
         [self.contentView addSubview:FirstLabel];
         
         //商户编号
@@ -36,7 +36,7 @@
         SecondLabel.textAlignment = NSTextAlignmentCenter;
         SecondLabel.backgroundColor = [UIColor clearColor];
         SecondLabel.font = [UIFont systemFontOfSize:18.0f];
-        SecondLabel.text = @"网点名称";
+        SecondLabel.text = @"网点名称:无";
         [self.contentView addSubview:SecondLabel];
         
         //机身序列号
@@ -44,7 +44,7 @@
         ThirdLabel.textAlignment = NSTextAlignmentCenter;
         ThirdLabel.backgroundColor = [UIColor clearColor];
         ThirdLabel.font = [UIFont systemFontOfSize:18.0f];
-        ThirdLabel.text = @"机身序列号:";
+        ThirdLabel.text = @"机身序列号:无";
         [self.contentView addSubview:ThirdLabel];
         
     }
@@ -54,15 +54,22 @@
 -(void)setModel:(SHDataItem *)model{
     _model = model;
     
-    FirstLabel.text = [NSString stringWithFormat:@"商户名称:%@",model.shop_name];
+    if (model.shop_name) {
+        FirstLabel.text = [NSString stringWithFormat:@"商户名称:%@",model.shop_name];
+    }
     CGSize fittingSize = [FirstLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
     [FirstLabel setFrame:CGRectMake(10,10,fittingSize.width,fittingSize.height )];
-    
-    SecondLabel.text = [NSString stringWithFormat:@"申请时间:%@",model.applyDate];
+
+    if (model.applyDate) {
+        SecondLabel.text = [NSString stringWithFormat:@"申请时间:%@",model.applyDate];
+    }
     CGSize SecondLabelSize = [SecondLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
     [SecondLabel setFrame:CGRectMake(10,FirstLabel.origin.y + FirstLabel.size.height+10,SecondLabelSize.width,SecondLabelSize.height )];
     
-    ThirdLabel.text = [NSString stringWithFormat:@"审批备注:%@",model.examineComment];
+    if (model.examineComment) {
+        ThirdLabel.text = [NSString stringWithFormat:@"审批备注:%@",model.examineComment];
+    }
+
     CGSize ThirdLabelSize = [ThirdLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
     [ThirdLabel setFrame:CGRectMake(10,SecondLabel.origin.y + SecondLabel.size.height+10,ThirdLabelSize.width,ThirdLabelSize.height )];
     

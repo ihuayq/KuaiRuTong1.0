@@ -129,10 +129,10 @@
     _addWDButton.layer.cornerRadius = 5.0;
     self.tableView.tableFooterView = _addWDButton;
     
-    if (self.isLoadJson == YES) {
-        [self displayOverFlowActivityView];
+//    if (self.isLoadJson == YES) {
+        [self displayOverFlowActivityView:@"更新Mcc数据" maxShowTime:120];
         [self.service beginRequest];
-    }
+//    }
     
 }
 
@@ -217,7 +217,7 @@
         NSMutableArray  *array = [NSMutableArray arrayWithArray:[addressList[indexPath.row] componentsSeparatedByString:@","]];
         vc.strAddressInfo = array[array.count - 1];
         [array removeObjectAtIndex:array.count - 1];
-        vc.strCityInfo = [array componentsJoinedByString:@" "];;
+        vc.strCityInfo = [array componentsJoinedByString:@","];;
         
         vc.block = ^(NSString *strAddress,NSString *strPosCodeInfo){
             if (![strAddress isEmpty]) {

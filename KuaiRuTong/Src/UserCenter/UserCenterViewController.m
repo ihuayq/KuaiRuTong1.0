@@ -55,7 +55,9 @@
     UIButton *logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(MainWidth/2 - MainWidth/4, MainHeight - 48 - 44 -20, MainWidth/2, 40)];
     [logoutButton addTarget:self action:@selector(logoutButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [logoutButton setTitle:@"退出登录" forState:UIControlStateNormal];
-    logoutButton.backgroundColor = RED_COLOR2;
+//    logoutButton.backgroundColor = RED_COLOR2;
+    [logoutButton setBackgroundImage:[UIImage imageNamed:@"redbn"] forState:UIControlStateNormal];
+    [logoutButton setBackgroundImage:[UIImage imageNamed:@"redbndj"] forState:UIControlStateHighlighted];
     logoutButton.layer.masksToBounds = YES;
     [logoutButton.layer setCornerRadius:logoutButton.frame.size.height/2.0f];
     [self.view addSubview:logoutButton];
@@ -63,10 +65,12 @@
 
 #pragma mark -- private Methods
 - (void)logoutButtonClicked{
-    [self.navigationController popToRootViewControllerAnimated:NO];
+    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"login", nil];
+    NSNotification *notification =[NSNotification notificationWithName:@"LoginInitMainwidow" object:nil userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
-#pragma mark -- UITableViewDataSource 代理方法 
+#pragma mark -- UITableViewDataSource 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return detailArray.count;
 }

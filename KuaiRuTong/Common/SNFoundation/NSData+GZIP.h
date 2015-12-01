@@ -1,7 +1,7 @@
 //
-//  NSData+GZIP.h
+//  GZIP.h
 //
-//  Version 1.0
+//  Version 1.1.1
 //
 //  Created by Nick Lockwood on 03/06/2012.
 //  Copyright (C) 2012 Charcoal Design
@@ -9,7 +9,7 @@
 //  Distributed under the permissive zlib License
 //  Get the latest version from here:
 //
-//  https://github.com/nicklockwood/Gzip
+//  https://github.com/nicklockwood/GZIP
 //
 //  This software is provided 'as-is', without any express or implied
 //  warranty.  In no event will the authors be held liable for any damages
@@ -30,41 +30,15 @@
 //  3. This notice may not be removed or altered from any source distribution.
 //
 
+
 #import <Foundation/Foundation.h>
+
 
 @interface NSData (GZIP)
 
-/*!
- * @abstract
- * 使用gzip格式进行数据压缩
- *
- * @param level
- * 压缩比，默认为Z_DEFAULT_COMPRESSION
- *
- * @result
- * 压缩后的数据
- */
-- (NSData *)gzippedDataWithCompressionLevel:(float)level;
-
-/*!
- * @abstract
- * 使用gzip格式进行数据压缩
- *
- * @discussion
- * 压缩比，默认为Z_DEFAULT_COMPRESSION
- *
- * @result
- * 压缩后的数据
- */
-- (NSData *)gzippedData;
-
-/*!
- * @abstract
- * 使用gzip格式进行数据解压缩
- *
- * @result
- * 解压缩后的数据
- */
-- (NSData *)gunzippedData;
+- (nullable NSData *)gzippedDataWithCompressionLevel:(float)level;
+- (nullable NSData *)gzippedData;
+- (nullable NSData *)gunzippedData;
+- (BOOL)isGzippedData;
 
 @end

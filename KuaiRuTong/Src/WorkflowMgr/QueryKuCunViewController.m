@@ -27,12 +27,11 @@
     self.navigation.title = @"库存查询结果";
     self.navigation.leftImage = [UIImage imageNamed:@"back_icon_new"];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth,44*8 +10 ) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_OUTLET_HEIGHT, MainWidth,MainHeight - SCREEN_BODY_HEIGHT) style:UITableViewStyleGrouped];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.dataSource = self;
     self.tableView.delegate  = self;
-    self.tableView.scrollEnabled = YES;
-    self.tableView.rowHeight = 44.0;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
     [self.view addSubview:self.tableView];
     
     [self displayOverFlowActivityView:@"加载数据"];
@@ -94,7 +93,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
+    return 90;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

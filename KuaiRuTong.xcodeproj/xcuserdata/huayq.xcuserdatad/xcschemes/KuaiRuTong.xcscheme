@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88F204871BF1822E00674567"
-               BuildableName = "KuaiRuTong.app"
+               BuildableName = "&#x5feb;&#x5165;&#x901a;.app"
                BlueprintName = "KuaiRuTong"
                ReferencedContainer = "container:KuaiRuTong.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88F204871BF1822E00674567"
-            BuildableName = "KuaiRuTong.app"
+            BuildableName = "&#x5feb;&#x5165;&#x901a;.app"
             BlueprintName = "KuaiRuTong"
             ReferencedContainer = "container:KuaiRuTong.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88F204871BF1822E00674567"
-            BuildableName = "KuaiRuTong.app"
+            BuildableName = "&#x5feb;&#x5165;&#x901a;.app"
             BlueprintName = "KuaiRuTong"
             ReferencedContainer = "container:KuaiRuTong.xcodeproj">
          </BuildableReference>
@@ -102,7 +102,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88F204871BF1822E00674567"
-            BuildableName = "KuaiRuTong.app"
+            BuildableName = "&#x5feb;&#x5165;&#x901a;.app"
             BlueprintName = "KuaiRuTong"
             ReferencedContainer = "container:KuaiRuTong.xcodeproj">
          </BuildableReference>

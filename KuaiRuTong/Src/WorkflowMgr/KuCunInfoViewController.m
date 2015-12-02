@@ -56,6 +56,7 @@
     
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@""];
     [self.manager addSection:section];
+    section.headerHeight = 0.1;
     [section addItem:[NSString stringWithFormat:@"商户编号:%@",self.service.model.shop_id]];
     [section addItem:[NSString stringWithFormat:@"商户名称:%@",self.service.model.shop_name]];
     [section addItem:[NSString stringWithFormat:@"网点编号:%@",self.service.model.netpoint_id]];

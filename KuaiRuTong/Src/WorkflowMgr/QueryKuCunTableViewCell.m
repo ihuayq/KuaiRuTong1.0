@@ -63,11 +63,11 @@
     
     SecondLabel.text = [NSString stringWithFormat:@"网点名称:%@",model.netpoint_name];
     CGSize SecondLabelSize = [SecondLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
-    [SecondLabel setFrame:CGRectMake(10,FirstLabel.origin.y + FirstLabel.size.height+10,SecondLabelSize.width,SecondLabelSize.height )];
+    [SecondLabel setFrame:CGRectMake(10,FirstLabel.origin.y + FirstLabel.size.height + 4,SecondLabelSize.width,SecondLabelSize.height )];
     
     ThirdLabel.text = [NSString stringWithFormat:@"机身序列号:%@",model.machine_code];
     CGSize ThirdLabelSize = [ThirdLabel systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
-    [ThirdLabel setFrame:CGRectMake(10,SecondLabel.origin.y + SecondLabel.size.height+10,ThirdLabelSize.width,ThirdLabelSize.height )];
+    [ThirdLabel setFrame:CGRectMake(10,SecondLabel.origin.y + SecondLabel.size.height+4,ThirdLabelSize.width,ThirdLabelSize.height )];
     
 }
 

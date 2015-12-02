@@ -13,7 +13,9 @@
 
 
 @interface NewMachineToStorageViewController ()<RETableViewManagerDelegate,SNReaderDelegate,NewMachineDataServiceDelegate>{
-    
+    NSString *strManufacturer;
+    NSString *strTerminalType;
+    NSString *strVersion;
 }
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -50,7 +52,9 @@
     
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableView delegate:self];
     
-
+    strManufacturer = @"";
+    strTerminalType = @"";
+    strVersion = @"";
     
     [self displayOverFlowActivityView:@"查询厂商数据"];
     [self.service getManufacturerStorageData];
@@ -81,8 +85,10 @@
     self.itemManufacturer = [REPickerItem itemWithTitle:@"厂商机型" value:@[[self.service.companyNamesArray objectAtIndex:0]] placeholder:nil options:@[self.service.companyNamesArray]];
     self.itemManufacturer.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
-        weakSelf.itemVersion.value = @[[self.service.versionArray objectAtIndex:0]];
-        weakSelf.itemVersion.options = @[self.service.versionArray];
+        strManufacturer = [item.value objectAtIndex:0];
+
+        weakSelf.itemVersion.value = @[[weakSelf.service.versionArray objectAtIndex:0]];
+        weakSelf.itemVersion.options = @[weakSelf.service.versionArray];
         
         [weakSelf.tableView  reloadData];
     };
@@ -92,14 +98,17 @@
 
     self.itemTerminalType.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
+        strTerminalType = [item.value objectAtIndex:0];
     };
 
     self.itemVersion= [REPickerItem itemWithTitle:@"型号类型" value:@[@"WP-70"] placeholder:nil options:@[@[@"WP-70"]]];
     self.itemVersion.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
+        strVersion = [item.value objectAtIndex:0];
     };//机具型号
     
-    self.itemNum = [RETextItem itemWithTitle:@"机具数量" value:nil placeholder:@"请输入机具数量"];;//机具数量
+    self.itemNum = [RETextItem itemWithTitle:@"机具数量" value:nil placeholder:@"请输入机具数量"];//机具数量
+    self.itemNum.keyboardType = UIKeyboardTypeNumberPad;
     
     [section addItem:self.itemPosCode];
     [section addItem:self.itemManufacturer];
@@ -111,6 +120,11 @@
 }
 
 -(void)touchCheckButton{
+    
+    if (self.itemPosCode.value == nil || [self.itemPosCode.value isEmptyOrWhitespace]) {
+        [self presentCustomDlg:@"请输入验证码"];
+        return;
+    }
     [self displayOverFlowActivityView:@"验证中"];
     [self.service checkPosCode:self.itemPosCode.value];
 }
@@ -166,7 +180,7 @@
     
     //{"name":"agesales","pos_serial_number":"lo666","factory":"杭州百富电子技术有限公司","pos_type":"移动POS","pos_model":"WP-70","pos_number":"1"
     NSMutableDictionary *enterPosPostDic = [[NSMutableDictionary alloc] init];
-    
+#undef Test
 #ifdef Test
     [enterPosPostDic setObject:@"lo666"      forKey:@"pos_serial_number"];
     [enterPosPostDic setObject:@"杭州百富电子技术有限公司"      forKey:@"factory"];
@@ -174,11 +188,24 @@
     [enterPosPostDic setObject:@"WP-70"      forKey:@"pos_model"];
     [enterPosPostDic setObject:@"1"     forKey:@"pos_number"];
 #else
-    [enterPosPostDic setObject:self.itemPosCode      forKey:@"pos_serial_number"];
-    [enterPosPostDic setObject:self.itemManufacturer      forKey:@"factory"];
-    [enterPosPostDic setObject:self.itemTerminalType      forKey:@"pos_type"];
-    [enterPosPostDic setObject:self.itemVersion      forKey:@"pos_model"];
-    [enterPosPostDic setObject:self.itemNum      forKey:@"pos_number"];
+    
+    if ([strManufacturer isEmptyOrWhitespace] ||
+        [strTerminalType isEmptyOrWhitespace] ||
+        [strVersion isEmptyOrWhitespace] ||
+        self.itemPosCode.value == nil ||
+        [self.itemPosCode.value isEmptyOrWhitespace] ||
+        self.itemNum.value == nil ||
+        [self.itemNum.value isEmptyOrWhitespace]
+        )
+    {
+        [self presentCustomDlg:@"亲,缺少条件!"];
+        return;
+    }
+    [enterPosPostDic setObject:self.itemPosCode.value      forKey:@"pos_serial_number"];
+    [enterPosPostDic setObject:strManufacturer      forKey:@"factory"];
+    [enterPosPostDic setObject:strTerminalType      forKey:@"pos_type"];
+    [enterPosPostDic setObject:strVersion      forKey:@"pos_model"];
+    [enterPosPostDic setObject:self.itemNum.value      forKey:@"pos_number"];
 #endif
 
     

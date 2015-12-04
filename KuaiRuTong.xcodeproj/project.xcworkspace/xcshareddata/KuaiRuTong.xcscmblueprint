@@ -1,30 +1,30 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++1A7029A",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++9F93A1C",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++24CC709" : {
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++D25BB44" : {
 
     },
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++FAFC850" : {
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++E5B4C98" : {
 
     },
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++7F826A3" : {
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++661A4E4" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++7F826A3" : 0,
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++24CC709" : 0,
-    "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++1A7029A" : 0,
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++FAFC850" : 0,
-    "F377D55A38CC0025A7804CE254F17C6CCE59ACBA+++C4C4C17" : 0
+    "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++9F93A1C" : 0,
+    "F377D55A38CC0025A7804CE254F17C6CCE59ACBA+++DB91477" : 0,
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++661A4E4" : 0,
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++E5B4C98" : 0,
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++D25BB44" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A8BDFDD0-F223-4F81-95CA-9222F54ADCF2",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++7F826A3" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/MJRefresh\/MJRefresh.bundle\/",
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++24CC709" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/SDWebImage\/SDWebImage\/",
-    "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++1A7029A" : "KuaiRuTong1.0\/",
-    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++FAFC850" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/MJRefresh\/MJRefresh.bundle\/",
-    "F377D55A38CC0025A7804CE254F17C6CCE59ACBA+++C4C4C17" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/FCFileManager\/"
+    "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++9F93A1C" : "KuaiRuTong1.0\/",
+    "F377D55A38CC0025A7804CE254F17C6CCE59ACBA+++DB91477" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/FCFileManager\/",
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++661A4E4" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/SDWebImage\/SDWebImage\/",
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++E5B4C98" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/MJRefresh\/MJRefresh.bundle\/",
+    "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++D25BB44" : "KuaiRuTong1.0\/KuaiRuTong\/ThirdPartLib\/MJRefresh\/MJRefresh.bundle\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KuaiRuTong",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -33,27 +33,27 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/210.14.146.26\/bts",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++24CC709"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++661A4E4"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/210.14.146.26\/bts",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++7F826A3"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++D25BB44"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/210.14.146.26\/bts",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++FAFC850"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3d0e1abe-cee6-4aff-904a-11be7612beaf++7634+++E5B4C98"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ihuayq\/KuaiRuTong1.0.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++1A7029A"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5DBD54D14DBE5A3901870A4032492F4277D88DBF+++9F93A1C"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/fabiocaccamo\/FCFileManager.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F377D55A38CC0025A7804CE254F17C6CCE59ACBA+++C4C4C17"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F377D55A38CC0025A7804CE254F17C6CCE59ACBA+++DB91477"
     }
   ]
 }

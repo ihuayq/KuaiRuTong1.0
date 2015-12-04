@@ -14,9 +14,9 @@
 #import "MASViewAttribute.h"
 #import <QuartzCore/QuartzCore.h>
 
-const float BETTWEEN_LABEL_OFFSET = 20;
+const float BETTWEEN_LABEL_OFFSET = 40;
 const float LINE_WIDTH = 2.0;
-const float CIRCLE_RADIUS = 3.0;
+const float CIRCLE_RADIUS = 6.0;
 const float INITIAL_PROGRESS_CONTAINER_WIDTH = 40.0;
 const float PROGRESS_VIEW_CONTAINER_LEFT = 51.0;
 const float VIEW_WIDTH = 225.0;
@@ -153,7 +153,7 @@ const float VIEW_WIDTH = 225.0;
         label.textColor = i < currentStatus ? [UIColor blackColor] : [UIColor grayColor];
         label.textAlignment = NSTextAlignmentLeft;
         label.lineBreakMode = NSLineBreakByWordWrapping;
-        [label setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
+        [label setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.0]];
         [self.progressDescriptionViewContainer addSubview:label];
 //        [label makeConstraints:^(MASConstraintMaker *make) {
 //            make.left.equalTo(_progressDescriptionViewContainer).with.offset(7);

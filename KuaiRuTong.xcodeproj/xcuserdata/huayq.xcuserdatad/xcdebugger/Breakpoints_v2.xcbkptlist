@@ -90,7 +90,7 @@
                   moduleName = "&#x5feb;&#x5165;&#x901a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470735487.131369"
+                  timestampString = "470912098.333238"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "258"
@@ -105,7 +105,7 @@
                   moduleName = "&#x5feb;&#x5165;&#x901a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470735487.131567"
+                  timestampString = "470912098.333454"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -120,7 +120,7 @@
                   moduleName = "&#x5feb;&#x5165;&#x901a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/huayq/github/KuaiRuTong1.0/KuaiRuTong/Src/AddUser/LocationSelelctor/HZAreaPickerView.m"
-                  timestampString = "470735487.131763"
+                  timestampString = "470912098.333651"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -607,22 +607,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KuaiRuTong/Src/WorkflowMgr/CateViewController.m"
-            timestampString = "470646058.391045"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
-            landmarkName = "-getIssuedBusinessPictureServiceResult:Result:errorMsg:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -633,22 +617,6 @@
             startingLineNumber = "194"
             endingLineNumber = "194"
             landmarkName = "+downloadFileWithOption:withInferface:savedPath:downloadSuccess:downloadFailure:progress:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KuaiRuTong/Src/WorkflowMgr/CateViewController.m"
-            timestampString = "470646058.391045"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
-            landmarkName = "-getIssuedBusinessPictureServiceResult:Result:errorMsg:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

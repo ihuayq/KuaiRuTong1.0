@@ -23,6 +23,8 @@
 		7A978F0F1BFB63AF007B3CE0 /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A978F0E1BFB63AF007B3CE0 /* LocationPickerViewController.m */; };
 		7AA89AF51C0A88350049C9E1 /* SHDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA89AF41C0A88350049C9E1 /* SHDetailInfoViewController.m */; };
 		7AA89AF81C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA89AF71C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m */; };
+		8805F1CF1C11770700E0442B /* TimeLineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8805F1CE1C11770700E0442B /* TimeLineItem.m */; settings = {ASSET_TAGS = (); }; };
+		8805F1D31C1177E600E0442B /* TimeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8805F1D21C1177E600E0442B /* TimeLineCell.m */; settings = {ASSET_TAGS = (); }; };
 		884C605C1C0690B6000436F1 /* WorkingStatusDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C605B1C0690B6000436F1 /* WorkingStatusDataService.m */; };
 		884C60781C0697D9000436F1 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C60601C0697D9000436F1 /* MASCompositeConstraint.m */; };
 		884C60791C0697D9000436F1 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C60631C0697D9000436F1 /* MASConstraint.m */; };
@@ -439,6 +441,10 @@
 		7AA89AF41C0A88350049C9E1 /* SHDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDetailInfoViewController.m; sourceTree = "<group>"; };
 		7AA89AF61C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePosTermianlToNetPointViewController.h; sourceTree = "<group>"; };
 		7AA89AF71C0AC2BB0049C9E1 /* UpdatePosTermianlToNetPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePosTermianlToNetPointViewController.m; sourceTree = "<group>"; };
+		8805F1CD1C11770700E0442B /* TimeLineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineItem.h; sourceTree = "<group>"; };
+		8805F1CE1C11770700E0442B /* TimeLineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineItem.m; sourceTree = "<group>"; };
+		8805F1D11C1177E600E0442B /* TimeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineCell.h; sourceTree = "<group>"; };
+		8805F1D21C1177E600E0442B /* TimeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineCell.m; sourceTree = "<group>"; };
 		884C605A1C0690B6000436F1 /* WorkingStatusDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingStatusDataService.h; sourceTree = "<group>"; };
 		884C605B1C0690B6000436F1 /* WorkingStatusDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingStatusDataService.m; sourceTree = "<group>"; };
 		884C605F1C0697D8000436F1 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -1199,6 +1205,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		8805F1D01C1177A600E0442B /* QueryWokingStatus */ = {
+			isa = PBXGroup;
+			children = (
+				8805F1D11C1177E600E0442B /* TimeLineCell.h */,
+				8805F1D21C1177E600E0442B /* TimeLineCell.m */,
+			);
+			name = QueryWokingStatus;
+			sourceTree = "<group>";
+		};
 		884C605D1C0697D8000436F1 /* TimeLine */ = {
 			isa = PBXGroup;
 			children = (
@@ -1585,6 +1600,7 @@
 		887B0AD91C02F917009483ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8805F1D01C1177A600E0442B /* QueryWokingStatus */,
 				7A87D3741C07317D0073F02A /* QueryKuCun */,
 				888EE4CA1C05658A00811973 /* QuerySH */,
 				887B0AE91C02FB30009483ED /* SavedOrIssueSHInfoView */,
@@ -1815,6 +1831,8 @@
 				884C60911C0708BC000436F1 /* KuCunData.m */,
 				7A0290471C09D26B00CB95A8 /* NewMachineDataService.h */,
 				7A0290481C09D26B00CB95A8 /* NewMachineDataService.m */,
+				8805F1CD1C11770700E0442B /* TimeLineItem.h */,
+				8805F1CE1C11770700E0442B /* TimeLineItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3118,6 +3136,7 @@
 				88F205E81BF19C4B00674567 /* UIImage+SNFoundation.m in Sources */,
 				88F205DB1BF19C4B00674567 /* NSData+Base64.m in Sources */,
 				884C60811C0697D9000436F1 /* TimeLineViewControl.m in Sources */,
+				8805F1D31C1177E600E0442B /* TimeLineCell.m in Sources */,
 				887B0A9E1C02A469009483ED /* REInlinePickerItem.m in Sources */,
 				889141B71BF9681F007E1BBB /* KuCunSearchCell.m in Sources */,
 				889141B11BF9681F007E1BBB /* DBModel.m in Sources */,
@@ -3130,6 +3149,7 @@
 				887B0AD61C02F907009483ED /* FolderCoverView.m in Sources */,
 				88F2054B1BF18F7200674567 /* AFURLConnectionOperation.m in Sources */,
 				887B0AC11C02A469009483ED /* RETableViewSection.m in Sources */,
+				8805F1CF1C11770700E0442B /* TimeLineItem.m in Sources */,
 				889141A31BF9681F007E1BBB /* WorkSearchViewController.m in Sources */,
 				88F205441BF18F7200674567 /* MJRefreshFooterView.m in Sources */,
 				887B0A961C02A469009483ED /* RETableViewPickerCell.m in Sources */,
